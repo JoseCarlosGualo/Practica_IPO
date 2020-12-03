@@ -109,7 +109,7 @@ public class Login {
 		frmLogin.addKeyListener(new PnlLoginKeyListener());
 		// frmLogin.setIconImage(Toolkit.getDefaultToolkit()
 		// .getImage(Principal.class.getResource("/Presentacion/Iconos/IconoRestaurante1.png")));
-		frmLogin.setTitle("Principal.frmTpvRestaurante.title");
+		frmLogin.setTitle("Inicio de sesi\u00F3n Camping");
 		frmLogin.getContentPane().addComponentListener(new FrameContentPaneComponentListener());
 		frmLogin.setBounds(100, 20, 1100, 700);
 		frmLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -188,6 +188,7 @@ public class Login {
 					{
 						lblIconUser = new JLabel("Usuario: ");
 						GridBagConstraints gbc_lblIconUser = new GridBagConstraints();
+						gbc_lblIconUser.gridwidth = 2;
 						gbc_lblIconUser.fill = GridBagConstraints.VERTICAL;
 						gbc_lblIconUser.insets = new Insets(0, 0, 0, 5);
 						gbc_lblIconUser.gridx = 0;
@@ -239,6 +240,7 @@ public class Login {
 						lblIconPass.setHorizontalTextPosition(SwingConstants.LEADING);
 						lblIconPass.setHorizontalAlignment(SwingConstants.TRAILING);
 						GridBagConstraints gbc_lblIconPass = new GridBagConstraints();
+						gbc_lblIconPass.gridwidth = 2;
 						gbc_lblIconPass.fill = GridBagConstraints.VERTICAL;
 						gbc_lblIconPass.insets = new Insets(0, 0, 0, 5);
 						gbc_lblIconPass.gridx = 0;
@@ -261,10 +263,9 @@ public class Login {
 							pwdContrasea.setText("Principal.pwdContrasea.text");
 							pwdContrasea.setBackground(UIManager.getColor("CheckBox.background"));
 							GridBagConstraints gbc_pwdContrasea = new GridBagConstraints();
-							gbc_pwdContrasea.gridwidth = 2;
 							gbc_pwdContrasea.fill = GridBagConstraints.VERTICAL;
 							gbc_pwdContrasea.insets = new Insets(0, 0, 0, 5);
-							gbc_pwdContrasea.gridx = 1;
+							gbc_pwdContrasea.gridx = 2;
 							gbc_pwdContrasea.gridy = 0;
 							pnlPass.add(pwdContrasea, gbc_pwdContrasea);
 							pwdContrasea.setBorder(null);
