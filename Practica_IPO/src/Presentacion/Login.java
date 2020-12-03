@@ -249,25 +249,26 @@ public class Login {
 						// ImageIcon(Principal.class.getResource("/Presentacion/Iconos/locked-padlock.png")));
 					}
 					{
-						pwdContrasea = new JPasswordField();
-						pwdContrasea.addFocusListener(new PwdContraseaFocusListener());
-						pwdContrasea.addKeyListener(new PwdContraseaKeyListener());
-						pwdContrasea.setFont(new Font("Tahoma", Font.BOLD, 12));
-						pwdContrasea.setText("Principal.pwdContrasea.text");
-						pwdContrasea.setBackground(UIManager.getColor("CheckBox.background"));
-						GridBagConstraints gbc_pwdContrasea = new GridBagConstraints();
-						gbc_pwdContrasea.fill = GridBagConstraints.VERTICAL;
-						gbc_pwdContrasea.insets = new Insets(0, 0, 0, 5);
-						gbc_pwdContrasea.gridx = 2;
-						gbc_pwdContrasea.gridy = 0;
-						pnlPass.add(pwdContrasea, gbc_pwdContrasea);
-						pwdContrasea.setBorder(null);
-					}
-					{
 						btnMostrarConsea = new JButton("");
 						mostrarContrasea = false;
 						btnMostrarConsea.setToolTipText("Principal.btnVerPass.toolTipText");
 						btnMostrarConsea.addActionListener(new BtnMostrarConseaActionListener());
+						{
+							pwdContrasea = new JPasswordField();
+							pwdContrasea.addFocusListener(new PwdContraseaFocusListener());
+							pwdContrasea.addKeyListener(new PwdContraseaKeyListener());
+							pwdContrasea.setFont(new Font("Tahoma", Font.BOLD, 12));
+							pwdContrasea.setText("Principal.pwdContrasea.text");
+							pwdContrasea.setBackground(UIManager.getColor("CheckBox.background"));
+							GridBagConstraints gbc_pwdContrasea = new GridBagConstraints();
+							gbc_pwdContrasea.gridwidth = 2;
+							gbc_pwdContrasea.fill = GridBagConstraints.VERTICAL;
+							gbc_pwdContrasea.insets = new Insets(0, 0, 0, 5);
+							gbc_pwdContrasea.gridx = 1;
+							gbc_pwdContrasea.gridy = 0;
+							pnlPass.add(pwdContrasea, gbc_pwdContrasea);
+							pwdContrasea.setBorder(null);
+						}
 						btnMostrarConsea.setOpaque(true);
 						btnMostrarConsea.setContentAreaFilled(false);
 						btnMostrarConsea.setBackground(UIManager.getColor("CheckBox.background"));
