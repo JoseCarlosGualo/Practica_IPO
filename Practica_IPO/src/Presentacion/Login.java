@@ -210,10 +210,9 @@ public class Login {
 						txtUsuario.setFont(new Font("Tahoma", Font.BOLD, 12));
 						txtUsuario.setBackground(UIManager.getColor("CheckBox.background"));
 						GridBagConstraints gbc_txtUser = new GridBagConstraints();
-						gbc_txtUser.gridwidth = 2;
-						gbc_txtUser.fill = GridBagConstraints.VERTICAL;
+						gbc_txtUser.fill = GridBagConstraints.BOTH;
 						gbc_txtUser.insets = new Insets(0, 0, 0, 5);
-						gbc_txtUser.gridx = 1;
+						gbc_txtUser.gridx = 2;
 						gbc_txtUser.gridy = 0;
 						pnlUser.add(txtUsuario, gbc_txtUser);
 						txtUsuario.setBorder(null);
@@ -257,10 +256,9 @@ public class Login {
 						pwdContrasea.setText("Principal.pwdContrasea.text");
 						pwdContrasea.setBackground(UIManager.getColor("CheckBox.background"));
 						GridBagConstraints gbc_pwdContrasea = new GridBagConstraints();
-						gbc_pwdContrasea.gridwidth = 2;
 						gbc_pwdContrasea.fill = GridBagConstraints.VERTICAL;
 						gbc_pwdContrasea.insets = new Insets(0, 0, 0, 5);
-						gbc_pwdContrasea.gridx = 1;
+						gbc_pwdContrasea.gridx = 2;
 						gbc_pwdContrasea.gridy = 0;
 						pnlPass.add(pwdContrasea, gbc_pwdContrasea);
 						pwdContrasea.setBorder(null);
@@ -447,23 +445,32 @@ public class Login {
 	}
 
 	private void entrar() {
-		/*
-		 * String password = pwdContrasea.getText(); String user = txtUser.getText();
-		 * usuario = new Usuario(); usuario.setDNI(user); usuario.setPass(password);
-		 * 
-		 * if (usuario.login()) { ((CardLayout)
-		 * frmTpvRestaurante.getContentPane().getLayout()).show(frmTpvRestaurante.
-		 * getContentPane(), "panelAplicacion"); panelDatosUser.cargarDatos(usuario);
-		 * Date date = new Date(); DateFormat ultimoAcceso = new
-		 * SimpleDateFormat("dd/MM/yyyy HH:mm:ss ");
-		 * usuario.setUltimoAcceso(ultimoAcceso.format(date)); usuario.update();
-		 * lblErrorLogin.setVisible(false);
-		 * 
-		 * if (!chckbxRecordarPass.isSelected()) { txtUser.setText("");
-		 * pwdContrasea.setText("Contraseña"); }
-		 * 
-		 * } else { lblErrorLogin.setVisible(true); }
-		 */
+
+		String password = pwdContrasea.getText();
+		String user = txtUsuario.getText();
+		//usuario = new Usuario();
+		//usuario.setDNI(user);
+		//usuario.setPass(password);
+
+		if (user.equals("12345678") && password.equals("hola")) {
+			((CardLayout) frmLogin.getContentPane().getLayout()).show(frmLogin.getContentPane(),
+					"panelAplicacion");
+			//panelDatosUser.cargarDatos(usuario);
+			//Date date = new Date();
+			//DateFormat ultimoAcceso = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss ");
+			//usuario.setUltimoAcceso(ultimoAcceso.format(date));
+			//usuario.update();
+			lblErrorLaContrasea.setVisible(false);
+
+			if (!chckbxRecordarContrasea.isSelected()) {
+				txtUsuario.setText("");
+				pwdContrasea.setText("Contraseña");
+			}
+
+		} else {
+			lblErrorLaContrasea.setVisible(true);
+		}
+
 	}
 
 }
