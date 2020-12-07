@@ -75,7 +75,10 @@ public class Login {
 	private JLabel lblErrorLaContrasea;
 	private JPanel pnlUser;
 	private JLabel lblUsuario;
+	private Usuario usuario;
 	private JTextField txtUsuario;
+	private JLabel lblImgcopyright;
+	private pnlUsuario pnlDatosUsuario;
 
 	/**
 	 * Launch the application.
@@ -127,7 +130,7 @@ public class Login {
 				pnlIniciarSesion.addKeyListener(new PnlIniciarSesionKeyListener());
 				pnlIniciarSesion.setBackground(SystemColor.controlLtHighlight);
 				pnlIniciarSesion.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-				pnlIniciarSesion.setBounds(365, 152, 451, 406);
+				pnlIniciarSesion.setBounds(360, 178, 451, 406);
 				pnlLogin.add(pnlIniciarSesion);
 				GridBagLayout gbl_panelIniciarSesion = new GridBagLayout();
 				gbl_panelIniciarSesion.columnWidths = new int[] { 50, 43, 160, 35, 14, 0 };
@@ -324,6 +327,12 @@ public class Login {
 					pnlIniciarSesion.add(lblteHasOlvidado, gbc_lblOlvidadoPass);
 				}
 			}
+			{
+				lblImgcopyright = new JLabel("");
+				lblImgcopyright.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/copyright.jpg")));
+				lblImgcopyright.setBounds(789, 615, 397, 50);
+				pnlLogin.add(lblImgcopyright);
+			}
 		}
 	}
 
@@ -450,18 +459,17 @@ public class Login {
 
 		String password = pwdContrasea.getText();
 		String user = txtUsuario.getText();
-		//usuario = new Usuario();
-		//usuario.setDNI(user);
-		//usuario.setPass(password);
+		// usuario = new Usuario();
+		// usuario.setDNI(user);
+		// usuario.setPass(password);
 
 		if (user.equals("12345678") && password.equals("hola")) {
-			((CardLayout) frmLogin.getContentPane().getLayout()).show(frmLogin.getContentPane(),
-					"panelAplicacion");
-			//panelDatosUser.cargarDatos(usuario);
-			//Date date = new Date();
-			//DateFormat ultimoAcceso = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss ");
-			//usuario.setUltimoAcceso(ultimoAcceso.format(date));
-			//usuario.update();
+			((CardLayout) frmLogin.getContentPane().getLayout()).show(frmLogin.getContentPane(), "panelAplicacion");
+			// panelDatosUser.cargarDatos(usuario);
+			// Date date = new Date();
+			// DateFormat ultimoAcceso = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss ");
+			// usuario.setUltimoAcceso(ultimoAcceso.format(date));
+			// usuario.update();
 			lblErrorLaContrasea.setVisible(false);
 
 			if (!chckbxRecordarContrasea.isSelected()) {
@@ -474,5 +482,4 @@ public class Login {
 		}
 
 	}
-
 }
