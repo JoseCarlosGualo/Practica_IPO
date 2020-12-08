@@ -45,16 +45,10 @@ import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
 import Dominio.Usuario;
+import java.awt.Dimension;
+import java.awt.Component;
+import javax.swing.JTabbedPane;
 
-/*import Presentacion.Principal.BtnEntrarActionListener;
-import Presentacion.Principal.BtnVerPassActionListener;
-import Presentacion.Principal.FrameContentPaneComponentListener;
-import Presentacion.Principal.FrmTpvRestauranteKeyListener;
-import Presentacion.Principal.PanelIniciarSesionKeyListener;
-import Presentacion.Principal.PanelLoginKeyListener;
-import Presentacion.Principal.PwdContraseaFocusListener;
-import Presentacion.Principal.PwdContraseaKeyListener;
-*/
 public class Login {
 
 	private JFrame frmLogin;
@@ -77,8 +71,22 @@ public class Login {
 	private JLabel lblUsuario;
 	private Usuario usuario;
 	private JTextField txtUsuario;
-	private JLabel lblImgcopyright;
 	private pnlUsuario pnlDatosUsuario;
+	private JPanel pnlApp;
+	private JPanel pnlUserData;
+	private JPanel pnlOcultar;
+	private JPanel pnlInformacion;
+	private pnlUsuario pnlUsuario;
+	private JButton btnOcultar;
+	private JPanel pnlPestanas;
+	private JTabbedPane pnlContenedorPestanas;
+	private JPanel pnlBungalows;
+	private JPanel pnlParcelas;
+	private JPanel pnlEmpleados;
+	private JPanel pnlActividades;
+	private JPanel pnlRutasSenderistas;
+	private JPanel pnlReservas;
+	private JPanel panel;
 
 	/**
 	 * Launch the application.
@@ -110,8 +118,6 @@ public class Login {
 	private void initialize() {
 		frmLogin = new JFrame();
 		frmLogin.addKeyListener(new PnlLoginKeyListener());
-		// frmLogin.setIconImage(Toolkit.getDefaultToolkit()
-		// .getImage(Principal.class.getResource("/Presentacion/Iconos/IconoRestaurante1.png")));
 		frmLogin.setTitle("Inicio de sesi\u00F3n Camping");
 		frmLogin.getContentPane().addComponentListener(new FrameContentPaneComponentListener());
 		frmLogin.setBounds(100, 20, 1100, 700);
@@ -197,9 +203,6 @@ public class Login {
 						gbc_lblIconUser.gridx = 0;
 						gbc_lblIconUser.gridy = 0;
 						pnlUser.add(lblIconUser, gbc_lblIconUser);
-						// lblIconUser.setIcon(
-						// new
-						// ImageIcon(Principal.class.getResource("/Presentacion/Iconos/userLogin.png")));
 					}
 					{
 
@@ -249,9 +252,6 @@ public class Login {
 						gbc_lblIconPass.gridx = 0;
 						gbc_lblIconPass.gridy = 0;
 						pnlPass.add(lblIconPass, gbc_lblIconPass);
-						// lblIconPass.setIcon(
-						// new
-						// ImageIcon(Principal.class.getResource("/Presentacion/Iconos/locked-padlock.png")));
 					}
 					{
 						btnMostrarConsea = new JButton("");
@@ -327,11 +327,94 @@ public class Login {
 					pnlIniciarSesion.add(lblteHasOlvidado, gbc_lblOlvidadoPass);
 				}
 			}
+		}
+		{
+			pnlApp = new JPanel();
+			pnlApp.setBorder(new EmptyBorder(3, 3, 3, 3));
+			frmLogin.getContentPane().add(pnlApp, "pnlApp");
+			pnlApp.setLayout(new BorderLayout(0, 0));
 			{
-				lblImgcopyright = new JLabel("");
-				lblImgcopyright.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/copyright.jpg")));
-				lblImgcopyright.setBounds(789, 615, 397, 50);
-				pnlLogin.add(lblImgcopyright);
+				pnlInformacion = new JPanel();
+				pnlApp.add(pnlInformacion, BorderLayout.WEST);
+				pnlInformacion.setLayout(new BorderLayout(0, 0));
+				{
+					pnlOcultar = new JPanel();
+					pnlOcultar.setBorder(new EmptyBorder(3, 3, 3, 3));
+					pnlOcultar.setAlignmentX(Component.LEFT_ALIGNMENT);
+					pnlOcultar.setToolTipText("Ocultar datos del Usuario\r\n");
+					pnlInformacion.add(pnlOcultar, BorderLayout.EAST);
+					GridBagLayout gbl_pnlOcultar = new GridBagLayout();
+					gbl_pnlOcultar.columnWidths = new int[] { 33, 0 };
+					gbl_pnlOcultar.rowHeights = new int[] { 665, 0 };
+					gbl_pnlOcultar.columnWeights = new double[] { 0.0, Double.MIN_VALUE };
+					gbl_pnlOcultar.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+					pnlOcultar.setLayout(gbl_pnlOcultar);
+					{
+						btnOcultar = new JButton("");
+						btnOcultar.addActionListener(new BtnOcultarActionListener());
+						btnOcultar.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/mostrar.png")));
+						btnOcultar.setPreferredSize(new Dimension(15, 15));
+						btnOcultar.setMinimumSize(new Dimension(10, 10));
+						GridBagConstraints gbc_btnOcultar = new GridBagConstraints();
+						gbc_btnOcultar.fill = GridBagConstraints.BOTH;
+						gbc_btnOcultar.gridx = 0;
+						gbc_btnOcultar.gridy = 0;
+						pnlOcultar.add(btnOcultar, gbc_btnOcultar);
+					}
+				}
+				{
+					pnlUserData = new JPanel();
+					pnlInformacion.add(pnlUserData);
+					pnlUserData.setLayout(new BorderLayout(0, 0));
+					{
+						pnlUsuario = new pnlUsuario();
+						pnlUserData.add(pnlUsuario, BorderLayout.EAST);
+					}
+				}
+			}
+			{
+				pnlPestanas = new JPanel();
+				pnlPestanas.setBorder(null);
+				pnlApp.add(pnlPestanas, BorderLayout.CENTER);
+				pnlPestanas.setLayout(new BorderLayout(0, 0));
+				{
+					pnlContenedorPestanas = new JTabbedPane(JTabbedPane.TOP);
+					pnlPestanas.add(pnlContenedorPestanas);
+					{
+						pnlBungalows = new JPanel();
+						pnlContenedorPestanas.addTab("Bungalows", null, pnlBungalows, null);
+						pnlBungalows.setLayout(new CardLayout(0, 0));
+						{
+							panel = new JPanel();
+							pnlBungalows.add(panel, "name_398353774122800");
+						}
+					}
+					{
+						pnlParcelas = new JPanel();
+						pnlContenedorPestanas.addTab("Parcelas", null, pnlParcelas, null);
+						pnlParcelas.setLayout(new CardLayout(0, 0));
+					}
+					{
+						pnlEmpleados = new JPanel();
+						pnlContenedorPestanas.addTab("Empleados", null, pnlEmpleados, null);
+						pnlEmpleados.setLayout(new CardLayout(0, 0));
+					}
+					{
+						pnlActividades = new JPanel();
+						pnlContenedorPestanas.addTab("Actividades", null, pnlActividades, null);
+						pnlActividades.setLayout(new CardLayout(0, 0));
+					}
+					{
+						pnlRutasSenderistas = new JPanel();
+						pnlContenedorPestanas.addTab("Rutas Senderistas", null, pnlRutasSenderistas, null);
+						pnlRutasSenderistas.setLayout(new CardLayout(0, 0));
+					}
+					{
+						pnlReservas = new JPanel();
+						pnlContenedorPestanas.addTab("Reservas", null, pnlReservas, null);
+						pnlReservas.setLayout(new CardLayout(0, 0));
+					}
+				}
 			}
 		}
 	}
@@ -369,18 +452,11 @@ public class Login {
 	private class BtnMostrarConseaActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			if (mostrarContrasea) {
-				// Ocultar la contraseña
 				pwdContrasea.setEchoChar('\u2022');
-				// btnMostrarConsea.setIcon(new
-				// ImageIcon(Principal.class.getResource("/Presentacion/Iconos/eye.png")));
 				btnMostrarConsea.setToolTipText("Mostrar Constraseña");
 				mostrarContrasea = false;
 			} else {
-				// Mostrar la contraseña
 				pwdContrasea.setEchoChar((char) 0);
-				// btnMostrarConsea.setIcon(
-				// new
-				// ImageIcon(Principal.class.getResource("/Presentacion/Iconos/eye_slashed24x24.png")));
 				btnMostrarConsea.setToolTipText("Ocultar Constraseña");
 				mostrarContrasea = true;
 			}
@@ -455,21 +531,33 @@ public class Login {
 
 	}
 
+	private class BtnOcultarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (pnlUserData.isVisible()) {
+				pnlUserData.setVisible(false);
+				btnOcultar.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/mostrar.png")));
+			} else {
+				pnlUserData.setVisible(true);
+				btnOcultar.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/ocultar.png")));
+			}
+		}
+	}
+
 	private void entrar() {
 
 		String password = pwdContrasea.getText();
 		String user = txtUsuario.getText();
-		// usuario = new Usuario();
-		// usuario.setDNI(user);
-		// usuario.setPass(password);
+		usuario = new Usuario();
+		usuario.setDNI(user);
+		usuario.setPass(password);
 
-		if (user.equals("12345678") && password.equals("hola")) {
-			((CardLayout) frmLogin.getContentPane().getLayout()).show(frmLogin.getContentPane(), "panelAplicacion");
-			// panelDatosUser.cargarDatos(usuario);
-			// Date date = new Date();
-			// DateFormat ultimoAcceso = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss ");
-			// usuario.setUltimoAcceso(ultimoAcceso.format(date));
-			// usuario.update();
+		if (usuario.login()) {
+			((CardLayout) frmLogin.getContentPane().getLayout()).show(frmLogin.getContentPane(), "pnlApp");
+			pnlUsuario.loadUserData(usuario);
+			Date fecha = new Date();
+			DateFormat fecha_UltimoAcceso = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss ");
+			usuario.setUltimoAcceso(fecha_UltimoAcceso.format(fecha));
+			usuario.update();
 			lblErrorLaContrasea.setVisible(false);
 
 			if (!chckbxRecordarContrasea.isSelected()) {

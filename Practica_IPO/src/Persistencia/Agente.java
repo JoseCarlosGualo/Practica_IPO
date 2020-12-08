@@ -16,7 +16,6 @@ public class Agente {
 
 	private Agente() throws Exception {
 		conectar();
-
 	}
 
 	public static Agente getAgente() throws Exception {
@@ -28,7 +27,7 @@ public class Agente {
 
 	private void conectar() throws Exception {
 		Class.forName(driver);
-		mBD = DriverManager.getConnection(url, "", "");
+		mBD = DriverManager.getConnection(url);
 	}
 
 	public void desconectar() throws Exception {
@@ -47,10 +46,10 @@ public class Agente {
 
 	public ResultSet leer(String SQL) throws SQLException, Exception {
 
-		// Statement st = mBD.createStatement();
-		PreparedStatement stmt = mBD.prepareStatement(SQL);
-		ResultSet resultado = stmt.executeQuery(SQL);
-		// ResultSet resultado = st.executeQuery(SQL);
+		Statement st = mBD.createStatement();
+		//PreparedStatement stmt = mBD.prepareStatement(SQL);
+		//ResultSet resultado = stmt.executeQuery(SQL);
+		ResultSet resultado = st.executeQuery(SQL);
 
 		return resultado;
 	}
