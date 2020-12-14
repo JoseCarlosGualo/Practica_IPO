@@ -23,6 +23,7 @@ import java.awt.event.KeyListener;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
@@ -44,10 +45,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
+import Dominio.Bungalow;
+import Dominio.Disponibilidad;
 import Dominio.Usuario;
 import java.awt.Dimension;
 import java.awt.Component;
 import javax.swing.JTabbedPane;
+import javax.swing.JScrollPane;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JRadioButtonMenuItem;
 
 public class Login {
 
@@ -69,9 +76,9 @@ public class Login {
 	private JLabel lblErrorLaContrasea;
 	private JPanel pnlUser;
 	private JLabel lblUsuario;
+	private pnlVBungalow panelVistaBungalows;
 	private Usuario usuario;
 	private JTextField txtUsuario;
-	private pnlUsuario pnlDatosUsuario;
 	private JPanel pnlApp;
 	private JPanel pnlUserData;
 	private JPanel pnlOcultar;
@@ -86,7 +93,24 @@ public class Login {
 	private JPanel pnlActividades;
 	private JPanel pnlRutasSenderistas;
 	private JPanel pnlReservas;
-	private JPanel panel;
+	private JMenuBar menuBar;
+	private JMenu mnIdioma;
+	private JRadioButtonMenuItem rdbtnmntmEspaol;
+	private JRadioButtonMenuItem rdbtnmntmIngls;
+	private JButton btnAyuda;
+	private JButton btnConfiguracin;
+	private JPanel pnlBtnSalir;
+	private JButton btnSalir;
+	private JButton btnCerrarSesin;
+	private JPanel pnlBusqueda;
+	private JTextField textField;
+	private JLabel lblLupa;
+	private JPanel pnlBotones;
+	private JButton btnAadir;
+	private JButton btnEliminar;
+	private pnlContenedorBungalows pnlVBungalow;
+	private JButton btnModificar;
+	private JPanel pnlContenedor;
 
 	/**
 	 * Launch the application.
@@ -179,7 +203,7 @@ public class Login {
 				}
 				{
 					pnlUser = new JPanel();
-					pnlUser.setToolTipText("Principal.panelUser.toolTipText"); //$NON-NLS-1$
+					pnlUser.setToolTipText("Principal.panelUser.toolTipText");
 					pnlUser.setBorder(null);
 					GridBagConstraints gbc_panelUser = new GridBagConstraints();
 					gbc_panelUser.fill = GridBagConstraints.BOTH;
@@ -368,7 +392,53 @@ public class Login {
 					pnlUserData.setLayout(new BorderLayout(0, 0));
 					{
 						pnlUsuario = new pnlUsuario();
-						pnlUserData.add(pnlUsuario, BorderLayout.EAST);
+						GridBagLayout gridBagLayout = (GridBagLayout) pnlUsuario.getLayout();
+						gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0 };
+						gridBagLayout.columnWidths = new int[] { 10, 0, 0, 0 };
+						pnlUserData.add(pnlUsuario, BorderLayout.CENTER);
+					}
+					{
+						menuBar = new JMenuBar();
+						pnlUserData.add(menuBar, BorderLayout.NORTH);
+						{
+							mnIdioma = new JMenu("Idioma");
+							menuBar.add(mnIdioma);
+							{
+								rdbtnmntmEspaol = new JRadioButtonMenuItem("Espa\u00F1ol");
+								mnIdioma.add(rdbtnmntmEspaol);
+							}
+							{
+								rdbtnmntmIngls = new JRadioButtonMenuItem("Ingl\u00E9s");
+								mnIdioma.add(rdbtnmntmIngls);
+							}
+						}
+						{
+							btnAyuda = new JButton("Ayuda");
+							btnAyuda.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/informacion.png")));
+							menuBar.add(btnAyuda);
+						}
+						{
+							btnConfiguracin = new JButton("Configuraci\u00F3n");
+							btnConfiguracin.setIcon(
+									new ImageIcon(Login.class.getResource("/Presentacion/configuraciones.png")));
+							menuBar.add(btnConfiguracin);
+						}
+					}
+					{
+						pnlBtnSalir = new JPanel();
+						pnlUserData.add(pnlBtnSalir, BorderLayout.SOUTH);
+						{
+							btnSalir = new JButton("Salir");
+							btnSalir.addActionListener(new BtnSalirActionListener());
+							pnlBtnSalir.add(btnSalir);
+						}
+						{
+							btnCerrarSesin = new JButton("Cerrar sesion");
+							btnCerrarSesin.addActionListener(new BtnCerrarSesinActionListener());
+							btnCerrarSesin
+									.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/cerrar-sesion.png")));
+							pnlBtnSalir.add(btnCerrarSesin);
+						}
 					}
 				}
 			}
@@ -383,10 +453,87 @@ public class Login {
 					{
 						pnlBungalows = new JPanel();
 						pnlContenedorPestanas.addTab("Bungalows", null, pnlBungalows, null);
-						pnlBungalows.setLayout(new CardLayout(0, 0));
+						pnlBungalows.setLayout(new BorderLayout(0, 0));
 						{
-							panel = new JPanel();
-							pnlBungalows.add(panel, "name_398353774122800");
+							pnlBusqueda = new JPanel();
+							pnlBungalows.add(pnlBusqueda, BorderLayout.NORTH);
+							GridBagLayout gbl_pnlBusqueda = new GridBagLayout();
+							gbl_pnlBusqueda.columnWidths = new int[] { 25, 0, 0, 0, 0, 0, 118, 81, 32, 0, 0 };
+							gbl_pnlBusqueda.rowHeights = new int[] { 25, 30, 25, 0 };
+							gbl_pnlBusqueda.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+									0.0, Double.MIN_VALUE };
+							gbl_pnlBusqueda.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+							pnlBusqueda.setLayout(gbl_pnlBusqueda);
+							{
+								textField = new JTextField();
+								GridBagConstraints gbc_textField = new GridBagConstraints();
+								gbc_textField.gridwidth = 8;
+								gbc_textField.insets = new Insets(0, 0, 5, 5);
+								gbc_textField.fill = GridBagConstraints.HORIZONTAL;
+								gbc_textField.gridx = 1;
+								gbc_textField.gridy = 1;
+								pnlBusqueda.add(textField, gbc_textField);
+								textField.setColumns(10);
+							}
+							{
+								lblLupa = new JLabel("");
+								lblLupa.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/lupa.png")));
+								GridBagConstraints gbc_lblLupa = new GridBagConstraints();
+								gbc_lblLupa.insets = new Insets(0, 0, 5, 0);
+								gbc_lblLupa.gridx = 9;
+								gbc_lblLupa.gridy = 1;
+								pnlBusqueda.add(lblLupa, gbc_lblLupa);
+							}
+						}
+						{
+							pnlBotones = new JPanel();
+							pnlBungalows.add(pnlBotones, BorderLayout.SOUTH);
+							GridBagLayout gbl_pnlBotones = new GridBagLayout();
+							gbl_pnlBotones.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+							gbl_pnlBotones.rowHeights = new int[] { 20, 0, 20, 0 };
+							gbl_pnlBotones.columnWeights = new double[] { 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0,
+									Double.MIN_VALUE };
+							gbl_pnlBotones.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+							pnlBotones.setLayout(gbl_pnlBotones);
+							{
+								btnAadir = new JButton("A\u00F1adir");
+								GridBagConstraints gbc_btnAadir = new GridBagConstraints();
+								gbc_btnAadir.insets = new Insets(0, 0, 5, 5);
+								gbc_btnAadir.gridx = 1;
+								gbc_btnAadir.gridy = 1;
+								pnlBotones.add(btnAadir, gbc_btnAadir);
+							}
+							{
+								btnEliminar = new JButton("Eliminar");
+								GridBagConstraints gbc_btnEliminar = new GridBagConstraints();
+								gbc_btnEliminar.insets = new Insets(0, 0, 5, 5);
+								gbc_btnEliminar.gridx = 3;
+								gbc_btnEliminar.gridy = 1;
+								pnlBotones.add(btnEliminar, gbc_btnEliminar);
+							}
+							{
+								btnModificar = new JButton("Modificar");
+								GridBagConstraints gbc_btnModificar = new GridBagConstraints();
+								gbc_btnModificar.insets = new Insets(0, 0, 5, 5);
+								gbc_btnModificar.gridx = 5;
+								gbc_btnModificar.gridy = 1;
+								pnlBotones.add(btnModificar, gbc_btnModificar);
+							}
+						}
+						{
+							pnlContenedor = new JPanel();
+							pnlBungalows.add(pnlContenedor, BorderLayout.CENTER);
+							pnlContenedor.setLayout(new CardLayout(0, 0));
+							{
+								pnlVBungalow = new pnlContenedorBungalows();
+								pnlContenedor.add(pnlVBungalow, "panelBungalows");
+							}
+						}
+						{
+							{
+								{
+								}
+							}
 						}
 					}
 					{
@@ -416,6 +563,11 @@ public class Login {
 					}
 				}
 			}
+
+			Bungalow bungalow = new Bungalow();
+			// boolean correcto = bungalow.readAll();
+			// if(correcto){}
+			pnlVBungalow.loadPnlBungalows(cargarBungalow());
 		}
 	}
 
@@ -543,6 +695,21 @@ public class Login {
 		}
 	}
 
+	private class BtnSalirActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			Date date = new Date();
+			DateFormat ultimoAcceso = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss ");
+			usuario.setUltimoAcceso(ultimoAcceso.format(date));
+			System.exit(0);
+		}
+	}
+
+	private class BtnCerrarSesinActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			((CardLayout) frmLogin.getContentPane().getLayout()).show(frmLogin.getContentPane(), "panelLogin");
+		}
+	}
+
 	private void entrar() {
 
 		String password = pwdContrasea.getText();
@@ -570,4 +737,27 @@ public class Login {
 		}
 
 	}
+
+	private ArrayList<Bungalow> cargarBungalow() {
+		ArrayList<Bungalow> bungalows = new ArrayList<Bungalow>();
+		for (int i = 0; i < 10; i++) {
+			Bungalow bungalow1 = new Bungalow(i, "casa familiar", 300, 250, Disponibilidad.Libre, 6, 3,
+					"Cuna, Agua, Luz", "Alojamiento perfecto para ir con tu familia", 2);
+			bungalows.add(bungalow1);
+		}
+		return bungalows;
+	}
+
+	/*
+	 * private ArrayList<Bungalow> cargarBungalow() {
+	 * 
+	 * Bungalow bungalow = new Bungalow(id, tipo, precio_noche, tamano,
+	 * disponibilidad, capacidad_maxima, estancia_minima, equipamiento, descripcion,
+	 * imagen) boolean correcto = false;
+	 * 
+	 * correcto = bungalow.readAll();
+	 * 
+	 * if (correcto) { return (bungalow.getClienteDAO().getListaClientes()); } else
+	 * { return null; } }
+	 */
 }

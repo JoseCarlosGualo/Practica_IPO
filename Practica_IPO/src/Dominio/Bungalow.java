@@ -3,21 +3,25 @@ package Dominio;
 import java.util.ArrayList;
 import java.util.List;
 
-import Dominio.Estancia.Disponibilidad;
+import Dominio.Disponibilidad;
 
-public class Bungalow extends Estancia{
+public class Bungalow extends Estancia {
 	private int capacidad_maxima;
 	private int estancia_minima;
-	private List equipamiento = new ArrayList();
+	private String equipamiento;
 	private String descripcion;
 	private int imagen;
-	
-	public Bungalow(String tipo, double precio_noche, double tamano, Disponibilidad disponibilidad) {
-		super(tipo, precio_noche, tamano, disponibilidad);
+
+	public Bungalow() {
 	}
-	
-	public Bungalow(String tipo, double precio_noche, double tamano, Disponibilidad disponibilidad, int capacidad_maxima, int estancia_minima, List equipamiento, String descripcion, int imagen) {
-		super(tipo, precio_noche, tamano, disponibilidad);
+
+	public Bungalow(int id, String tipo, double precio_noche, double tamano, Disponibilidad disponibilidad) {
+		super(id, tipo, precio_noche, tamano, disponibilidad);
+	}
+
+	public Bungalow(int id, String tipo, double precio_noche, double tamano, Disponibilidad disponibilidad,
+			int capacidad_maxima, int estancia_minima, String equipamiento, String descripcion, int imagen) {
+		super(id, tipo, precio_noche, tamano, disponibilidad);
 		this.capacidad_maxima = capacidad_maxima;
 		this.estancia_minima = estancia_minima;
 		this.equipamiento = equipamiento;
@@ -25,7 +29,6 @@ public class Bungalow extends Estancia{
 		this.imagen = imagen;
 	}
 
-	
 	public int getCapacidad_maxima() {
 		return capacidad_maxima;
 	}
@@ -42,11 +45,11 @@ public class Bungalow extends Estancia{
 		this.estancia_minima = estancia_minima;
 	}
 
-	public List getEquipamiento() {
+	public String getEquipamiento() {
 		return equipamiento;
 	}
 
-	public void setEquipamiento(List equipamiento) {
+	public void setEquipamiento(String equipamiento) {
 		this.equipamiento = equipamiento;
 	}
 
@@ -65,6 +68,5 @@ public class Bungalow extends Estancia{
 	public void setImagen(int imagen) {
 		this.imagen = imagen;
 	}
-	
-	
+
 }
