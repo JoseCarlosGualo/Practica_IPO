@@ -8,7 +8,7 @@ public class Parcela extends Estancia {
 	private double precio_tMedia;
 	private double precio_tAlta;
 	private String ubicacion;
-	List servicios = new ArrayList();
+	String servicios;
 
 	public Parcela() {
 	}
@@ -18,7 +18,7 @@ public class Parcela extends Estancia {
 	}
 
 	public Parcela(int id, String tipo, double precio_noche, double tamano, Disponibilidad disponibilidad,
-			double precio_tBaja, double precio_tMedia, double precio_tAlta, String ubicacion, List servicios) {
+			double precio_tBaja, double precio_tMedia, double precio_tAlta, String ubicacion, String servicios) {
 		super(id, tipo, precio_noche, tamano, disponibilidad);
 		this.precio_tBaja = precio_tBaja;
 		this.precio_tMedia = precio_tMedia;
@@ -59,11 +59,11 @@ public class Parcela extends Estancia {
 		this.ubicacion = ubicacion;
 	}
 
-	public List getServicios() {
+	public String getServicios() {
 		return servicios;
 	}
 
-	public void setServicios(List servicios) {
+	public void setServicios(String servicios) {
 		this.servicios = servicios;
 	}
 

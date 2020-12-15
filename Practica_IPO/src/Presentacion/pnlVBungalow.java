@@ -13,6 +13,8 @@ import java.awt.Insets;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JButton;
+import java.awt.Font;
 
 public class pnlVBungalow extends JPanel {
 	private JLabel lblNombrebungalow;
@@ -35,6 +37,9 @@ public class pnlVBungalow extends JPanel {
 	private boolean isSeleccionado = false;
 
 	private Bungalow bungalow = new Bungalow();
+	private JPanel pnlPrecio;
+	private JLabel lblPrecioBun;
+	private JButton btnReservar;
 
 	/**
 	 * Create the panel.
@@ -42,25 +47,27 @@ public class pnlVBungalow extends JPanel {
 	public pnlVBungalow() {
 		addMouseListener(new ThisMouseListener());
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 0, 0, 0, 0, 0, 0 };
-		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.columnWidths = new int[] { 10, 0, 20, 0, 0, 20, 0 };
+		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 		{
 			lblNombrebungalow = new JLabel("Bungalow Familiar");
+			lblNombrebungalow.setFont(new Font("Tahoma", Font.ITALIC, 17));
 			GridBagConstraints gbc_lblNombrebungalow = new GridBagConstraints();
+			gbc_lblNombrebungalow.gridwidth = 2;
 			gbc_lblNombrebungalow.insets = new Insets(0, 0, 5, 5);
-			gbc_lblNombrebungalow.gridx = 1;
+			gbc_lblNombrebungalow.gridx = 0;
 			gbc_lblNombrebungalow.gridy = 1;
 			add(lblNombrebungalow, gbc_lblNombrebungalow);
 		}
 		{
 			pnlCaracteristicas = new JPanel();
 			GridBagConstraints gbc_pnlCaracteristicas = new GridBagConstraints();
+			gbc_pnlCaracteristicas.insets = new Insets(0, 0, 5, 5);
 			gbc_pnlCaracteristicas.gridwidth = 2;
 			gbc_pnlCaracteristicas.gridheight = 3;
-			gbc_pnlCaracteristicas.insets = new Insets(0, 0, 5, 5);
 			gbc_pnlCaracteristicas.fill = GridBagConstraints.BOTH;
 			gbc_pnlCaracteristicas.gridx = 3;
 			gbc_pnlCaracteristicas.gridy = 2;
@@ -92,6 +99,7 @@ public class pnlVBungalow extends JPanel {
 			{
 				lblTamanoBun = new JLabel("250 m\u00B2");
 				GridBagConstraints gbc_lblTamanoBun = new GridBagConstraints();
+				gbc_lblTamanoBun.anchor = GridBagConstraints.WEST;
 				gbc_lblTamanoBun.insets = new Insets(0, 0, 5, 0);
 				gbc_lblTamanoBun.gridx = 1;
 				gbc_lblTamanoBun.gridy = 1;
@@ -109,6 +117,7 @@ public class pnlVBungalow extends JPanel {
 			{
 				lblCapacidadMaximaBun = new JLabel("10 Personas");
 				GridBagConstraints gbc_lblCapacidadMaximaBun = new GridBagConstraints();
+				gbc_lblCapacidadMaximaBun.anchor = GridBagConstraints.WEST;
 				gbc_lblCapacidadMaximaBun.insets = new Insets(0, 0, 5, 0);
 				gbc_lblCapacidadMaximaBun.gridx = 1;
 				gbc_lblCapacidadMaximaBun.gridy = 3;
@@ -126,6 +135,7 @@ public class pnlVBungalow extends JPanel {
 			{
 				lblEstanciaMinimaBun = new JLabel("3 d\u00EDas");
 				GridBagConstraints gbc_lblEstanciaMinimaBun = new GridBagConstraints();
+				gbc_lblEstanciaMinimaBun.anchor = GridBagConstraints.WEST;
 				gbc_lblEstanciaMinimaBun.insets = new Insets(0, 0, 5, 0);
 				gbc_lblEstanciaMinimaBun.gridx = 1;
 				gbc_lblEstanciaMinimaBun.gridy = 5;
@@ -143,6 +153,7 @@ public class pnlVBungalow extends JPanel {
 			{
 				lblEquipamientobun = new JLabel("EquipamientoBun");
 				GridBagConstraints gbc_lblEquipamientobun = new GridBagConstraints();
+				gbc_lblEquipamientobun.anchor = GridBagConstraints.WEST;
 				gbc_lblEquipamientobun.insets = new Insets(0, 0, 5, 0);
 				gbc_lblEquipamientobun.gridx = 1;
 				gbc_lblEquipamientobun.gridy = 7;
@@ -160,6 +171,7 @@ public class pnlVBungalow extends JPanel {
 			{
 				lblDescripcionbun = new JLabel("DescripcionBun");
 				GridBagConstraints gbc_lblDescripcionbun = new GridBagConstraints();
+				gbc_lblDescripcionbun.anchor = GridBagConstraints.WEST;
 				gbc_lblDescripcionbun.gridx = 1;
 				gbc_lblDescripcionbun.gridy = 9;
 				pnlCaracteristicas.add(lblDescripcionbun, gbc_lblDescripcionbun);
@@ -174,6 +186,39 @@ public class pnlVBungalow extends JPanel {
 			gbc_lblImagen.gridy = 3;
 			add(lblImagen, gbc_lblImagen);
 		}
+		{
+			pnlPrecio = new JPanel();
+			GridBagConstraints gbc_pnlPrecio = new GridBagConstraints();
+			gbc_pnlPrecio.insets = new Insets(0, 0, 0, 5);
+			gbc_pnlPrecio.fill = GridBagConstraints.BOTH;
+			gbc_pnlPrecio.gridx = 4;
+			gbc_pnlPrecio.gridy = 5;
+			add(pnlPrecio, gbc_pnlPrecio);
+			GridBagLayout gbl_pnlPrecio = new GridBagLayout();
+			gbl_pnlPrecio.columnWidths = new int[] { 0, 30, 0, 0 };
+			gbl_pnlPrecio.rowHeights = new int[] { 0, 0 };
+			gbl_pnlPrecio.columnWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+			gbl_pnlPrecio.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+			pnlPrecio.setLayout(gbl_pnlPrecio);
+			{
+				lblPrecioBun = new JLabel("lksdfasdf");
+				lblPrecioBun.setFont(new Font("Tahoma", Font.PLAIN, 18));
+				GridBagConstraints gbc_lblPrecioBun = new GridBagConstraints();
+				gbc_lblPrecioBun.insets = new Insets(0, 0, 0, 5);
+				gbc_lblPrecioBun.anchor = GridBagConstraints.WEST;
+				gbc_lblPrecioBun.gridx = 0;
+				gbc_lblPrecioBun.gridy = 0;
+				pnlPrecio.add(lblPrecioBun, gbc_lblPrecioBun);
+			}
+			{
+				btnReservar = new JButton("RERSERVAR");
+				btnReservar.setFont(new Font("Tahoma", Font.BOLD, 18));
+				GridBagConstraints gbc_btnReservar = new GridBagConstraints();
+				gbc_btnReservar.gridx = 2;
+				gbc_btnReservar.gridy = 0;
+				pnlPrecio.add(btnReservar, gbc_btnReservar);
+			}
+		}
 
 	}
 
@@ -183,7 +228,8 @@ public class pnlVBungalow extends JPanel {
 		lblEquipamientobun.setText(bungalow.getEquipamiento());
 		lblEstanciaMinimaBun.setText(Integer.toString(bungalow.getEstancia_minima()));
 		lblNombrebungalow.setText(bungalow.getTipo());
-		lblTamanoBun.setText(Double.toString(bungalow.getTamano()));
+		lblTamanoBun.setText(Double.toString(bungalow.getTamano()) + "m²");
+		lblPrecioBun.setText(Double.toString(bungalow.getPrecio_noche()) + "€/noche");
 	}
 
 	public Bungalow getBungalow() {

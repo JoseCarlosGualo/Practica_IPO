@@ -39,6 +39,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
@@ -47,6 +48,8 @@ import javax.swing.text.MaskFormatter;
 
 import Dominio.Bungalow;
 import Dominio.Disponibilidad;
+import Dominio.Empleado;
+import Dominio.Parcela;
 import Dominio.Usuario;
 import java.awt.Dimension;
 import java.awt.Component;
@@ -108,9 +111,28 @@ public class Login {
 	private JPanel pnlBotones;
 	private JButton btnAadir;
 	private JButton btnEliminar;
-	private pnlContenedorBungalows pnlVBungalow;
 	private JButton btnModificar;
 	private JPanel pnlContenedor;
+	private JPanel pnlBusquedaPar;
+	private JTextField textFieldBusquedaPar;
+	private JLabel lblLnlimagenlupa;
+	private JPanel pnlBotonesPar;
+	private JButton btnAadirPar;
+	private pnlContenedorBungalows pnlContenedorBungalows;
+	private JButton btnEliminarPar;
+	private JButton btnModificar_1;
+	private JPanel pnlContenedorPar;
+	private pnlContenedorParcelas pnlVParcela;
+	private JLabel lblBusquedaPorDni;
+	private JTextField tfBusquedaDni;
+	private JPanel pnlBotonesAEM;
+	private JPanel pnlListadoEmpleados;
+	private JScrollPane scrollPane;
+	private JButton btnAadirEmpleado;
+	private pnlContenedorEmpleados pnlContenedorEmpleados;
+	private JButton btnEliminarEmpleado;
+	private JButton btnModificarEmpleado;
+	private pnlFormEmpleado pnlDatosEmpleado;
 
 	/**
 	 * Launch the application.
@@ -525,8 +547,8 @@ public class Login {
 							pnlBungalows.add(pnlContenedor, BorderLayout.CENTER);
 							pnlContenedor.setLayout(new CardLayout(0, 0));
 							{
-								pnlVBungalow = new pnlContenedorBungalows();
-								pnlContenedor.add(pnlVBungalow, "panelBungalows");
+								pnlContenedorBungalows = new pnlContenedorBungalows();
+								pnlContenedor.add(pnlContenedorBungalows, "pnlBungalows");
 							}
 						}
 						{
@@ -539,12 +561,168 @@ public class Login {
 					{
 						pnlParcelas = new JPanel();
 						pnlContenedorPestanas.addTab("Parcelas", null, pnlParcelas, null);
-						pnlParcelas.setLayout(new CardLayout(0, 0));
+						pnlParcelas.setLayout(new BorderLayout(0, 0));
+						{
+							pnlBusquedaPar = new JPanel();
+							pnlParcelas.add(pnlBusquedaPar, BorderLayout.NORTH);
+							GridBagLayout gbl_pnlBusquedaPar = new GridBagLayout();
+							gbl_pnlBusquedaPar.columnWidths = new int[] { 25, 0, 0, 0, 106, 50, 90, 0, 0, 0, 0 };
+							gbl_pnlBusquedaPar.rowHeights = new int[] { 25, 0, 25, 0 };
+							gbl_pnlBusquedaPar.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+									0.0, 0.0, Double.MIN_VALUE };
+							gbl_pnlBusquedaPar.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+							pnlBusquedaPar.setLayout(gbl_pnlBusquedaPar);
+							{
+								textFieldBusquedaPar = new JTextField();
+								GridBagConstraints gbc_textFieldBusquedaPar = new GridBagConstraints();
+								gbc_textFieldBusquedaPar.gridwidth = 8;
+								gbc_textFieldBusquedaPar.insets = new Insets(0, 0, 5, 5);
+								gbc_textFieldBusquedaPar.fill = GridBagConstraints.HORIZONTAL;
+								gbc_textFieldBusquedaPar.gridx = 1;
+								gbc_textFieldBusquedaPar.gridy = 1;
+								pnlBusquedaPar.add(textFieldBusquedaPar, gbc_textFieldBusquedaPar);
+								textFieldBusquedaPar.setColumns(10);
+							}
+							{
+								lblLnlimagenlupa = new JLabel("");
+								lblLnlimagenlupa
+										.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/lupa.png")));
+								GridBagConstraints gbc_lblLnlimagenlupa = new GridBagConstraints();
+								gbc_lblLnlimagenlupa.insets = new Insets(0, 0, 5, 0);
+								gbc_lblLnlimagenlupa.gridx = 9;
+								gbc_lblLnlimagenlupa.gridy = 1;
+								pnlBusquedaPar.add(lblLnlimagenlupa, gbc_lblLnlimagenlupa);
+							}
+						}
+						{
+							pnlBotonesPar = new JPanel();
+							pnlParcelas.add(pnlBotonesPar, BorderLayout.SOUTH);
+							GridBagLayout gbl_pnlBotonesPar = new GridBagLayout();
+							gbl_pnlBotonesPar.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+							gbl_pnlBotonesPar.rowHeights = new int[] { 20, 0, 20, 0 };
+							gbl_pnlBotonesPar.columnWeights = new double[] { 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0,
+									Double.MIN_VALUE };
+							gbl_pnlBotonesPar.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+							pnlBotonesPar.setLayout(gbl_pnlBotonesPar);
+							{
+								btnAadirPar = new JButton("A\u00F1adir");
+								GridBagConstraints gbc_btnAadirPar = new GridBagConstraints();
+								gbc_btnAadirPar.insets = new Insets(0, 0, 5, 5);
+								gbc_btnAadirPar.gridx = 1;
+								gbc_btnAadirPar.gridy = 1;
+								pnlBotonesPar.add(btnAadirPar, gbc_btnAadirPar);
+							}
+							{
+								btnEliminarPar = new JButton("Eliminar");
+								GridBagConstraints gbc_btnEliminarPar = new GridBagConstraints();
+								gbc_btnEliminarPar.insets = new Insets(0, 0, 5, 5);
+								gbc_btnEliminarPar.gridx = 3;
+								gbc_btnEliminarPar.gridy = 1;
+								pnlBotonesPar.add(btnEliminarPar, gbc_btnEliminarPar);
+							}
+							{
+								btnModificar_1 = new JButton("Modificar");
+								GridBagConstraints gbc_btnModificar_1 = new GridBagConstraints();
+								gbc_btnModificar_1.insets = new Insets(0, 0, 5, 5);
+								gbc_btnModificar_1.gridx = 5;
+								gbc_btnModificar_1.gridy = 1;
+								pnlBotonesPar.add(btnModificar_1, gbc_btnModificar_1);
+							}
+						}
+						{
+							pnlContenedorPar = new JPanel();
+							pnlParcelas.add(pnlContenedorPar, BorderLayout.CENTER);
+							pnlContenedorPar.setLayout(new CardLayout(0, 0));
+							{
+								pnlVParcela = new pnlContenedorParcelas();
+								pnlContenedorPar.add(pnlVParcela, "pnlParcela");
+							}
+						}
 					}
 					{
 						pnlEmpleados = new JPanel();
 						pnlContenedorPestanas.addTab("Empleados", null, pnlEmpleados, null);
-						pnlEmpleados.setLayout(new CardLayout(0, 0));
+						GridBagLayout gbl_pnlEmpleados = new GridBagLayout();
+						gbl_pnlEmpleados.columnWidths = new int[] { 15, 0, 326, 30, 0, 0, 0, 0, 0 };
+						gbl_pnlEmpleados.rowHeights = new int[] { 54, 0, 15, 0 };
+						gbl_pnlEmpleados.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0,
+								Double.MIN_VALUE };
+						gbl_pnlEmpleados.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
+						pnlEmpleados.setLayout(gbl_pnlEmpleados);
+						{
+							lblBusquedaPorDni = new JLabel("Busqueda por DNI: ");
+							GridBagConstraints gbc_lblBusquedaPorDni = new GridBagConstraints();
+							gbc_lblBusquedaPorDni.fill = GridBagConstraints.HORIZONTAL;
+							gbc_lblBusquedaPorDni.insets = new Insets(0, 0, 5, 5);
+							gbc_lblBusquedaPorDni.gridx = 1;
+							gbc_lblBusquedaPorDni.gridy = 0;
+							pnlEmpleados.add(lblBusquedaPorDni, gbc_lblBusquedaPorDni);
+						}
+						{
+							tfBusquedaDni = new JTextField();
+							GridBagConstraints gbc_tfBusquedaDni = new GridBagConstraints();
+							gbc_tfBusquedaDni.insets = new Insets(0, 0, 5, 5);
+							gbc_tfBusquedaDni.fill = GridBagConstraints.HORIZONTAL;
+							gbc_tfBusquedaDni.gridx = 2;
+							gbc_tfBusquedaDni.gridy = 0;
+							pnlEmpleados.add(tfBusquedaDni, gbc_tfBusquedaDni);
+							tfBusquedaDni.setColumns(10);
+						}
+						{
+							pnlBotonesAEM = new JPanel();
+							GridBagConstraints gbc_pnlBotonesAEM = new GridBagConstraints();
+							gbc_pnlBotonesAEM.gridwidth = 3;
+							gbc_pnlBotonesAEM.insets = new Insets(0, 0, 5, 5);
+							gbc_pnlBotonesAEM.fill = GridBagConstraints.BOTH;
+							gbc_pnlBotonesAEM.gridx = 4;
+							gbc_pnlBotonesAEM.gridy = 0;
+							pnlEmpleados.add(pnlBotonesAEM, gbc_pnlBotonesAEM);
+							{
+								btnAadirEmpleado = new JButton("A\u00F1adir");
+								pnlBotonesAEM.add(btnAadirEmpleado);
+							}
+							{
+								btnEliminarEmpleado = new JButton("Eliminar");
+								pnlBotonesAEM.add(btnEliminarEmpleado);
+							}
+							{
+								btnModificarEmpleado = new JButton("Modificar");
+								pnlBotonesAEM.add(btnModificarEmpleado);
+							}
+						}
+						{
+							pnlListadoEmpleados = new JPanel();
+							GridBagConstraints gbc_pnlListadoEmpleados = new GridBagConstraints();
+							gbc_pnlListadoEmpleados.gridwidth = 2;
+							gbc_pnlListadoEmpleados.insets = new Insets(0, 0, 5, 5);
+							gbc_pnlListadoEmpleados.fill = GridBagConstraints.BOTH;
+							gbc_pnlListadoEmpleados.gridx = 1;
+							gbc_pnlListadoEmpleados.gridy = 1;
+							pnlEmpleados.add(pnlListadoEmpleados, gbc_pnlListadoEmpleados);
+							pnlListadoEmpleados.setLayout(new BorderLayout(0, 0));
+							{
+								scrollPane = new JScrollPane();
+								scrollPane
+										.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+								scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+								pnlListadoEmpleados.add(scrollPane);
+								{
+									pnlDatosEmpleado = new pnlFormEmpleado();
+									GridBagConstraints gbc_pnlDatosEmpleado = new GridBagConstraints();
+									gbc_pnlDatosEmpleado.gridwidth = 3;
+									gbc_pnlDatosEmpleado.insets = new Insets(0, 0, 5, 5);
+									gbc_pnlDatosEmpleado.fill = GridBagConstraints.BOTH;
+									gbc_pnlDatosEmpleado.gridx = 4;
+									gbc_pnlDatosEmpleado.gridy = 1;
+									pnlEmpleados.add(pnlDatosEmpleado, gbc_pnlDatosEmpleado);
+								}
+								{
+									pnlContenedorEmpleados = new pnlContenedorEmpleados(this.listaEmpleados(),
+											pnlDatosEmpleado);
+									scrollPane.setViewportView(pnlContenedorEmpleados);
+								}
+							}
+						}
 					}
 					{
 						pnlActividades = new JPanel();
@@ -564,10 +742,11 @@ public class Login {
 				}
 			}
 
-			Bungalow bungalow = new Bungalow();
+			pnlContenedorBungalows.loadPnlBungalows(cargarBungalow());
+			// Parcela parcela = new Parcela();
 			// boolean correcto = bungalow.readAll();
 			// if(correcto){}
-			pnlVBungalow.loadPnlBungalows(cargarBungalow());
+			pnlVParcela.loadPnlParcelas(cargarParcela());
 		}
 	}
 
@@ -746,6 +925,27 @@ public class Login {
 			bungalows.add(bungalow1);
 		}
 		return bungalows;
+	}
+
+	private ArrayList<Parcela> cargarParcela() {
+		ArrayList<Parcela> parcelas = new ArrayList<Parcela>();
+		for (int i = 0; i < 10; i++) {
+			Parcela parcela1 = new Parcela(i, "Parcela mediana", 200, 300, Disponibilidad.Reparacion, 150, 200, 300,
+					"Cerca de la fuente de agua", "Agua con manguera, electricidad, vehículo del camping");
+			parcelas.add(parcela1);
+		}
+		return parcelas;
+	}
+
+	public ArrayList<Empleado> listaEmpleados() {
+		ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+		Empleado empleado = new Empleado("Jose", "Gualo", "imagen", "608143766", "josecarlos.gualo@alu.uclm.es",
+				"Ingles, Español", "Grado en Ingenieria Informatica", "71361332Z");
+		for (int i = 0; i < 10; i++) {
+			empleados.add(empleado);
+		}
+
+		return empleados;
 	}
 
 	/*
