@@ -54,7 +54,7 @@ public class pnlUsuario extends JPanel {
 			pnlFoto.setLayout(new BorderLayout(0, 0));
 			{
 				lblImagen = new JLabel("");
-				lblImagen.setIcon(new ImageIcon(pnlUsuario.class.getResource("/Presentacion/foto_random.jpg")));
+				lblImagen.setIcon(new ImageIcon(pnlUsuario.class.getResource("/Presentacion/Imágenes/foto_random.jpg")));
 				pnlFoto.add(lblImagen, BorderLayout.CENTER);
 			}
 		}
@@ -212,11 +212,11 @@ public class pnlUsuario extends JPanel {
 		lblUltimoAccesoUsuario.setText(usuario.getUltimoAcceso());
 		ImageIcon icono = null;
 		try {
-			icono = new ImageIcon(getClass().getClassLoader().getResource("Presentacion/" + usuario.getFoto()));
+			icono = new ImageIcon(getClass().getClassLoader().getResource("Presentacion/Imágenes/" + usuario.getFoto()));
 
 		} catch (Exception e) {
 			
-			icono = new ImageIcon(getClass().getClassLoader().getResource("Presentaci�n/foto_random.jpg"));
+			icono = new ImageIcon(getClass().getClassLoader().getResource("Presentacion/Imágenes/foto_random.jpg"));
 
 		} finally {
 			Image image = icono.getImage();

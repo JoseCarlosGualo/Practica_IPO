@@ -18,11 +18,12 @@ import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.border.EtchedBorder;
+import javax.swing.UIManager;
 
 public class pnlVParcela extends JPanel {
 	private JLabel lblNombreParcela;
 	private JLabel lblImagen;
-	private JPanel pnlCaracteristicas;
 	private JLabel lblCaractersticas;
 	private JLabel lblTamao;
 	private JLabel lblUbicacion;
@@ -40,6 +41,7 @@ public class pnlVParcela extends JPanel {
 	private JButton btnReservar;
 	private JLabel lblTemporada;
 	private JComboBox comboBox;
+	private JPanel pnlCaracteristicas;
 
 	/**
 	 * Create the panel.
@@ -54,7 +56,7 @@ public class pnlVParcela extends JPanel {
 		setLayout(gridBagLayout);
 		{
 			lblNombreParcela = new JLabel("Bungalow Familiar");
-			lblNombreParcela.setFont(new Font("Tahoma", Font.ITALIC, 17));
+			lblNombreParcela.setFont(new Font("Tahoma", Font.BOLD, 23));
 			GridBagConstraints gbc_lblNombreParcela = new GridBagConstraints();
 			gbc_lblNombreParcela.gridwidth = 2;
 			gbc_lblNombreParcela.insets = new Insets(0, 0, 5, 5);
@@ -81,6 +83,7 @@ public class pnlVParcela extends JPanel {
 			pnlCaracteristicas.setLayout(gbl_pnlCaracteristicas);
 			{
 				lblCaractersticas = new JLabel("Caracter\u00EDsticas");
+				lblCaractersticas.setFont(new Font("Tahoma", Font.BOLD, 18));
 				GridBagConstraints gbc_lblCaractersticas = new GridBagConstraints();
 				gbc_lblCaractersticas.insets = new Insets(0, 0, 5, 5);
 				gbc_lblCaractersticas.gridx = 0;
@@ -171,6 +174,7 @@ public class pnlVParcela extends JPanel {
 			}
 			{
 				btnReservar = new JButton("RERSERVAR");
+				btnReservar.setBorder(UIManager.getBorder("Button.border"));
 				GridBagConstraints gbc_btnReservar = new GridBagConstraints();
 				gbc_btnReservar.gridx = 1;
 				gbc_btnReservar.gridy = 9;
@@ -180,7 +184,8 @@ public class pnlVParcela extends JPanel {
 		}
 		{
 			lblImagen = new JLabel("");
-			lblImagen.setIcon(new ImageIcon(pnlVParcela.class.getResource("/Presentacion/parcela.jpg")));
+			lblImagen.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+			lblImagen.setIcon(new ImageIcon(pnlVParcela.class.getResource("/Presentacion/Im√°genes/parcela.jpg")));
 			GridBagConstraints gbc_lblImagen = new GridBagConstraints();
 			gbc_lblImagen.insets = new Insets(0, 0, 5, 5);
 			gbc_lblImagen.gridx = 1;
@@ -194,8 +199,8 @@ public class pnlVParcela extends JPanel {
 		lblUbicacionPar.setText(parcela.getUbicacion());
 		lblEquipamientopar.setText(parcela.getServicios());
 		lblNombreParcela.setText(parcela.getTipo());
-		lblTamanoPar.setText(Double.toString(parcela.getTamano()) + "m≤");
-		lblPrecioPar.setText(Double.toString(parcela.getPrecio_noche()) + "Ä/noche");
+		lblTamanoPar.setText(Double.toString(parcela.getTamano()) + "m2");
+		lblPrecioPar.setText(Double.toString(parcela.getPrecio_noche()) + "‚Ç¨/noche");
 	}
 
 	public Parcela getParcela() {
@@ -221,9 +226,11 @@ public class pnlVParcela extends JPanel {
 			if (!isSeleccionado) {
 				isSeleccionado = true;
 				setBackground(seleccionado);
+				pnlCaracteristicas.setBackground(seleccionado);
 			} else {
 				isSeleccionado = false;
 				setBackground(noSeleccionado);
+				pnlCaracteristicas.setBackground(noSeleccionado);
 			}
 		}
 
@@ -231,6 +238,8 @@ public class pnlVParcela extends JPanel {
 		public void mouseEntered(MouseEvent e) {
 			if (!isSeleccionado) {
 				setBackground(seleccionado);
+				pnlCaracteristicas.setBackground(seleccionado);
+				
 			}
 		}
 
@@ -238,6 +247,7 @@ public class pnlVParcela extends JPanel {
 		public void mouseExited(MouseEvent e) {
 			if (!isSeleccionado) {
 				setBackground(noSeleccionado);
+				pnlCaracteristicas.setBackground(noSeleccionado);
 			}
 		}
 	}

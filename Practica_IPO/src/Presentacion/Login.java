@@ -74,7 +74,7 @@ public class Login {
 	private boolean mostrarContrasea;
 	private JLabel lblContrasea;
 	private MaskFormatter formatoDNI;
-	private JPasswordField pwdContrasea;
+	private JPasswordField pwdContrasena;
 	private JButton btnMostrarConsea;
 	private JLabel lblErrorLaContrasea;
 	private JPanel pnlUser;
@@ -166,7 +166,7 @@ public class Login {
 		frmLogin.addKeyListener(new PnlLoginKeyListener());
 		frmLogin.setTitle("Inicio de sesi\u00F3n Camping");
 		frmLogin.getContentPane().addComponentListener(new FrameContentPaneComponentListener());
-		frmLogin.setBounds(100, 20, 1100, 700);
+		frmLogin.setBounds(100, 20, 1283, 856);
 		frmLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmLogin.getContentPane().setLayout(new CardLayout(0, 0));
 
@@ -305,19 +305,19 @@ public class Login {
 						btnMostrarConsea.setToolTipText("Principal.btnVerPass.toolTipText");
 						btnMostrarConsea.addActionListener(new BtnMostrarConseaActionListener());
 						{
-							pwdContrasea = new JPasswordField();
-							pwdContrasea.addFocusListener(new PwdContraseaFocusListener());
-							pwdContrasea.addKeyListener(new PwdContraseaKeyListener());
-							pwdContrasea.setFont(new Font("Tahoma", Font.BOLD, 12));
-							pwdContrasea.setText("Principal.pwdContrasea.text");
-							pwdContrasea.setBackground(UIManager.getColor("CheckBox.background"));
+							pwdContrasena = new JPasswordField();
+							pwdContrasena.addFocusListener(new PwdContraseaFocusListener());
+							pwdContrasena.addKeyListener(new PwdContraseaKeyListener());
+							pwdContrasena.setFont(new Font("Tahoma", Font.BOLD, 12));
+							pwdContrasena.setText("Principal.pwdContrasea.text");
+							pwdContrasena.setBackground(UIManager.getColor("CheckBox.background"));
 							GridBagConstraints gbc_pwdContrasea = new GridBagConstraints();
 							gbc_pwdContrasea.fill = GridBagConstraints.VERTICAL;
 							gbc_pwdContrasea.insets = new Insets(0, 0, 0, 5);
 							gbc_pwdContrasea.gridx = 2;
 							gbc_pwdContrasea.gridy = 0;
-							pnlPass.add(pwdContrasea, gbc_pwdContrasea);
-							pwdContrasea.setBorder(null);
+							pnlPass.add(pwdContrasena, gbc_pwdContrasea);
+							pwdContrasena.setBorder(null);
 						}
 						btnMostrarConsea.setOpaque(true);
 						btnMostrarConsea.setContentAreaFilled(false);
@@ -392,13 +392,13 @@ public class Login {
 					GridBagLayout gbl_pnlOcultar = new GridBagLayout();
 					gbl_pnlOcultar.columnWidths = new int[] { 33, 0 };
 					gbl_pnlOcultar.rowHeights = new int[] { 665, 0 };
-					gbl_pnlOcultar.columnWeights = new double[] { 0.0, Double.MIN_VALUE };
-					gbl_pnlOcultar.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
+					gbl_pnlOcultar.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+					gbl_pnlOcultar.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 					pnlOcultar.setLayout(gbl_pnlOcultar);
 					{
 						btnOcultar = new JButton("");
 						btnOcultar.addActionListener(new BtnOcultarActionListener());
-						btnOcultar.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/mostrar.png")));
+						btnOcultar.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imágenes/mostrar.png")));
 						btnOcultar.setPreferredSize(new Dimension(15, 15));
 						btnOcultar.setMinimumSize(new Dimension(10, 10));
 						GridBagConstraints gbc_btnOcultar = new GridBagConstraints();
@@ -436,13 +436,13 @@ public class Login {
 						}
 						{
 							btnAyuda = new JButton("Ayuda");
-							btnAyuda.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/informacion.png")));
+							btnAyuda.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imágenes/informacion.png")));
 							menuBar.add(btnAyuda);
 						}
 						{
 							btnConfiguracin = new JButton("Configuraci\u00F3n");
 							btnConfiguracin.setIcon(
-									new ImageIcon(Login.class.getResource("/Presentacion/configuraciones.png")));
+									new ImageIcon(Login.class.getResource("/Presentacion/Imágenes/configuraciones.png")));
 							menuBar.add(btnConfiguracin);
 						}
 					}
@@ -458,7 +458,7 @@ public class Login {
 							btnCerrarSesin = new JButton("Cerrar sesion");
 							btnCerrarSesin.addActionListener(new BtnCerrarSesinActionListener());
 							btnCerrarSesin
-									.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/cerrar-sesion.png")));
+									.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imágenes/cerrar-sesion.png")));
 							pnlBtnSalir.add(btnCerrarSesin);
 						}
 					}
@@ -499,7 +499,7 @@ public class Login {
 							}
 							{
 								lblLupa = new JLabel("");
-								lblLupa.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/lupa.png")));
+								lblLupa.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imágenes/lupa.png")));
 								GridBagConstraints gbc_lblLupa = new GridBagConstraints();
 								gbc_lblLupa.insets = new Insets(0, 0, 5, 0);
 								gbc_lblLupa.gridx = 9;
@@ -586,7 +586,7 @@ public class Login {
 							{
 								lblLnlimagenlupa = new JLabel("");
 								lblLnlimagenlupa
-										.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/lupa.png")));
+										.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imágenes/lupa.png")));
 								GridBagConstraints gbc_lblLnlimagenlupa = new GridBagConstraints();
 								gbc_lblLnlimagenlupa.insets = new Insets(0, 0, 5, 0);
 								gbc_lblLnlimagenlupa.gridx = 9;
@@ -783,11 +783,11 @@ public class Login {
 	private class BtnMostrarConseaActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			if (mostrarContrasea) {
-				pwdContrasea.setEchoChar('\u2022');
+				pwdContrasena.setEchoChar('\u2022');
 				btnMostrarConsea.setToolTipText("Mostrar Constraseña");
 				mostrarContrasea = false;
 			} else {
-				pwdContrasea.setEchoChar((char) 0);
+				pwdContrasena.setEchoChar((char) 0);
 				btnMostrarConsea.setToolTipText("Ocultar Constraseña");
 				mostrarContrasea = true;
 			}
@@ -832,14 +832,14 @@ public class Login {
 		@Override
 		public void focusGained(FocusEvent arg0) {
 
-			pwdContrasea.setText("");
+			pwdContrasena.setText("");
 		}
 
 		@Override
 		public void focusLost(FocusEvent e) {
 
-			if (pwdContrasea.getPassword().length == 0) {
-				pwdContrasea.setText("Contraseña");
+			if (pwdContrasena.getPassword().length == 0) {
+				pwdContrasena.setText("Contraseña");
 			}
 		}
 	}
@@ -866,10 +866,10 @@ public class Login {
 		public void actionPerformed(ActionEvent e) {
 			if (pnlUserData.isVisible()) {
 				pnlUserData.setVisible(false);
-				btnOcultar.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/mostrar.png")));
+				btnOcultar.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imágenes/mostrar.png")));
 			} else {
 				pnlUserData.setVisible(true);
-				btnOcultar.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/ocultar.png")));
+				btnOcultar.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imágenes/ocultar.png")));
 			}
 		}
 	}
@@ -891,7 +891,7 @@ public class Login {
 
 	private void entrar() {
 
-		String password = pwdContrasea.getText();
+		String password = pwdContrasena.getText();
 		String user = txtUsuario.getText();
 		usuario = new Usuario();
 		usuario.setDNI(user);
@@ -908,7 +908,7 @@ public class Login {
 
 			if (!chckbxRecordarContrasea.isSelected()) {
 				txtUsuario.setText("");
-				pwdContrasea.setText("Contraseña");
+				pwdContrasena.setText("Contraseña");
 			}
 
 		} else {
@@ -920,7 +920,7 @@ public class Login {
 	private ArrayList<Bungalow> cargarBungalow() {
 		ArrayList<Bungalow> bungalows = new ArrayList<Bungalow>();
 		for (int i = 0; i < 10; i++) {
-			Bungalow bungalow1 = new Bungalow(i, "casa familiar", 300, 250, Disponibilidad.Libre, 6, 3,
+			Bungalow bungalow1 = new Bungalow(i, "Casa familiar", 300, 250, Disponibilidad.Libre, 6, 3,
 					"Cuna, Agua, Luz", "Alojamiento perfecto para ir con tu familia", 2);
 			bungalows.add(bungalow1);
 		}
@@ -931,7 +931,7 @@ public class Login {
 		ArrayList<Parcela> parcelas = new ArrayList<Parcela>();
 		for (int i = 0; i < 10; i++) {
 			Parcela parcela1 = new Parcela(i, "Parcela mediana", 200, 300, Disponibilidad.Reparacion, 150, 200, 300,
-					"Cerca de la fuente de agua", "Agua con manguera, electricidad, veh�culo del camping");
+					"Cerca de la fuente de agua", "Agua con manguera, electricidad, vehículo del camping");
 			parcelas.add(parcela1);
 		}
 		return parcelas;
@@ -940,7 +940,7 @@ public class Login {
 	public ArrayList<Empleado> listaEmpleados() {
 		ArrayList<Empleado> empleados = new ArrayList<Empleado>();
 		Empleado empleado = new Empleado("Jose", "Gualo", "imagen", "608143766", "josecarlos.gualo@alu.uclm.es",
-				"Ingles, Espa�ol", "Grado en Ingenieria Informatica", "71361332Z");
+				"Ingles, Espa�ol", "Grado en Ingenieria Informatica", "71361332Z");
 		for (int i = 0; i < 10; i++) {
 			empleados.add(empleado);
 		}

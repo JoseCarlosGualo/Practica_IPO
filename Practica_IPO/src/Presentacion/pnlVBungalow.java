@@ -15,6 +15,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import java.awt.Font;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.MatteBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.EtchedBorder;
 
 public class pnlVBungalow extends JPanel {
 	private JLabel lblNombrebungalow;
@@ -54,11 +59,11 @@ public class pnlVBungalow extends JPanel {
 		setLayout(gridBagLayout);
 		{
 			lblNombrebungalow = new JLabel("Bungalow Familiar");
-			lblNombrebungalow.setFont(new Font("Tahoma", Font.ITALIC, 17));
+			lblNombrebungalow.setFont(new Font("Tahoma", Font.BOLD, 23));
 			GridBagConstraints gbc_lblNombrebungalow = new GridBagConstraints();
-			gbc_lblNombrebungalow.gridwidth = 2;
+			gbc_lblNombrebungalow.fill = GridBagConstraints.VERTICAL;
 			gbc_lblNombrebungalow.insets = new Insets(0, 0, 5, 5);
-			gbc_lblNombrebungalow.gridx = 0;
+			gbc_lblNombrebungalow.gridx = 1;
 			gbc_lblNombrebungalow.gridy = 1;
 			add(lblNombrebungalow, gbc_lblNombrebungalow);
 		}
@@ -81,6 +86,7 @@ public class pnlVBungalow extends JPanel {
 			pnlCaracteristicas.setLayout(gbl_pnlCaracteristicas);
 			{
 				lblCaractersticas = new JLabel("Caracter\u00EDsticas");
+				lblCaractersticas.setFont(new Font("Tahoma", Font.BOLD, 18));
 				GridBagConstraints gbc_lblCaractersticas = new GridBagConstraints();
 				gbc_lblCaractersticas.insets = new Insets(0, 0, 5, 5);
 				gbc_lblCaractersticas.gridx = 0;
@@ -179,7 +185,8 @@ public class pnlVBungalow extends JPanel {
 		}
 		{
 			lblImagen = new JLabel("");
-			lblImagen.setIcon(new ImageIcon(pnlVBungalow.class.getResource("/Presentacion/bunga.jpg")));
+			lblImagen.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+			lblImagen.setIcon(new ImageIcon(pnlVBungalow.class.getResource("/Presentacion/ImÃ¡genes/bunga.jpg")));
 			GridBagConstraints gbc_lblImagen = new GridBagConstraints();
 			gbc_lblImagen.insets = new Insets(0, 0, 5, 5);
 			gbc_lblImagen.gridx = 1;
@@ -228,8 +235,8 @@ public class pnlVBungalow extends JPanel {
 		lblEquipamientobun.setText(bungalow.getEquipamiento());
 		lblEstanciaMinimaBun.setText(Integer.toString(bungalow.getEstancia_minima()));
 		lblNombrebungalow.setText(bungalow.getTipo());
-		lblTamanoBun.setText(Double.toString(bungalow.getTamano()) + "m²");
-		lblPrecioBun.setText(Double.toString(bungalow.getPrecio_noche()) + "€/noche");
+		lblTamanoBun.setText(Double.toString(bungalow.getTamano()) + "mï¿½");
+		lblPrecioBun.setText(Double.toString(bungalow.getPrecio_noche()) + "â‚¬/noche");
 	}
 
 	public Bungalow getBungalow() {
@@ -255,9 +262,13 @@ public class pnlVBungalow extends JPanel {
 			if (!isSeleccionado) {
 				isSeleccionado = true;
 				setBackground(seleccionado);
+				pnlCaracteristicas.setBackground(seleccionado);
+				pnlPrecio.setBackground(seleccionado);
 			} else {
 				isSeleccionado = false;
 				setBackground(noSeleccionado);
+				pnlCaracteristicas.setBackground(noSeleccionado);
+				pnlPrecio.setBackground(noSeleccionado);
 			}
 		}
 
@@ -265,6 +276,8 @@ public class pnlVBungalow extends JPanel {
 		public void mouseEntered(MouseEvent e) {
 			if (!isSeleccionado) {
 				setBackground(seleccionado);
+				pnlCaracteristicas.setBackground(seleccionado);
+				pnlPrecio.setBackground(seleccionado);
 			}
 		}
 
@@ -272,6 +285,8 @@ public class pnlVBungalow extends JPanel {
 		public void mouseExited(MouseEvent e) {
 			if (!isSeleccionado) {
 				setBackground(noSeleccionado);
+				pnlCaracteristicas.setBackground(noSeleccionado);
+				pnlPrecio.setBackground(noSeleccionado);
 			}
 		}
 	}

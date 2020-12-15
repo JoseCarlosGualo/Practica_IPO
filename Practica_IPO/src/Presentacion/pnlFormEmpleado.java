@@ -91,7 +91,7 @@ public class pnlFormEmpleado extends JPanel {
 			pnlFoto.setLayout(gbl_pnlFoto);
 			{
 				lblFoto = new JLabel("");
-				lblFoto.setIcon(new ImageIcon(pnlFormEmpleado.class.getResource("/Presentacion/foto_random.jpg")));
+				lblFoto.setIcon(new ImageIcon(pnlFormEmpleado.class.getResource("/Presentacion/Imágenes/foto_random.jpg")));
 				GridBagConstraints gbc_lblFoto = new GridBagConstraints();
 				gbc_lblFoto.gridheight = 2;
 				gbc_lblFoto.gridwidth = 3;
