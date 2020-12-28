@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import Dominio.Bungalow;
+import Dominio.Parcela;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -43,13 +44,55 @@ public class pnlContenedorBungalows extends JPanel {
 		clean();
 		listaPnlBungalow = new ArrayList<pnlVBungalow>();
 		for (Bungalow bungalow : bungalows) {
-			pnlVBungalow pnlBungalow = new pnlVBungalow();
+			pnlVBungalow pnlBungalow = new pnlVBungalow(bungalow, this);
 			listaPnlBungalow.add(pnlBungalow);
-			pnlBungalow.loadData(bungalow);
+			// pnlBungalow.loadData(bungalow);
 			pnlContenedor.add(pnlBungalow);
 			pnlContenedor.repaint();
 			pnlContenedor.revalidate();
 		}
+	}
+
+	public void reload() {
+		Bungalow bungalow = new Bungalow();
+		bungalow.readAll();
+		loadPnlBungalows(bungalow.getBungalowDAO().getListaBungalows());
+	}
+
+	public void quitarTodasSelecciones() {
+		if (isMoreThanOneSelectioned()) {
+			for (pnlVBungalow bungalow : this.listaPnlBungalow) {
+				if (bungalow.isSeleccionado()) {
+					bungalow.deseleccionar();
+				}
+			}
+		}
+	}
+
+	public boolean isMoreThanOneSelectioned() {
+		int seleccionadas = 0;
+		for (pnlVBungalow bungalow : this.listaPnlBungalow) {
+			if (bungalow.isSeleccionado()) {
+				seleccionadas++;
+			}
+		}
+
+		if (seleccionadas < 1) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public void borrarSeleccionada() {
+		for (pnlVBungalow pnlBungalow : this.listaPnlBungalow) {
+			if (pnlBungalow.isSeleccionado()) {
+				pnlBungalow.delete();
+			}
+		}
+		Bungalow b = new Bungalow();
+		b.readAll();
+		loadPnlBungalows(b.getBungalowDAO().getListaBungalows());
 	}
 
 }

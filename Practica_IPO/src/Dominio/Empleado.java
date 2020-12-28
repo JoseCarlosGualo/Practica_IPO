@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import Persistencia.EmpleadoDAO;
+
 public class Empleado {
-	private int id;
 	private String nombre;
 	private String apellidos;
 	private String imagen;
@@ -15,21 +16,10 @@ public class Empleado {
 	private String formacion;
 	private String dni;
 
-	public Empleado() {
-	}
+	private EmpleadoDAO empleadoDAO;
 
-	public Empleado(int id, String nombre, String apellidos, String imagen, String telefono, String email,
-			String idiomas, String formacion, String dni) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.imagen = imagen;
-		this.telefono = telefono;
-		this.email = email;
-		this.idiomas = idiomas;
-		this.formacion = formacion;
-		this.dni = dni;
+	public Empleado() {
+		this.empleadoDAO = new EmpleadoDAO();
 	}
 
 	public Empleado(String nombre, String apellidos, String imagen, String telefono, String email, String idiomas,
@@ -43,6 +33,16 @@ public class Empleado {
 		this.idiomas = idiomas;
 		this.formacion = formacion;
 		this.dni = dni;
+
+		this.empleadoDAO = new EmpleadoDAO();
+	}
+
+	public EmpleadoDAO getEmpleadoDAO() {
+		return empleadoDAO;
+	}
+
+	public void setEmpleadoDAO(EmpleadoDAO empleadoDAO) {
+		this.empleadoDAO = empleadoDAO;
 	}
 
 	public String getDni() {
@@ -107,5 +107,25 @@ public class Empleado {
 
 	public void setFormacion(String formacion) {
 		this.formacion = formacion;
+	}
+
+	public boolean insert() {
+		return this.empleadoDAO.insert(this);
+	}
+
+	public boolean update() {
+		return this.empleadoDAO.update(this);
+	}
+
+	public boolean delete() {
+		return this.empleadoDAO.delete(this);
+	}
+
+	public boolean read() {
+		return this.empleadoDAO.read(this);
+	}
+
+	public boolean readAll() {
+		return this.empleadoDAO.readAll();
 	}
 }

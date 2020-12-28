@@ -1,22 +1,32 @@
 package Dominio;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import Persistencia.ActividadDAO;
 
 public class Actividad {
+	private int id;
+	private String nombre;
 	private Empleado empleado;
-	private Date horario;
+	private String horario;
 	private int cupo_minimo;
 	private int cupo_maximo;
-	private int destinatario; //0-niños, 1-adultos, 2-ambos
+	private String destinatario;
 	private double precio_hora;
 	private String zona_camping;
 	private String descripcion;
-	private List<String> equipamiento = new ArrayList<String>();
-	
-	public Actividad(Empleado empleado, Date horario, int cupo_minimo, int cupo_maximo, int destinatario,
-			double precio_hora, String zona_camping, String descripcion, List<String> equipamiento) {
+	private String equipamiento;
+	private String imagen;
+
+	private ActividadDAO actividadDAO;
+
+	public Actividad() {
+		this.actividadDAO = new ActividadDAO();
+	}
+
+	public Actividad(int id, String nombre, Empleado empleado, String horario, int cupo_minimo, int cupo_maximo,
+			String destinatario, double precio_hora, String zona_camping, String descripcion, String equipamiento,
+			String imagen) {
+		this.id = id;
+		this.nombre = nombre;
 		this.empleado = empleado;
 		this.horario = horario;
 		this.cupo_minimo = cupo_minimo;
@@ -26,6 +36,9 @@ public class Actividad {
 		this.zona_camping = zona_camping;
 		this.descripcion = descripcion;
 		this.equipamiento = equipamiento;
+		this.imagen = imagen;
+
+		this.actividadDAO = new ActividadDAO();
 	}
 
 	public Empleado getEmpleado() {
@@ -36,11 +49,11 @@ public class Actividad {
 		this.empleado = empleado;
 	}
 
-	public Date getHorario() {
+	public String getHorario() {
 		return horario;
 	}
 
-	public void setHorario(Date horario) {
+	public void setHorario(String horario) {
 		this.horario = horario;
 	}
 
@@ -60,11 +73,19 @@ public class Actividad {
 		this.cupo_maximo = cupo_maximo;
 	}
 
-	public int getDestinatario() {
+	public ActividadDAO getActividadDAO() {
+		return actividadDAO;
+	}
+
+	public void setActividadDAO(ActividadDAO actividadDAO) {
+		this.actividadDAO = actividadDAO;
+	}
+
+	public String getDestinatario() {
 		return destinatario;
 	}
 
-	public void setDestinatario(int destinatario) {
+	public void setDestinatario(String destinatario) {
 		this.destinatario = destinatario;
 	}
 
@@ -92,14 +113,55 @@ public class Actividad {
 		this.descripcion = descripcion;
 	}
 
-	public List<String> getEquipamiento() {
+	public String getEquipamiento() {
 		return equipamiento;
 	}
 
-	public void setEquipamiento(List<String> equipamiento) {
+	public void setEquipamiento(String equipamiento) {
 		this.equipamiento = equipamiento;
 	}
-	
-		
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public boolean insert() {
+		return this.actividadDAO.insert(this);
+	}
+
+	public boolean update() {
+		return actividadDAO.update(this);
+	}
+
+	public boolean delete() {
+		return actividadDAO.delete(this);
+	}
+
+	public boolean read() {
+		return actividadDAO.read(this);
+	}
+
+	public boolean readAll() {
+		return actividadDAO.readAll();
+	}
 }

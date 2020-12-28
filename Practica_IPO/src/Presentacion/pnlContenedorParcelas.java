@@ -43,13 +43,55 @@ public class pnlContenedorParcelas extends JPanel {
 		clean();
 		listaPnlParcelas = new ArrayList<pnlVParcela>();
 		for (Parcela parcela : parcelas) {
-			pnlVParcela pnlParcela = new pnlVParcela();
+			pnlVParcela pnlParcela = new pnlVParcela(parcela, this);
 			listaPnlParcelas.add(pnlParcela);
 			pnlParcela.loadData(parcela);
 			pnlContenedorP.add(pnlParcela);
 			pnlContenedorP.repaint();
 			pnlContenedorP.revalidate();
 		}
+	}
+
+	public void reload() {
+		Parcela parcela = new Parcela();
+		parcela.readAll();
+		loadPnlParcelas(parcela.getParcelaDAO().getListaParcelas());
+	}
+
+	public void quitarTodasSelecciones() {
+		if (isMoreThanOneSelectioned()) {
+			for (pnlVParcela parcela : this.listaPnlParcelas) {
+				if (parcela.isSeleccionado()) {
+					parcela.deseleccionar();
+				}
+			}
+		}
+	}
+
+	public boolean isMoreThanOneSelectioned() {
+		int seleccionadas = 0;
+		for (pnlVParcela parcela : this.listaPnlParcelas) {
+			if (parcela.isSeleccionado()) {
+				seleccionadas++;
+			}
+		}
+
+		if (seleccionadas < 1) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public void borrarSeleccionada() {
+		for (pnlVParcela pnlParcela : this.listaPnlParcelas) {
+			if (pnlParcela.isSeleccionado()) {
+				pnlParcela.delete();
+			}
+		}
+		Parcela p = new Parcela();
+		p.readAll();
+		loadPnlParcelas(p.getParcelaDAO().getListaParcelas());
 	}
 
 }

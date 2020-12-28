@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Dominio.Disponibilidad;
+import Persistencia.BungalowDAO;
 
 public class Bungalow extends Estancia {
 	private int capacidad_maxima;
@@ -12,11 +13,20 @@ public class Bungalow extends Estancia {
 	private String descripcion;
 	private int imagen;
 
+	private BungalowDAO bungalowDAO;
+
+	public Bungalow(int id) {
+		super(id);
+		this.bungalowDAO = new BungalowDAO();
+	}
+
 	public Bungalow() {
+		this.bungalowDAO = new BungalowDAO();
 	}
 
 	public Bungalow(int id, String tipo, double precio_noche, double tamano, Disponibilidad disponibilidad) {
 		super(id, tipo, precio_noche, tamano, disponibilidad);
+		this.bungalowDAO = new BungalowDAO();
 	}
 
 	public Bungalow(int id, String tipo, double precio_noche, double tamano, Disponibilidad disponibilidad,
@@ -27,6 +37,7 @@ public class Bungalow extends Estancia {
 		this.equipamiento = equipamiento;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
+		this.bungalowDAO = new BungalowDAO();
 	}
 
 	public int getCapacidad_maxima() {
@@ -69,4 +80,31 @@ public class Bungalow extends Estancia {
 		this.imagen = imagen;
 	}
 
+	public BungalowDAO getBungalowDAO() {
+		return bungalowDAO;
+	}
+
+	public void setBungalowDAO(BungalowDAO bungalowDAO) {
+		this.bungalowDAO = bungalowDAO;
+	}
+
+	public boolean insert() {
+		return this.bungalowDAO.insert(this);
+	}
+
+	public boolean update() {
+		return bungalowDAO.update(this);
+	}
+
+	public boolean delete() {
+		return bungalowDAO.delete(this);
+	}
+
+	public boolean read() {
+		return bungalowDAO.read(this);
+	}
+
+	public boolean readAll() {
+		return bungalowDAO.readAll();
+	}
 }

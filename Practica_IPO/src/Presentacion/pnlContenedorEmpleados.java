@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 import Dominio.Empleado;
+
+import java.awt.Color;
 import java.awt.GridLayout;
 
 public class pnlContenedorEmpleados extends JPanel {
@@ -16,10 +18,12 @@ public class pnlContenedorEmpleados extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public pnlContenedorEmpleados(ArrayList<Empleado> empleado, pnlFormEmpleado pnlFormEmpleado) {
-		this.empleados = empleado;
+	public pnlContenedorEmpleados(ArrayList<Empleado> empleados, pnlFormEmpleado pnlFormEmpleado) {
+		this.empleados = empleados;
 		this.pnlFormEmpleado = pnlFormEmpleado;
-		setLayout(new GridLayout(1, 0, 0, 0));
+		setBackground(Color.WHITE);
+		setLayout(new GridLayout(10, 1, 10, 10));
+		this.loadPanels();
 	}
 
 	public void clean() {
@@ -30,12 +34,12 @@ public class pnlContenedorEmpleados extends JPanel {
 
 	public void loadPanels() {
 		Empleado empleado = new Empleado();
-		// empleado.readAll();
-		this.empleados = new ArrayList<Empleado>(listaEmpleados());
+		empleado.readAll();
+		this.empleados = new ArrayList<Empleado>(empleado.getEmpleadoDAO().getListaEmpleados());
 		this.listaEmpleados = new ArrayList<pnlVEmpleado>();
 		this.clean();
 		for (Empleado e : empleados) {
-			pnlVEmpleado pnlEmpleado = new pnlVEmpleado(empleado, pnlFormEmpleado);
+			pnlVEmpleado pnlEmpleado = new pnlVEmpleado(e, pnlFormEmpleado);
 			add(pnlEmpleado);
 			listaEmpleados.add(pnlEmpleado);
 			repaint();
@@ -59,7 +63,7 @@ public class pnlContenedorEmpleados extends JPanel {
 	public void setPnlFormEmpleado(pnlFormEmpleado pnlFormEmpleado) {
 		this.pnlFormEmpleado = pnlFormEmpleado;
 	}
-
+	
 	public Empleado getEmpleadoSeleccionado() {
 		Empleado empleado = null;
 		for (pnlVEmpleado pnl : listaEmpleados) {
@@ -68,17 +72,6 @@ public class pnlContenedorEmpleados extends JPanel {
 			}
 		}
 		return empleado;
-	}
-
-	public ArrayList<Empleado> listaEmpleados() {
-		ArrayList<Empleado> empleados = new ArrayList<Empleado>();
-		Empleado empleado = new Empleado("Jose", "Gualo", "imagen", "608143766", "josecarlos.gualo@alu.uclm.es",
-				"Ingles, Español", "Grado en Ingenieria Informatica", "71361332Z");
-		for (int i = 0; i < 10; i++) {
-			empleados.add(empleado);
-		}
-
-		return empleados;
 	}
 
 }

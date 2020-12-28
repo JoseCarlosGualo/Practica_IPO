@@ -3,28 +3,43 @@ package Dominio;
 import java.util.ArrayList;
 import java.util.List;
 
+import Persistencia.ParcelaDAO;
+
 public class Parcela extends Estancia {
 	private double precio_tBaja;
 	private double precio_tMedia;
 	private double precio_tAlta;
 	private String ubicacion;
-	String servicios;
+	private String servicios;
+	int imagen;
+
+	private ParcelaDAO parcelaDAO;
+
+	public Parcela(int id) {
+		super(id);
+		this.parcelaDAO = new ParcelaDAO();
+	}
 
 	public Parcela() {
+		this.parcelaDAO = new ParcelaDAO();
 	}
 
 	public Parcela(int id, String tipo, double precio_noche, double tamano, Disponibilidad disponibilidad) {
 		super(id, tipo, precio_noche, tamano, disponibilidad);
+		this.parcelaDAO = new ParcelaDAO();
 	}
 
 	public Parcela(int id, String tipo, double precio_noche, double tamano, Disponibilidad disponibilidad,
-			double precio_tBaja, double precio_tMedia, double precio_tAlta, String ubicacion, String servicios) {
+			double precio_tBaja, double precio_tMedia, double precio_tAlta, String ubicacion, String servicios,
+			int imagen) {
 		super(id, tipo, precio_noche, tamano, disponibilidad);
 		this.precio_tBaja = precio_tBaja;
 		this.precio_tMedia = precio_tMedia;
 		this.precio_tAlta = precio_tAlta;
 		this.ubicacion = ubicacion;
 		this.servicios = servicios;
+		this.imagen = imagen;
+		this.parcelaDAO = new ParcelaDAO();
 	}
 
 	public double getPrecio_tBaja() {
@@ -65,6 +80,42 @@ public class Parcela extends Estancia {
 
 	public void setServicios(String servicios) {
 		this.servicios = servicios;
+	}
+
+	public int getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(int imagen) {
+		this.imagen = imagen;
+	}
+
+	public ParcelaDAO getParcelaDAO() {
+		return parcelaDAO;
+	}
+
+	public void setParcelaDAO(ParcelaDAO parcelaDAO) {
+		this.parcelaDAO = parcelaDAO;
+	}
+
+	public boolean insert() {
+		return this.parcelaDAO.insert(this);
+	}
+
+	public boolean update() {
+		return parcelaDAO.update(this);
+	}
+
+	public boolean delete() {
+		return parcelaDAO.delete(this);
+	}
+
+	public boolean read() {
+		return parcelaDAO.read(this);
+	}
+
+	public boolean readAll() {
+		return parcelaDAO.readAll();
 	}
 
 }

@@ -46,16 +46,19 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
 
+import Dominio.Actividad;
 import Dominio.Bungalow;
 import Dominio.Disponibilidad;
 import Dominio.Empleado;
 import Dominio.Parcela;
+import Dominio.Reserva;
 import Dominio.Usuario;
 import java.awt.Dimension;
 import java.awt.Component;
 import javax.swing.JTabbedPane;
 import javax.swing.JScrollPane;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import javax.swing.JRadioButtonMenuItem;
 
@@ -122,7 +125,7 @@ public class Login {
 	private JButton btnEliminarPar;
 	private JButton btnModificar_1;
 	private JPanel pnlContenedorPar;
-	private pnlContenedorParcelas pnlVParcela;
+	private pnlContenedorParcelas pnlContenedorParcelas;
 	private JLabel lblBusquedaPorDni;
 	private JTextField tfBusquedaDni;
 	private JPanel pnlBotonesAEM;
@@ -133,6 +136,25 @@ public class Login {
 	private JButton btnEliminarEmpleado;
 	private JButton btnModificarEmpleado;
 	private pnlFormEmpleado pnlDatosEmpleado;
+	private JLabel lblBsquedaPorNombre;
+	private JTextField tfBusquedaNombre;
+	private JPanel pnlBotonesAEMActividad;
+	private JButton btnAadirEmpleado_1;
+	private JButton btnEliminarEmpleado_1;
+	private JButton btnModificarEmpleado_1;
+	private JPanel pnlListadoActividades;
+	private JScrollPane scrollPaneActividades;
+	private pnlFormActividades pnlDatosActividad;
+	private pnlContenedorActividades pnlContenedorActividades;
+	private JLabel lblBusquedaPorDNICliente;
+	private JTextField tfBusquedaRes;
+	private JPanel pnlBtnsEMRes;
+	private JButton btnModificarRes;
+	private JButton btnEliminarRes;
+	private JPanel pnlListadoReservas;
+	private JScrollPane scrollPaneRes;
+	private pnlFormReserva pnlDatosReserva;
+	private pnlContenedorReservas pnlContenedorReservas;
 
 	/**
 	 * Launch the application.
@@ -398,7 +420,8 @@ public class Login {
 					{
 						btnOcultar = new JButton("");
 						btnOcultar.addActionListener(new BtnOcultarActionListener());
-						btnOcultar.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imágenes/mostrar.png")));
+						btnOcultar
+								.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/mostrar.png")));
 						btnOcultar.setPreferredSize(new Dimension(15, 15));
 						btnOcultar.setMinimumSize(new Dimension(10, 10));
 						GridBagConstraints gbc_btnOcultar = new GridBagConstraints();
@@ -436,13 +459,14 @@ public class Login {
 						}
 						{
 							btnAyuda = new JButton("Ayuda");
-							btnAyuda.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imágenes/informacion.png")));
+							btnAyuda.setIcon(
+									new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/informacion.png")));
 							menuBar.add(btnAyuda);
 						}
 						{
 							btnConfiguracin = new JButton("Configuraci\u00F3n");
-							btnConfiguracin.setIcon(
-									new ImageIcon(Login.class.getResource("/Presentacion/Imágenes/configuraciones.png")));
+							btnConfiguracin.setIcon(new ImageIcon(
+									Login.class.getResource("/Presentacion/Imagenes/configuraciones.png")));
 							menuBar.add(btnConfiguracin);
 						}
 					}
@@ -457,8 +481,8 @@ public class Login {
 						{
 							btnCerrarSesin = new JButton("Cerrar sesion");
 							btnCerrarSesin.addActionListener(new BtnCerrarSesinActionListener());
-							btnCerrarSesin
-									.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imágenes/cerrar-sesion.png")));
+							btnCerrarSesin.setIcon(
+									new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/cerrar-sesion.png")));
 							pnlBtnSalir.add(btnCerrarSesin);
 						}
 					}
@@ -499,7 +523,8 @@ public class Login {
 							}
 							{
 								lblLupa = new JLabel("");
-								lblLupa.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imágenes/lupa.png")));
+								lblLupa.setIcon(
+										new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/lupa.png")));
 								GridBagConstraints gbc_lblLupa = new GridBagConstraints();
 								gbc_lblLupa.insets = new Insets(0, 0, 5, 0);
 								gbc_lblLupa.gridx = 9;
@@ -527,6 +552,7 @@ public class Login {
 							}
 							{
 								btnEliminar = new JButton("Eliminar");
+								btnEliminar.addActionListener(new BtnEliminarActionListener());
 								GridBagConstraints gbc_btnEliminar = new GridBagConstraints();
 								gbc_btnEliminar.insets = new Insets(0, 0, 5, 5);
 								gbc_btnEliminar.gridx = 3;
@@ -585,8 +611,8 @@ public class Login {
 							}
 							{
 								lblLnlimagenlupa = new JLabel("");
-								lblLnlimagenlupa
-										.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imágenes/lupa.png")));
+								lblLnlimagenlupa.setIcon(
+										new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/lupa.png")));
 								GridBagConstraints gbc_lblLnlimagenlupa = new GridBagConstraints();
 								gbc_lblLnlimagenlupa.insets = new Insets(0, 0, 5, 0);
 								gbc_lblLnlimagenlupa.gridx = 9;
@@ -614,6 +640,7 @@ public class Login {
 							}
 							{
 								btnEliminarPar = new JButton("Eliminar");
+								btnEliminarPar.addActionListener(new BtnEliminarParActionListener());
 								GridBagConstraints gbc_btnEliminarPar = new GridBagConstraints();
 								gbc_btnEliminarPar.insets = new Insets(0, 0, 5, 5);
 								gbc_btnEliminarPar.gridx = 3;
@@ -634,8 +661,8 @@ public class Login {
 							pnlParcelas.add(pnlContenedorPar, BorderLayout.CENTER);
 							pnlContenedorPar.setLayout(new CardLayout(0, 0));
 							{
-								pnlVParcela = new pnlContenedorParcelas();
-								pnlContenedorPar.add(pnlVParcela, "pnlParcela");
+								pnlContenedorParcelas = new pnlContenedorParcelas();
+								pnlContenedorPar.add(pnlContenedorParcelas, "pnlParcela");
 							}
 						}
 					}
@@ -645,7 +672,7 @@ public class Login {
 						GridBagLayout gbl_pnlEmpleados = new GridBagLayout();
 						gbl_pnlEmpleados.columnWidths = new int[] { 15, 0, 326, 30, 0, 0, 0, 0, 0 };
 						gbl_pnlEmpleados.rowHeights = new int[] { 54, 0, 15, 0 };
-						gbl_pnlEmpleados.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0,
+						gbl_pnlEmpleados.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0,
 								Double.MIN_VALUE };
 						gbl_pnlEmpleados.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
 						pnlEmpleados.setLayout(gbl_pnlEmpleados);
@@ -660,6 +687,7 @@ public class Login {
 						}
 						{
 							tfBusquedaDni = new JTextField();
+							tfBusquedaDni.addKeyListener(new TfBusquedaDniKeyListener());
 							GridBagConstraints gbc_tfBusquedaDni = new GridBagConstraints();
 							gbc_tfBusquedaDni.insets = new Insets(0, 0, 5, 5);
 							gbc_tfBusquedaDni.fill = GridBagConstraints.HORIZONTAL;
@@ -683,6 +711,7 @@ public class Login {
 							}
 							{
 								btnEliminarEmpleado = new JButton("Eliminar");
+								btnEliminarEmpleado.addActionListener(new BtnEliminarEmpleadoActionListener());
 								pnlBotonesAEM.add(btnEliminarEmpleado);
 							}
 							{
@@ -702,12 +731,11 @@ public class Login {
 							pnlListadoEmpleados.setLayout(new BorderLayout(0, 0));
 							{
 								scrollPane = new JScrollPane();
-								scrollPane
-										.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+								scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 								scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 								pnlListadoEmpleados.add(scrollPane);
 								{
-									pnlDatosEmpleado = new pnlFormEmpleado();
+									pnlDatosEmpleado = new pnlFormEmpleado(frmLogin);
 									GridBagConstraints gbc_pnlDatosEmpleado = new GridBagConstraints();
 									gbc_pnlDatosEmpleado.gridwidth = 3;
 									gbc_pnlDatosEmpleado.insets = new Insets(0, 0, 5, 5);
@@ -715,11 +743,13 @@ public class Login {
 									gbc_pnlDatosEmpleado.gridx = 4;
 									gbc_pnlDatosEmpleado.gridy = 1;
 									pnlEmpleados.add(pnlDatosEmpleado, gbc_pnlDatosEmpleado);
+
 								}
 								{
-									pnlContenedorEmpleados = new pnlContenedorEmpleados(this.listaEmpleados(),
+									pnlContenedorEmpleados = new pnlContenedorEmpleados(this.cargarEmpleados(),
 											pnlDatosEmpleado);
 									scrollPane.setViewportView(pnlContenedorEmpleados);
+
 								}
 							}
 						}
@@ -727,7 +757,86 @@ public class Login {
 					{
 						pnlActividades = new JPanel();
 						pnlContenedorPestanas.addTab("Actividades", null, pnlActividades, null);
-						pnlActividades.setLayout(new CardLayout(0, 0));
+						GridBagLayout gbl_pnlActividades = new GridBagLayout();
+						gbl_pnlActividades.columnWidths = new int[] { 15, 0, 326, 30, 0, 0, 0, 0, 0 };
+						gbl_pnlActividades.rowHeights = new int[] { 54, 0, 15, 0 };
+						gbl_pnlActividades.columnWeights = new double[] { 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+								Double.MIN_VALUE };
+						gbl_pnlActividades.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
+						pnlActividades.setLayout(gbl_pnlActividades);
+						{
+							lblBsquedaPorNombre = new JLabel("B\u00FAsqueda por nombre: ");
+							GridBagConstraints gbc_lblBsquedaPorNombre = new GridBagConstraints();
+							gbc_lblBsquedaPorNombre.anchor = GridBagConstraints.EAST;
+							gbc_lblBsquedaPorNombre.insets = new Insets(0, 0, 5, 5);
+							gbc_lblBsquedaPorNombre.gridx = 1;
+							gbc_lblBsquedaPorNombre.gridy = 0;
+							pnlActividades.add(lblBsquedaPorNombre, gbc_lblBsquedaPorNombre);
+						}
+						{
+							tfBusquedaNombre = new JTextField();
+							tfBusquedaNombre.setColumns(10);
+							GridBagConstraints gbc_tfBusquedaNombre = new GridBagConstraints();
+							gbc_tfBusquedaNombre.insets = new Insets(0, 0, 5, 5);
+							gbc_tfBusquedaNombre.fill = GridBagConstraints.HORIZONTAL;
+							gbc_tfBusquedaNombre.gridx = 2;
+							gbc_tfBusquedaNombre.gridy = 0;
+							pnlActividades.add(tfBusquedaNombre, gbc_tfBusquedaNombre);
+						}
+						{
+							pnlBotonesAEMActividad = new JPanel();
+							GridBagConstraints gbc_pnlBotonesAEMActividad = new GridBagConstraints();
+							gbc_pnlBotonesAEMActividad.gridwidth = 3;
+							gbc_pnlBotonesAEMActividad.insets = new Insets(0, 0, 5, 5);
+							gbc_pnlBotonesAEMActividad.fill = GridBagConstraints.BOTH;
+							gbc_pnlBotonesAEMActividad.gridx = 4;
+							gbc_pnlBotonesAEMActividad.gridy = 0;
+							pnlActividades.add(pnlBotonesAEMActividad, gbc_pnlBotonesAEMActividad);
+							{
+								btnAadirEmpleado_1 = new JButton("A\u00F1adir");
+								pnlBotonesAEMActividad.add(btnAadirEmpleado_1);
+							}
+							{
+								btnEliminarEmpleado_1 = new JButton("Eliminar");
+								pnlBotonesAEMActividad.add(btnEliminarEmpleado_1);
+							}
+							{
+								btnModificarEmpleado_1 = new JButton("Modificar");
+								pnlBotonesAEMActividad.add(btnModificarEmpleado_1);
+							}
+						}
+						{
+							pnlListadoActividades = new JPanel();
+							GridBagConstraints gbc_pnlListadoActividades = new GridBagConstraints();
+							gbc_pnlListadoActividades.gridwidth = 2;
+							gbc_pnlListadoActividades.insets = new Insets(0, 0, 5, 5);
+							gbc_pnlListadoActividades.fill = GridBagConstraints.BOTH;
+							gbc_pnlListadoActividades.gridx = 1;
+							gbc_pnlListadoActividades.gridy = 1;
+							pnlActividades.add(pnlListadoActividades, gbc_pnlListadoActividades);
+							pnlListadoActividades.setLayout(new BorderLayout(0, 0));
+							{
+								scrollPaneActividades = new JScrollPane();
+								pnlListadoActividades.add(scrollPaneActividades, BorderLayout.CENTER);
+
+								{
+									pnlDatosActividad = new pnlFormActividades(frmLogin);
+									GridBagConstraints gbc_pnlDatosActividad = new GridBagConstraints();
+									gbc_pnlDatosActividad.gridwidth = 3;
+									gbc_pnlDatosActividad.insets = new Insets(0, 0, 5, 5);
+									gbc_pnlDatosActividad.fill = GridBagConstraints.BOTH;
+									gbc_pnlDatosActividad.gridx = 4;
+									gbc_pnlDatosActividad.gridy = 1;
+									pnlActividades.add(pnlDatosActividad, gbc_pnlDatosActividad);
+								}
+								{
+									pnlContenedorActividades = new pnlContenedorActividades(this.cargarActividades(),
+											pnlDatosActividad);
+									scrollPaneActividades.setViewportView(pnlContenedorActividades);
+								}
+							}
+						}
+
 					}
 					{
 						pnlRutasSenderistas = new JPanel();
@@ -737,16 +846,95 @@ public class Login {
 					{
 						pnlReservas = new JPanel();
 						pnlContenedorPestanas.addTab("Reservas", null, pnlReservas, null);
-						pnlReservas.setLayout(new CardLayout(0, 0));
+						GridBagLayout gbl_pnlReservas = new GridBagLayout();
+						gbl_pnlReservas.columnWidths = new int[] { 15, 215, 326, 30, 0, 0, 0, 15, 0 };
+						gbl_pnlReservas.rowHeights = new int[] { 54, 0, 15, 0 };
+						gbl_pnlReservas.columnWeights = new double[] { 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+								Double.MIN_VALUE };
+						gbl_pnlReservas.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
+						pnlReservas.setLayout(gbl_pnlReservas);
+						{
+							lblBusquedaPorDNICliente = new JLabel("Busqueda por DNI del cliente: ");
+							GridBagConstraints gbc_lblBusquedaPorDNICliente = new GridBagConstraints();
+							gbc_lblBusquedaPorDNICliente.anchor = GridBagConstraints.EAST;
+							gbc_lblBusquedaPorDNICliente.insets = new Insets(0, 0, 5, 5);
+							gbc_lblBusquedaPorDNICliente.gridx = 1;
+							gbc_lblBusquedaPorDNICliente.gridy = 0;
+							pnlReservas.add(lblBusquedaPorDNICliente, gbc_lblBusquedaPorDNICliente);
+						}
+						{
+							tfBusquedaRes = new JTextField();
+							GridBagConstraints gbc_tfBusquedaRes = new GridBagConstraints();
+							gbc_tfBusquedaRes.insets = new Insets(0, 0, 5, 5);
+							gbc_tfBusquedaRes.fill = GridBagConstraints.HORIZONTAL;
+							gbc_tfBusquedaRes.gridx = 2;
+							gbc_tfBusquedaRes.gridy = 0;
+							pnlReservas.add(tfBusquedaRes, gbc_tfBusquedaRes);
+							tfBusquedaRes.setColumns(10);
+						}
+						{
+							pnlBtnsEMRes = new JPanel();
+							GridBagConstraints gbc_pnlBtnsEMRes = new GridBagConstraints();
+							gbc_pnlBtnsEMRes.gridwidth = 3;
+							gbc_pnlBtnsEMRes.insets = new Insets(0, 0, 5, 5);
+							gbc_pnlBtnsEMRes.fill = GridBagConstraints.BOTH;
+							gbc_pnlBtnsEMRes.gridx = 4;
+							gbc_pnlBtnsEMRes.gridy = 0;
+							pnlReservas.add(pnlBtnsEMRes, gbc_pnlBtnsEMRes);
+							{
+								btnModificarRes = new JButton("Modificar");
+								pnlBtnsEMRes.add(btnModificarRes);
+							}
+							{
+								btnEliminarRes = new JButton("Eliminar");
+								pnlBtnsEMRes.add(btnEliminarRes);
+							}
+						}
+						{
+							pnlListadoReservas = new JPanel();
+							GridBagConstraints gbc_pnlListadoReservas = new GridBagConstraints();
+							gbc_pnlListadoReservas.gridwidth = 2;
+							gbc_pnlListadoReservas.insets = new Insets(0, 0, 5, 5);
+							gbc_pnlListadoReservas.fill = GridBagConstraints.BOTH;
+							gbc_pnlListadoReservas.gridx = 1;
+							gbc_pnlListadoReservas.gridy = 1;
+							pnlReservas.add(pnlListadoReservas, gbc_pnlListadoReservas);
+							pnlListadoReservas.setLayout(new BorderLayout(0, 0));
+							{
+								scrollPaneRes = new JScrollPane();
+								scrollPaneRes
+										.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+								scrollPaneRes.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+								pnlListadoReservas.add(scrollPaneRes, BorderLayout.CENTER);
+								{
+									pnlDatosReserva = new pnlFormReserva(frmLogin);
+									GridBagConstraints gbc_pnlDatosReserva = new GridBagConstraints();
+									gbc_pnlDatosReserva.gridwidth = 3;
+									gbc_pnlDatosReserva.insets = new Insets(0, 0, 5, 5);
+									gbc_pnlDatosReserva.fill = GridBagConstraints.BOTH;
+									gbc_pnlDatosReserva.gridx = 4;
+									gbc_pnlDatosReserva.gridy = 1;
+									pnlReservas.add(pnlDatosReserva, gbc_pnlDatosReserva);
+									GridBagLayout gbl_pnlDatosReserva = new GridBagLayout();
+									gbl_pnlDatosReserva.columnWidths = new int[] { 0 };
+									gbl_pnlDatosReserva.rowHeights = new int[] { 0 };
+									gbl_pnlDatosReserva.columnWeights = new double[] { Double.MIN_VALUE };
+									gbl_pnlDatosReserva.rowWeights = new double[] { Double.MIN_VALUE };
+									pnlDatosReserva.setLayout(gbl_pnlDatosReserva);
+								}
+								{
+									pnlContenedorReservas = new pnlContenedorReservas(this.cargarReservas(),
+											pnlDatosReserva);
+									scrollPaneRes.setViewportView(pnlContenedorReservas);
+								}
+							}
+						}
 					}
 				}
 			}
 
 			pnlContenedorBungalows.loadPnlBungalows(cargarBungalow());
-			// Parcela parcela = new Parcela();
-			// boolean correcto = bungalow.readAll();
-			// if(correcto){}
-			pnlVParcela.loadPnlParcelas(cargarParcela());
+			pnlContenedorParcelas.loadPnlParcelas(cargarParcela());
 		}
 	}
 
@@ -866,10 +1054,10 @@ public class Login {
 		public void actionPerformed(ActionEvent e) {
 			if (pnlUserData.isVisible()) {
 				pnlUserData.setVisible(false);
-				btnOcultar.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imágenes/mostrar.png")));
+				btnOcultar.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/mostrar.png")));
 			} else {
 				pnlUserData.setVisible(true);
-				btnOcultar.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imágenes/ocultar.png")));
+				btnOcultar.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/ocultar.png")));
 			}
 		}
 	}
@@ -886,6 +1074,54 @@ public class Login {
 	private class BtnCerrarSesinActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			((CardLayout) frmLogin.getContentPane().getLayout()).show(frmLogin.getContentPane(), "panelLogin");
+		}
+	}
+
+	private class BtnEliminarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			pnlContenedorBungalows.borrarSeleccionada();
+		}
+	}
+
+	private class BtnEliminarParActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			pnlContenedorParcelas.borrarSeleccionada();
+		}
+	}
+
+	private class TfBusquedaDniKeyListener extends KeyAdapter {
+		@Override
+		public void keyReleased(KeyEvent e) {
+			pnlContenedorEmpleados.filtraEmpleado(tfBusquedaDni.getText());
+		}
+	}
+
+	private class BtnEliminarEmpleadoActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			int resp = JOptionPane.showConfirmDialog(null,
+					"�Est�s seguro de que quieres eliminar este empleado de manera permanente?", "Eliminar Empleado",
+					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+			if (resp == 0) {
+				Empleado empleado = new Empleado();
+				try {
+					empleado = pnlDatosEmpleado.getDatosEmpleado();
+					if (!isMonitor(empleado)) {
+						empleado.delete();
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"El empleado que intentas borrar es encargado de una actividad, deber�s borrar las actividades en las que participa antes de borrarlo.");
+					}
+
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+
+				pnlContenedorEmpleados.loadPanels();
+				tfBusquedaDni.setText("");
+				pnlDatosEmpleado.clean();
+
+			}
 		}
 	}
 
@@ -917,47 +1153,85 @@ public class Login {
 
 	}
 
-	private ArrayList<Bungalow> cargarBungalow() {
-		ArrayList<Bungalow> bungalows = new ArrayList<Bungalow>();
-		for (int i = 0; i < 10; i++) {
-			Bungalow bungalow1 = new Bungalow(i, "Casa familiar", 300, 250, Disponibilidad.Libre, 6, 3,
-					"Cuna, Agua, Luz", "Alojamiento perfecto para ir con tu familia", 2);
-			bungalows.add(bungalow1);
-		}
-		return bungalows;
-	}
-
 	private ArrayList<Parcela> cargarParcela() {
-		ArrayList<Parcela> parcelas = new ArrayList<Parcela>();
-		for (int i = 0; i < 10; i++) {
-			Parcela parcela1 = new Parcela(i, "Parcela mediana", 200, 300, Disponibilidad.Reparacion, 150, 200, 300,
-					"Cerca de la fuente de agua", "Agua con manguera, electricidad, vehículo del camping");
-			parcelas.add(parcela1);
+
+		Parcela parcela = new Parcela();
+		boolean correcto = false;
+
+		correcto = parcela.readAll();
+
+		if (correcto) {
+			return (parcela.getParcelaDAO().getListaParcelas());
+		} else {
+			return null;
 		}
-		return parcelas;
 	}
 
-	public ArrayList<Empleado> listaEmpleados() {
-		ArrayList<Empleado> empleados = new ArrayList<Empleado>();
-		Empleado empleado = new Empleado("Jose", "Gualo", "imagen", "608143766", "josecarlos.gualo@alu.uclm.es",
-				"Ingles, Espa�ol", "Grado en Ingenieria Informatica", "71361332Z");
-		for (int i = 0; i < 10; i++) {
-			empleados.add(empleado);
-		}
+	private ArrayList<Bungalow> cargarBungalow() {
 
-		return empleados;
+		Bungalow bungalow = new Bungalow();
+		boolean correcto = false;
+
+		correcto = bungalow.readAll();
+
+		if (correcto) {
+			return (bungalow.getBungalowDAO().getListaBungalows());
+		} else {
+			return null;
+		}
 	}
 
-	/*
-	 * private ArrayList<Bungalow> cargarBungalow() {
-	 * 
-	 * Bungalow bungalow = new Bungalow(id, tipo, precio_noche, tamano,
-	 * disponibilidad, capacidad_maxima, estancia_minima, equipamiento, descripcion,
-	 * imagen) boolean correcto = false;
-	 * 
-	 * correcto = bungalow.readAll();
-	 * 
-	 * if (correcto) { return (bungalow.getClienteDAO().getListaClientes()); } else
-	 * { return null; } }
-	 */
+	private ArrayList<Empleado> cargarEmpleados() {
+
+		Empleado empleado = new Empleado();
+		boolean correcto = false;
+
+		correcto = empleado.readAll();
+
+		if (correcto) {
+			return (empleado.getEmpleadoDAO().getListaEmpleados());
+		} else {
+			return null;
+		}
+	}
+
+	private ArrayList<Actividad> cargarActividades() {
+
+		Actividad actividad = new Actividad();
+		boolean correcto = false;
+
+		correcto = actividad.readAll();
+
+		if (correcto) {
+			return (actividad.getActividadDAO().getListaActividades());
+		} else {
+			return null;
+		}
+	}
+
+	private boolean isMonitor(Empleado empleado) {
+		boolean isMonitor = false;
+		for (Actividad a : this.cargarActividades()) {
+			if (a.getEmpleado().getDni().equalsIgnoreCase(empleado.getDni())) {
+				isMonitor = true;
+				return isMonitor;
+			}
+		}
+
+		return isMonitor;
+	}
+
+	private ArrayList<Reserva> cargarReservas() {
+
+		Reserva reserva = new Reserva();
+		boolean correcto = false;
+
+		correcto = reserva.readAll();
+
+		if (correcto) {
+			return (reserva.getReservaDAO().getListaReservas());
+		} else {
+			return null;
+		}
+	}
 }

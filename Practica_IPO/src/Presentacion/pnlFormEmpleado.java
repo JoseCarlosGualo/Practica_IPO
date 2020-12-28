@@ -35,6 +35,8 @@ import java.nio.file.StandardCopyOption;
 import java.awt.event.ActionListener;
 import java.awt.image.ImageFilter;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
+import java.awt.SystemColor;
 
 public class pnlFormEmpleado extends JPanel {
 	private JLabel lblNombre;
@@ -50,8 +52,6 @@ public class pnlFormEmpleado extends JPanel {
 	private JTextField tfTelefonoEm;
 	private JTextField tfCorreoEm;
 	private JTextField tfIdiomasEm;
-	private JTextField tfFormacionEm;
-	private JFrame frame;
 	private Border bordeMal = BorderFactory.createLineBorder(Color.RED);
 	private Border bordeBien = BorderFactory.createLineBorder(Color.GREEN);
 	private Border bordeOriginal;
@@ -60,16 +60,21 @@ public class pnlFormEmpleado extends JPanel {
 	private JButton btnAadirFoto;
 	private JButton btnEliminarFoto;
 
+	private JFrame framePrincipal;
+	private JPanel pnlBtnsAyEFoto;
+	private JTextArea textFormacionEm;
+
 	/**
 	 * Create the panel.
 	 */
-	public pnlFormEmpleado() {
+	public pnlFormEmpleado(JFrame framePrincipal) {
+		this.framePrincipal = framePrincipal;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 10, 146, 134, 10, 0 };
-		gridBagLayout.rowHeights = new int[] { 10, 0, 10, 0, 0, 0, 0, 0, 0, 0, 10, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-				Double.MIN_VALUE };
+		gridBagLayout.columnWidths = new int[] { 10, 146, 318, 0, 10, 0 };
+		gridBagLayout.rowHeights = new int[] { 10, 0, 10, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 10, 0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+				0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 		{
 		}
@@ -77,181 +82,194 @@ public class pnlFormEmpleado extends JPanel {
 			pnlFoto = new JPanel();
 			GridBagConstraints gbc_pnlFoto = new GridBagConstraints();
 			gbc_pnlFoto.gridheight = 2;
-			gbc_pnlFoto.gridwidth = 2;
+			gbc_pnlFoto.gridwidth = 3;
 			gbc_pnlFoto.insets = new Insets(0, 0, 5, 5);
 			gbc_pnlFoto.fill = GridBagConstraints.BOTH;
 			gbc_pnlFoto.gridx = 1;
 			gbc_pnlFoto.gridy = 1;
 			add(pnlFoto, gbc_pnlFoto);
 			GridBagLayout gbl_pnlFoto = new GridBagLayout();
-			gbl_pnlFoto.columnWidths = new int[] { 0, 0, 0, 0, 0, 0 };
-			gbl_pnlFoto.rowHeights = new int[] { 0, 0, 0, 0, 0, 0 };
-			gbl_pnlFoto.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-			gbl_pnlFoto.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+			gbl_pnlFoto.columnWidths = new int[] { 0, 0, 0, 0, 0 };
+			gbl_pnlFoto.rowHeights = new int[] { 0, 0, 0, 15, 0 };
+			gbl_pnlFoto.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
+			gbl_pnlFoto.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 			pnlFoto.setLayout(gbl_pnlFoto);
 			{
 				lblFoto = new JLabel("");
-				lblFoto.setIcon(new ImageIcon(pnlFormEmpleado.class.getResource("/Presentacion/Imágenes/foto_random.jpg")));
+				lblFoto.setIcon(
+						new ImageIcon(pnlFormEmpleado.class.getResource("/Presentacion/Imagenes/foto_random.jpg")));
 				GridBagConstraints gbc_lblFoto = new GridBagConstraints();
 				gbc_lblFoto.gridheight = 2;
-				gbc_lblFoto.gridwidth = 3;
+				gbc_lblFoto.gridwidth = 2;
 				gbc_lblFoto.insets = new Insets(0, 0, 5, 5);
 				gbc_lblFoto.gridx = 1;
 				gbc_lblFoto.gridy = 1;
 				pnlFoto.add(lblFoto, gbc_lblFoto);
 			}
-			{
-				btnAadirFoto = new JButton("A\u00F1adir Foto");
-				GridBagConstraints gbc_btnAadirFoto = new GridBagConstraints();
-				gbc_btnAadirFoto.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnAadirFoto.insets = new Insets(0, 0, 5, 5);
-				gbc_btnAadirFoto.gridx = 1;
-				gbc_btnAadirFoto.gridy = 3;
-				pnlFoto.add(btnAadirFoto, gbc_btnAadirFoto);
-			}
+		}
+		{
+			pnlBtnsAyEFoto = new JPanel();
+			GridBagConstraints gbc_pnlBtnsAyEFoto = new GridBagConstraints();
+			gbc_pnlBtnsAyEFoto.gridwidth = 3;
+			gbc_pnlBtnsAyEFoto.insets = new Insets(0, 0, 5, 5);
+			gbc_pnlBtnsAyEFoto.fill = GridBagConstraints.BOTH;
+			gbc_pnlBtnsAyEFoto.gridx = 1;
+			gbc_pnlBtnsAyEFoto.gridy = 3;
+			add(pnlBtnsAyEFoto, gbc_pnlBtnsAyEFoto);
 			{
 				btnEliminarFoto = new JButton("Eliminar Foto");
-				GridBagConstraints gbc_btnEliminarFoto = new GridBagConstraints();
-				gbc_btnEliminarFoto.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnEliminarFoto.insets = new Insets(0, 0, 5, 5);
-				gbc_btnEliminarFoto.gridx = 2;
-				gbc_btnEliminarFoto.gridy = 3;
-				pnlFoto.add(btnEliminarFoto, gbc_btnEliminarFoto);
+				pnlBtnsAyEFoto.add(btnEliminarFoto);
+			}
+			{
+				btnAadirFoto = new JButton("A\u00F1adir Foto");
+				pnlBtnsAyEFoto.add(btnAadirFoto);
+				btnAadirFoto.addActionListener(new BtnAadirFotoActionListener());
 			}
 		}
 		{
 			lblNombre = new JLabel("Nombre: ");
 			GridBagConstraints gbc_lblNombre = new GridBagConstraints();
-			gbc_lblNombre.fill = GridBagConstraints.HORIZONTAL;
+			gbc_lblNombre.anchor = GridBagConstraints.EAST;
 			gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
 			gbc_lblNombre.gridx = 1;
-			gbc_lblNombre.gridy = 3;
+			gbc_lblNombre.gridy = 5;
 			add(lblNombre, gbc_lblNombre);
 		}
 		{
 			tfNombreEm = new JTextField();
+			tfNombreEm.setEditable(false);
 			GridBagConstraints gbc_tfNombreEm = new GridBagConstraints();
+			gbc_tfNombreEm.fill = GridBagConstraints.HORIZONTAL;
 			gbc_tfNombreEm.anchor = GridBagConstraints.NORTH;
 			gbc_tfNombreEm.insets = new Insets(0, 0, 5, 5);
-			gbc_tfNombreEm.fill = GridBagConstraints.HORIZONTAL;
 			gbc_tfNombreEm.gridx = 2;
-			gbc_tfNombreEm.gridy = 3;
+			gbc_tfNombreEm.gridy = 5;
 			add(tfNombreEm, gbc_tfNombreEm);
 			tfNombreEm.setColumns(10);
 		}
 		{
 			lblApellidos = new JLabel("Apellidos:");
 			GridBagConstraints gbc_lblApellidos = new GridBagConstraints();
-			gbc_lblApellidos.fill = GridBagConstraints.HORIZONTAL;
+			gbc_lblApellidos.anchor = GridBagConstraints.EAST;
 			gbc_lblApellidos.insets = new Insets(0, 0, 5, 5);
 			gbc_lblApellidos.gridx = 1;
-			gbc_lblApellidos.gridy = 4;
+			gbc_lblApellidos.gridy = 7;
 			add(lblApellidos, gbc_lblApellidos);
 		}
 		{
 			tfApellidosEm = new JTextField();
+			tfApellidosEm.setEditable(false);
 			GridBagConstraints gbc_tfApellidosEm = new GridBagConstraints();
-			gbc_tfApellidosEm.insets = new Insets(0, 0, 5, 5);
 			gbc_tfApellidosEm.fill = GridBagConstraints.HORIZONTAL;
+			gbc_tfApellidosEm.insets = new Insets(0, 0, 5, 5);
 			gbc_tfApellidosEm.gridx = 2;
-			gbc_tfApellidosEm.gridy = 4;
+			gbc_tfApellidosEm.gridy = 7;
 			add(tfApellidosEm, gbc_tfApellidosEm);
 			tfApellidosEm.setColumns(10);
 		}
 		{
 			lblDni = new JLabel("DNI: ");
 			GridBagConstraints gbc_lblDni = new GridBagConstraints();
-			gbc_lblDni.fill = GridBagConstraints.HORIZONTAL;
+			gbc_lblDni.anchor = GridBagConstraints.EAST;
 			gbc_lblDni.insets = new Insets(0, 0, 5, 5);
 			gbc_lblDni.gridx = 1;
-			gbc_lblDni.gridy = 5;
+			gbc_lblDni.gridy = 9;
 			add(lblDni, gbc_lblDni);
 		}
 		{
 			tfDniEm = new JTextField();
+			tfDniEm.setEditable(false);
 			GridBagConstraints gbc_tfDniEm = new GridBagConstraints();
-			gbc_tfDniEm.insets = new Insets(0, 0, 5, 5);
 			gbc_tfDniEm.fill = GridBagConstraints.HORIZONTAL;
+			gbc_tfDniEm.insets = new Insets(0, 0, 5, 5);
 			gbc_tfDniEm.gridx = 2;
-			gbc_tfDniEm.gridy = 5;
+			gbc_tfDniEm.gridy = 9;
 			add(tfDniEm, gbc_tfDniEm);
 			tfDniEm.setColumns(10);
 		}
 		{
 			lblTelfono = new JLabel("Tel\u00E9fono: ");
 			GridBagConstraints gbc_lblTelfono = new GridBagConstraints();
-			gbc_lblTelfono.fill = GridBagConstraints.HORIZONTAL;
+			gbc_lblTelfono.anchor = GridBagConstraints.EAST;
 			gbc_lblTelfono.insets = new Insets(0, 0, 5, 5);
 			gbc_lblTelfono.gridx = 1;
-			gbc_lblTelfono.gridy = 6;
+			gbc_lblTelfono.gridy = 11;
 			add(lblTelfono, gbc_lblTelfono);
 		}
 		{
 			tfTelefonoEm = new JTextField();
+			tfTelefonoEm.setEditable(false);
 			GridBagConstraints gbc_tfTelefonoEm = new GridBagConstraints();
-			gbc_tfTelefonoEm.insets = new Insets(0, 0, 5, 5);
 			gbc_tfTelefonoEm.fill = GridBagConstraints.HORIZONTAL;
+			gbc_tfTelefonoEm.insets = new Insets(0, 0, 5, 5);
 			gbc_tfTelefonoEm.gridx = 2;
-			gbc_tfTelefonoEm.gridy = 6;
+			gbc_tfTelefonoEm.gridy = 11;
 			add(tfTelefonoEm, gbc_tfTelefonoEm);
 			tfTelefonoEm.setColumns(10);
 		}
 		{
 			lblCorreoElectrnico = new JLabel("Correo Electr\u00F3nico: ");
 			GridBagConstraints gbc_lblCorreoElectrnico = new GridBagConstraints();
-			gbc_lblCorreoElectrnico.fill = GridBagConstraints.HORIZONTAL;
+			gbc_lblCorreoElectrnico.anchor = GridBagConstraints.EAST;
 			gbc_lblCorreoElectrnico.insets = new Insets(0, 0, 5, 5);
 			gbc_lblCorreoElectrnico.gridx = 1;
-			gbc_lblCorreoElectrnico.gridy = 7;
+			gbc_lblCorreoElectrnico.gridy = 13;
 			add(lblCorreoElectrnico, gbc_lblCorreoElectrnico);
 		}
 		{
 			tfCorreoEm = new JTextField();
+			tfCorreoEm.setEditable(false);
 			GridBagConstraints gbc_tfCorreoEm = new GridBagConstraints();
-			gbc_tfCorreoEm.insets = new Insets(0, 0, 5, 5);
 			gbc_tfCorreoEm.fill = GridBagConstraints.HORIZONTAL;
+			gbc_tfCorreoEm.insets = new Insets(0, 0, 5, 5);
 			gbc_tfCorreoEm.gridx = 2;
-			gbc_tfCorreoEm.gridy = 7;
+			gbc_tfCorreoEm.gridy = 13;
 			add(tfCorreoEm, gbc_tfCorreoEm);
 			tfCorreoEm.setColumns(10);
 		}
 		{
 			lblIdiomas = new JLabel("Idiomas: ");
 			GridBagConstraints gbc_lblIdiomas = new GridBagConstraints();
-			gbc_lblIdiomas.fill = GridBagConstraints.HORIZONTAL;
+			gbc_lblIdiomas.anchor = GridBagConstraints.EAST;
 			gbc_lblIdiomas.insets = new Insets(0, 0, 5, 5);
 			gbc_lblIdiomas.gridx = 1;
-			gbc_lblIdiomas.gridy = 8;
+			gbc_lblIdiomas.gridy = 15;
 			add(lblIdiomas, gbc_lblIdiomas);
 		}
 		{
 			tfIdiomasEm = new JTextField();
+			tfIdiomasEm.setEditable(false);
 			GridBagConstraints gbc_tfIdiomasEm = new GridBagConstraints();
-			gbc_tfIdiomasEm.insets = new Insets(0, 0, 5, 5);
 			gbc_tfIdiomasEm.fill = GridBagConstraints.HORIZONTAL;
+			gbc_tfIdiomasEm.insets = new Insets(0, 0, 5, 5);
 			gbc_tfIdiomasEm.gridx = 2;
-			gbc_tfIdiomasEm.gridy = 8;
+			gbc_tfIdiomasEm.gridy = 15;
 			add(tfIdiomasEm, gbc_tfIdiomasEm);
 			tfIdiomasEm.setColumns(10);
 		}
 		{
 			lblFormacin = new JLabel("Formaci\u00F3n: ");
 			GridBagConstraints gbc_lblFormacin = new GridBagConstraints();
-			gbc_lblFormacin.fill = GridBagConstraints.HORIZONTAL;
+			gbc_lblFormacin.anchor = GridBagConstraints.NORTHEAST;
 			gbc_lblFormacin.insets = new Insets(0, 0, 5, 5);
 			gbc_lblFormacin.gridx = 1;
-			gbc_lblFormacin.gridy = 9;
+			gbc_lblFormacin.gridy = 17;
 			add(lblFormacin, gbc_lblFormacin);
 		}
 		{
-			tfFormacionEm = new JTextField();
-			GridBagConstraints gbc_tfFormacionEm = new GridBagConstraints();
-			gbc_tfFormacionEm.insets = new Insets(0, 0, 5, 5);
-			gbc_tfFormacionEm.fill = GridBagConstraints.HORIZONTAL;
-			gbc_tfFormacionEm.gridx = 2;
-			gbc_tfFormacionEm.gridy = 9;
-			add(tfFormacionEm, gbc_tfFormacionEm);
-			tfFormacionEm.setColumns(10);
+			textFormacionEm = new JTextArea();
+			textFormacionEm.setWrapStyleWord(true);
+			textFormacionEm.setText((String) null);
+			textFormacionEm.setOpaque(false);
+			textFormacionEm.setLineWrap(true);
+			textFormacionEm.setEditable(false);
+			textFormacionEm.setBackground(SystemColor.menu);
+			GridBagConstraints gbc_textFormacionEm = new GridBagConstraints();
+			gbc_textFormacionEm.insets = new Insets(0, 0, 5, 5);
+			gbc_textFormacionEm.fill = GridBagConstraints.BOTH;
+			gbc_textFormacionEm.gridx = 2;
+			gbc_textFormacionEm.gridy = 17;
+			add(textFormacionEm, gbc_textFormacionEm);
 		}
 
 	}
@@ -263,7 +281,8 @@ public class pnlFormEmpleado extends JPanel {
 		tfTelefonoEm.setText("");
 		tfCorreoEm.setText("");
 		tfIdiomasEm.setText("");
-		tfFormacionEm.setText("");
+		textFormacionEm.setText("");
+		lblFoto.setIcon(null);
 	}
 
 	public boolean comprobarTextFields() {
@@ -292,44 +311,48 @@ public class pnlFormEmpleado extends JPanel {
 		tfTelefonoEm.setEditable(editable);
 		tfCorreoEm.setEditable(editable);
 		tfIdiomasEm.setEditable(editable);
-		tfFormacionEm.setEditable(editable);
+		textFormacionEm.setEditable(editable);
 	}
 
-	public Empleado getDatosEmpelado() throws IOException {
+	public Empleado getDatosEmpleado() throws IOException {
 		Empleado empleado = new Empleado();
-		empleado.setApellidos(tfApellidosEm.getText());
-		empleado.setEmail(tfCorreoEm.getText());
-		empleado.setFormacion(tfFormacionEm.getText());
-		empleado.setIdiomas(tfIdiomasEm.getText());
-		// empleado.setImagen(imagen);
-		empleado.setNombre(tfNombreEm.getText());
-		empleado.setTelefono(tfTelefonoEm.getText());
+		empleado.setDni(tfDniEm.getText());
+		empleado.read();
 
 		return empleado;
 	}
 
-	/*
-	 * public void loadEmpleado(Empleado empleado) {
-	 * tfNombreEm.setText(empleado.getNombre());
-	 * tfApellidosEm.setText(empleado.getApellidos());
-	 * tfDniEm.setText(empleado.getDni());
-	 * tfTelefonoEm.setText(empleado.getTelefono());
-	 * tfCorreoEm.setText(empleado.getEmail());
-	 * tfIdiomasEm.setText(empleado.getIdiomas());
-	 * tfFormacionEm.setText(empleado.getFormacion());
-	 * 
-	 * ImageIcon miniatura = null; lblFotoEmpleado.setText(""); try { miniatura =
-	 * new ImageIcon(
-	 * getClass().getClassLoader().getResource("Presentacion/FotosClientes/" +
-	 * empleado.getImagen()));
-	 * 
-	 * } catch (Exception e) {
-	 * 
-	 * miniatura = new ImageIcon( getClass().getClassLoader().getResource(
-	 * "Presentacion/Imagenes/imagenDefecto.png"));
-	 * 
-	 * } finally { Image image = miniatura.getImage(); Image newimg =
-	 * image.getScaledInstance(128, 128, java.awt.Image.SCALE_SMOOTH); miniatura =
-	 * new ImageIcon(newimg); lblFotoEmpleado.setIcon(miniatura); } }
-	 */
+	public void loadEmpleado(Empleado empleado) {
+		tfNombreEm.setText(empleado.getNombre());
+		tfApellidosEm.setText(empleado.getApellidos());
+		tfDniEm.setText(empleado.getDni());
+		tfTelefonoEm.setText(empleado.getTelefono());
+		tfCorreoEm.setText(empleado.getEmail());
+		tfIdiomasEm.setText(empleado.getIdiomas());
+		textFormacionEm.setText(empleado.getFormacion());
+
+		ImageIcon miniatura = null;
+		lblFoto.setText("");
+		try {
+			miniatura = new ImageIcon(
+					getClass().getClassLoader().getResource("Presentacion/Imagenes/" + empleado.getImagen()));
+
+		} catch (Exception e) {
+
+			miniatura = new ImageIcon(
+					getClass().getClassLoader().getResource("Presentacion/Imagenes/imagenDefecto.png"));
+
+		} finally {
+			Image image = miniatura.getImage();
+			Image newimg = image.getScaledInstance(128, 128, java.awt.Image.SCALE_SMOOTH);
+			miniatura = new ImageIcon(newimg);
+			lblFoto.setIcon(miniatura);
+		}
+	}
+
+	private class BtnAadirFotoActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+
+		}
+	}
 }

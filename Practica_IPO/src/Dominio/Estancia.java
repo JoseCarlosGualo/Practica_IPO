@@ -10,6 +10,10 @@ public class Estancia {
 	private double tamano;
 	private Disponibilidad disponibilidad;
 
+	public Estancia(int id) {
+		this.id = id;
+	}
+
 	public Estancia() {
 	}
 
