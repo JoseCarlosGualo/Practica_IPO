@@ -2,7 +2,6 @@ package Presentacion;
 
 import java.awt.EventQueue;
 import java.awt.Font;
-import Presentacion.MessagesLogin;
 
 import javax.swing.JFrame;
 import java.awt.CardLayout;
@@ -156,16 +155,18 @@ public class Login {
 	private JPanel pnlEditar;
 	private JButton btnEliminarEmpleado;
 	private JButton btnModificarEmpleado;
-	private JButton btnAñadirEmpleado;
+	private JButton btnAddEmpleado;
 	private JButton btnGuardar;
 	private JButton btnCancelar;
 	private JPanel pnlPrincipalesAct;
 	private JPanel pnlEditarAct;
-	private JButton btnAñadirActividad;
+	private JButton btnAddActividad;
 	private JButton ModificarActividad;
 	private JButton btnEliminarActividad;
 	private JButton btnGuardarActividad;
 	private JButton btnCancelarActividad;
+	private JLabel lblBusquedaPorNombre;
+	private JLabel lblBusquedaPorNombre_P;
 
 	/**
 	 * Launch the application.
@@ -515,19 +516,28 @@ public class Login {
 							pnlBusqueda = new JPanel();
 							pnlBungalows.add(pnlBusqueda, BorderLayout.NORTH);
 							GridBagLayout gbl_pnlBusqueda = new GridBagLayout();
-							gbl_pnlBusqueda.columnWidths = new int[] { 25, 0, 0, 0, 0, 0, 118, 81, 32, 0, 0 };
+							gbl_pnlBusqueda.columnWidths = new int[] { 25, 0, 0, 0, 0, 0, 0, 118, 81, 32, 0, 0 };
 							gbl_pnlBusqueda.rowHeights = new int[] { 25, 30, 25, 0 };
 							gbl_pnlBusqueda.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-									0.0, Double.MIN_VALUE };
+									0.0, 0.0, Double.MIN_VALUE };
 							gbl_pnlBusqueda.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 							pnlBusqueda.setLayout(gbl_pnlBusqueda);
+							{
+								lblBusquedaPorNombre = new JLabel("Busqueda por nombre: ");
+								GridBagConstraints gbc_lblBusquedaPorNombre = new GridBagConstraints();
+								gbc_lblBusquedaPorNombre.insets = new Insets(0, 0, 5, 5);
+								gbc_lblBusquedaPorNombre.anchor = GridBagConstraints.EAST;
+								gbc_lblBusquedaPorNombre.gridx = 1;
+								gbc_lblBusquedaPorNombre.gridy = 1;
+								pnlBusqueda.add(lblBusquedaPorNombre, gbc_lblBusquedaPorNombre);
+							}
 							{
 								textField = new JTextField();
 								GridBagConstraints gbc_textField = new GridBagConstraints();
 								gbc_textField.gridwidth = 8;
 								gbc_textField.insets = new Insets(0, 0, 5, 5);
 								gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-								gbc_textField.gridx = 1;
+								gbc_textField.gridx = 2;
 								gbc_textField.gridy = 1;
 								pnlBusqueda.add(textField, gbc_textField);
 								textField.setColumns(10);
@@ -538,7 +548,7 @@ public class Login {
 										new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/lupa.png")));
 								GridBagConstraints gbc_lblLupa = new GridBagConstraints();
 								gbc_lblLupa.insets = new Insets(0, 0, 5, 0);
-								gbc_lblLupa.gridx = 9;
+								gbc_lblLupa.gridx = 10;
 								gbc_lblLupa.gridy = 1;
 								pnlBusqueda.add(lblLupa, gbc_lblLupa);
 							}
@@ -603,19 +613,28 @@ public class Login {
 							pnlBusquedaPar = new JPanel();
 							pnlParcelas.add(pnlBusquedaPar, BorderLayout.NORTH);
 							GridBagLayout gbl_pnlBusquedaPar = new GridBagLayout();
-							gbl_pnlBusquedaPar.columnWidths = new int[] { 25, 0, 0, 0, 106, 50, 90, 0, 0, 0, 0 };
+							gbl_pnlBusquedaPar.columnWidths = new int[] { 25, 0, 0, 0, 0, 106, 50, 90, 0, 0, 0, 0 };
 							gbl_pnlBusquedaPar.rowHeights = new int[] { 25, 0, 25, 0 };
 							gbl_pnlBusquedaPar.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-									0.0, 0.0, Double.MIN_VALUE };
+									0.0, 0.0, 0.0, Double.MIN_VALUE };
 							gbl_pnlBusquedaPar.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 							pnlBusquedaPar.setLayout(gbl_pnlBusquedaPar);
+							{
+								lblBusquedaPorNombre_P = new JLabel("Busqueda por nombre: ");
+								GridBagConstraints gbc_lblBusquedaPorNombre_P = new GridBagConstraints();
+								gbc_lblBusquedaPorNombre_P.insets = new Insets(0, 0, 5, 5);
+								gbc_lblBusquedaPorNombre_P.anchor = GridBagConstraints.EAST;
+								gbc_lblBusquedaPorNombre_P.gridx = 1;
+								gbc_lblBusquedaPorNombre_P.gridy = 1;
+								pnlBusquedaPar.add(lblBusquedaPorNombre_P, gbc_lblBusquedaPorNombre_P);
+							}
 							{
 								textFieldBusquedaPar = new JTextField();
 								GridBagConstraints gbc_textFieldBusquedaPar = new GridBagConstraints();
 								gbc_textFieldBusquedaPar.gridwidth = 8;
 								gbc_textFieldBusquedaPar.insets = new Insets(0, 0, 5, 5);
 								gbc_textFieldBusquedaPar.fill = GridBagConstraints.HORIZONTAL;
-								gbc_textFieldBusquedaPar.gridx = 1;
+								gbc_textFieldBusquedaPar.gridx = 2;
 								gbc_textFieldBusquedaPar.gridy = 1;
 								pnlBusquedaPar.add(textFieldBusquedaPar, gbc_textFieldBusquedaPar);
 								textFieldBusquedaPar.setColumns(10);
@@ -626,7 +645,7 @@ public class Login {
 										new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/lupa.png")));
 								GridBagConstraints gbc_lblLnlimagenlupa = new GridBagConstraints();
 								gbc_lblLnlimagenlupa.insets = new Insets(0, 0, 5, 0);
-								gbc_lblLnlimagenlupa.gridx = 9;
+								gbc_lblLnlimagenlupa.gridx = 10;
 								gbc_lblLnlimagenlupa.gridy = 1;
 								pnlBusquedaPar.add(lblLnlimagenlupa, gbc_lblLnlimagenlupa);
 							}
@@ -685,12 +704,12 @@ public class Login {
 						gbl_pnlEmpleados.rowHeights = new int[] { 54, 0, 15, 0 };
 						gbl_pnlEmpleados.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0,
 								Double.MIN_VALUE };
-						gbl_pnlEmpleados.rowWeights = new double[] { 1.0, 1.0, 0.0, Double.MIN_VALUE };
+						gbl_pnlEmpleados.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
 						pnlEmpleados.setLayout(gbl_pnlEmpleados);
 						{
 							lblBusquedaPorDni = new JLabel("Busqueda por DNI: ");
 							GridBagConstraints gbc_lblBusquedaPorDni = new GridBagConstraints();
-							gbc_lblBusquedaPorDni.fill = GridBagConstraints.HORIZONTAL;
+							gbc_lblBusquedaPorDni.fill = GridBagConstraints.BOTH;
 							gbc_lblBusquedaPorDni.insets = new Insets(0, 0, 5, 5);
 							gbc_lblBusquedaPorDni.gridx = 1;
 							gbc_lblBusquedaPorDni.gridy = 0;
@@ -721,14 +740,15 @@ public class Login {
 								pnlPrincipales = new JPanel();
 								pnlBotonesEmpleados.add(pnlPrincipales, "pnlPrincipales");
 								{
-									btnAñadirEmpleado = new JButton("Añadir");
-									btnAñadirEmpleado.addActionListener(new BtnAadir_1ActionListener());
-									btnAñadirEmpleado.setToolTipText("Añadir nuevo empleado");
-									pnlPrincipales.add(btnAñadirEmpleado);
+									btnAddEmpleado = new JButton("A\u00F1adir");
+									btnAddEmpleado.addActionListener(new BtnAadir_1ActionListener());
+									btnAddEmpleado.setToolTipText("A\u00F1adir nuevo empleado");
+									pnlPrincipales.add(btnAddEmpleado);
 								}
 								{
 									btnModificarEmpleado = new JButton("Modificar");
-									btnModificarEmpleado.setToolTipText("Modificar los datos del empleado seleccionado");
+									btnModificarEmpleado
+											.setToolTipText("Modificar los datos del empleado seleccionado");
 									btnModificarEmpleado.addActionListener(new BtnNewButton_1ActionListener());
 									pnlPrincipales.add(btnModificarEmpleado);
 								}
@@ -751,7 +771,7 @@ public class Login {
 								{
 									btnCancelar = new JButton("Cancelar");
 									btnCancelar.addActionListener(new BtnCancelarActionListener());
-									btnCancelar.setToolTipText("Cancelar añadir");
+									btnCancelar.setToolTipText("Cancelar el modo editar");
 									pnlEditar.add(btnCancelar);
 								}
 							}
@@ -834,9 +854,9 @@ public class Login {
 								pnlPrincipalesAct = new JPanel();
 								pnlBotonesActividades.add(pnlPrincipalesAct, "name_29558750074400");
 								{
-									btnAñadirActividad = new JButton("Añadir");
-									btnAñadirActividad.addActionListener(new BtnAñadirActividadActionListener());
-									pnlPrincipalesAct.add(btnAñadirActividad);
+									btnAddActividad = new JButton("Añadir");
+									btnAddActividad.addActionListener(new btnAddActividadActionListener());
+									pnlPrincipalesAct.add(btnAddActividad);
 								}
 								{
 									ModificarActividad = new JButton("Modificar");
@@ -1151,27 +1171,28 @@ public class Login {
 			pnlContenedorEmpleados.filtraEmpleado(tfBusquedaDni.getText());
 		}
 	}
+
 	private class BtnNewButton_1ActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			pnlDatosEmpleado.setComponentsEditables(true, true);
 			((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlEditar");
-			editar_guardar_empleado = 2; // modo editar 
+			editar_guardar_empleado = 2; // modo editar
 		}
 	}
-	
+
 	private class BtnAadir_1ActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			pnlDatosEmpleado.clean();
 			pnlDatosEmpleado.setComponentsEditables(true, true);
 			((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlEditar");
-			editar_guardar_empleado = 1; // modo crear 
+			editar_guardar_empleado = 1; // modo crear
 		}
 	}
+
 	private class BtnEliminar1ActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			int resp = JOptionPane.showConfirmDialog(null,
-					"eliminar",
-					"Toda esta ventana se tiene que traducir luego", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+			int resp = JOptionPane.showConfirmDialog(null, "eliminar", "Toda esta ventana se tiene que traducir luego",
+					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if (resp == 0) {
 				Empleado e;
 				try {
@@ -1188,6 +1209,7 @@ public class Login {
 			}
 		}
 	}
+
 	private class BtnGuardarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			if (pnlDatosEmpleado.comprobarTextFields()) {
@@ -1198,34 +1220,34 @@ public class Login {
 					if (editar_guardar_empleado == 1) { // Modo crear nuevo usuario
 						if (e.insert()) {
 
-							JOptionPane.showMessageDialog(null, e.getDni() + MessagesLogin.getString("Principal.JOptionPaneHaSidoAnadido"));
+							JOptionPane.showMessageDialog(null, e.getDni() + "Empleado a�adido con �xito");
 							pnlDatosEmpleado.setComponentsEditables(false, true);
-							((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados,
-									"pnlPrincipales");
+							((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlPrincipales");
 							editar_guardar_empleado = 0;
 							pnlContenedorEmpleados.loadPanels();
 							lblBusquedaPorDni.setText("");
 
 						} else {
-							JOptionPane.showMessageDialog(null,
-									MessagesLogin.getString("Principal.JOptionPaneErrorBaseDeDatos"), "Error",
+							JOptionPane.showMessageDialog(null, "Error al a�adir empleado.", "Error",
 									JOptionPane.ERROR_MESSAGE);
+							((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlPrincipales");
+							editar_guardar_empleado = 0;
 						}
 					} else if (editar_guardar_empleado == 2) { // Modo editar usuario
 						if (e.update()) {
-							JOptionPane.showMessageDialog(null,"Cliente " +e.getDni() + MessagesLogin.getString("Principal.JOptionPaneActualizadoBien"));
+							JOptionPane.showMessageDialog(null, "Cliente " + e.getDni() + "Actualizado correctamente.");
 							pnlDatosEmpleado.setComponentsEditables(false, true);
 							pnlDatosEmpleado.setComponentsEditables(false, false);
 							editar_guardar_empleado = 0;
-							((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados,
-									"pnlPrincipales");
+							((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlPrincipales");
 							pnlContenedorEmpleados.clean();
 							pnlContenedorEmpleados.loadPanels();
 							lblBusquedaPorDni.setText("");
 						} else {
-							JOptionPane.showMessageDialog(null,
-									MessagesLogin.getString("Principal.JOptionPaneActualizadoMal"), "Error",
+							JOptionPane.showMessageDialog(null, "Error al editar el empleado", "Error",
 									JOptionPane.ERROR_MESSAGE);
+							((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlPrincipales");
+							editar_guardar_empleado = 0;
 						}
 					}
 				} catch (IOException e1) {
@@ -1234,13 +1256,15 @@ public class Login {
 				}
 
 			} else {
-				JOptionPane.showMessageDialog(null, MessagesLogin.getString("Principal.JOptionPaneTodosLosDatos"),
-						"Aviso", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Faltan campos por a�adir.", "Aviso", JOptionPane.WARNING_MESSAGE);
+				((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlPrincipales");
+				editar_guardar_empleado = 0;
 			}
 			pnlContenedorEmpleados.loadPanels();
 			pnlDatosEmpleado.clean();
 		}
 	}
+
 	private class BtnCancelarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			pnlDatosEmpleado.setComponentsEditables(false, false);
@@ -1248,19 +1272,20 @@ public class Login {
 			((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlPrincipales");
 		}
 	}
-	private class BtnAñadirActividadActionListener implements ActionListener {
+
+	private class btnAddActividadActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			pnlDatosActividad.clean();
 			pnlDatosActividad.setComponentsEditables(true);
-			((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlEditar");
-			editar_guardar_empleado = 1; // modo crear 
+			((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesEmpleados, "pnlEditar");
+			editar_guardar_empleado = 1; // modo crear
 		}
 	}
+
 	private class BtnEliminarActividadActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			int resp = JOptionPane.showConfirmDialog(null,
-					"eliminar",
-					"Toda esta ventana se tiene que traducir luego", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+			int resp = JOptionPane.showConfirmDialog(null, "eliminar", "Toda esta ventana se tiene que traducir luego",
+					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if (resp == 0) {
 				Actividad a;
 				try {

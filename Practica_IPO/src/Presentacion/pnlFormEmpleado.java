@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.io.File;
@@ -33,7 +34,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 import java.awt.event.ActionListener;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
@@ -286,11 +290,22 @@ public class pnlFormEmpleado extends JPanel {
 		tfIdiomasEm.setText("");
 		textFormacionEm.setText("");
 		lblFoto.setIcon(null);
+
+		Component[] jtexts = this.getComponents();
+		for (int i = 0; i < jtexts.length; i++) {
+
+			if (jtexts[i] instanceof JTextField) {
+				((JTextField) jtexts[i]).setBorder(bordeOriginal);
+
+			}
+
+		}
 	}
 
 	public boolean comprobarTextFields() {
 		Component[] textFields = this.getComponents();
 		boolean correcto = true;
+		Empleado e = new Empleado();
 		for (int i = 0; i < textFields.length; i++) {
 			if (textFields[i] instanceof JTextField) {
 				if (((JTextField) textFields[i]).getText().equals("")) {
@@ -301,6 +316,17 @@ public class pnlFormEmpleado extends JPanel {
 				}
 			}
 		}
+
+		try {
+			e = this.getDatosEmpleado();
+		} catch (Exception e2) {
+			e2.printStackTrace();
+		}
+
+		if (e.getImagen().equals(null)) {
+			correcto = false;
+		}
+
 		return correcto;
 	}
 
@@ -314,9 +340,17 @@ public class pnlFormEmpleado extends JPanel {
 		tfTelefonoEm.setEditable(editable);
 		tfCorreoEm.setEditable(editable);
 		tfIdiomasEm.setEditable(editable);
+		tfDniEm.setEditable(editable);
 		textFormacionEm.setEditable(editable);
-		btnEliminarFoto.setVisible(!editable);
-		btnAadirFoto.setVisible(!editable);
+		btnEliminarFoto.setVisible(editable);
+		btnAadirFoto.setVisible(editable);
+		textFormacionEm.setOpaque(editable);
+		if (editable) {
+			textFormacionEm.setBackground(Color.WHITE);
+		} else {
+			textFormacionEm.setBackground(getBackground());
+		}
+
 	}
 
 	public Empleado getDatosEmpleado() throws IOException {
@@ -326,9 +360,10 @@ public class pnlFormEmpleado extends JPanel {
 
 		return empleado;
 	}
-	
+
 	public Empleado getDatosEmpleadoFromUser() throws IOException {
 		Empleado empleado = new Empleado();
+
 		empleado.setNombre(tfNombreEm.getText());
 		empleado.setDni(tfDniEm.getText());
 		empleado.setApellidos(tfApellidosEm.getText());
@@ -336,7 +371,10 @@ public class pnlFormEmpleado extends JPanel {
 		empleado.setEmail(tfCorreoEm.getText());
 		empleado.setIdiomas(tfIdiomasEm.getText());
 		empleado.setFormacion(textFormacionEm.getText());
+		empleado.setImagen(lblFoto.getToolTipText().toString());
+
 		return empleado;
+
 	}
 
 	public void loadEmpleado(Empleado empleado) {
@@ -356,14 +394,14 @@ public class pnlFormEmpleado extends JPanel {
 
 		} catch (Exception e) {
 
-			miniatura = new ImageIcon(
-					getClass().getClassLoader().getResource("Presentacion/Imagenes/imagenDefecto.png"));
+			miniatura = new ImageIcon(getClass().getClassLoader().getResource("Presentacion/Imagenes/foto_random.png"));
 
 		} finally {
 			Image image = miniatura.getImage();
 			Image newimg = image.getScaledInstance(128, 128, java.awt.Image.SCALE_SMOOTH);
 			miniatura = new ImageIcon(newimg);
 			lblFoto.setIcon(miniatura);
+			lblFoto.setToolTipText(empleado.getImagen());
 		}
 	}
 
@@ -375,34 +413,32 @@ public class pnlFormEmpleado extends JPanel {
 			// Recoger el nombre del fichero seleccionado por el usuario
 			if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
 				File file = fcAbrir.getSelectedFile();
-				// En este punto la aplicación se debería encargar de realizar la operación
-				// sobre el fichero
 
-				// Cargar Imagen del Cliente
 				ImageIcon miniatura = null;
 				lblFoto.setText("");
 				try {
 					miniatura = new ImageIcon(file.getAbsolutePath());
-
 				} catch (Exception e) {
 
 					miniatura = new ImageIcon(
-							getClass().getClassLoader().getResource("Presentacion/Imagenes/imagenDefecto.png"));
+							getClass().getClassLoader().getResource("Presentacion/Imagenes/foto_random.jpg"));
 
 				} finally {
 					Image image = miniatura.getImage();
 					Image newimg = image.getScaledInstance(128, 128, java.awt.Image.SCALE_SMOOTH);
 					miniatura = new ImageIcon(newimg);
 					lblFoto.setIcon(miniatura);
-					lblFoto.setText(file.getAbsolutePath());
+					// lblFoto.setText(file.getAbsolutePath());
 				}
 
 			}
 
 		}
 	}
+
 	private class BtnEliminarFotoActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			lblFoto.setIcon(null);
 		}
 	}
 }

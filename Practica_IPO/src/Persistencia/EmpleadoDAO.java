@@ -24,7 +24,7 @@ public class EmpleadoDAO {
 
 		try {
 			String SQL = "INSERT INTO Empleado (dni, nombre, apellido, imagen, telefono, email, idiomas, formacion)"
-					+ " VALUES (" + empleado.getDni() + ",'" + empleado.getNombre() + "'," + empleado.getApellidos()
+					+ " VALUES (" + empleado.getDni() + ",'" + empleado.getNombre() + "','" + empleado.getApellidos()
 					+ "','" + empleado.getImagen() + "','" + empleado.getTelefono() + "','" + empleado.getEmail()
 					+ "','" + empleado.getIdiomas() + "','" + empleado.getFormacion() + "');";
 			System.out.println(SQL);
@@ -45,8 +45,8 @@ public class EmpleadoDAO {
 		boolean correcto = false;
 
 		try {
-			String sql = "UPDATE Empleado SET nombre='" + empleado.getNombre() + "', apellido="
-					+ empleado.getApellidos() + "" + ",imagen=" + empleado.getImagen() + ",telefono='"
+			String sql = "UPDATE Empleado SET nombre='" + empleado.getNombre() + "', apellido='"
+					+ empleado.getApellidos() + "',imagen='" + empleado.getImagen() + "',telefono='"
 					+ empleado.getTelefono() + "',email='" + empleado.getEmail() + "'," + "idiomas='"
 					+ empleado.getIdiomas() + "',formacion='" + empleado.getFormacion() + "' WHERE dni='"
 					+ empleado.getDni() + "';";
@@ -108,7 +108,7 @@ public class EmpleadoDAO {
 		return correcto;
 
 	}
-	
+
 	public boolean readFromName(Empleado empleado) {
 
 		boolean correcto = false;
