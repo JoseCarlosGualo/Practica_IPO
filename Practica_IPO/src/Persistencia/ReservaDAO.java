@@ -158,7 +158,7 @@ public class ReservaDAO {
 		ResultSet resultado;
 		Reserva reserva;
 		try {
-			resultado = Agente.getAgente().leer("SELECT * FROM Reserva;");
+			resultado = Agente.getAgente().leer("SELECT * FROM Reserva");
 
 			while (resultado.next()) {
 

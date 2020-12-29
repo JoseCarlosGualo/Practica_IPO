@@ -112,6 +112,10 @@ public class Empleado {
 	public boolean insert() {
 		return this.empleadoDAO.insert(this);
 	}
+	
+	public boolean readFromName() {
+		return this.empleadoDAO.readFromName(this);
+	}
 
 	public boolean update() {
 		return this.empleadoDAO.update(this);

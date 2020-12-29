@@ -2,6 +2,7 @@ package Presentacion;
 
 import java.awt.EventQueue;
 import java.awt.Font;
+import Presentacion.MessagesLogin;
 
 import javax.swing.JFrame;
 import java.awt.CardLayout;
@@ -20,6 +21,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -48,8 +50,8 @@ import javax.swing.text.MaskFormatter;
 
 import Dominio.Actividad;
 import Dominio.Bungalow;
-import Dominio.Disponibilidad;
 import Dominio.Empleado;
+import Dominio.Disponibilidad;
 import Dominio.Parcela;
 import Dominio.Reserva;
 import Dominio.Usuario;
@@ -128,20 +130,14 @@ public class Login {
 	private pnlContenedorParcelas pnlContenedorParcelas;
 	private JLabel lblBusquedaPorDni;
 	private JTextField tfBusquedaDni;
-	private JPanel pnlBotonesAEM;
+	private JPanel pnlBotonesEmpleados;
 	private JPanel pnlListadoEmpleados;
 	private JScrollPane scrollPane;
-	private JButton btnAadirEmpleado;
 	private pnlContenedorEmpleados pnlContenedorEmpleados;
-	private JButton btnEliminarEmpleado;
-	private JButton btnModificarEmpleado;
 	private pnlFormEmpleado pnlDatosEmpleado;
 	private JLabel lblBsquedaPorNombre;
 	private JTextField tfBusquedaNombre;
-	private JPanel pnlBotonesAEMActividad;
-	private JButton btnAadirEmpleado_1;
-	private JButton btnEliminarEmpleado_1;
-	private JButton btnModificarEmpleado_1;
+	private JPanel pnlBotonesActividades;
 	private JPanel pnlListadoActividades;
 	private JScrollPane scrollPaneActividades;
 	private pnlFormActividades pnlDatosActividad;
@@ -155,6 +151,21 @@ public class Login {
 	private JScrollPane scrollPaneRes;
 	private pnlFormReserva pnlDatosReserva;
 	private pnlContenedorReservas pnlContenedorReservas;
+	private int editar_guardar_empleado;
+	private JPanel pnlPrincipales;
+	private JPanel pnlEditar;
+	private JButton btnEliminarEmpleado;
+	private JButton btnModificarEmpleado;
+	private JButton btnAñadirEmpleado;
+	private JButton btnGuardar;
+	private JButton btnCancelar;
+	private JPanel pnlPrincipalesAct;
+	private JPanel pnlEditarAct;
+	private JButton btnAñadirActividad;
+	private JButton ModificarActividad;
+	private JButton btnEliminarActividad;
+	private JButton btnGuardarActividad;
+	private JButton btnCancelarActividad;
 
 	/**
 	 * Launch the application.
@@ -188,7 +199,7 @@ public class Login {
 		frmLogin.addKeyListener(new PnlLoginKeyListener());
 		frmLogin.setTitle("Inicio de sesi\u00F3n Camping");
 		frmLogin.getContentPane().addComponentListener(new FrameContentPaneComponentListener());
-		frmLogin.setBounds(100, 20, 1283, 856);
+		frmLogin.setBounds(100, 20, 1605, 796);
 		frmLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmLogin.getContentPane().setLayout(new CardLayout(0, 0));
 
@@ -672,9 +683,9 @@ public class Login {
 						GridBagLayout gbl_pnlEmpleados = new GridBagLayout();
 						gbl_pnlEmpleados.columnWidths = new int[] { 15, 0, 326, 30, 0, 0, 0, 0, 0 };
 						gbl_pnlEmpleados.rowHeights = new int[] { 54, 0, 15, 0 };
-						gbl_pnlEmpleados.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0,
+						gbl_pnlEmpleados.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0,
 								Double.MIN_VALUE };
-						gbl_pnlEmpleados.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
+						gbl_pnlEmpleados.rowWeights = new double[] { 1.0, 1.0, 0.0, Double.MIN_VALUE };
 						pnlEmpleados.setLayout(gbl_pnlEmpleados);
 						{
 							lblBusquedaPorDni = new JLabel("Busqueda por DNI: ");
@@ -697,26 +708,52 @@ public class Login {
 							tfBusquedaDni.setColumns(10);
 						}
 						{
-							pnlBotonesAEM = new JPanel();
-							GridBagConstraints gbc_pnlBotonesAEM = new GridBagConstraints();
-							gbc_pnlBotonesAEM.gridwidth = 3;
-							gbc_pnlBotonesAEM.insets = new Insets(0, 0, 5, 5);
-							gbc_pnlBotonesAEM.fill = GridBagConstraints.BOTH;
-							gbc_pnlBotonesAEM.gridx = 4;
-							gbc_pnlBotonesAEM.gridy = 0;
-							pnlEmpleados.add(pnlBotonesAEM, gbc_pnlBotonesAEM);
+							pnlBotonesEmpleados = new JPanel();
+							GridBagConstraints gbc_pnlBotonesEmpleados = new GridBagConstraints();
+							gbc_pnlBotonesEmpleados.gridwidth = 3;
+							gbc_pnlBotonesEmpleados.insets = new Insets(0, 0, 5, 5);
+							gbc_pnlBotonesEmpleados.fill = GridBagConstraints.BOTH;
+							gbc_pnlBotonesEmpleados.gridx = 4;
+							gbc_pnlBotonesEmpleados.gridy = 0;
+							pnlEmpleados.add(pnlBotonesEmpleados, gbc_pnlBotonesEmpleados);
+							pnlBotonesEmpleados.setLayout(new CardLayout(0, 0));
 							{
-								btnAadirEmpleado = new JButton("A\u00F1adir");
-								pnlBotonesAEM.add(btnAadirEmpleado);
+								pnlPrincipales = new JPanel();
+								pnlBotonesEmpleados.add(pnlPrincipales, "pnlPrincipales");
+								{
+									btnAñadirEmpleado = new JButton("Añadir");
+									btnAñadirEmpleado.addActionListener(new BtnAadir_1ActionListener());
+									btnAñadirEmpleado.setToolTipText("Añadir nuevo empleado");
+									pnlPrincipales.add(btnAñadirEmpleado);
+								}
+								{
+									btnModificarEmpleado = new JButton("Modificar");
+									btnModificarEmpleado.setToolTipText("Modificar los datos del empleado seleccionado");
+									btnModificarEmpleado.addActionListener(new BtnNewButton_1ActionListener());
+									pnlPrincipales.add(btnModificarEmpleado);
+								}
+								{
+									btnEliminarEmpleado = new JButton("Eliminar");
+									btnEliminarEmpleado.addActionListener(new BtnEliminar1ActionListener());
+									btnEliminarEmpleado.setToolTipText("Eliminar el empleado seleccionado");
+									pnlPrincipales.add(btnEliminarEmpleado);
+								}
 							}
 							{
-								btnEliminarEmpleado = new JButton("Eliminar");
-								btnEliminarEmpleado.addActionListener(new BtnEliminarEmpleadoActionListener());
-								pnlBotonesAEM.add(btnEliminarEmpleado);
-							}
-							{
-								btnModificarEmpleado = new JButton("Modificar");
-								pnlBotonesAEM.add(btnModificarEmpleado);
+								pnlEditar = new JPanel();
+								pnlBotonesEmpleados.add(pnlEditar, "pnlEditar");
+								{
+									btnGuardar = new JButton("Guardar");
+									btnGuardar.addActionListener(new BtnGuardarActionListener());
+									btnGuardar.setToolTipText("Guardar el nuevo empleado");
+									pnlEditar.add(btnGuardar);
+								}
+								{
+									btnCancelar = new JButton("Cancelar");
+									btnCancelar.addActionListener(new BtnCancelarActionListener());
+									btnCancelar.setToolTipText("Cancelar añadir");
+									pnlEditar.add(btnCancelar);
+								}
 							}
 						}
 						{
@@ -784,25 +821,44 @@ public class Login {
 							pnlActividades.add(tfBusquedaNombre, gbc_tfBusquedaNombre);
 						}
 						{
-							pnlBotonesAEMActividad = new JPanel();
-							GridBagConstraints gbc_pnlBotonesAEMActividad = new GridBagConstraints();
-							gbc_pnlBotonesAEMActividad.gridwidth = 3;
-							gbc_pnlBotonesAEMActividad.insets = new Insets(0, 0, 5, 5);
-							gbc_pnlBotonesAEMActividad.fill = GridBagConstraints.BOTH;
-							gbc_pnlBotonesAEMActividad.gridx = 4;
-							gbc_pnlBotonesAEMActividad.gridy = 0;
-							pnlActividades.add(pnlBotonesAEMActividad, gbc_pnlBotonesAEMActividad);
+							pnlBotonesActividades = new JPanel();
+							GridBagConstraints gbc_pnlBotonesActividades = new GridBagConstraints();
+							gbc_pnlBotonesActividades.gridwidth = 3;
+							gbc_pnlBotonesActividades.insets = new Insets(0, 0, 5, 5);
+							gbc_pnlBotonesActividades.fill = GridBagConstraints.BOTH;
+							gbc_pnlBotonesActividades.gridx = 4;
+							gbc_pnlBotonesActividades.gridy = 0;
+							pnlActividades.add(pnlBotonesActividades, gbc_pnlBotonesActividades);
+							pnlBotonesActividades.setLayout(new CardLayout(0, 0));
 							{
-								btnAadirEmpleado_1 = new JButton("A\u00F1adir");
-								pnlBotonesAEMActividad.add(btnAadirEmpleado_1);
+								pnlPrincipalesAct = new JPanel();
+								pnlBotonesActividades.add(pnlPrincipalesAct, "name_29558750074400");
+								{
+									btnAñadirActividad = new JButton("Añadir");
+									btnAñadirActividad.addActionListener(new BtnAñadirActividadActionListener());
+									pnlPrincipalesAct.add(btnAñadirActividad);
+								}
+								{
+									ModificarActividad = new JButton("Modificar");
+									pnlPrincipalesAct.add(ModificarActividad);
+								}
+								{
+									btnEliminarActividad = new JButton("Eliminar");
+									btnEliminarActividad.addActionListener(new BtnEliminarActividadActionListener());
+									pnlPrincipalesAct.add(btnEliminarActividad);
+								}
 							}
 							{
-								btnEliminarEmpleado_1 = new JButton("Eliminar");
-								pnlBotonesAEMActividad.add(btnEliminarEmpleado_1);
-							}
-							{
-								btnModificarEmpleado_1 = new JButton("Modificar");
-								pnlBotonesAEMActividad.add(btnModificarEmpleado_1);
+								pnlEditarAct = new JPanel();
+								pnlBotonesActividades.add(pnlEditarAct, "name_29558775194400");
+								{
+									btnGuardarActividad = new JButton("Guardar");
+									pnlEditarAct.add(btnGuardarActividad);
+								}
+								{
+									btnCancelarActividad = new JButton("Cancelar");
+									pnlEditarAct.add(btnCancelarActividad);
+								}
 							}
 						}
 						{
@@ -1095,32 +1151,129 @@ public class Login {
 			pnlContenedorEmpleados.filtraEmpleado(tfBusquedaDni.getText());
 		}
 	}
-
-	private class BtnEliminarEmpleadoActionListener implements ActionListener {
+	private class BtnNewButton_1ActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			pnlDatosEmpleado.setComponentsEditables(true, true);
+			((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlEditar");
+			editar_guardar_empleado = 2; // modo editar 
+		}
+	}
+	
+	private class BtnAadir_1ActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			pnlDatosEmpleado.clean();
+			pnlDatosEmpleado.setComponentsEditables(true, true);
+			((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlEditar");
+			editar_guardar_empleado = 1; // modo crear 
+		}
+	}
+	private class BtnEliminar1ActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
 			int resp = JOptionPane.showConfirmDialog(null,
-					"�Est�s seguro de que quieres eliminar este empleado de manera permanente?", "Eliminar Empleado",
-					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-
+					"eliminar",
+					"Toda esta ventana se tiene que traducir luego", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if (resp == 0) {
-				Empleado empleado = new Empleado();
+				Empleado e;
 				try {
-					empleado = pnlDatosEmpleado.getDatosEmpleado();
-					if (!isMonitor(empleado)) {
-						empleado.delete();
-					} else {
-						JOptionPane.showMessageDialog(null,
-								"El empleado que intentas borrar es encargado de una actividad, deber�s borrar las actividades en las que participa antes de borrarlo.");
-					}
-
-				} catch (Exception e2) {
-					e2.printStackTrace();
+					e = pnlDatosEmpleado.getDatosEmpleado();
+					e.delete();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 
 				pnlContenedorEmpleados.loadPanels();
-				tfBusquedaDni.setText("");
+				lblBusquedaPorDni.setText("");
 				pnlDatosEmpleado.clean();
+			}
+		}
+	}
+	private class BtnGuardarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			if (pnlDatosEmpleado.comprobarTextFields()) {
 
+				Empleado e;
+				try {
+					e = pnlDatosEmpleado.getDatosEmpleadoFromUser();
+					if (editar_guardar_empleado == 1) { // Modo crear nuevo usuario
+						if (e.insert()) {
+
+							JOptionPane.showMessageDialog(null, e.getDni() + MessagesLogin.getString("Principal.JOptionPaneHaSidoAnadido"));
+							pnlDatosEmpleado.setComponentsEditables(false, true);
+							((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados,
+									"pnlPrincipales");
+							editar_guardar_empleado = 0;
+							pnlContenedorEmpleados.loadPanels();
+							lblBusquedaPorDni.setText("");
+
+						} else {
+							JOptionPane.showMessageDialog(null,
+									MessagesLogin.getString("Principal.JOptionPaneErrorBaseDeDatos"), "Error",
+									JOptionPane.ERROR_MESSAGE);
+						}
+					} else if (editar_guardar_empleado == 2) { // Modo editar usuario
+						if (e.update()) {
+							JOptionPane.showMessageDialog(null,"Cliente " +e.getDni() + MessagesLogin.getString("Principal.JOptionPaneActualizadoBien"));
+							pnlDatosEmpleado.setComponentsEditables(false, true);
+							pnlDatosEmpleado.setComponentsEditables(false, false);
+							editar_guardar_empleado = 0;
+							((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados,
+									"pnlPrincipales");
+							pnlContenedorEmpleados.clean();
+							pnlContenedorEmpleados.loadPanels();
+							lblBusquedaPorDni.setText("");
+						} else {
+							JOptionPane.showMessageDialog(null,
+									MessagesLogin.getString("Principal.JOptionPaneActualizadoMal"), "Error",
+									JOptionPane.ERROR_MESSAGE);
+						}
+					}
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+			} else {
+				JOptionPane.showMessageDialog(null, MessagesLogin.getString("Principal.JOptionPaneTodosLosDatos"),
+						"Aviso", JOptionPane.WARNING_MESSAGE);
+			}
+			pnlContenedorEmpleados.loadPanels();
+			pnlDatosEmpleado.clean();
+		}
+	}
+	private class BtnCancelarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			pnlDatosEmpleado.setComponentsEditables(false, false);
+			pnlDatosEmpleado.clean();
+			((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlPrincipales");
+		}
+	}
+	private class BtnAñadirActividadActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			pnlDatosActividad.clean();
+			pnlDatosActividad.setComponentsEditables(true);
+			((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlEditar");
+			editar_guardar_empleado = 1; // modo crear 
+		}
+	}
+	private class BtnEliminarActividadActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			int resp = JOptionPane.showConfirmDialog(null,
+					"eliminar",
+					"Toda esta ventana se tiene que traducir luego", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+			if (resp == 0) {
+				Actividad a;
+				try {
+					a = pnlDatosActividad.getDatosActividad();
+					a.delete();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+				pnlContenedorEmpleados.loadPanels();
+				lblBusquedaPorDni.setText("");
+				pnlDatosEmpleado.clean();
 			}
 		}
 	}

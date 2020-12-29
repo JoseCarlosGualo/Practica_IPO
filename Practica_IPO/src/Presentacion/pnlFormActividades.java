@@ -21,6 +21,7 @@ import Dominio.Empleado;
 
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
+import java.io.IOException;
 
 public class pnlFormActividades extends JPanel {
 	private JFrame framePrincipal;
@@ -264,6 +265,14 @@ public class pnlFormActividades extends JPanel {
 
 		return correcto;
 	}
+	
+	public Actividad getDatosActividad() throws IOException {
+		Actividad actividad = new Actividad();
+		actividad.setNombre(lblNombreActividad.getText());
+		actividad.readFromName();
+
+		return actividad;
+	}
 
 	public void loadActividad(Actividad actividad) {
 		lblNombreActividad.setText(actividad.getNombre());
@@ -275,6 +284,32 @@ public class pnlFormActividades extends JPanel {
 		tfPrecioHoraAc.setText(String.valueOf(actividad.getPrecio_hora() + " euros/hora"));
 		textAreaMaterialesNecesariosAc.setText(actividad.getEquipamiento());
 		textAreaDescripcion.setText(actividad.getDescripcion());
+	}
+	
+	public Empleado getDatosActividadFromUser() throws IOException {
+		Empleado empleado = new Empleado();
+		Actividad actividad = new Actividad();
+		empleado.readFromName();
+		actividad.setEmpleado(empleado);
+		actividad.setCupo_minimo(Integer.parseInt(tfCupoMinimoAc.getText()));
+		actividad.setCupo_maximo(Integer.parseInt(tfCupoMaximoAc.getText()));
+		actividad.setZona_camping(tfAreaCampingAc.getText());
+		actividad.setDestinatario(tfDestinatarioAc.getText());
+		actividad.setPrecio_hora(Double.parseDouble(tfPrecioHoraAc.getText()));
+		actividad.setEquipamiento(textAreaMaterialesNecesariosAc.getText());
+		actividad.setDescripcion(textAreaDescripcion.getText());
+		return empleado;
+	}
+	
+	public void setComponentsEditables(boolean editable) {
+		tfMonitorAc.setEditable(editable);
+		tfCupoMinimoAc.setEditable(editable);
+		tfCupoMaximoAc.setEditable(editable);
+		tfAreaCampingAc.setEditable(editable);
+		tfDestinatarioAc.setEditable(editable);
+		tfPrecioHoraAc.setEditable(editable);
+		textAreaMaterialesNecesariosAc.setEditable(editable);
+		textAreaDescripcion.setEditable(editable);
 	}
 
 }

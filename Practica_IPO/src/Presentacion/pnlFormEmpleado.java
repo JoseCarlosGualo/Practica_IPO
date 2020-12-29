@@ -20,6 +20,7 @@ import javax.swing.border.Border;
 import javax.swing.filechooser.FileFilter;
 
 import Dominio.Empleado;
+import Presentacion.ImageFilter;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -33,7 +34,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.awt.event.ActionListener;
-import java.awt.image.ImageFilter;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
@@ -118,10 +118,13 @@ public class pnlFormEmpleado extends JPanel {
 			add(pnlBtnsAyEFoto, gbc_pnlBtnsAyEFoto);
 			{
 				btnEliminarFoto = new JButton("Eliminar Foto");
+				btnEliminarFoto.setVisible(false);
+				btnEliminarFoto.addActionListener(new BtnEliminarFotoActionListener());
 				pnlBtnsAyEFoto.add(btnEliminarFoto);
 			}
 			{
 				btnAadirFoto = new JButton("A\u00F1adir Foto");
+				btnAadirFoto.setVisible(false);
 				pnlBtnsAyEFoto.add(btnAadirFoto);
 				btnAadirFoto.addActionListener(new BtnAadirFotoActionListener());
 			}
@@ -312,6 +315,8 @@ public class pnlFormEmpleado extends JPanel {
 		tfCorreoEm.setEditable(editable);
 		tfIdiomasEm.setEditable(editable);
 		textFormacionEm.setEditable(editable);
+		btnEliminarFoto.setVisible(!editable);
+		btnAadirFoto.setVisible(!editable);
 	}
 
 	public Empleado getDatosEmpleado() throws IOException {
@@ -319,6 +324,18 @@ public class pnlFormEmpleado extends JPanel {
 		empleado.setDni(tfDniEm.getText());
 		empleado.read();
 
+		return empleado;
+	}
+	
+	public Empleado getDatosEmpleadoFromUser() throws IOException {
+		Empleado empleado = new Empleado();
+		empleado.setNombre(tfNombreEm.getText());
+		empleado.setDni(tfDniEm.getText());
+		empleado.setApellidos(tfApellidosEm.getText());
+		empleado.setTelefono(tfTelefonoEm.getText());
+		empleado.setEmail(tfCorreoEm.getText());
+		empleado.setIdiomas(tfIdiomasEm.getText());
+		empleado.setFormacion(textFormacionEm.getText());
 		return empleado;
 	}
 
@@ -351,8 +368,41 @@ public class pnlFormEmpleado extends JPanel {
 	}
 
 	private class BtnAadirFotoActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent arg0) {
+			JFileChooser fcAbrir = new JFileChooser();
+			fcAbrir.setFileFilter(new ImageFilter());
+			int valorDevuelto = fcAbrir.showOpenDialog(framePrincipal);
+			// Recoger el nombre del fichero seleccionado por el usuario
+			if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
+				File file = fcAbrir.getSelectedFile();
+				// En este punto la aplicación se debería encargar de realizar la operación
+				// sobre el fichero
 
+				// Cargar Imagen del Cliente
+				ImageIcon miniatura = null;
+				lblFoto.setText("");
+				try {
+					miniatura = new ImageIcon(file.getAbsolutePath());
+
+				} catch (Exception e) {
+
+					miniatura = new ImageIcon(
+							getClass().getClassLoader().getResource("Presentacion/Imagenes/imagenDefecto.png"));
+
+				} finally {
+					Image image = miniatura.getImage();
+					Image newimg = image.getScaledInstance(128, 128, java.awt.Image.SCALE_SMOOTH);
+					miniatura = new ImageIcon(newimg);
+					lblFoto.setIcon(miniatura);
+					lblFoto.setText(file.getAbsolutePath());
+				}
+
+			}
+
+		}
+	}
+	private class BtnEliminarFotoActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
 		}
 	}
 }

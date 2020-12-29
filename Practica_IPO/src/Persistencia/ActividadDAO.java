@@ -122,6 +122,42 @@ public class ActividadDAO {
 		return correcto;
 
 	}
+	
+	public boolean readFromName(Actividad actividad) {
+
+		boolean correcto = false;
+		ResultSet resultado;
+		try {
+			resultado = Agente.getAgente().leer(
+					"SELECT id, nombre, empleado, horario, cupo_minimo, cupo_maximo, destinatario, precio_hora, zona_camping, descripcion, equipamiento, imagen FROM Actividad WHERE nombre="
+							+ actividad.getNombre() + ";");
+			while (resultado.next()) {
+				actividad.setId(resultado.getInt(1));
+				actividad.setNombre(resultado.getString(2));
+				Empleado empleado = new Empleado();
+				empleado.setDni(resultado.getString(3));
+				empleado.read();
+				actividad.setEmpleado(empleado);
+				actividad.setHorario(resultado.getString(4));
+				actividad.setCupo_minimo(resultado.getInt(5));
+				actividad.setCupo_maximo(resultado.getInt(6));
+				actividad.setDestinatario(resultado.getString(7));
+				actividad.setPrecio_hora((resultado.getDouble(8)));
+				actividad.setZona_camping(resultado.getString(9));
+				actividad.setDescripcion(resultado.getString(10));
+				actividad.setEquipamiento(resultado.getString(11));
+				actividad.setImagen(resultado.getString(12));
+			}
+			correcto = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return correcto;
+
+	}
 
 	public boolean readAll() {
 

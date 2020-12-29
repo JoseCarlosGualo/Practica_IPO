@@ -48,8 +48,8 @@ public class EmpleadoDAO {
 			String sql = "UPDATE Empleado SET nombre='" + empleado.getNombre() + "', apellido="
 					+ empleado.getApellidos() + "" + ",imagen=" + empleado.getImagen() + ",telefono='"
 					+ empleado.getTelefono() + "',email='" + empleado.getEmail() + "'," + "idiomas='"
-					+ empleado.getIdiomas() + "',formacion='" + empleado.getFormacion() + "' WHERE dni="
-					+ empleado.getDni() + ";";
+					+ empleado.getIdiomas() + "',formacion='" + empleado.getFormacion() + "' WHERE dni='"
+					+ empleado.getDni() + "';";
 			System.out.println(sql);
 			Agente.getAgente().modificar(sql);
 			correcto = true;
@@ -87,6 +87,35 @@ public class EmpleadoDAO {
 		try {
 			resultado = Agente.getAgente().leer(
 					"SELECT dni, nombre, apellido, imagen, telefono, email, idiomas, formacion FROM Empleado WHERE dni='"
+							+ empleado.getDni() + "';");
+			while (resultado.next()) {
+				empleado.setDni(resultado.getString(1));
+				empleado.setNombre(resultado.getString(2));
+				empleado.setApellidos(resultado.getString(3));
+				empleado.setImagen(resultado.getString(4));
+				empleado.setTelefono(resultado.getString(5));
+				empleado.setEmail(resultado.getString(6));
+				empleado.setIdiomas(resultado.getString(7));
+				empleado.setFormacion(resultado.getString(8));
+			}
+			correcto = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return correcto;
+
+	}
+	
+	public boolean readFromName(Empleado empleado) {
+
+		boolean correcto = false;
+		ResultSet resultado;
+		try {
+			resultado = Agente.getAgente().leer(
+					"SELECT dni, nombre, apellido, imagen, telefono, email, idiomas, formacion FROM Empleado WHERE nombre='"
 							+ empleado.getDni() + "';");
 			while (resultado.next()) {
 				empleado.setDni(resultado.getString(1));

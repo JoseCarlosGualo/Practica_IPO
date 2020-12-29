@@ -80,6 +80,10 @@ public class Actividad {
 	public void setActividadDAO(ActividadDAO actividadDAO) {
 		this.actividadDAO = actividadDAO;
 	}
+	
+	public boolean readFromName() {
+		return this.actividadDAO.readFromName(this);
+	}
 
 	public String getDestinatario() {
 		return destinatario;
