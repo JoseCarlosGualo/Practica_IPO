@@ -127,7 +127,8 @@ public class pnlFormEmpleado extends JPanel {
 				pnlBtnsAyEFoto.add(btnEliminarFoto);
 			}
 			{
-				btnAadirFoto = new JButton("A\u00F1adir Foto");
+				btnAadirFoto = new JButton("");
+				btnAadirFoto.setIcon(new ImageIcon(pnlFormEmpleado.class.getResource("/Presentacion/Imagenes/camera-add-icon.png")));
 				btnAadirFoto.setVisible(false);
 				pnlBtnsAyEFoto.add(btnAadirFoto);
 				btnAadirFoto.addActionListener(new BtnAadirFotoActionListener());
@@ -412,11 +413,15 @@ public class pnlFormEmpleado extends JPanel {
 			int valorDevuelto = fcAbrir.showOpenDialog(framePrincipal);
 			// Recoger el nombre del fichero seleccionado por el usuario
 			if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
-				File file = fcAbrir.getSelectedFile();
 
 				ImageIcon miniatura = null;
 				lblFoto.setText("");
 				try {
+					File file = fcAbrir.getSelectedFile();
+					Empleado em;
+					em = getDatosEmpleado();
+					em.setImagen_aux(file.getName());
+					em.setImagen_aux(file.getAbsolutePath());
 					miniatura = new ImageIcon(file.getAbsolutePath());
 				} catch (Exception e) {
 

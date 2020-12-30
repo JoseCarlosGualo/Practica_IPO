@@ -21,7 +21,13 @@ import Dominio.Empleado;
 
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
+import java.io.File;
 import java.io.IOException;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class pnlFormActividades extends JPanel {
 	private JFrame framePrincipal;
@@ -45,15 +51,23 @@ public class pnlFormActividades extends JPanel {
 	private JTextArea textAreaMaterialesNecesariosAc;
 	private JLabel lblDestinatarios;
 	private JTextField tfDestinatarioAc;
+	private JTextField txtNombreAct;
+	private JTextField txtHorario;
+	private JLabel lblNombreAct;
+	private JLabel lblHorarioAct;
+	
+	private Color color_menu = new Color(240, 240, 240);
+	private JButton bntAñadirFoto;
+	private JLabel lblFotoActividad;
 
 	public pnlFormActividades(JFrame framePrincipal) {
 		this.framePrincipal = framePrincipal;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 15, 0, 240, 15, 0 };
-		gridBagLayout.rowHeights = new int[] { 15, 0, 25, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 0, 0 };
+		gridBagLayout.rowHeights = new int[] { 15, 0, 25, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-				0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+				0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 		{
 			lblNombreActividad = new JLabel("Nombre Actividad");
@@ -200,7 +214,6 @@ public class pnlFormActividades extends JPanel {
 			textAreaMaterialesNecesariosAc = new JTextArea();
 			textAreaMaterialesNecesariosAc.setWrapStyleWord(true);
 			textAreaMaterialesNecesariosAc.setText((String) null);
-			textAreaMaterialesNecesariosAc.setOpaque(false);
 			textAreaMaterialesNecesariosAc.setLineWrap(true);
 			textAreaMaterialesNecesariosAc.setEditable(false);
 			textAreaMaterialesNecesariosAc.setBackground(SystemColor.menu);
@@ -224,8 +237,6 @@ public class pnlFormActividades extends JPanel {
 			textAreaDescripcion = new JTextArea();
 			textAreaDescripcion.setWrapStyleWord(true);
 			textAreaDescripcion.setText((String) null);
-			textAreaDescripcion.setOpaque(false);
-			textAreaDescripcion.setLineWrap(true);
 			textAreaDescripcion.setEditable(false);
 			textAreaDescripcion.setBackground(SystemColor.menu);
 			GridBagConstraints gbc_textAreaDescripcion = new GridBagConstraints();
@@ -234,6 +245,73 @@ public class pnlFormActividades extends JPanel {
 			gbc_textAreaDescripcion.gridx = 2;
 			gbc_textAreaDescripcion.gridy = 17;
 			add(textAreaDescripcion, gbc_textAreaDescripcion);
+		}
+		{
+			lblNombreAct = new JLabel("Nombre de la Actividad");
+			lblNombreAct.setVisible(false);
+			lblNombreAct.setFont(new Font("Tahoma", Font.BOLD, 13));
+			GridBagConstraints gbc_lblNombreAct = new GridBagConstraints();
+			gbc_lblNombreAct.insets = new Insets(0, 0, 5, 5);
+			gbc_lblNombreAct.anchor = GridBagConstraints.EAST;
+			gbc_lblNombreAct.gridx = 1;
+			gbc_lblNombreAct.gridy = 19;
+			add(lblNombreAct, gbc_lblNombreAct);
+		}
+		{
+			txtNombreAct = new JTextField();
+			txtNombreAct.setVisible(false);
+			GridBagConstraints gbc_txtNombreAct = new GridBagConstraints();
+			gbc_txtNombreAct.anchor = GridBagConstraints.NORTH;
+			gbc_txtNombreAct.insets = new Insets(0, 0, 5, 5);
+			gbc_txtNombreAct.fill = GridBagConstraints.HORIZONTAL;
+			gbc_txtNombreAct.gridx = 2;
+			gbc_txtNombreAct.gridy = 19;
+			add(txtNombreAct, gbc_txtNombreAct);
+			txtNombreAct.setColumns(10);
+		}
+		{
+			lblHorarioAct = new JLabel("Horario");
+			lblHorarioAct.setVisible(false);
+			lblHorarioAct.setFont(new Font("Tahoma", Font.BOLD, 13));
+			GridBagConstraints gbc_lblHorarioAct = new GridBagConstraints();
+			gbc_lblHorarioAct.insets = new Insets(0, 0, 5, 5);
+			gbc_lblHorarioAct.anchor = GridBagConstraints.EAST;
+			gbc_lblHorarioAct.gridx = 1;
+			gbc_lblHorarioAct.gridy = 21;
+			add(lblHorarioAct, gbc_lblHorarioAct);
+		}
+		{
+			txtHorario = new JTextField();
+			txtHorario.setVisible(false);
+			GridBagConstraints gbc_txtHorario = new GridBagConstraints();
+			gbc_txtHorario.insets = new Insets(0, 0, 5, 5);
+			gbc_txtHorario.fill = GridBagConstraints.HORIZONTAL;
+			gbc_txtHorario.gridx = 2;
+			gbc_txtHorario.gridy = 21;
+			add(txtHorario, gbc_txtHorario);
+			txtHorario.setColumns(10);
+		}
+		{
+			lblFotoActividad = new JLabel("");
+			lblFotoActividad.setVisible(false);
+			GridBagConstraints gbc_lblFotoActividad = new GridBagConstraints();
+			gbc_lblFotoActividad.gridheight = 5;
+			gbc_lblFotoActividad.fill = GridBagConstraints.VERTICAL;
+			gbc_lblFotoActividad.insets = new Insets(0, 0, 0, 5);
+			gbc_lblFotoActividad.gridx = 2;
+			gbc_lblFotoActividad.gridy = 23;
+			add(lblFotoActividad, gbc_lblFotoActividad);
+		}
+		{
+			bntAñadirFoto = new JButton("");
+			bntAñadirFoto.setVisible(false);
+			bntAñadirFoto.addActionListener(new BntAñadirFotoActionListener());
+			bntAñadirFoto.setIcon(new ImageIcon(pnlFormActividades.class.getResource("/Presentacion/Imagenes/camera-add-icon.png")));
+			GridBagConstraints gbc_bntAñadirFoto = new GridBagConstraints();
+			gbc_bntAñadirFoto.insets = new Insets(0, 0, 5, 5);
+			gbc_bntAñadirFoto.gridx = 1;
+			gbc_bntAñadirFoto.gridy = 25;
+			add(bntAñadirFoto, gbc_bntAñadirFoto);
 		}
 	}
 
@@ -298,6 +376,8 @@ public class pnlFormActividades extends JPanel {
 		actividad.setPrecio_hora(Double.parseDouble(tfPrecioHoraAc.getText()));
 		actividad.setEquipamiento(textAreaMaterialesNecesariosAc.getText());
 		actividad.setDescripcion(textAreaDescripcion.getText());
+		actividad.setNombre(txtNombreAct.getText());
+		actividad.setHorario(txtHorario.getText());
 		return empleado;
 	}
 	
@@ -310,6 +390,56 @@ public class pnlFormActividades extends JPanel {
 		tfPrecioHoraAc.setEditable(editable);
 		textAreaMaterialesNecesariosAc.setEditable(editable);
 		textAreaDescripcion.setEditable(editable);
+		txtNombreAct.setVisible(editable);
+		lblNombreAct.setVisible(editable);
+		txtNombreAct.setEditable(editable);
+		lblHorarioAct.setVisible(editable);
+		txtHorario.setVisible(editable);
+		txtHorario.setVisible(editable);
+		bntAñadirFoto.setVisible(editable);
+		lblFotoActividad.setVisible(editable);
+		
+		if (editable) {
+			textAreaDescripcion.setBackground(Color.WHITE);
+			textAreaMaterialesNecesariosAc.setBackground(Color.WHITE);
+		}else {
+			textAreaMaterialesNecesariosAc.setBackground(color_menu);
+			textAreaDescripcion.setBackground(color_menu);
+			lblFotoActividad.setIcon(null);
+			lblFotoActividad.setText("");
+		}
 	}
 
+	private class BntAñadirFotoActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			JFileChooser fcAbrir = new JFileChooser();
+			fcAbrir.setFileFilter(new ImageFilter());
+			int valorDevuelto = fcAbrir.showOpenDialog(framePrincipal);
+			// Recoger el nombre del fichero seleccionado por el usuario
+			if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
+				File file = fcAbrir.getSelectedFile();
+				
+
+				// Cargar Imagen del Cliente
+				ImageIcon miniatura = null;
+				lblFotoActividad.setText("");
+				try {
+					miniatura = new ImageIcon(file.getAbsolutePath());
+
+				} catch (Exception e) {
+
+					miniatura = new ImageIcon(
+							getClass().getClassLoader().getResource("Presentacion/Imagenes/random_image.png"));
+
+				} finally {
+					Image image = miniatura.getImage();
+					Image newimg = image.getScaledInstance(128, 128, java.awt.Image.SCALE_SMOOTH);
+					miniatura = new ImageIcon(newimg);
+					lblFotoActividad.setIcon(miniatura);
+					lblFotoActividad.setText(file.getAbsolutePath());
+				}
+
+			}
+		}
+	}
 }
