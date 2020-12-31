@@ -1,9 +1,5 @@
 package Dominio;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import Persistencia.EmpleadoDAO;
 
 public class Empleado {
@@ -15,24 +11,6 @@ public class Empleado {
 	private String idiomas;
 	private String formacion;
 	private String dni;
-	private String imagen_aux;
-	private String ruta_imagen_aux;
-
-	public String getRuta_imagen_aux() {
-		return ruta_imagen_aux;
-	}
-
-	public void setRuta_imagen_aux(String ruta_imagen_aux) {
-		this.ruta_imagen_aux = ruta_imagen_aux;
-	}
-
-	public String getImagen_aux() {
-		return imagen_aux;
-	}
-
-	public void setImagen_aux(String imagen_aux) {
-		this.imagen_aux = imagen_aux;
-	}
 
 	private EmpleadoDAO empleadoDAO;
 
@@ -51,9 +29,6 @@ public class Empleado {
 		this.idiomas = idiomas;
 		this.formacion = formacion;
 		this.dni = dni;
-		this.imagen_aux = null;
-		this.ruta_imagen_aux = null;
-		
 
 		this.empleadoDAO = new EmpleadoDAO();
 	}
@@ -133,7 +108,7 @@ public class Empleado {
 	public boolean insert() {
 		return this.empleadoDAO.insert(this);
 	}
-	
+
 	public boolean readFromName() {
 		return this.empleadoDAO.readFromName(this);
 	}

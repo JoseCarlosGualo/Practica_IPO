@@ -55,16 +55,17 @@ public class pnlFormActividades extends JPanel {
 	private JTextField txtHorario;
 	private JLabel lblNombreAct;
 	private JLabel lblHorarioAct;
-	
+
 	private Color color_menu = new Color(240, 240, 240);
-	private JButton bntAñadirFoto;
+	private JButton bntAddFoto;
 	private JLabel lblFotoActividad;
 
 	public pnlFormActividades(JFrame framePrincipal) {
 		this.framePrincipal = framePrincipal;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 15, 0, 240, 15, 0 };
-		gridBagLayout.rowHeights = new int[] { 15, 0, 25, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		gridBagLayout.rowHeights = new int[] { 15, 0, 25, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0 };
 		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 				0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
@@ -303,15 +304,16 @@ public class pnlFormActividades extends JPanel {
 			add(lblFotoActividad, gbc_lblFotoActividad);
 		}
 		{
-			bntAñadirFoto = new JButton("");
-			bntAñadirFoto.setVisible(false);
-			bntAñadirFoto.addActionListener(new BntAñadirFotoActionListener());
-			bntAñadirFoto.setIcon(new ImageIcon(pnlFormActividades.class.getResource("/Presentacion/Imagenes/camera-add-icon.png")));
-			GridBagConstraints gbc_bntAñadirFoto = new GridBagConstraints();
-			gbc_bntAñadirFoto.insets = new Insets(0, 0, 5, 5);
-			gbc_bntAñadirFoto.gridx = 1;
-			gbc_bntAñadirFoto.gridy = 25;
-			add(bntAñadirFoto, gbc_bntAñadirFoto);
+			bntAddFoto = new JButton("");
+			bntAddFoto.setVisible(false);
+			bntAddFoto.addActionListener(new BntAddFotoActionListener());
+			bntAddFoto.setIcon(
+					new ImageIcon(pnlFormActividades.class.getResource("/Presentacion/Imagenes/camera-add-icon.png")));
+			GridBagConstraints gbc_bntAddFoto = new GridBagConstraints();
+			gbc_bntAddFoto.insets = new Insets(0, 0, 5, 5);
+			gbc_bntAddFoto.gridx = 1;
+			gbc_bntAddFoto.gridy = 25;
+			add(bntAddFoto, gbc_bntAddFoto);
 		}
 	}
 
@@ -343,7 +345,7 @@ public class pnlFormActividades extends JPanel {
 
 		return correcto;
 	}
-	
+
 	public Actividad getDatosActividad() throws IOException {
 		Actividad actividad = new Actividad();
 		actividad.setNombre(lblNombreActividad.getText());
@@ -363,7 +365,7 @@ public class pnlFormActividades extends JPanel {
 		textAreaMaterialesNecesariosAc.setText(actividad.getEquipamiento());
 		textAreaDescripcion.setText(actividad.getDescripcion());
 	}
-	
+
 	public Empleado getDatosActividadFromUser() throws IOException {
 		Empleado empleado = new Empleado();
 		Actividad actividad = new Actividad();
@@ -380,7 +382,7 @@ public class pnlFormActividades extends JPanel {
 		actividad.setHorario(txtHorario.getText());
 		return empleado;
 	}
-	
+
 	public void setComponentsEditables(boolean editable) {
 		tfMonitorAc.setEditable(editable);
 		tfCupoMinimoAc.setEditable(editable);
@@ -396,13 +398,13 @@ public class pnlFormActividades extends JPanel {
 		lblHorarioAct.setVisible(editable);
 		txtHorario.setVisible(editable);
 		txtHorario.setVisible(editable);
-		bntAñadirFoto.setVisible(editable);
+		bntAddFoto.setVisible(editable);
 		lblFotoActividad.setVisible(editable);
-		
+
 		if (editable) {
 			textAreaDescripcion.setBackground(Color.WHITE);
 			textAreaMaterialesNecesariosAc.setBackground(Color.WHITE);
-		}else {
+		} else {
 			textAreaMaterialesNecesariosAc.setBackground(color_menu);
 			textAreaDescripcion.setBackground(color_menu);
 			lblFotoActividad.setIcon(null);
@@ -410,7 +412,7 @@ public class pnlFormActividades extends JPanel {
 		}
 	}
 
-	private class BntAñadirFotoActionListener implements ActionListener {
+	private class BntAddFotoActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			JFileChooser fcAbrir = new JFileChooser();
 			fcAbrir.setFileFilter(new ImageFilter());
@@ -418,7 +420,6 @@ public class pnlFormActividades extends JPanel {
 			// Recoger el nombre del fichero seleccionado por el usuario
 			if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
 				File file = fcAbrir.getSelectedFile();
-				
 
 				// Cargar Imagen del Cliente
 				ImageIcon miniatura = null;

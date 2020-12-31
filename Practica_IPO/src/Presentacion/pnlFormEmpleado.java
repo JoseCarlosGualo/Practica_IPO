@@ -30,6 +30,7 @@ import javax.swing.JFrame;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.CopyOption;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -127,8 +128,7 @@ public class pnlFormEmpleado extends JPanel {
 				pnlBtnsAyEFoto.add(btnEliminarFoto);
 			}
 			{
-				btnAadirFoto = new JButton("");
-				btnAadirFoto.setIcon(new ImageIcon(pnlFormEmpleado.class.getResource("/Presentacion/Imagenes/camera-add-icon.png")));
+				btnAadirFoto = new JButton("A\u00F1adir Foto");
 				btnAadirFoto.setVisible(false);
 				pnlBtnsAyEFoto.add(btnAadirFoto);
 				btnAadirFoto.addActionListener(new BtnAadirFotoActionListener());
@@ -392,17 +392,22 @@ public class pnlFormEmpleado extends JPanel {
 		try {
 			miniatura = new ImageIcon(
 					getClass().getClassLoader().getResource("Presentacion/Imagenes/" + empleado.getImagen()));
-
-		} catch (Exception e) {
-
-			miniatura = new ImageIcon(getClass().getClassLoader().getResource("Presentacion/Imagenes/foto_random.png"));
-
-		} finally {
 			Image image = miniatura.getImage();
 			Image newimg = image.getScaledInstance(128, 128, java.awt.Image.SCALE_SMOOTH);
 			miniatura = new ImageIcon(newimg);
 			lblFoto.setIcon(miniatura);
 			lblFoto.setToolTipText(empleado.getImagen());
+
+		} catch (Exception e) {
+
+			miniatura = new ImageIcon(getClass().getClassLoader().getResource("Presentacion/Imagenes/foto_random.jpg"));
+			Image image = miniatura.getImage();
+			Image newimg = image.getScaledInstance(128, 128, java.awt.Image.SCALE_SMOOTH);
+			miniatura = new ImageIcon(newimg);
+			lblFoto.setIcon(miniatura);
+			lblFoto.setToolTipText("foto_random.jpg");
+			empleado.setImagen("foto_random.jpg");
+
 		}
 	}
 
@@ -410,30 +415,40 @@ public class pnlFormEmpleado extends JPanel {
 		public void actionPerformed(ActionEvent arg0) {
 			JFileChooser fcAbrir = new JFileChooser();
 			fcAbrir.setFileFilter(new ImageFilter());
+			String imagen = "";
 			int valorDevuelto = fcAbrir.showOpenDialog(framePrincipal);
 			// Recoger el nombre del fichero seleccionado por el usuario
 			if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
-
+				File file = fcAbrir.getSelectedFile();
+				System.out.println(file.getAbsolutePath());
 				ImageIcon miniatura = null;
 				lblFoto.setText("");
 				try {
-					File file = fcAbrir.getSelectedFile();
-					Empleado em;
-					em = getDatosEmpleado();
-					em.setImagen_aux(file.getName());
-					em.setImagen_aux(file.getAbsolutePath());
 					miniatura = new ImageIcon(file.getAbsolutePath());
-				} catch (Exception e) {
 
-					miniatura = new ImageIcon(
-							getClass().getClassLoader().getResource("Presentacion/Imagenes/foto_random.jpg"));
+					imagen = file.getName();
 
-				} finally {
 					Image image = miniatura.getImage();
 					Image newimg = image.getScaledInstance(128, 128, java.awt.Image.SCALE_SMOOTH);
 					miniatura = new ImageIcon(newimg);
 					lblFoto.setIcon(miniatura);
-					// lblFoto.setText(file.getAbsolutePath());
+
+					lblFoto.setToolTipText(imagen);
+					System.out.println(imagen);
+				} catch (Exception e) {
+
+					miniatura = new ImageIcon(
+							getClass().getClassLoader().getResource("Presentacion/Imagenes/foto_random.jpg"));
+					lblFoto.setToolTipText("foto_random.jpg");
+
+					Image image = miniatura.getImage();
+					Image newimg = image.getScaledInstance(128, 128, java.awt.Image.SCALE_SMOOTH);
+					miniatura = new ImageIcon(newimg);
+					lblFoto.setIcon(miniatura);
+
+					lblFoto.setToolTipText("foto_random.jpg");
+					System.out.println(imagen);
+
 				}
 
 			}

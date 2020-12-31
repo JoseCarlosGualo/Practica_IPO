@@ -377,7 +377,7 @@ public class Login {
 						gbc_btnVerPass.gridy = 0;
 						pnlPass.add(btnMostrarConsea, gbc_btnVerPass);
 					}
-					
+
 					btnVerPass = new JButton("");
 					btnVerPass.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 					btnVerPass.setContentAreaFilled(false);
@@ -723,7 +723,7 @@ public class Login {
 						GridBagLayout gbl_pnlEmpleados = new GridBagLayout();
 						gbl_pnlEmpleados.columnWidths = new int[] { 15, 0, 326, 30, 0, 0, 0, 0, 0 };
 						gbl_pnlEmpleados.rowHeights = new int[] { 54, 0, 15, 0 };
-						gbl_pnlEmpleados.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0,
+						gbl_pnlEmpleados.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0,
 								Double.MIN_VALUE };
 						gbl_pnlEmpleados.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
 						pnlEmpleados.setLayout(gbl_pnlEmpleados);
@@ -949,7 +949,7 @@ public class Login {
 						GridBagLayout gbl_pnlReservas = new GridBagLayout();
 						gbl_pnlReservas.columnWidths = new int[] { 15, 215, 326, 30, 0, 0, 0, 15, 0 };
 						gbl_pnlReservas.rowHeights = new int[] { 54, 0, 15, 0 };
-						gbl_pnlReservas.columnWeights = new double[] { 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+						gbl_pnlReservas.columnWeights = new double[] { 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0,
 								Double.MIN_VALUE };
 						gbl_pnlReservas.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
 						pnlReservas.setLayout(gbl_pnlReservas);
@@ -1241,22 +1241,6 @@ public class Login {
 				Empleado e;
 				try {
 					e = pnlDatosEmpleado.getDatosEmpleadoFromUser();
-					//Imagen del cliente//
-					String pathOrigen = e.getRuta_imagen_aux(); // Recogemos la ruta de la imagen a poner
-					File f = new File (pathOrigen);
-					String pathDestino = getClass().getClassLoader().getResource("Presentacion/Imagenes/camping.jpg").toString();
-					//Movemos la imagen al directorio correspondiente
-					
-					Path FROM = Paths.get(pathOrigen);
-			        Path TO = Paths.get(pathDestino);
-			        //sobreescribir el fichero de destino, si existe, y copiar
-			        // los atributos, incluyendo los permisos rwx
-			        CopyOption[] options = new CopyOption[]{
-			          StandardCopyOption.REPLACE_EXISTING,
-			          StandardCopyOption.COPY_ATTRIBUTES
-			        }; 
-			        Files.copy(FROM, TO, options);
-			        e.setImagen(e.getImagen_aux()); //Si todo ha ido bien, ponemos la imagen aux como imagen principal
 					if (editar_guardar_empleado == 1) { // Modo crear nuevo usuario
 						if (e.insert()) {
 
@@ -1275,7 +1259,8 @@ public class Login {
 						}
 					} else if (editar_guardar_empleado == 2) { // Modo editar usuario
 						if (e.update()) {
-							JOptionPane.showMessageDialog(null, "Cliente " + e.getDni() + "Actualizado correctamente.");
+							JOptionPane.showMessageDialog(null,
+									"Cliente " + e.getDni() + " Actualizado correctamente.");
 							pnlDatosEmpleado.setComponentsEditables(false, true);
 							pnlDatosEmpleado.setComponentsEditables(false, false);
 							editar_guardar_empleado = 0;
@@ -1296,7 +1281,8 @@ public class Login {
 				}
 
 			} else {
-				JOptionPane.showMessageDialog(null, "Faltan campos por a�adir.", "Aviso", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Faltan campos por a�adir.", "Aviso",
+						JOptionPane.WARNING_MESSAGE);
 				((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlPrincipales");
 				editar_guardar_empleado = 0;
 			}
@@ -1350,6 +1336,7 @@ public class Login {
 			editar_guardar_actividad = 2; // modo editar
 		}
 	}
+
 	private class BtnCancelarActividadActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			pnlDatosActividad.setComponentsEditables(false);
@@ -1357,6 +1344,7 @@ public class Login {
 			((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades, "pnlPrincipalesAct");
 		}
 	}
+
 	private class BtnVerpassActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (verPass) {
@@ -1368,13 +1356,14 @@ public class Login {
 			} else {
 				// Mostrar la contraseña
 				pwdContrasena.setEchoChar((char) 0);
-				btnVerPass.setIcon(
-						new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/eye_slashed24x24.png")));
+				btnVerPass
+						.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/eye_slashed24x24.png")));
 				btnVerPass.setToolTipText("Ocultar Constraseña");
 				verPass = true;
 			}
 		}
 	}
+
 	private class BtnGuardarActividadActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			if (pnlDatosActividad.comprobarTextFields()) {
@@ -1387,7 +1376,8 @@ public class Login {
 
 							JOptionPane.showMessageDialog(null, a.getNombre() + "Actividad a�adido con �xito");
 							pnlDatosActividad.setComponentsEditables(true);
-							((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades, "pnlPrincipalesAc");
+							((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades,
+									"pnlPrincipalesAc");
 							editar_guardar_empleado = 0;
 							pnlContenedorActividades.loadPanels();
 							tfBusquedaNombre.setText("");
@@ -1395,22 +1385,26 @@ public class Login {
 						} else {
 							JOptionPane.showMessageDialog(null, "Error al a�adir actividad.", "Error",
 									JOptionPane.ERROR_MESSAGE);
-							((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades, "pnlPrincipalesAc");
+							((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades,
+									"pnlPrincipalesAc");
 							editar_guardar_empleado = 0;
 						}
 					} else if (editar_guardar_actividad == 2) { // Modo editar usuario
 						if (a.update()) {
-							JOptionPane.showMessageDialog(null, "Actividad " + a.getNombre() + "Actualizada correctamente.");
+							JOptionPane.showMessageDialog(null,
+									"Actividad " + a.getNombre() + "Actualizada correctamente.");
 							pnlDatosActividad.setComponentsEditables(false);
 							editar_guardar_actividad = 0;
-							((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades, "pnlPrincipalesAc");
+							((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades,
+									"pnlPrincipalesAc");
 							pnlContenedorActividades.clean();
 							pnlContenedorActividades.loadPanels();
 							tfBusquedaNombre.setText("");
 						} else {
 							JOptionPane.showMessageDialog(null, "Error al editar la actividad", "Error",
 									JOptionPane.ERROR_MESSAGE);
-							((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades, "pnlPrincipalesAc");
+							((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades,
+									"pnlPrincipalesAc");
 							editar_guardar_actividad = 0;
 						}
 					}
@@ -1420,7 +1414,8 @@ public class Login {
 				}
 
 			} else {
-				JOptionPane.showMessageDialog(null, "Faltan campos por a�adir.", "Aviso", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Faltan campos por a�adir.", "Aviso",
+						JOptionPane.WARNING_MESSAGE);
 				((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades, "pnlPrincipalesAc");
 				editar_guardar_actividad = 0;
 			}
