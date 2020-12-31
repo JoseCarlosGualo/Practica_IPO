@@ -122,13 +122,15 @@ public class pnlFormEmpleado extends JPanel {
 			gbc_pnlBtnsAyEFoto.gridy = 3;
 			add(pnlBtnsAyEFoto, gbc_pnlBtnsAyEFoto);
 			{
-				btnEliminarFoto = new JButton("Eliminar Foto");
+				btnEliminarFoto = new JButton("");
+				btnEliminarFoto.setIcon(new ImageIcon(pnlFormEmpleado.class.getResource("/Presentacion/Imagenes/camera-delete-icon.png")));
 				btnEliminarFoto.setVisible(false);
 				btnEliminarFoto.addActionListener(new BtnEliminarFotoActionListener());
 				pnlBtnsAyEFoto.add(btnEliminarFoto);
 			}
 			{
-				btnAadirFoto = new JButton("A\u00F1adir Foto");
+				btnAadirFoto = new JButton("");
+				btnAadirFoto.setIcon(new ImageIcon(pnlFormEmpleado.class.getResource("/Presentacion/Imagenes/camera-add-icon.png")));
 				btnAadirFoto.setVisible(false);
 				pnlBtnsAyEFoto.add(btnAadirFoto);
 				btnAadirFoto.addActionListener(new BtnAadirFotoActionListener());

@@ -20,6 +20,11 @@ import Dominio.Reserva;
 
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
+import com.toedter.calendar.JDateChooser;
+import com.toedter.components.JLocaleChooser;
+import javax.swing.JSpinner;
+import com.toedter.components.JSpinField;
+import javax.swing.ImageIcon;
 
 public class pnlFormReserva extends JPanel {
 
@@ -39,12 +44,15 @@ public class pnlFormReserva extends JPanel {
 	private JLabel lblFechaDeSalida;
 	private JLabel lblHoraDeSalida;
 	private JLabel lblNmeroDeOcupantes;
-	private JTextField tfHoraEntrada;
-	private JTextField tfFechaSalida;
 	private JTextField tfHoraSalida;
-	private JTextField tfNumeroOcupantes;
 	private JLabel lblPeticionesEspeciales;
 	private JTextArea textPeticionesEspeciales;
+	private JDateChooser dateChooser;
+	private JDateChooser dateChooser_1;
+	private JSpinner spinner;
+	private JLabel lblFechaDeEntrada;
+	private JSpinField spinField;
+	private JTextField tfHoraDeEntrada;
 
 	/**
 	 * Create the panel.
@@ -52,16 +60,18 @@ public class pnlFormReserva extends JPanel {
 	public pnlFormReserva(JFrame framePrincipal) {
 		this.framePrincipal = framePrincipal;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 15, 0, 0, 15, 0 };
+		gridBagLayout.columnWidths = new int[] { 15, 0, 0, 0, 15, 0 };
 		gridBagLayout.rowHeights = new int[] { 15, 0, 15, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 				0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 		{
 			lblDatosPersonales = new JLabel("Datos Personales");
+			lblDatosPersonales.setIcon(new ImageIcon(pnlFormReserva.class.getResource("/Presentacion/Imagenes/hombre.png")));
 			lblDatosPersonales.setFont(new Font("Tahoma", Font.BOLD, 18));
 			GridBagConstraints gbc_lblDatosPersonales = new GridBagConstraints();
+			gbc_lblDatosPersonales.anchor = GridBagConstraints.WEST;
 			gbc_lblDatosPersonales.insets = new Insets(0, 0, 5, 5);
 			gbc_lblDatosPersonales.gridx = 1;
 			gbc_lblDatosPersonales.gridy = 1;
@@ -78,6 +88,7 @@ public class pnlFormReserva extends JPanel {
 		}
 		{
 			tfNombreRes = new JTextField();
+			tfNombreRes.setBackground(Color.WHITE);
 			tfNombreRes.setEditable(false);
 			tfNombreRes.setColumns(10);
 			GridBagConstraints gbc_tfNombreRes = new GridBagConstraints();
@@ -98,6 +109,7 @@ public class pnlFormReserva extends JPanel {
 		}
 		{
 			tfDniRes = new JTextField();
+			tfDniRes.setBackground(Color.WHITE);
 			tfDniRes.setEditable(false);
 			tfDniRes.setColumns(10);
 			GridBagConstraints gbc_tfDniRes = new GridBagConstraints();
@@ -118,6 +130,7 @@ public class pnlFormReserva extends JPanel {
 		}
 		{
 			tfTelefonoRes = new JTextField();
+			tfTelefonoRes.setBackground(Color.WHITE);
 			tfTelefonoRes.setEditable(false);
 			tfTelefonoRes.setColumns(10);
 			GridBagConstraints gbc_tfTelefonoRes = new GridBagConstraints();
@@ -138,6 +151,7 @@ public class pnlFormReserva extends JPanel {
 		}
 		{
 			tfEmailRes = new JTextField();
+			tfEmailRes.setBackground(Color.WHITE);
 			tfEmailRes.setEditable(false);
 			tfEmailRes.setColumns(10);
 			GridBagConstraints gbc_tfEmailRes = new GridBagConstraints();
@@ -148,24 +162,41 @@ public class pnlFormReserva extends JPanel {
 			add(tfEmailRes, gbc_tfEmailRes);
 		}
 		{
+			lblFechaDeEntrada = new JLabel("Fecha de entrada:");
+			GridBagConstraints gbc_lblFechaDeEntrada = new GridBagConstraints();
+			gbc_lblFechaDeEntrada.anchor = GridBagConstraints.EAST;
+			gbc_lblFechaDeEntrada.insets = new Insets(0, 0, 5, 5);
+			gbc_lblFechaDeEntrada.gridx = 1;
+			gbc_lblFechaDeEntrada.gridy = 8;
+			add(lblFechaDeEntrada, gbc_lblFechaDeEntrada);
+		}
+		{
+			dateChooser_1 = new JDateChooser();
+			GridBagConstraints gbc_dateChooser_1 = new GridBagConstraints();
+			gbc_dateChooser_1.fill = GridBagConstraints.HORIZONTAL;
+			gbc_dateChooser_1.insets = new Insets(0, 0, 5, 5);
+			gbc_dateChooser_1.gridx = 2;
+			gbc_dateChooser_1.gridy = 8;
+			add(dateChooser_1, gbc_dateChooser_1);
+		}
+		{
 			lblHoraDeEntrada = new JLabel("Hora de Entrada: ");
 			GridBagConstraints gbc_lblHoraDeEntrada = new GridBagConstraints();
 			gbc_lblHoraDeEntrada.anchor = GridBagConstraints.EAST;
 			gbc_lblHoraDeEntrada.insets = new Insets(0, 0, 5, 5);
-			gbc_lblHoraDeEntrada.gridx = 1;
-			gbc_lblHoraDeEntrada.gridy = 11;
+			gbc_lblHoraDeEntrada.gridx = 3;
+			gbc_lblHoraDeEntrada.gridy = 8;
 			add(lblHoraDeEntrada, gbc_lblHoraDeEntrada);
 		}
 		{
-			tfHoraEntrada = new JTextField();
-			tfHoraEntrada.setEditable(false);
-			tfHoraEntrada.setColumns(10);
-			GridBagConstraints gbc_tfHoraEntrada = new GridBagConstraints();
-			gbc_tfHoraEntrada.insets = new Insets(0, 0, 5, 5);
-			gbc_tfHoraEntrada.fill = GridBagConstraints.HORIZONTAL;
-			gbc_tfHoraEntrada.gridx = 2;
-			gbc_tfHoraEntrada.gridy = 11;
-			add(tfHoraEntrada, gbc_tfHoraEntrada);
+			tfHoraDeEntrada = new JTextField();
+			GridBagConstraints gbc_tfHoraDeEntrada = new GridBagConstraints();
+			gbc_tfHoraDeEntrada.anchor = GridBagConstraints.WEST;
+			gbc_tfHoraDeEntrada.insets = new Insets(0, 0, 5, 0);
+			gbc_tfHoraDeEntrada.gridx = 4;
+			gbc_tfHoraDeEntrada.gridy = 8;
+			add(tfHoraDeEntrada, gbc_tfHoraDeEntrada);
+			tfHoraDeEntrada.setColumns(10);
 		}
 		{
 			lblFechaDeSalida = new JLabel("Fecha de Salida: ");
@@ -173,38 +204,37 @@ public class pnlFormReserva extends JPanel {
 			gbc_lblFechaDeSalida.anchor = GridBagConstraints.EAST;
 			gbc_lblFechaDeSalida.insets = new Insets(0, 0, 5, 5);
 			gbc_lblFechaDeSalida.gridx = 1;
-			gbc_lblFechaDeSalida.gridy = 12;
+			gbc_lblFechaDeSalida.gridy = 9;
 			add(lblFechaDeSalida, gbc_lblFechaDeSalida);
 		}
 		{
-			tfFechaSalida = new JTextField();
-			tfFechaSalida.setEditable(false);
-			tfFechaSalida.setColumns(10);
-			GridBagConstraints gbc_tfFechaSalida = new GridBagConstraints();
-			gbc_tfFechaSalida.insets = new Insets(0, 0, 5, 5);
-			gbc_tfFechaSalida.fill = GridBagConstraints.HORIZONTAL;
-			gbc_tfFechaSalida.gridx = 2;
-			gbc_tfFechaSalida.gridy = 12;
-			add(tfFechaSalida, gbc_tfFechaSalida);
+			dateChooser = new JDateChooser();
+			GridBagConstraints gbc_dateChooser = new GridBagConstraints();
+			gbc_dateChooser.insets = new Insets(0, 0, 5, 5);
+			gbc_dateChooser.fill = GridBagConstraints.HORIZONTAL;
+			gbc_dateChooser.gridx = 2;
+			gbc_dateChooser.gridy = 9;
+			add(dateChooser, gbc_dateChooser);
 		}
 		{
 			lblHoraDeSalida = new JLabel("Hora de Salida: ");
 			GridBagConstraints gbc_lblHoraDeSalida = new GridBagConstraints();
 			gbc_lblHoraDeSalida.anchor = GridBagConstraints.EAST;
 			gbc_lblHoraDeSalida.insets = new Insets(0, 0, 5, 5);
-			gbc_lblHoraDeSalida.gridx = 1;
-			gbc_lblHoraDeSalida.gridy = 13;
+			gbc_lblHoraDeSalida.gridx = 3;
+			gbc_lblHoraDeSalida.gridy = 9;
 			add(lblHoraDeSalida, gbc_lblHoraDeSalida);
 		}
 		{
 			tfHoraSalida = new JTextField();
+			tfHoraSalida.setBackground(Color.WHITE);
 			tfHoraSalida.setEditable(false);
 			tfHoraSalida.setColumns(10);
 			GridBagConstraints gbc_tfHoraSalida = new GridBagConstraints();
-			gbc_tfHoraSalida.insets = new Insets(0, 0, 5, 5);
-			gbc_tfHoraSalida.fill = GridBagConstraints.HORIZONTAL;
-			gbc_tfHoraSalida.gridx = 2;
-			gbc_tfHoraSalida.gridy = 13;
+			gbc_tfHoraSalida.anchor = GridBagConstraints.WEST;
+			gbc_tfHoraSalida.insets = new Insets(0, 0, 5, 0);
+			gbc_tfHoraSalida.gridx = 4;
+			gbc_tfHoraSalida.gridy = 9;
 			add(tfHoraSalida, gbc_tfHoraSalida);
 		}
 		{
@@ -213,27 +243,26 @@ public class pnlFormReserva extends JPanel {
 			gbc_lblNmeroDeOcupantes.anchor = GridBagConstraints.EAST;
 			gbc_lblNmeroDeOcupantes.insets = new Insets(0, 0, 5, 5);
 			gbc_lblNmeroDeOcupantes.gridx = 1;
-			gbc_lblNmeroDeOcupantes.gridy = 14;
+			gbc_lblNmeroDeOcupantes.gridy = 11;
 			add(lblNmeroDeOcupantes, gbc_lblNmeroDeOcupantes);
 		}
 		{
-			tfNumeroOcupantes = new JTextField();
-			tfNumeroOcupantes.setEditable(false);
-			tfNumeroOcupantes.setColumns(10);
-			GridBagConstraints gbc_tfNumeroOcupantes = new GridBagConstraints();
-			gbc_tfNumeroOcupantes.insets = new Insets(0, 0, 5, 5);
-			gbc_tfNumeroOcupantes.fill = GridBagConstraints.HORIZONTAL;
-			gbc_tfNumeroOcupantes.gridx = 2;
-			gbc_tfNumeroOcupantes.gridy = 14;
-			add(tfNumeroOcupantes, gbc_tfNumeroOcupantes);
+			spinner = new JSpinner();
+			GridBagConstraints gbc_spinner = new GridBagConstraints();
+			gbc_spinner.anchor = GridBagConstraints.WEST;
+			gbc_spinner.insets = new Insets(0, 0, 5, 5);
+			gbc_spinner.gridx = 2;
+			gbc_spinner.gridy = 11;
+			add(spinner, gbc_spinner);
 		}
 		{
 			lblPeticionesEspeciales = new JLabel("Peticiones Especiales");
+			lblPeticionesEspeciales.setIcon(new ImageIcon(pnlFormReserva.class.getResource("/Presentacion/Imagenes/pagar.png")));
 			lblPeticionesEspeciales.setFont(new Font("Tahoma", Font.BOLD, 18));
 			GridBagConstraints gbc_lblPeticionesEspeciales = new GridBagConstraints();
 			gbc_lblPeticionesEspeciales.insets = new Insets(0, 0, 5, 5);
 			gbc_lblPeticionesEspeciales.gridx = 1;
-			gbc_lblPeticionesEspeciales.gridy = 16;
+			gbc_lblPeticionesEspeciales.gridy = 13;
 			add(lblPeticionesEspeciales, gbc_lblPeticionesEspeciales);
 		}
 		{
@@ -242,14 +271,14 @@ public class pnlFormReserva extends JPanel {
 			textPeticionesEspeciales.setText((String) null);
 			textPeticionesEspeciales.setOpaque(false);
 			textPeticionesEspeciales.setLineWrap(true);
-			textPeticionesEspeciales.setEditable(false);
-			textPeticionesEspeciales.setBackground(SystemColor.menu);
+			textPeticionesEspeciales.setBackground(Color.WHITE);
 			GridBagConstraints gbc_textPeticionesEspeciales = new GridBagConstraints();
-			gbc_textPeticionesEspeciales.gridwidth = 2;
+			gbc_textPeticionesEspeciales.gridheight = 3;
+			gbc_textPeticionesEspeciales.gridwidth = 4;
 			gbc_textPeticionesEspeciales.insets = new Insets(0, 0, 0, 5);
 			gbc_textPeticionesEspeciales.fill = GridBagConstraints.BOTH;
 			gbc_textPeticionesEspeciales.gridx = 1;
-			gbc_textPeticionesEspeciales.gridy = 17;
+			gbc_textPeticionesEspeciales.gridy = 14;
 			add(textPeticionesEspeciales, gbc_textPeticionesEspeciales);
 		}
 

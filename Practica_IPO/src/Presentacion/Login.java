@@ -68,6 +68,14 @@ import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import javax.swing.JRadioButtonMenuItem;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.FlowLayout;
+import javax.swing.BoxLayout;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import net.miginfocom.swing.MigLayout;
 
 public class Login {
 
@@ -117,7 +125,6 @@ public class Login {
 	private JButton btnCerrarSesin;
 	private JPanel pnlBusqueda;
 	private JTextField textField;
-	private JLabel lblLupa;
 	private JPanel pnlBotones;
 	private JButton btnAadir;
 	private JButton btnEliminar;
@@ -125,7 +132,6 @@ public class Login {
 	private JPanel pnlContenedor;
 	private JPanel pnlBusquedaPar;
 	private JTextField textFieldBusquedaPar;
-	private JLabel lblLnlimagenlupa;
 	private JPanel pnlBotonesPar;
 	private JButton btnAadirPar;
 	private pnlContenedorBungalows pnlContenedorBungalows;
@@ -206,6 +212,7 @@ public class Login {
 
 	private void initialize() {
 		frmLogin = new JFrame();
+		frmLogin.setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/Presentacion/Imagenes/camping.jpg")));
 		frmLogin.addKeyListener(new PnlLoginKeyListener());
 		frmLogin.setTitle("Inicio de sesi\u00F3n Camping");
 		frmLogin.getContentPane().addComponentListener(new FrameContentPaneComponentListener());
@@ -545,6 +552,7 @@ public class Login {
 							pnlBusqueda.setLayout(gbl_pnlBusqueda);
 							{
 								lblBusquedaPorNombre = new JLabel("Busqueda por nombre: ");
+								lblBusquedaPorNombre.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/lupa.png")));
 								GridBagConstraints gbc_lblBusquedaPorNombre = new GridBagConstraints();
 								gbc_lblBusquedaPorNombre.insets = new Insets(0, 0, 5, 5);
 								gbc_lblBusquedaPorNombre.anchor = GridBagConstraints.EAST;
@@ -562,16 +570,6 @@ public class Login {
 								gbc_textField.gridy = 1;
 								pnlBusqueda.add(textField, gbc_textField);
 								textField.setColumns(10);
-							}
-							{
-								lblLupa = new JLabel("");
-								lblLupa.setIcon(
-										new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/lupa.png")));
-								GridBagConstraints gbc_lblLupa = new GridBagConstraints();
-								gbc_lblLupa.insets = new Insets(0, 0, 5, 0);
-								gbc_lblLupa.gridx = 10;
-								gbc_lblLupa.gridy = 1;
-								pnlBusqueda.add(lblLupa, gbc_lblLupa);
 							}
 						}
 						{
@@ -642,6 +640,7 @@ public class Login {
 							pnlBusquedaPar.setLayout(gbl_pnlBusquedaPar);
 							{
 								lblBusquedaPorNombre_P = new JLabel("Busqueda por nombre: ");
+								lblBusquedaPorNombre_P.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/lupa.png")));
 								GridBagConstraints gbc_lblBusquedaPorNombre_P = new GridBagConstraints();
 								gbc_lblBusquedaPorNombre_P.insets = new Insets(0, 0, 5, 5);
 								gbc_lblBusquedaPorNombre_P.anchor = GridBagConstraints.EAST;
@@ -659,16 +658,6 @@ public class Login {
 								gbc_textFieldBusquedaPar.gridy = 1;
 								pnlBusquedaPar.add(textFieldBusquedaPar, gbc_textFieldBusquedaPar);
 								textFieldBusquedaPar.setColumns(10);
-							}
-							{
-								lblLnlimagenlupa = new JLabel("");
-								lblLnlimagenlupa.setIcon(
-										new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/lupa.png")));
-								GridBagConstraints gbc_lblLnlimagenlupa = new GridBagConstraints();
-								gbc_lblLnlimagenlupa.insets = new Insets(0, 0, 5, 0);
-								gbc_lblLnlimagenlupa.gridx = 10;
-								gbc_lblLnlimagenlupa.gridy = 1;
-								pnlBusquedaPar.add(lblLnlimagenlupa, gbc_lblLnlimagenlupa);
 							}
 						}
 						{
@@ -729,6 +718,7 @@ public class Login {
 						pnlEmpleados.setLayout(gbl_pnlEmpleados);
 						{
 							lblBusquedaPorDni = new JLabel("Busqueda por DNI: ");
+							lblBusquedaPorDni.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/lupa.png")));
 							GridBagConstraints gbc_lblBusquedaPorDni = new GridBagConstraints();
 							gbc_lblBusquedaPorDni.fill = GridBagConstraints.BOTH;
 							gbc_lblBusquedaPorDni.insets = new Insets(0, 0, 5, 5);
@@ -762,12 +752,14 @@ public class Login {
 								pnlBotonesEmpleados.add(pnlPrincipales, "pnlPrincipales");
 								{
 									btnAddEmpleado = new JButton("A\u00F1adir");
+									btnAddEmpleado.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/add-user-button.png")));
 									btnAddEmpleado.addActionListener(new BtnAadir_1ActionListener());
 									btnAddEmpleado.setToolTipText("A\u00F1adir nuevo empleado");
 									pnlPrincipales.add(btnAddEmpleado);
 								}
 								{
 									btnModificarEmpleado = new JButton("Modificar");
+									btnModificarEmpleado.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/pencil-edit-button.png")));
 									btnModificarEmpleado
 											.setToolTipText("Modificar los datos del empleado seleccionado");
 									btnModificarEmpleado.addActionListener(new BtnNewButton_1ActionListener());
@@ -775,6 +767,7 @@ public class Login {
 								}
 								{
 									btnEliminarEmpleado = new JButton("Eliminar");
+									btnEliminarEmpleado.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/deleteRed16x16.png")));
 									btnEliminarEmpleado.addActionListener(new BtnEliminar1ActionListener());
 									btnEliminarEmpleado.setToolTipText("Eliminar el empleado seleccionado");
 									pnlPrincipales.add(btnEliminarEmpleado);
@@ -785,12 +778,14 @@ public class Login {
 								pnlBotonesEmpleados.add(pnlEditar, "pnlEditar");
 								{
 									btnGuardar = new JButton("Guardar");
+									btnGuardar.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/save16x16.png")));
 									btnGuardar.addActionListener(new BtnGuardarActionListener());
 									btnGuardar.setToolTipText("Guardar el nuevo empleado");
 									pnlEditar.add(btnGuardar);
 								}
 								{
 									btnCancelar = new JButton("Cancelar");
+									btnCancelar.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/cancel16x16.png")));
 									btnCancelar.addActionListener(new BtnCancelarActionListener());
 									btnCancelar.setToolTipText("Cancelar el modo editar");
 									pnlEditar.add(btnCancelar);
@@ -838,14 +833,15 @@ public class Login {
 						GridBagLayout gbl_pnlActividades = new GridBagLayout();
 						gbl_pnlActividades.columnWidths = new int[] { 15, 0, 326, 30, 0, 0, 0, 0, 0 };
 						gbl_pnlActividades.rowHeights = new int[] { 54, 0, 15, 0 };
-						gbl_pnlActividades.columnWeights = new double[] { 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+						gbl_pnlActividades.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0,
 								Double.MIN_VALUE };
 						gbl_pnlActividades.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
 						pnlActividades.setLayout(gbl_pnlActividades);
 						{
 							lblBsquedaPorNombre = new JLabel("B\u00FAsqueda por nombre: ");
+							lblBsquedaPorNombre.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/lupa.png")));
 							GridBagConstraints gbc_lblBsquedaPorNombre = new GridBagConstraints();
-							gbc_lblBsquedaPorNombre.anchor = GridBagConstraints.EAST;
+							gbc_lblBsquedaPorNombre.anchor = GridBagConstraints.WEST;
 							gbc_lblBsquedaPorNombre.insets = new Insets(0, 0, 5, 5);
 							gbc_lblBsquedaPorNombre.gridx = 1;
 							gbc_lblBsquedaPorNombre.gridy = 0;
@@ -855,8 +851,8 @@ public class Login {
 							tfBusquedaNombre = new JTextField();
 							tfBusquedaNombre.setColumns(10);
 							GridBagConstraints gbc_tfBusquedaNombre = new GridBagConstraints();
-							gbc_tfBusquedaNombre.insets = new Insets(0, 0, 5, 5);
 							gbc_tfBusquedaNombre.fill = GridBagConstraints.HORIZONTAL;
+							gbc_tfBusquedaNombre.insets = new Insets(0, 0, 5, 5);
 							gbc_tfBusquedaNombre.gridx = 2;
 							gbc_tfBusquedaNombre.gridy = 0;
 							pnlActividades.add(tfBusquedaNombre, gbc_tfBusquedaNombre);
@@ -876,16 +872,19 @@ public class Login {
 								pnlBotonesActividades.add(pnlPrincipalesAct, "pnlPrincipalesAct");
 								{
 									btnAddActividad = new JButton("Añadir");
+									btnAddActividad.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/add-button16x16.png")));
 									btnAddActividad.addActionListener(new btnAddActividadActionListener());
 									pnlPrincipalesAct.add(btnAddActividad);
 								}
 								{
 									ModificarActividad = new JButton("Modificar");
+									ModificarActividad.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/pencil-edit-button.png")));
 									ModificarActividad.addActionListener(new ModificarActividadActionListener());
 									pnlPrincipalesAct.add(ModificarActividad);
 								}
 								{
 									btnEliminarActividad = new JButton("Eliminar");
+									btnEliminarActividad.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/deleteRed16x16.png")));
 									btnEliminarActividad.addActionListener(new BtnEliminarActividadActionListener());
 									pnlPrincipalesAct.add(btnEliminarActividad);
 								}
@@ -895,11 +894,13 @@ public class Login {
 								pnlBotonesActividades.add(pnlEditarAct, "pnlEditarAct");
 								{
 									btnGuardarActividad = new JButton("Guardar");
+									btnGuardarActividad.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/save16x16.png")));
 									btnGuardarActividad.addActionListener(new BtnGuardarActividadActionListener());
 									pnlEditarAct.add(btnGuardarActividad);
 								}
 								{
 									btnCancelarActividad = new JButton("Cancelar");
+									btnCancelarActividad.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/cancel16x16.png")));
 									btnCancelarActividad.addActionListener(new BtnCancelarActividadActionListener());
 									pnlEditarAct.add(btnCancelarActividad);
 								}
@@ -941,7 +942,7 @@ public class Login {
 					{
 						pnlRutasSenderistas = new JPanel();
 						pnlContenedorPestanas.addTab("Rutas Senderistas", null, pnlRutasSenderistas, null);
-						pnlRutasSenderistas.setLayout(new CardLayout(0, 0));
+						pnlRutasSenderistas.setLayout(new BorderLayout(0, 0));
 					}
 					{
 						pnlReservas = new JPanel();
@@ -949,7 +950,7 @@ public class Login {
 						GridBagLayout gbl_pnlReservas = new GridBagLayout();
 						gbl_pnlReservas.columnWidths = new int[] { 15, 215, 326, 30, 0, 0, 0, 15, 0 };
 						gbl_pnlReservas.rowHeights = new int[] { 54, 0, 15, 0 };
-						gbl_pnlReservas.columnWeights = new double[] { 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0,
+						gbl_pnlReservas.columnWeights = new double[] { 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0,
 								Double.MIN_VALUE };
 						gbl_pnlReservas.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
 						pnlReservas.setLayout(gbl_pnlReservas);
@@ -1015,16 +1016,11 @@ public class Login {
 									gbc_pnlDatosReserva.gridx = 4;
 									gbc_pnlDatosReserva.gridy = 1;
 									pnlReservas.add(pnlDatosReserva, gbc_pnlDatosReserva);
-									GridBagLayout gbl_pnlDatosReserva = new GridBagLayout();
-									gbl_pnlDatosReserva.columnWidths = new int[] { 0 };
-									gbl_pnlDatosReserva.rowHeights = new int[] { 0 };
-									gbl_pnlDatosReserva.columnWeights = new double[] { Double.MIN_VALUE };
-									gbl_pnlDatosReserva.rowWeights = new double[] { Double.MIN_VALUE };
-									pnlDatosReserva.setLayout(gbl_pnlDatosReserva);
 								}
 								{
 									pnlContenedorReservas = new pnlContenedorReservas(this.cargarReservas(),
 											pnlDatosReserva);
+									pnlDatosReserva.setLayout(new BoxLayout(pnlDatosReserva, BoxLayout.X_AXIS));
 									scrollPaneRes.setViewportView(pnlContenedorReservas);
 								}
 							}
