@@ -84,7 +84,8 @@ public class pnlDibujarRuta extends JPanel {
 			add(toolBar, BorderLayout.NORTH);
 			{
 				btnCargarMapa = new JButton("");
-				//btnCargarMapa.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnCargarMapa.toolTipText")); //$NON-NLS-1$
+				// btnCargarMapa.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnCargarMapa.toolTipText"));
+				// //$NON-NLS-1$
 				btnCargarMapa.setMnemonic('L');
 				btnCargarMapa.addActionListener(new BtnCargarMapaActionListener());
 				btnCargarMapa
@@ -93,41 +94,49 @@ public class pnlDibujarRuta extends JPanel {
 			}
 			{
 				btnDibujar = new JButton("");
-				//btnDibujar.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnDibujar.toolTipText")); //$NON-NLS-1$
+				// btnDibujar.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnDibujar.toolTipText"));
+				// //$NON-NLS-1$
 				btnDibujar.setMnemonic('D');
 				btnDibujar.addActionListener(new BtnDibujarActionListener());
-				btnDibujar.setIcon(
-						new ImageIcon(pnlDibujarRuta.class.getResource("/Presentacion/Imagenes/editar.png")));
+				btnDibujar
+						.setIcon(new ImageIcon(pnlDibujarRuta.class.getResource("/Presentacion/Imagenes/editar.png")));
 				toolBar.add(btnDibujar);
 			}
 			{
 				btnBorrar = new JButton("");
-				//btnBorrar.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnBorrar.toolTipText")); //$NON-NLS-1$
+				// btnBorrar.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnBorrar.toolTipText"));
+				// //$NON-NLS-1$
 				btnBorrar.setMnemonic('B');
 				btnBorrar.addActionListener(new BtnBorrarActionListener());
-				btnBorrar.setIcon(new ImageIcon(pnlDibujarRuta.class.getResource("/Presentacion/Imagenes/goma-de-borrar.png")));
+				btnBorrar.setIcon(
+						new ImageIcon(pnlDibujarRuta.class.getResource("/Presentacion/Imagenes/goma-de-borrar.png")));
 				toolBar.add(btnBorrar);
 			}
 			{
 				btnCliente = new JButton("");
-				//btnCliente.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnCliente.toolTipText")); //$NON-NLS-1$
+				// btnCliente.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnCliente.toolTipText"));
+				// //$NON-NLS-1$
 				btnCliente.setMnemonic('C');
 				btnCliente.addActionListener(new BtnClienteActionListener());
-				btnCliente.setIcon(
-						new ImageIcon(pnlDibujarRuta.class.getResource("/Presentacion/Iconos/hombre.png")));
+				// btnCliente.setIcon(
+				// new
+				// ImageIcon(pnlDibujarRuta.class.getResource("/Presentacion/Iconos/hombre.png")));
 				toolBar.add(btnCliente);
 			}
 			{
 				btnVIP = new JButton("");
-				//btnVIP.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnVIP.toolTipText")); //$NON-NLS-1$
+				// btnVIP.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnVIP.toolTipText"));
+				// //$NON-NLS-1$
 				btnVIP.setMnemonic('V');
 				btnVIP.addActionListener(new BtnVIPActionListener());
-				btnVIP.setIcon(new ImageIcon(pnlDibujarRuta.class.getResource("/Presentacion/Iconos/vip-2.png")));
+				// btnVIP.setIcon(new
+				// ImageIcon(pnlDibujarRuta.class.getResource("/Presentacion/Iconos/vip-2.png")));
 				toolBar.add(btnVIP);
 			}
 			{
 				btnCaliente = new JButton("");
-				//btnCaliente.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnCaliente.toolTipText")); //$NON-NLS-1$
+				// btnCaliente.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnCaliente.toolTipText"));
+				// //$NON-NLS-1$
 				btnCaliente.setMnemonic('H');
 				btnCaliente.addActionListener(new BtnCalienteActionListener());
 				btnCaliente.setIcon(
@@ -136,7 +145,8 @@ public class pnlDibujarRuta extends JPanel {
 			}
 			{
 				btnFrio = new JButton("");
-				//btnFrio.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnFrio.toolTipText")); //$NON-NLS-1$
+				// btnFrio.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnFrio.toolTipText"));
+				// //$NON-NLS-1$
 				btnFrio.setMnemonic('J');
 				btnFrio.addActionListener(new BtnFrioActionListener());
 				btnFrio.setIcon(new ImageIcon(pnlDibujarRuta.class.getResource("/Presentacion/Imagenes/frio.png")));
@@ -144,20 +154,24 @@ public class pnlDibujarRuta extends JPanel {
 			}
 			{
 				btnPagar = new JButton("");
-				//btnPagar.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnPagar.toolTipText")); //$NON-NLS-1$
+				// btnPagar.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnPagar.toolTipText"));
+				// //$NON-NLS-1$
 				btnPagar.setMnemonic('P');
 				btnPagar.addActionListener(new BtnPagarActionListener());
-				btnPagar.setIcon(
-						new ImageIcon(pnlDibujarRuta.class.getResource("/Presentacion/Iconos/pagar.png")));
+				// btnPagar.setIcon(
+				// new
+				// ImageIcon(pnlDibujarRuta.class.getResource("/Presentacion/Iconos/pagar.png")));
 				toolBar.add(btnPagar);
 			}
 			{
 				btnRemoveAll = new JButton("");
-				//btnRemoveAll.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnRemoveAll.toolTipText")); //$NON-NLS-1$
+				// btnRemoveAll.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnRemoveAll.toolTipText"));
+				// //$NON-NLS-1$
 				btnRemoveAll.setMnemonic('X');
 				btnRemoveAll.addActionListener(new BtnRemoveAllActionListener());
-				btnRemoveAll.setIcon(
-						new ImageIcon(pnlDibujarRuta.class.getResource("/Presentacion/Iconos/boton-x.png")));
+				// btnRemoveAll.setIcon(
+				// new
+				// ImageIcon(pnlDibujarRuta.class.getResource("/Presentacion/Iconos/boton-x.png")));
 				btnRemoveAll.setHorizontalTextPosition(SwingConstants.RIGHT);
 				btnRemoveAll.setHorizontalAlignment(SwingConstants.RIGHT);
 				toolBar.add(btnRemoveAll);
@@ -173,28 +187,32 @@ public class pnlDibujarRuta extends JPanel {
 		miAreaDibujo.setIcon(null);
 		scrollPane.setViewportView(miAreaDibujo);
 
-		// Creación de imágenes y cursores
+		// CreacioÌ�n de imaÌ�genes y cursores
 		toolkit = Toolkit.getDefaultToolkit();
-		imagDibujar = toolkit.getImage(getClass().getClassLoader().getResource("Presentacion/Iconos/editar.png"));
+		imagDibujar = toolkit.getImage(getClass().getClassLoader().getResource("Presentacion/Imagenes/editar.png"));
 		imagBorrar = toolkit
-				.getImage(getClass().getClassLoader().getResource("Presentacion/Iconos/goma-de-borrar.png"));
-		imagCliente = toolkit.getImage(getClass().getClassLoader().getResource("Presentacion/Iconos/hombre.png"));
-		imagVip = toolkit.getImage(getClass().getClassLoader().getResource("Presentacion/Iconos/vip-2.png"));
-		imagCaliente = toolkit.getImage(getClass().getClassLoader().getResource("Presentacion/Iconos/caliente.png"));
-		imagFrio = toolkit.getImage(getClass().getClassLoader().getResource("Presentacion/Iconos/frio.png"));
-		imagPagar = toolkit.getImage(getClass().getClassLoader().getResource("Presentacion/Iconos/pagar.png"));
+				.getImage(getClass().getClassLoader().getResource("Presentacion/Imagenes/goma-de-borrar.png"));
+		// imagCliente =
+		// toolkit.getImage(getClass().getClassLoader().getResource("Presentacion/Imagenes/hombre.png"));
+		//imagVip = toolkit.getImage(getClass().getClassLoader().getResource("Presentacion/Imagenes/vip-2.png"));
+		imagCaliente = toolkit.getImage(getClass().getClassLoader().getResource("Presentacion/Imagenes/caliente.png"));
+		imagFrio = toolkit.getImage(getClass().getClassLoader().getResource("Presentacion/Imagenes/frio.png"));
+		// imagPagar =
+		// toolkit.getImage(getClass().getClassLoader().getResource("Presentacion/Iconos/pagar.png"));
 
 		imagCursorDibujar = toolkit
 				.getImage(getClass().getClassLoader().getResource("Presentacion/Cursores/dibujar.png"));
 		imagCursorBorrar = toolkit
 				.getImage(getClass().getClassLoader().getResource("Presentacion/Cursores/borrar.png"));
-		imagCursorCliente = toolkit
-				.getImage(getClass().getClassLoader().getResource("Presentacion/Cursores/cliente.png"));
-		imagCursorVip = toolkit.getImage(getClass().getClassLoader().getResource("Presentacion/Cursores/vip.png"));
+		//imagCursorCliente = toolkit
+		//		.getImage(getClass().getClassLoader().getResource("Presentacion/Cursores/cliente.png"));
+		// imagCursorVip =
+		// toolkit.getImage(getClass().getClassLoader().getResource("Presentacion/Cursores/vip.png"));
 		imagCursorCaliente = toolkit
 				.getImage(getClass().getClassLoader().getResource("Presentacion/Cursores/caliente.png"));
 		imagCursorFrio = toolkit.getImage(getClass().getClassLoader().getResource("Presentacion/Cursores/frio.png"));
-		imagCursorPagar = toolkit.getImage(getClass().getClassLoader().getResource("Presentacion/Cursores/pagar.png"));
+		// imagCursorPagar =
+		// toolkit.getImage(getClass().getClassLoader().getResource("Presentacion/Cursores/pagar.png"));
 
 		// Creacion de cursores
 
@@ -202,26 +220,26 @@ public class pnlDibujarRuta extends JPanel {
 
 		CursorBorrar = toolkit.createCustomCursor(imagCursorBorrar, new Point(0, 0), "CURSOR_BORRAR");
 
-		CursorCliente = toolkit.createCustomCursor(imagCursorCliente, new Point(0, 0), "CURSOR_CLIENTE");
+		//CursorCliente = toolkit.createCustomCursor(imagCursorCliente, new Point(0, 0), "CURSOR_CLIENTE");
 
-		CursorVip = toolkit.createCustomCursor(imagCursorVip, new Point(0, 0), "CURSOR_VIP");
+		// CursorVip = toolkit.createCustomCursor(imagCursorVip, new Point(0, 0),
+		// "CURSOR_VIP");
 
 		CursorCaliente = toolkit.createCustomCursor(imagCursorCaliente, new Point(0, 0), "CURSOR_CALIENTE");
 
 		CursorFrio = toolkit.createCustomCursor(imagCursorFrio, new Point(0, 0), "CURSOR_FRIO");
 
-		CursorPagar = toolkit.createCustomCursor(imagCursorPagar, new Point(0, 0), "CURSOR_PAGAR");
+		// CursorPagar = toolkit.createCustomCursor(imagCursorPagar, new Point(0, 0),
+		// "CURSOR_PAGAR");
 
-		// añadimos listener
-		
+		// aÃ±adimos listener
 
 		miAreaDibujo.addMouseMotionListener(new MiAreaDibujoMouseMotionListener());
 		miAreaDibujo.addMouseListener(new MiAreaDibujoMouseListener());
-		
+
 		ImageIcon miniatura = null;
 		try {
-			miniatura = new ImageIcon(getClass().getClassLoader().getResource("Presentacion/Imagenes/mapa.jpg"
-					+ ""));
+			miniatura = new ImageIcon(getClass().getClassLoader().getResource("Presentacion/Imagenes/mapa.jpg" + ""));
 
 		} catch (Exception e) {
 			miniatura = new ImageIcon(getClass().getClassLoader().getResource("Presentacion/Imagenes/mapa.jpg"));
@@ -365,7 +383,7 @@ public class pnlDibujarRuta extends JPanel {
 
 	private class BtnRemoveAllActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if (JOptionPane.showConfirmDialog(null, "¿Estas seguro de que deseas borrar todo?", "Cuidado",
+			if (JOptionPane.showConfirmDialog(null, "Â¿Estas seguro de que deseas borrar todo?", "Cuidado",
 					JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 				miAreaDibujo.removeAll();
 				miAreaDibujo.repaint();
