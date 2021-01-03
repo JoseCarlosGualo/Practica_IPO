@@ -171,15 +171,14 @@ public class Login {
 	private boolean verPass;
 	private JPanel pnlReservas;
 	private JLabel lblBsquedaPorDni;
-	private JTextField tfBusquedaDNICliente;
+	private JTextField tfBusquedaReserva;
 	private JPanel pnlBotonesReserva;
-	private JButton btnModificarReserva;
-	private JButton btnEliminarReserva;
 	private pnlFormReserva pnlDatosReserva;
 	private JPanel pnlListadoReservas;
 	private JScrollPane scrollPaneReservas;
-	private pnlContenedorReservas pnlContenedorReservas;
-	private JPanel panel;
+	private pnlContenedorReservas pnlContenedorReserva;
+	private JButton btnModificarReserva;
+	private JButton btnEliminarReserva;
 
 	/**
 	 * Launch the application.
@@ -954,33 +953,37 @@ public class Login {
 						}
 					}
 					{
+						pnlRutasSenderistas = new pnlDibujarRuta();
+						pnlContenedorPestanas.addTab("Rutas Senderistas", null, pnlRutasSenderistas, null);
+					}
+					{
 						pnlReservas = new JPanel();
 						pnlContenedorPestanas.addTab("Reservas", null, pnlReservas, null);
 						GridBagLayout gbl_pnlReservas = new GridBagLayout();
-						gbl_pnlReservas.columnWidths = new int[] { 15, 0, 326, 30, 0, 0, 0, 0, 0 };
-						gbl_pnlReservas.rowHeights = new int[] { 54, 0, 0, 0 };
-						gbl_pnlReservas.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+						gbl_pnlReservas.columnWidths = new int[] { 15, 0, 326, 30, 0, 0, 0, 15, 0 };
+						gbl_pnlReservas.rowHeights = new int[] { 15, 0, 15, 0 };
+						gbl_pnlReservas.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0,
 								Double.MIN_VALUE };
 						gbl_pnlReservas.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
 						pnlReservas.setLayout(gbl_pnlReservas);
 						{
 							lblBsquedaPorDni = new JLabel("B\u00FAsqueda por DNI del cliente: ");
 							GridBagConstraints gbc_lblBsquedaPorDni = new GridBagConstraints();
-							gbc_lblBsquedaPorDni.anchor = GridBagConstraints.EAST;
+							gbc_lblBsquedaPorDni.fill = GridBagConstraints.HORIZONTAL;
 							gbc_lblBsquedaPorDni.insets = new Insets(0, 0, 5, 5);
 							gbc_lblBsquedaPorDni.gridx = 1;
 							gbc_lblBsquedaPorDni.gridy = 0;
 							pnlReservas.add(lblBsquedaPorDni, gbc_lblBsquedaPorDni);
 						}
 						{
-							tfBusquedaDNICliente = new JTextField();
-							GridBagConstraints gbc_tfBusquedaDNICliente = new GridBagConstraints();
-							gbc_tfBusquedaDNICliente.insets = new Insets(0, 0, 5, 5);
-							gbc_tfBusquedaDNICliente.fill = GridBagConstraints.HORIZONTAL;
-							gbc_tfBusquedaDNICliente.gridx = 2;
-							gbc_tfBusquedaDNICliente.gridy = 0;
-							pnlReservas.add(tfBusquedaDNICliente, gbc_tfBusquedaDNICliente);
-							tfBusquedaDNICliente.setColumns(10);
+							tfBusquedaReserva = new JTextField();
+							GridBagConstraints gbc_tfBusquedaReserva = new GridBagConstraints();
+							gbc_tfBusquedaReserva.insets = new Insets(0, 0, 5, 5);
+							gbc_tfBusquedaReserva.fill = GridBagConstraints.HORIZONTAL;
+							gbc_tfBusquedaReserva.gridx = 2;
+							gbc_tfBusquedaReserva.gridy = 0;
+							pnlReservas.add(tfBusquedaReserva, gbc_tfBusquedaReserva);
+							tfBusquedaReserva.setColumns(10);
 						}
 						{
 							pnlBotonesReserva = new JPanel();
@@ -1001,22 +1004,6 @@ public class Login {
 							}
 						}
 						{
-							pnlDatosReserva = new pnlFormReserva(frmLogin);
-							GridBagConstraints gbc_pnlDatosReserva = new GridBagConstraints();
-							gbc_pnlDatosReserva.gridwidth = 3;
-							gbc_pnlDatosReserva.insets = new Insets(0, 0, 5, 5);
-							gbc_pnlDatosReserva.fill = GridBagConstraints.BOTH;
-							gbc_pnlDatosReserva.gridx = 4;
-							gbc_pnlDatosReserva.gridy = 1;
-							pnlReservas.add(pnlDatosReserva, gbc_pnlDatosReserva);
-							GridBagLayout gbl_pnlDatosReserva = new GridBagLayout();
-							gbl_pnlDatosReserva.columnWidths = new int[] { 0 };
-							gbl_pnlDatosReserva.rowHeights = new int[] { 0 };
-							gbl_pnlDatosReserva.columnWeights = new double[] { Double.MIN_VALUE };
-							gbl_pnlDatosReserva.rowWeights = new double[] { Double.MIN_VALUE };
-							pnlDatosReserva.setLayout(gbl_pnlDatosReserva);
-						}
-						{
 							pnlListadoReservas = new JPanel();
 							GridBagConstraints gbc_pnlListadoReservas = new GridBagConstraints();
 							gbc_pnlListadoReservas.gridwidth = 2;
@@ -1028,22 +1015,24 @@ public class Login {
 							pnlListadoReservas.setLayout(new BorderLayout(0, 0));
 							{
 								scrollPaneReservas = new JScrollPane();
-								scrollPaneReservas
-										.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-								scrollPaneReservas
-										.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 								pnlListadoReservas.add(scrollPaneReservas, BorderLayout.CENTER);
 								{
-									pnlContenedorReservas = new pnlContenedorReservas(this.cargarReservas(),
-											pnlDatosReserva);
-									scrollPaneReservas.setViewportView(pnlContenedorReservas);
+									pnlDatosReserva = new pnlFormReserva(frmLogin);
+									GridBagConstraints gbc_pnlDatosReserva = new GridBagConstraints();
+									gbc_pnlDatosReserva.gridwidth = 3;
+									gbc_pnlDatosReserva.insets = new Insets(0, 0, 5, 5);
+									gbc_pnlDatosReserva.fill = GridBagConstraints.BOTH;
+									gbc_pnlDatosReserva.gridx = 4;
+									gbc_pnlDatosReserva.gridy = 1;
+									pnlReservas.add(pnlDatosReserva, gbc_pnlDatosReserva);
+								}
+								{
+									pnlContenedorReserva = new pnlContenedorReservas(this.cargarReservas(), pnlDatosReserva);
+									scrollPaneReservas.setViewportView(pnlContenedorReserva);
 								}
 							}
 						}
-					}
-					{
-						pnlRutasSenderistas = new pnlDibujarRuta();
-						pnlContenedorPestanas.addTab("Rutas Senderistas", null, pnlRutasSenderistas, null);
+
 					}
 				}
 
@@ -1451,7 +1440,7 @@ public class Login {
 			((CardLayout) frmLogin.getContentPane().getLayout()).show(frmLogin.getContentPane(), "pnlApp");
 			pnlUsuario.loadUserData(usuario);
 			Date fecha = new Date();
-			DateFormat fecha_UltimoAcceso = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss ");
+			DateFormat fecha_UltimoAcceso = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 			usuario.setUltimoAcceso(fecha_UltimoAcceso.format(fecha));
 			usuario.update();
 			lblErrorLaContrasea.setVisible(false);

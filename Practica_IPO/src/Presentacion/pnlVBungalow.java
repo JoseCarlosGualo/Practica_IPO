@@ -22,6 +22,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class pnlVBungalow extends JPanel {
 	private JLabel lblNombrebungalow;
@@ -233,6 +235,7 @@ public class pnlVBungalow extends JPanel {
 			}
 			{
 				btnReservar = new JButton("RERSERVAR");
+				btnReservar.addActionListener(new BtnReservarActionListener());
 				btnReservar.setFont(new Font("Tahoma", Font.BOLD, 18));
 				GridBagConstraints gbc_btnReservar = new GridBagConstraints();
 				gbc_btnReservar.insets = new Insets(0, 0, 0, 5);
@@ -320,6 +323,14 @@ public class pnlVBungalow extends JPanel {
 				pnlCaracteristicas.setBackground(noSeleccionado);
 				pnlPrecio.setBackground(noSeleccionado);
 			}
+		}
+	}
+
+	private class BtnReservarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			frmRealizarReservaBungalow anadir = new frmRealizarReservaBungalow(pnlContenedorBungalows.getBounds(),
+					this.getClass(), 1);
+			anadir.setVisible(true);
 		}
 	}
 }

@@ -20,6 +20,12 @@ import Dominio.Reserva;
 
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import com.toedter.calendar.JDateChooser;
 import com.toedter.components.JLocaleChooser;
 import javax.swing.JSpinner;
@@ -45,7 +51,7 @@ public class pnlFormReserva extends JPanel {
 	private JTextArea textPeticionesEspeciales;
 	private JDateChooser dCFechaSalida;
 	private JDateChooser dCFechaEntrada;
-	private JSpinner spinner;
+	private JSpinner spinnerOcupantes;
 	private JLabel lblFechaDeEntrada;
 	private JSpinField spinField;
 	private JTextField tfNombreRes;
@@ -54,6 +60,7 @@ public class pnlFormReserva extends JPanel {
 	private JTextField tfEmailRes;
 	private JTextField tfHoraEntrada;
 	private JTextField tfHoraSalida;
+	private JLabel lblDatosReserva;
 
 	/**
 	 * Create the panel.
@@ -62,10 +69,11 @@ public class pnlFormReserva extends JPanel {
 		this.framePrincipal = framePrincipal;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 10, 146, 318, 0, 10, 0 };
-		gridBagLayout.rowHeights = new int[] { 10, 0, 10, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 10, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.rowHeights = new int[] { 10, 0, 10, 0, 15, 0, 15, 10, 0, 10, 15, 0, 0, 0, 0, 15, 0, 15, 0, 15, 0,
+				10, 0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-				0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
+				0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 		{
 			lblDatosPersonales = new JLabel("Datos Personales");
@@ -161,21 +169,32 @@ public class pnlFormReserva extends JPanel {
 			add(tfEmailRes, gbc_tfEmailRes);
 		}
 		{
+			lblDatosReserva = new JLabel("Datos de la Reserva");
+			lblDatosReserva.setFont(new Font("Tahoma", Font.BOLD, 18));
+			GridBagConstraints gbc_lblDatosReserva = new GridBagConstraints();
+			gbc_lblDatosReserva.anchor = GridBagConstraints.WEST;
+			gbc_lblDatosReserva.gridwidth = 2;
+			gbc_lblDatosReserva.insets = new Insets(0, 0, 5, 5);
+			gbc_lblDatosReserva.gridx = 1;
+			gbc_lblDatosReserva.gridy = 8;
+			add(lblDatosReserva, gbc_lblDatosReserva);
+		}
+		{
 			lblFechaDeEntrada = new JLabel("Fecha de entrada:");
 			GridBagConstraints gbc_lblFechaDeEntrada = new GridBagConstraints();
 			gbc_lblFechaDeEntrada.anchor = GridBagConstraints.EAST;
 			gbc_lblFechaDeEntrada.insets = new Insets(0, 0, 5, 5);
 			gbc_lblFechaDeEntrada.gridx = 1;
-			gbc_lblFechaDeEntrada.gridy = 8;
+			gbc_lblFechaDeEntrada.gridy = 10;
 			add(lblFechaDeEntrada, gbc_lblFechaDeEntrada);
 		}
 		{
 			dCFechaEntrada = new JDateChooser();
 			GridBagConstraints gbc_dCFechaEntrada = new GridBagConstraints();
-			gbc_dCFechaEntrada.fill = GridBagConstraints.HORIZONTAL;
+			gbc_dCFechaEntrada.anchor = GridBagConstraints.WEST;
 			gbc_dCFechaEntrada.insets = new Insets(0, 0, 5, 5);
 			gbc_dCFechaEntrada.gridx = 2;
-			gbc_dCFechaEntrada.gridy = 8;
+			gbc_dCFechaEntrada.gridy = 10;
 			add(dCFechaEntrada, gbc_dCFechaEntrada);
 		}
 		{
@@ -183,8 +202,8 @@ public class pnlFormReserva extends JPanel {
 			GridBagConstraints gbc_lblHoraDeEntrada = new GridBagConstraints();
 			gbc_lblHoraDeEntrada.anchor = GridBagConstraints.EAST;
 			gbc_lblHoraDeEntrada.insets = new Insets(0, 0, 5, 5);
-			gbc_lblHoraDeEntrada.gridx = 3;
-			gbc_lblHoraDeEntrada.gridy = 8;
+			gbc_lblHoraDeEntrada.gridx = 1;
+			gbc_lblHoraDeEntrada.gridy = 11;
 			add(lblHoraDeEntrada, gbc_lblHoraDeEntrada);
 		}
 		{
@@ -192,10 +211,10 @@ public class pnlFormReserva extends JPanel {
 			tfHoraEntrada.setEditable(false);
 			tfHoraEntrada.setColumns(10);
 			GridBagConstraints gbc_tfHoraEntrada = new GridBagConstraints();
-			gbc_tfHoraEntrada.insets = new Insets(0, 0, 5, 0);
+			gbc_tfHoraEntrada.insets = new Insets(0, 0, 5, 5);
 			gbc_tfHoraEntrada.fill = GridBagConstraints.HORIZONTAL;
-			gbc_tfHoraEntrada.gridx = 4;
-			gbc_tfHoraEntrada.gridy = 8;
+			gbc_tfHoraEntrada.gridx = 2;
+			gbc_tfHoraEntrada.gridy = 11;
 			add(tfHoraEntrada, gbc_tfHoraEntrada);
 		}
 		{
@@ -204,16 +223,16 @@ public class pnlFormReserva extends JPanel {
 			gbc_lblFechaDeSalida.anchor = GridBagConstraints.EAST;
 			gbc_lblFechaDeSalida.insets = new Insets(0, 0, 5, 5);
 			gbc_lblFechaDeSalida.gridx = 1;
-			gbc_lblFechaDeSalida.gridy = 9;
+			gbc_lblFechaDeSalida.gridy = 12;
 			add(lblFechaDeSalida, gbc_lblFechaDeSalida);
 		}
 		{
 			dCFechaSalida = new JDateChooser();
 			GridBagConstraints gbc_dCFechaSalida = new GridBagConstraints();
+			gbc_dCFechaSalida.anchor = GridBagConstraints.WEST;
 			gbc_dCFechaSalida.insets = new Insets(0, 0, 5, 5);
-			gbc_dCFechaSalida.fill = GridBagConstraints.HORIZONTAL;
 			gbc_dCFechaSalida.gridx = 2;
-			gbc_dCFechaSalida.gridy = 9;
+			gbc_dCFechaSalida.gridy = 12;
 			add(dCFechaSalida, gbc_dCFechaSalida);
 		}
 		{
@@ -221,8 +240,8 @@ public class pnlFormReserva extends JPanel {
 			GridBagConstraints gbc_lblHoraDeSalida = new GridBagConstraints();
 			gbc_lblHoraDeSalida.anchor = GridBagConstraints.EAST;
 			gbc_lblHoraDeSalida.insets = new Insets(0, 0, 5, 5);
-			gbc_lblHoraDeSalida.gridx = 3;
-			gbc_lblHoraDeSalida.gridy = 9;
+			gbc_lblHoraDeSalida.gridx = 1;
+			gbc_lblHoraDeSalida.gridy = 13;
 			add(lblHoraDeSalida, gbc_lblHoraDeSalida);
 		}
 		{
@@ -230,10 +249,10 @@ public class pnlFormReserva extends JPanel {
 			tfHoraSalida.setEditable(false);
 			tfHoraSalida.setColumns(10);
 			GridBagConstraints gbc_tfHoraSalida = new GridBagConstraints();
-			gbc_tfHoraSalida.insets = new Insets(0, 0, 5, 0);
+			gbc_tfHoraSalida.insets = new Insets(0, 0, 5, 5);
 			gbc_tfHoraSalida.fill = GridBagConstraints.HORIZONTAL;
-			gbc_tfHoraSalida.gridx = 4;
-			gbc_tfHoraSalida.gridy = 9;
+			gbc_tfHoraSalida.gridx = 2;
+			gbc_tfHoraSalida.gridy = 13;
 			add(tfHoraSalida, gbc_tfHoraSalida);
 		}
 		{
@@ -242,19 +261,19 @@ public class pnlFormReserva extends JPanel {
 			gbc_lblNmeroDeOcupantes.anchor = GridBagConstraints.EAST;
 			gbc_lblNmeroDeOcupantes.insets = new Insets(0, 0, 5, 5);
 			gbc_lblNmeroDeOcupantes.gridx = 1;
-			gbc_lblNmeroDeOcupantes.gridy = 11;
+			gbc_lblNmeroDeOcupantes.gridy = 14;
 			add(lblNmeroDeOcupantes, gbc_lblNmeroDeOcupantes);
 		}
 		{
-			spinner = new JSpinner();
-			spinner.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-			spinner.setEnabled(false);
-			GridBagConstraints gbc_spinner = new GridBagConstraints();
-			gbc_spinner.anchor = GridBagConstraints.WEST;
-			gbc_spinner.insets = new Insets(0, 0, 5, 5);
-			gbc_spinner.gridx = 2;
-			gbc_spinner.gridy = 11;
-			add(spinner, gbc_spinner);
+			spinnerOcupantes = new JSpinner();
+			spinnerOcupantes.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
+			spinnerOcupantes.setEnabled(false);
+			GridBagConstraints gbc_spinnerOcupantes = new GridBagConstraints();
+			gbc_spinnerOcupantes.anchor = GridBagConstraints.WEST;
+			gbc_spinnerOcupantes.insets = new Insets(0, 0, 5, 5);
+			gbc_spinnerOcupantes.gridx = 2;
+			gbc_spinnerOcupantes.gridy = 14;
+			add(spinnerOcupantes, gbc_spinnerOcupantes);
 		}
 		{
 			lblPeticionesEspeciales = new JLabel("Peticiones Especiales");
@@ -262,27 +281,27 @@ public class pnlFormReserva extends JPanel {
 					.setIcon(new ImageIcon(pnlFormReserva.class.getResource("/Presentacion/Imagenes/pagar.png")));
 			lblPeticionesEspeciales.setFont(new Font("Tahoma", Font.BOLD, 18));
 			GridBagConstraints gbc_lblPeticionesEspeciales = new GridBagConstraints();
-			gbc_lblPeticionesEspeciales.anchor = GridBagConstraints.EAST;
+			gbc_lblPeticionesEspeciales.anchor = GridBagConstraints.WEST;
 			gbc_lblPeticionesEspeciales.insets = new Insets(0, 0, 5, 5);
 			gbc_lblPeticionesEspeciales.gridx = 1;
-			gbc_lblPeticionesEspeciales.gridy = 13;
+			gbc_lblPeticionesEspeciales.gridy = 16;
 			add(lblPeticionesEspeciales, gbc_lblPeticionesEspeciales);
 		}
 		{
 			textPeticionesEspeciales = new JTextArea();
+			textPeticionesEspeciales.setEditable(false);
 			textPeticionesEspeciales.setWrapStyleWord(true);
 			textPeticionesEspeciales.setText((String) null);
 			textPeticionesEspeciales.setOpaque(false);
 			textPeticionesEspeciales.setLineWrap(true);
 			textPeticionesEspeciales.setBackground(Color.WHITE);
 			GridBagConstraints gbc_textPeticionesEspeciales = new GridBagConstraints();
-			gbc_textPeticionesEspeciales.anchor = GridBagConstraints.EAST;
+			gbc_textPeticionesEspeciales.fill = GridBagConstraints.BOTH;
 			gbc_textPeticionesEspeciales.insets = new Insets(0, 0, 5, 0);
 			gbc_textPeticionesEspeciales.gridheight = 3;
 			gbc_textPeticionesEspeciales.gridwidth = 4;
-			gbc_textPeticionesEspeciales.fill = GridBagConstraints.VERTICAL;
 			gbc_textPeticionesEspeciales.gridx = 1;
-			gbc_textPeticionesEspeciales.gridy = 14;
+			gbc_textPeticionesEspeciales.gridy = 17;
 			add(textPeticionesEspeciales, gbc_textPeticionesEspeciales);
 		}
 
@@ -293,6 +312,25 @@ public class pnlFormReserva extends JPanel {
 		tfEmailRes.setText(reserva.getEmail());
 		tfHoraEntrada.setText(reserva.getHora_entrada());
 		tfHoraSalida.setText(reserva.getHora_salida());
+
+		Calendar calEntrada = Calendar.getInstance();
+		Calendar calSalida = Calendar.getInstance();
+		SimpleDateFormat sdfSalida = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdfEntrada = new SimpleDateFormat("dd/MM/yyyy");
+		
+		try {
+			calSalida.setTime(sdfSalida.parse(reserva.getFecha_salida()));
+			calEntrada.setTime(sdfEntrada.parse(reserva.getFecha_entrada()));
+			dCFechaEntrada.setEnabled(false);
+			dCFechaSalida.setEnabled(false);
+			dCFechaEntrada.setCalendar(calEntrada);
+			dCFechaSalida.setCalendar(calSalida);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		spinnerOcupantes.setValue(reserva.getN_ocupantes());
 		tfNombreRes.setText(reserva.getNombre());
 		tfTlfRes.setText(reserva.getTelefono());
 		textPeticionesEspeciales.setText(reserva.getSolicitudes_especiales());
@@ -311,7 +349,6 @@ public class pnlFormReserva extends JPanel {
 				}
 			}
 		}
-
 		return correcto;
 	}
 
