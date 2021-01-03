@@ -75,4 +75,8 @@ public class pnlContenedorReservas extends JPanel {
 		return reserva;
 	}
 
+	public void reload() {
+		loadPanels();
+	}
+
 }

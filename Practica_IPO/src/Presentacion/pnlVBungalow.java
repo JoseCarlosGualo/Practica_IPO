@@ -329,7 +329,7 @@ public class pnlVBungalow extends JPanel {
 	private class BtnReservarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			frmRealizarReservaBungalow anadir = new frmRealizarReservaBungalow(pnlContenedorBungalows.getBounds(),
-					this.getClass(), 1);
+					pnlContenedorBungalows, 1, getBungalow());
 			anadir.setVisible(true);
 		}
 	}

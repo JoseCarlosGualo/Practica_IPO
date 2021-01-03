@@ -28,7 +28,7 @@ public class ReservaDAO {
 		try {
 
 			if (reserva.getEstancia() instanceof Bungalow) {
-				String SQL = "INSERT INTO Reserva (id_reserva, id_estancia, tipo, fecha_entrada, fecha_salida, nombre, teledono, email, n_ocupantes, solicitudes_especiales, hora_entrada, hora_salida, dni)"
+				String SQL = "INSERT INTO Reserva (id_reserva, id_estancia, tipo, fecha_entrada, fecha_salida, nombre, telefono, email, n_ocupantes, solicitudes_especiales, hora_entrada, hora_salida, dni)"
 						+ " VALUES (" + reserva.getId_reserva() + ",'" + reserva.getEstancia().getId() + "','Bungalow"
 						+ "','" + reserva.getFecha_entrada() + "','" + reserva.getFecha_salida() + "','"
 						+ reserva.getNombre() + "','" + reserva.getTelefono() + "','" + reserva.getEmail() + "','"
@@ -39,7 +39,7 @@ public class ReservaDAO {
 				Agente.getAgente().modificar(SQL);
 				correcto = true;
 			} else {
-				String SQL = "INSERT INTO Reserva (id_reserva, id_estancia, tipo, fecha_entrada, fecha_salida, nombre, teledono, email, n_ocupantes, solicitudes_especiales, hora_entrada, hora_salida, dni)"
+				String SQL = "INSERT INTO Reserva (id_reserva, id_estancia, tipo, fecha_entrada, fecha_salida, nombre, telefono, email, n_ocupantes, solicitudes_especiales, hora_entrada, hora_salida, dni)"
 						+ " VALUES (" + reserva.getId_reserva() + ",'" + reserva.getEstancia().getId() + "',' Parcela"
 						+ "','" + reserva.getFecha_entrada() + "','" + reserva.getFecha_salida() + "','"
 						+ reserva.getNombre() + "','" + reserva.getTelefono() + "','" + reserva.getEmail() + "','"

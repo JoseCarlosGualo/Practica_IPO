@@ -179,6 +179,7 @@ public class Login {
 	private pnlContenedorReservas pnlContenedorReserva;
 	private JButton btnModificarReserva;
 	private JButton btnEliminarReserva;
+	private JButton btnRefrescar;
 
 	/**
 	 * Launch the application.
@@ -1002,6 +1003,11 @@ public class Login {
 								btnEliminarReserva = new JButton("Eliminar");
 								pnlBotonesReserva.add(btnEliminarReserva);
 							}
+							{
+								btnRefrescar = new JButton("Refrescar");
+								btnRefrescar.addActionListener(new BtnRefrescarActionListener());
+								pnlBotonesReserva.add(btnRefrescar);
+							}
 						}
 						{
 							pnlListadoReservas = new JPanel();
@@ -1027,7 +1033,8 @@ public class Login {
 									pnlReservas.add(pnlDatosReserva, gbc_pnlDatosReserva);
 								}
 								{
-									pnlContenedorReserva = new pnlContenedorReservas(this.cargarReservas(), pnlDatosReserva);
+									pnlContenedorReserva = new pnlContenedorReservas(this.cargarReservas(),
+											pnlDatosReserva);
 									scrollPaneReservas.setViewportView(pnlContenedorReserva);
 								}
 							}
@@ -1039,6 +1046,7 @@ public class Login {
 				pnlContenedorBungalows.loadPnlBungalows(cargarBungalow());
 				pnlContenedorParcelas.loadPnlParcelas(cargarParcela());
 			}
+
 		}
 	}
 
@@ -1425,6 +1433,12 @@ public class Login {
 			}
 			pnlContenedorActividades.loadPanels();
 			pnlDatosActividad.clean();
+		}
+	}
+
+	private class BtnRefrescarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			pnlContenedorReserva.reload();
 		}
 	}
 

@@ -44,14 +44,15 @@ import java.awt.Font;
 import javax.swing.JSpinner;
 import com.toedter.calendar.JDateChooser;
 
-import Dominio.Bungalow;
+import Dominio.Reserva;
 import Dominio.Disponibilidad;
 import Dominio.Empleado;
+import Dominio.Parcela;
 import Dominio.Reserva;
 import javax.swing.JTextArea;
 import javax.swing.SpinnerNumberModel;
 
-public class frmRealizarReservaBungalow extends JFrame {
+public class frmRealizarReservaParcela extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel panelBotones;
@@ -60,7 +61,7 @@ public class frmRealizarReservaBungalow extends JFrame {
 	private int estado;
 	private JPanel panelDatosReserva;
 
-	private pnlContenedorBungalows pnlContenedorBungalows;
+	private pnlContenedorParcelas pnlContenedorParcelas;
 	private int id;
 
 	private final static int ALTO = 700;
@@ -87,7 +88,7 @@ public class frmRealizarReservaBungalow extends JFrame {
 	private JDateChooser dCFechaSalida;
 	private JTextField tfHoraEntradaRes;
 	private JTextField tfHoraSalida;
-	private Bungalow bungalow;
+	private Parcela parcela;
 	private JLabel lblPeticionesEspeciales;
 	private JTextArea txaPeticionesEspeciales;
 
@@ -98,7 +99,7 @@ public class frmRealizarReservaBungalow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frmRealizarReservaBungalow frame = new frmRealizarReservaBungalow(null, null, 0, null);
+					frmRealizarReservaParcela frame = new frmRealizarReservaParcela(null, null, 0, null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -110,11 +111,11 @@ public class frmRealizarReservaBungalow extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frmRealizarReservaBungalow(Rectangle limites, pnlContenedorBungalows panel, int estado, Bungalow bungalow) {
+	public frmRealizarReservaParcela(Rectangle limites, pnlContenedorParcelas panel, int estado, Parcela parcela) {
 		this.estado = estado;
-		this.bungalow = bungalow;
+		this.parcela = parcela;
 		setResizable(false);
-		this.pnlContenedorBungalows = panel;
+		this.pnlContenedorParcelas = panel;
 		setTitle("Formulario Añadir Reserva");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		if (limites.equals(null)) {
@@ -465,8 +466,8 @@ public class frmRealizarReservaBungalow extends JFrame {
 						Reserva reserva = new Reserva();
 						reserva.setDni(tfDniRes.getText());
 						reserva.setEmail(tfEmailRes.getText());
-						bungalow.setDisponibilidad(Disponibilidad.Ocupada);
-						reserva.setEstancia(bungalow);
+						parcela.setDisponibilidad(Disponibilidad.Ocupada);
+						reserva.setEstancia(parcela);
 						SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 						reserva.setFecha_entrada(sdf.format(dCFechaEntrada.getDate()));
 						reserva.setFecha_salida(sdf.format(dCFechaSalida.getDate()));
@@ -475,7 +476,7 @@ public class frmRealizarReservaBungalow extends JFrame {
 						reserva.setTelefono(tfTlfnRes.getText());
 						reserva.setN_ocupantes((Integer) spinnerOcupantes.getValue());
 						reserva.setNombre(tfNombreRes.getText());
-						reserva.setTipo("Bungalow");
+						reserva.setTipo("Parcela");
 						reserva.setSolicitudes_especiales(txaPeticionesEspeciales.getText());
 
 						try {
@@ -493,8 +494,7 @@ public class frmRealizarReservaBungalow extends JFrame {
 							JOptionPane.WARNING_MESSAGE);
 					return;
 				}
-				// pnlContenedorReservas.loadPanels();
-				pnlContenedorBungalows.reload();
+				pnlContenedorParcelas.reload();
 				dispose();
 			} else {
 				dispose();

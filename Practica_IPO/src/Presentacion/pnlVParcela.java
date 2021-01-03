@@ -21,6 +21,8 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.UIManager;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class pnlVParcela extends JPanel {
 	private JLabel lblNombreParcela;
@@ -209,6 +211,7 @@ public class pnlVParcela extends JPanel {
 			}
 			{
 				btnReservar = new JButton("RERSERVAR");
+				btnReservar.addActionListener(new BtnReservarActionListener());
 				GridBagConstraints gbc_btnReservar = new GridBagConstraints();
 				gbc_btnReservar.insets = new Insets(0, 0, 0, 5);
 				gbc_btnReservar.gridx = 2;
@@ -312,6 +315,14 @@ public class pnlVParcela extends JPanel {
 			default:
 				break;
 			}
+		}
+	}
+
+	private class BtnReservarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			frmRealizarReservaParcela anadir = new frmRealizarReservaParcela(pnlContenedorParcelas.getBounds(),
+					pnlContenedorParcelas, 1, getParcela());
+			anadir.setVisible(true);
 		}
 	}
 }
