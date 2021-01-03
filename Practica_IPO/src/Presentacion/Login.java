@@ -140,7 +140,7 @@ public class Login {
 	private JPanel pnlBotonesEmpleados;
 	private JPanel pnlListadoEmpleados;
 	private JScrollPane scrollPane;
-	private pnlContenedorEmpleados pnlContenedorEmpleados;
+	private Presentacion.pnlContenedorEmpleados pnlContenedorEmpleados;
 	private pnlFormEmpleado pnlDatosEmpleado;
 	private JLabel lblBsquedaPorNombre;
 	private JTextField tfBusquedaNombre;
