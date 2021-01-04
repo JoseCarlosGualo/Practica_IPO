@@ -59,6 +59,7 @@ import Dominio.Empleado;
 import Dominio.Disponibilidad;
 import Dominio.Parcela;
 import Dominio.Reserva;
+import Dominio.RutaSenderista;
 import Presentacion.pnlContenedorReservas;
 import Dominio.Usuario;
 import java.awt.Dimension;
@@ -109,7 +110,6 @@ public class Login {
 	private JPanel pnlParcelas;
 	private JPanel pnlEmpleados;
 	private JPanel pnlActividades;
-	private pnlDibujarRuta pnlRutasSenderistas;
 	private JMenuBar menuBar;
 	private JMenu mnIdioma;
 	private JRadioButtonMenuItem rdbtnmntmEspaol;
@@ -180,6 +180,22 @@ public class Login {
 	private JButton btnModificarReserva;
 	private JButton btnEliminarReserva;
 	private JButton btnRefrescar;
+	private JPanel pnlRutasSenderistas;
+	private JPanel pnlVistaRutas;
+	private JLabel lblBsquedaPorNombre_1;
+	private JTextField tfBusquedaNombreRuta;
+	private JPanel pnlContenedorBotonesRuta;
+	private JButton btnEditar;
+	private JButton btnEliminarRuta;
+	private JButton btnDisearRuta;
+	private pnlFormRutas pnlDatosRutasSenderistas;
+	private JPanel pnlListaRutas;
+	private JScrollPane scrollPaneRutas;
+	private pnlContenedorRutas pnlContenedorRutas;
+	private JPanel pnlDiseno;
+	private JPanel pnlBotonBack;
+	private JButton btnVolver;
+	private pnlDibujarRuta pnlDibujo;
 
 	/**
 	 * Launch the application.
@@ -954,10 +970,6 @@ public class Login {
 						}
 					}
 					{
-						pnlRutasSenderistas = new pnlDibujarRuta();
-						pnlContenedorPestanas.addTab("Rutas Senderistas", null, pnlRutasSenderistas, null);
-					}
-					{
 						pnlReservas = new JPanel();
 						pnlContenedorPestanas.addTab("Reservas", null, pnlReservas, null);
 						GridBagLayout gbl_pnlReservas = new GridBagLayout();
@@ -1040,6 +1052,112 @@ public class Login {
 							}
 						}
 
+					}
+					{
+						pnlRutasSenderistas = new JPanel();
+						pnlContenedorPestanas.addTab("Rutas senderistas", null, pnlRutasSenderistas, null);
+						pnlRutasSenderistas.setLayout(new CardLayout(0, 0));
+						{
+							pnlVistaRutas = new JPanel();
+							pnlRutasSenderistas.add(pnlVistaRutas, "name_503297110867400");
+							GridBagLayout gbl_pnlVistaRutas = new GridBagLayout();
+							gbl_pnlVistaRutas.columnWidths = new int[] { 15, 0, 326, 30, 0, 0, 0, 15, 0 };
+							gbl_pnlVistaRutas.rowHeights = new int[] { 54, 0, 15, 0 };
+							gbl_pnlVistaRutas.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0,
+									Double.MIN_VALUE };
+							gbl_pnlVistaRutas.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
+							pnlVistaRutas.setLayout(gbl_pnlVistaRutas);
+							{
+								lblBsquedaPorNombre_1 = new JLabel("B\u00FAsqueda por nombre: ");
+								GridBagConstraints gbc_lblBsquedaPorNombre_1 = new GridBagConstraints();
+								gbc_lblBsquedaPorNombre_1.anchor = GridBagConstraints.EAST;
+								gbc_lblBsquedaPorNombre_1.insets = new Insets(0, 0, 5, 5);
+								gbc_lblBsquedaPorNombre_1.gridx = 1;
+								gbc_lblBsquedaPorNombre_1.gridy = 0;
+								pnlVistaRutas.add(lblBsquedaPorNombre_1, gbc_lblBsquedaPorNombre_1);
+							}
+							{
+								tfBusquedaNombreRuta = new JTextField();
+								GridBagConstraints gbc_tfBusquedaNombreRuta = new GridBagConstraints();
+								gbc_tfBusquedaNombreRuta.insets = new Insets(0, 0, 5, 5);
+								gbc_tfBusquedaNombreRuta.fill = GridBagConstraints.HORIZONTAL;
+								gbc_tfBusquedaNombreRuta.gridx = 2;
+								gbc_tfBusquedaNombreRuta.gridy = 0;
+								pnlVistaRutas.add(tfBusquedaNombreRuta, gbc_tfBusquedaNombreRuta);
+								tfBusquedaNombreRuta.setColumns(10);
+							}
+							{
+								pnlContenedorBotonesRuta = new JPanel();
+								GridBagConstraints gbc_pnlContenedorBotonesRuta = new GridBagConstraints();
+								gbc_pnlContenedorBotonesRuta.gridwidth = 3;
+								gbc_pnlContenedorBotonesRuta.insets = new Insets(0, 0, 5, 5);
+								gbc_pnlContenedorBotonesRuta.fill = GridBagConstraints.BOTH;
+								gbc_pnlContenedorBotonesRuta.gridx = 4;
+								gbc_pnlContenedorBotonesRuta.gridy = 0;
+								pnlVistaRutas.add(pnlContenedorBotonesRuta, gbc_pnlContenedorBotonesRuta);
+								{
+									btnEditar = new JButton("Modificar");
+									pnlContenedorBotonesRuta.add(btnEditar);
+								}
+								{
+									btnEliminarRuta = new JButton("Eliminar");
+									pnlContenedorBotonesRuta.add(btnEliminarRuta);
+								}
+								{
+									btnDisearRuta = new JButton("Dise\u00F1ar Ruta");
+									btnDisearRuta.addActionListener(new BtnDisearRutaActionListener());
+									pnlContenedorBotonesRuta.add(btnDisearRuta);
+								}
+							}
+							{
+								pnlDatosRutasSenderistas = new pnlFormRutas();
+								GridBagConstraints gbc_pnlDatosRutasSenderistas = new GridBagConstraints();
+								gbc_pnlDatosRutasSenderistas.gridwidth = 3;
+								gbc_pnlDatosRutasSenderistas.insets = new Insets(0, 0, 5, 5);
+								gbc_pnlDatosRutasSenderistas.fill = GridBagConstraints.BOTH;
+								gbc_pnlDatosRutasSenderistas.gridx = 4;
+								gbc_pnlDatosRutasSenderistas.gridy = 1;
+								pnlVistaRutas.add(pnlDatosRutasSenderistas, gbc_pnlDatosRutasSenderistas);
+							}
+							{
+								pnlListaRutas = new JPanel();
+								GridBagConstraints gbc_pnlListaRutas = new GridBagConstraints();
+								gbc_pnlListaRutas.gridwidth = 2;
+								gbc_pnlListaRutas.insets = new Insets(0, 0, 5, 5);
+								gbc_pnlListaRutas.fill = GridBagConstraints.BOTH;
+								gbc_pnlListaRutas.gridx = 1;
+								gbc_pnlListaRutas.gridy = 1;
+								pnlVistaRutas.add(pnlListaRutas, gbc_pnlListaRutas);
+								pnlListaRutas.setLayout(new BorderLayout(0, 0));
+								{
+									scrollPaneRutas = new JScrollPane();
+									pnlListaRutas.add(scrollPaneRutas, BorderLayout.CENTER);
+									{
+										pnlContenedorRutas = new pnlContenedorRutas(cargarRutas(),
+												pnlDatosRutasSenderistas);
+										scrollPaneRutas.setViewportView(pnlContenedorRutas);
+									}
+								}
+							}
+
+						}
+						{
+							pnlDiseno = new JPanel();
+							pnlRutasSenderistas.add(pnlDiseno, "name_504363671098700");
+							pnlDiseno.setLayout(new BorderLayout(0, 0));
+							{
+								pnlBotonBack = new JPanel();
+								pnlDiseno.add(pnlBotonBack, BorderLayout.SOUTH);
+								{
+									btnVolver = new JButton("Volver");
+									pnlBotonBack.add(btnVolver);
+								}
+							}
+							{
+								pnlDibujo = new pnlDibujarRuta();
+								pnlDiseno.add(pnlDibujo, BorderLayout.CENTER);
+							}
+						}
 					}
 				}
 
@@ -1442,6 +1560,12 @@ public class Login {
 		}
 	}
 
+	private class BtnDisearRutaActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			((CardLayout) pnlBotonesActividades.getLayout()).show(pnlDiseno, "pnlDibujar");
+		}
+	}
+
 	private void entrar() {
 
 		String password = pwdContrasena.getText();
@@ -1547,6 +1671,19 @@ public class Login {
 
 		if (correcto) {
 			return (reserva.getReservaDAO().getListaReservas());
+		} else {
+			return null;
+		}
+	}
+
+	private ArrayList<RutaSenderista> cargarRutas() {
+		RutaSenderista ruta = new RutaSenderista();
+		boolean correcto = false;
+
+		correcto = ruta.readAll();
+
+		if (correcto) {
+			return (ruta.getRutaDAO().getListaRutas());
 		} else {
 			return null;
 		}

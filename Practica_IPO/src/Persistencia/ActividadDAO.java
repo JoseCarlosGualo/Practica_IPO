@@ -122,7 +122,7 @@ public class ActividadDAO {
 		return correcto;
 
 	}
-	
+
 	public boolean readFromName(Actividad actividad) {
 
 		boolean correcto = false;

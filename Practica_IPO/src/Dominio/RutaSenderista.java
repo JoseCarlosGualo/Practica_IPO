@@ -4,66 +4,92 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import Persistencia.RutaDAO;
 
 public class RutaSenderista {
-	private Date dia;
-	private Calendar hora_inicio;
-	private Calendar hora_fin;
-	private List<Empleado> monitores = new ArrayList<Empleado>();
+	private String dia;
+	private int id;
+	private String hora_inicio;
+	private String hora_fin;
+	private Empleado monitor;
+	private String equipamiento;
 	private String pto_encuentro;
-	private int personas_min;
-	private int personas_max;
+	private String personas_min;
+	private String personas_max;
 	private String grado_dificultad;
-	private String descripcion; 
-	private List<String> equipamiento = new ArrayList<String>();
-	private int mapa;
-	
-	public RutaSenderista(Date dia, Calendar hora_inicio, Calendar hora_fin, List<Empleado> monitores,
-			String pto_encuentro, int personas_min, int personas_max, String grado_dificultad, String descripcion,
-			List<String> equipamiento, int mapa) {
+	private String descripcion;
+	private String nombre;
+	private RutaDAO rutaDAO;
+	private String foto;
+
+	public RutaSenderista(int id, String dia, String hora_inicio, String hora_fin, Empleado monitor,
+			String pto_encuentro, String personas_min, String personas_max, String grado_dificultad, String descripcion,
+			String equipamiento) {
+		this.id = id;
 		this.dia = dia;
 		this.hora_inicio = hora_inicio;
 		this.hora_fin = hora_fin;
-		this.monitores = monitores;
+		this.monitor = monitor;
 		this.pto_encuentro = pto_encuentro;
 		this.personas_min = personas_min;
 		this.personas_max = personas_max;
 		this.grado_dificultad = grado_dificultad;
 		this.descripcion = descripcion;
 		this.equipamiento = equipamiento;
-		this.mapa = mapa;
+
+		this.rutaDAO = new RutaDAO();
 	}
 
-	public Date getDia() {
+	public RutaSenderista() {
+		this.rutaDAO = new RutaDAO();
+	}
+
+	public String getDia() {
 		return dia;
 	}
 
-	public void setDia(Date dia) {
+	public void setDia(String dia) {
 		this.dia = dia;
 	}
 
-	public Calendar getHora_inicio() {
+	public String getHora_inicio() {
 		return hora_inicio;
 	}
 
-	public void setHora_inicio(Calendar hora_inicio) {
+	public void setHora_inicio(String hora_inicio) {
 		this.hora_inicio = hora_inicio;
 	}
 
-	public Calendar getHora_fin() {
+	public String getHora_fin() {
 		return hora_fin;
 	}
 
-	public void setHora_fin(Calendar hora_fin) {
+	public void setHora_fin(String hora_fin) {
 		this.hora_fin = hora_fin;
 	}
 
-	public List<Empleado> getMonitores() {
-		return monitores;
+	public Empleado getMonitor() {
+		return monitor;
 	}
 
-	public void setMonitores(List<Empleado> monitores) {
-		this.monitores = monitores;
+	public void setMonitor(Empleado monitor) {
+		this.monitor = monitor;
+	}
+
+	public void setEquipamiento(String equipamiento) {
+		this.equipamiento = equipamiento;
+	}
+
+	public String getEquipamiento() {
+		return equipamiento;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public String getPto_encuentro() {
@@ -74,20 +100,20 @@ public class RutaSenderista {
 		this.pto_encuentro = pto_encuentro;
 	}
 
-	public int getPersonas_min() {
+	public String getPersonas_min() {
 		return personas_min;
 	}
 
-	public void setPersonas_min(int personas_min) {
-		this.personas_min = personas_min;
+	public void setPersonas_min(String string) {
+		this.personas_min = string;
 	}
 
-	public int getPersonas_max() {
+	public String getPersonas_max() {
 		return personas_max;
 	}
 
-	public void setPersonas_max(int personas_max) {
-		this.personas_max = personas_max;
+	public void setPersonas_max(String string) {
+		this.personas_max = string;
 	}
 
 	public String getGrado_dificultad() {
@@ -106,21 +132,54 @@ public class RutaSenderista {
 		this.descripcion = descripcion;
 	}
 
-	public List<String> getEquipamiento() {
-		return equipamiento;
+	/**
+	 * @return the foto
+	 */
+	public String getFoto() {
+		return foto;
 	}
 
-	public void setEquipamiento(List<String> equipamiento) {
-		this.equipamiento = equipamiento;
+	/**
+	 * @param foto the foto to set
+	 */
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
-	public int getMapa() {
-		return mapa;
+	public boolean insert() {
+		return this.rutaDAO.insert(this);
 	}
 
-	public void setMapa(int mapa) {
-		this.mapa = mapa;
+	public boolean update() {
+		return rutaDAO.update(this);
 	}
 
-	
+	public boolean delete() {
+		return rutaDAO.delete(this);
+	}
+
+	public RutaDAO getRutaDAO() {
+		return rutaDAO;
+	}
+
+	public void setRutaDAO(RutaDAO rutaDAO) {
+		this.rutaDAO = rutaDAO;
+	}
+
+	public boolean read() {
+		return rutaDAO.read(this);
+	}
+
+	public boolean readAll() {
+		return rutaDAO.readAll();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 }
