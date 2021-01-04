@@ -84,8 +84,6 @@ public class pnlDibujarRuta extends JPanel {
 			add(toolBar, BorderLayout.NORTH);
 			{
 				btnCargarMapa = new JButton("");
-				// btnCargarMapa.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnCargarMapa.toolTipText"));
-				// //$NON-NLS-1$
 				btnCargarMapa.setMnemonic('L');
 				btnCargarMapa.addActionListener(new BtnCargarMapaActionListener());
 				btnCargarMapa
@@ -94,8 +92,7 @@ public class pnlDibujarRuta extends JPanel {
 			}
 			{
 				btnDibujar = new JButton("");
-				// btnDibujar.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnDibujar.toolTipText"));
-				// //$NON-NLS-1$
+
 				btnDibujar.setMnemonic('D');
 				btnDibujar.addActionListener(new BtnDibujarActionListener());
 				btnDibujar
@@ -104,8 +101,6 @@ public class pnlDibujarRuta extends JPanel {
 			}
 			{
 				btnBorrar = new JButton("");
-				// btnBorrar.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnBorrar.toolTipText"));
-				// //$NON-NLS-1$
 				btnBorrar.setMnemonic('B');
 				btnBorrar.addActionListener(new BtnBorrarActionListener());
 				btnBorrar.setIcon(
@@ -116,31 +111,25 @@ public class pnlDibujarRuta extends JPanel {
 				btnFauna = new JButton("");
 				btnFauna.setIcon(
 						new ImageIcon(pnlDibujarRuta.class.getResource("/Presentacion/Imagenes/animal_ico32.png")));
-				// btnCliente.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnCliente.toolTipText"));
-				// //$NON-NLS-1$
+
 				btnFauna.setMnemonic('C');
 				btnFauna.addActionListener(new BtnFaunaActionListener());
-				// btnCliente.setIcon(
-				// new
-				// ImageIcon(pnlDibujarRuta.class.getResource("/Presentacion/Iconos/hombre.png")));
+
 				toolBar.add(btnFauna);
 			}
 			{
 				btnFlora = new JButton("");
 				btnFlora.setIcon(
 						new ImageIcon(pnlDibujarRuta.class.getResource("/Presentacion/Imagenes/planta_ico32.png")));
-				// btnVIP.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnVIP.toolTipText"));
-				// //$NON-NLS-1$
+
 				btnFlora.setMnemonic('V');
 				btnFlora.addActionListener(new BtnFloraActionListener());
-				// btnVIP.setIcon(new
-				// ImageIcon(pnlDibujarRuta.class.getResource("/Presentacion/Iconos/vip-2.png")));
+
 				toolBar.add(btnFlora);
 			}
 			{
 				btnCaliente = new JButton("");
-				// btnCaliente.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnCaliente.toolTipText"));
-				// //$NON-NLS-1$
+
 				btnCaliente.setMnemonic('H');
 				btnCaliente.addActionListener(new BtnCalienteActionListener());
 				btnCaliente.setIcon(
@@ -149,8 +138,7 @@ public class pnlDibujarRuta extends JPanel {
 			}
 			{
 				btnFrio = new JButton("");
-				// btnFrio.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnFrio.toolTipText"));
-				// //$NON-NLS-1$
+
 				btnFrio.setMnemonic('J');
 				btnFrio.addActionListener(new BtnFrioActionListener());
 				btnFrio.setIcon(new ImageIcon(pnlDibujarRuta.class.getResource("/Presentacion/Imagenes/frio.png")));
@@ -158,8 +146,7 @@ public class pnlDibujarRuta extends JPanel {
 			}
 			{
 				btnUbicacion = new JButton("");
-				// btnPagar.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnPagar.toolTipText"));
-				// //$NON-NLS-1$
+
 				btnUbicacion.setMnemonic('P');
 				btnUbicacion.addActionListener(new BtnUbicacionActionListener());
 				btnUbicacion.setIcon(
@@ -168,8 +155,6 @@ public class pnlDibujarRuta extends JPanel {
 			}
 			{
 				btnRemoveAll = new JButton("");
-				// btnRemoveAll.setToolTipText(MessagesPrincipal.getString("panelEnvioDomicilio.btnRemoveAll.toolTipText"));
-				// //$NON-NLS-1$
 				btnRemoveAll.setMnemonic('X');
 				btnRemoveAll.addActionListener(new BtnRemoveAllActionListener());
 				btnRemoveAll

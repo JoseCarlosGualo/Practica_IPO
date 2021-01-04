@@ -187,7 +187,6 @@ public class Login {
 	private JPanel pnlContenedorBotonesRuta;
 	private JButton btnEditar;
 	private JButton btnEliminarRuta;
-	private JButton btnDisearRuta;
 	private pnlFormRutas pnlDatosRutasSenderistas;
 	private JPanel pnlListaRutas;
 	private JScrollPane scrollPaneRutas;
@@ -196,6 +195,7 @@ public class Login {
 	private JPanel pnlBotonBack;
 	private JButton btnVolver;
 	private pnlDibujarRuta pnlDibujo;
+	private JButton btnDisearRuta;
 
 	/**
 	 * Launch the application.
@@ -1059,7 +1059,7 @@ public class Login {
 						pnlRutasSenderistas.setLayout(new CardLayout(0, 0));
 						{
 							pnlVistaRutas = new JPanel();
-							pnlRutasSenderistas.add(pnlVistaRutas, "name_503297110867400");
+							pnlRutasSenderistas.add(pnlVistaRutas, "pnlVistaRutas");
 							GridBagLayout gbl_pnlVistaRutas = new GridBagLayout();
 							gbl_pnlVistaRutas.columnWidths = new int[] { 15, 0, 326, 30, 0, 0, 0, 15, 0 };
 							gbl_pnlVistaRutas.rowHeights = new int[] { 54, 0, 15, 0 };
@@ -1143,13 +1143,14 @@ public class Login {
 						}
 						{
 							pnlDiseno = new JPanel();
-							pnlRutasSenderistas.add(pnlDiseno, "name_504363671098700");
+							pnlRutasSenderistas.add(pnlDiseno, "pnlDiseno");
 							pnlDiseno.setLayout(new BorderLayout(0, 0));
 							{
 								pnlBotonBack = new JPanel();
 								pnlDiseno.add(pnlBotonBack, BorderLayout.SOUTH);
 								{
 									btnVolver = new JButton("Volver");
+									btnVolver.addActionListener(new BtnVolverActionListener());
 									pnlBotonBack.add(btnVolver);
 								}
 							}
@@ -1562,7 +1563,13 @@ public class Login {
 
 	private class BtnDisearRutaActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			((CardLayout) pnlBotonesActividades.getLayout()).show(pnlDiseno, "pnlDibujar");
+			((CardLayout) pnlRutasSenderistas.getLayout()).show(pnlRutasSenderistas, "pnlDiseno");
+		}
+	}
+
+	private class BtnVolverActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			((CardLayout) pnlRutasSenderistas.getLayout()).show(pnlRutasSenderistas, "pnlVistaRutas");
 		}
 	}
 
