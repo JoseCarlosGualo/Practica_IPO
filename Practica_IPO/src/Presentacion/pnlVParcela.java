@@ -53,6 +53,7 @@ public class pnlVParcela extends JPanel {
 	 * Create the panel.
 	 */
 	public pnlVParcela(Parcela parcela, pnlContenedorParcelas pnlcontenedor) {
+		setBorder(UIManager.getBorder("InternalFrame.border"));
 		this.parcela = parcela;
 		this.pnlContenedorParcelas = pnlcontenedor;
 		addMouseListener(new ThisMouseListener());

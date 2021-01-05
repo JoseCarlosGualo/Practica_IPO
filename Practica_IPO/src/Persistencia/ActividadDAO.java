@@ -26,7 +26,7 @@ public class ActividadDAO {
 
 		try {
 			String SQL = "INSERT INTO Actividad (id, nombre, empleado, horario, cupo_minimo, cupo_maximo, destinatario, precio_hora, zona_camping, descripcion, equipamiento, imagen)"
-					+ " VALUES (" + actividad.getId() + ",'" + actividad.getNombre() + "',"
+					+ " VALUES ('" + actividad.getId() + "','" + actividad.getNombre() + "','"
 					+ actividad.getEmpleado().getDni() + "','" + actividad.getHorario() + "','"
 					+ actividad.getCupo_minimo() + "','" + actividad.getCupo_maximo() + "','"
 					+ actividad.getDestinatario() + "','" + actividad.getZona_camping() + "','"
@@ -50,13 +50,13 @@ public class ActividadDAO {
 		boolean correcto = false;
 
 		try {
-			String sql = "UPDATE Actividad SET nombre='" + actividad.getNombre() + "', empleado="
-					+ actividad.getEmpleado().getDni() + "" + ",horario=" + actividad.getHorario() + ",cupo_minimo='"
+			String sql = "UPDATE Actividad SET nombre='" + actividad.getNombre() + "', empleado='"
+					+ actividad.getEmpleado().getDni() + "'" + ",horario='" + actividad.getHorario() + "',cupo_minimo='"
 					+ actividad.getCupo_minimo() + "',cupo_maximo='" + actividad.getCupo_maximo() + "',"
 					+ "destinatario='" + actividad.getDestinatario() + "',precio_hora='" + actividad.getPrecio_hora()
 					+ "',zona_camping='" + actividad.getZona_camping() + "',descripcion='" + actividad.getDescripcion()
 					+ "',equipamiento='" + actividad.getEquipamiento() + "',imagen='" + actividad.getImagen()
-					+ "' WHERE id=" + actividad.getId() + ";";
+					+ "' WHERE id='" + actividad.getId() + "';";
 			System.out.println(sql);
 			Agente.getAgente().modificar(sql);
 			correcto = true;

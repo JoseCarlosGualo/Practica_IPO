@@ -170,6 +170,7 @@ public class pnlFormReserva extends JPanel {
 		}
 		{
 			lblDatosReserva = new JLabel("Datos de la Reserva");
+			lblDatosReserva.setIcon(new ImageIcon(pnlFormReserva.class.getResource("/Presentacion/Imagenes/calendar16x16.png")));
 			lblDatosReserva.setFont(new Font("Tahoma", Font.BOLD, 18));
 			GridBagConstraints gbc_lblDatosReserva = new GridBagConstraints();
 			gbc_lblDatosReserva.anchor = GridBagConstraints.WEST;
@@ -284,7 +285,7 @@ public class pnlFormReserva extends JPanel {
 			gbc_lblPeticionesEspeciales.anchor = GridBagConstraints.WEST;
 			gbc_lblPeticionesEspeciales.insets = new Insets(0, 0, 5, 5);
 			gbc_lblPeticionesEspeciales.gridx = 1;
-			gbc_lblPeticionesEspeciales.gridy = 16;
+			gbc_lblPeticionesEspeciales.gridy = 17;
 			add(lblPeticionesEspeciales, gbc_lblPeticionesEspeciales);
 		}
 		{
@@ -301,7 +302,7 @@ public class pnlFormReserva extends JPanel {
 			gbc_textPeticionesEspeciales.gridheight = 3;
 			gbc_textPeticionesEspeciales.gridwidth = 4;
 			gbc_textPeticionesEspeciales.gridx = 1;
-			gbc_textPeticionesEspeciales.gridy = 17;
+			gbc_textPeticionesEspeciales.gridy = 18;
 			add(textPeticionesEspeciales, gbc_textPeticionesEspeciales);
 		}
 

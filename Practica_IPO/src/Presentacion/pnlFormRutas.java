@@ -52,6 +52,7 @@ public class pnlFormRutas extends JPanel {
 	private Border bordeBien = BorderFactory.createLineBorder(Color.GREEN);
 	private Border bordeOriginal;
 	private JLabel lblFoto;
+	private JLabel lblInformacinDeLa;
 
 	/**
 	 * Create the panel.
@@ -60,27 +61,39 @@ public class pnlFormRutas extends JPanel {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 				0, 0 };
-		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 				0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 				0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
-
-		lblNombreRuta = new JLabel("Nombre Ruta");
-		lblNombreRuta.setFont(new Font("Tahoma", Font.BOLD, 19));
-		GridBagConstraints gbc_lblNombreRuta = new GridBagConstraints();
-		gbc_lblNombreRuta.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNombreRuta.gridx = 1;
-		gbc_lblNombreRuta.gridy = 1;
-		add(lblNombreRuta, gbc_lblNombreRuta);
+		
+				lblNombreRuta = new JLabel("Nombre Ruta");
+				lblNombreRuta.setForeground(Color.BLUE);
+				lblNombreRuta.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 22));
+				GridBagConstraints gbc_lblNombreRuta = new GridBagConstraints();
+				gbc_lblNombreRuta.insets = new Insets(0, 0, 5, 5);
+				gbc_lblNombreRuta.gridx = 1;
+				gbc_lblNombreRuta.gridy = 1;
+				add(lblNombreRuta, gbc_lblNombreRuta);
+		
+		lblInformacinDeLa = new JLabel("InformaciÃ³n de la ruta");
+		lblInformacinDeLa.setIcon(new ImageIcon(pnlFormRutas.class.getResource("/Presentacion/Imagenes/informacion.png")));
+		lblInformacinDeLa.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 19));
+		GridBagConstraints gbc_lblInformacinDeLa = new GridBagConstraints();
+		gbc_lblInformacinDeLa.gridwidth = 3;
+		gbc_lblInformacinDeLa.fill = GridBagConstraints.HORIZONTAL;
+		gbc_lblInformacinDeLa.insets = new Insets(0, 0, 5, 5);
+		gbc_lblInformacinDeLa.gridx = 1;
+		gbc_lblInformacinDeLa.gridy = 3;
+		add(lblInformacinDeLa, gbc_lblInformacinDeLa);
 
 		lblMonitor = new JLabel("Monitor:");
 		GridBagConstraints gbc_lblMonitor = new GridBagConstraints();
 		gbc_lblMonitor.insets = new Insets(0, 0, 5, 5);
 		gbc_lblMonitor.anchor = GridBagConstraints.EAST;
 		gbc_lblMonitor.gridx = 1;
-		gbc_lblMonitor.gridy = 3;
+		gbc_lblMonitor.gridy = 5;
 		add(lblMonitor, gbc_lblMonitor);
 
 		tfMonitor = new JTextField();
@@ -90,16 +103,16 @@ public class pnlFormRutas extends JPanel {
 		gbc_tfMonitor.insets = new Insets(0, 0, 5, 5);
 		gbc_tfMonitor.fill = GridBagConstraints.HORIZONTAL;
 		gbc_tfMonitor.gridx = 2;
-		gbc_tfMonitor.gridy = 3;
+		gbc_tfMonitor.gridy = 5;
 		add(tfMonitor, gbc_tfMonitor);
 		tfMonitor.setColumns(10);
 
-		lblMnimo = new JLabel("Mínimo:");
+		lblMnimo = new JLabel("Mï¿½nimo:");
 		GridBagConstraints gbc_lblMnimo = new GridBagConstraints();
 		gbc_lblMnimo.insets = new Insets(0, 0, 5, 5);
 		gbc_lblMnimo.anchor = GridBagConstraints.EAST;
 		gbc_lblMnimo.gridx = 1;
-		gbc_lblMnimo.gridy = 5;
+		gbc_lblMnimo.gridy = 7;
 		add(lblMnimo, gbc_lblMnimo);
 
 		spMin = new JSpinner();
@@ -108,15 +121,15 @@ public class pnlFormRutas extends JPanel {
 		gbc_spMin.anchor = GridBagConstraints.WEST;
 		gbc_spMin.insets = new Insets(0, 0, 5, 5);
 		gbc_spMin.gridx = 2;
-		gbc_spMin.gridy = 5;
+		gbc_spMin.gridy = 7;
 		add(spMin, gbc_spMin);
 
-		lblMximo = new JLabel("Máximo:");
+		lblMximo = new JLabel("Mï¿½ximo:");
 		GridBagConstraints gbc_lblMximo = new GridBagConstraints();
 		gbc_lblMximo.insets = new Insets(0, 0, 5, 5);
 		gbc_lblMximo.anchor = GridBagConstraints.EAST;
 		gbc_lblMximo.gridx = 7;
-		gbc_lblMximo.gridy = 5;
+		gbc_lblMximo.gridy = 7;
 		add(lblMximo, gbc_lblMximo);
 
 		spMax = new JSpinner();
@@ -124,7 +137,7 @@ public class pnlFormRutas extends JPanel {
 		gbc_spMax.anchor = GridBagConstraints.WEST;
 		gbc_spMax.insets = new Insets(0, 0, 5, 5);
 		gbc_spMax.gridx = 8;
-		gbc_spMax.gridy = 5;
+		gbc_spMax.gridy = 7;
 		add(spMax, gbc_spMax);
 
 		lblGradoDeDificultad = new JLabel("Grado de dificultad");
@@ -132,7 +145,7 @@ public class pnlFormRutas extends JPanel {
 		gbc_lblGradoDeDificultad.anchor = GridBagConstraints.EAST;
 		gbc_lblGradoDeDificultad.insets = new Insets(0, 0, 5, 5);
 		gbc_lblGradoDeDificultad.gridx = 1;
-		gbc_lblGradoDeDificultad.gridy = 7;
+		gbc_lblGradoDeDificultad.gridy = 9;
 		add(lblGradoDeDificultad, gbc_lblGradoDeDificultad);
 
 		tfDificultad = new JTextField();
@@ -142,16 +155,16 @@ public class pnlFormRutas extends JPanel {
 		gbc_tfDificultad.insets = new Insets(0, 0, 5, 5);
 		gbc_tfDificultad.fill = GridBagConstraints.HORIZONTAL;
 		gbc_tfDificultad.gridx = 2;
-		gbc_tfDificultad.gridy = 7;
+		gbc_tfDificultad.gridy = 9;
 		add(tfDificultad, gbc_tfDificultad);
 		tfDificultad.setColumns(10);
 
-		lblDa = new JLabel("Día");
+		lblDa = new JLabel("Dï¿½a");
 		GridBagConstraints gbc_lblDa = new GridBagConstraints();
 		gbc_lblDa.anchor = GridBagConstraints.EAST;
 		gbc_lblDa.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDa.gridx = 1;
-		gbc_lblDa.gridy = 9;
+		gbc_lblDa.gridy = 11;
 		add(lblDa, gbc_lblDa);
 
 		chDia = new JDateChooser();
@@ -160,7 +173,7 @@ public class pnlFormRutas extends JPanel {
 		gbc_chDia.insets = new Insets(0, 0, 5, 5);
 		gbc_chDia.fill = GridBagConstraints.HORIZONTAL;
 		gbc_chDia.gridx = 2;
-		gbc_chDia.gridy = 9;
+		gbc_chDia.gridy = 11;
 		add(chDia, gbc_chDia);
 
 		lblInicio = new JLabel("Inicio:");
@@ -168,7 +181,7 @@ public class pnlFormRutas extends JPanel {
 		gbc_lblInicio.anchor = GridBagConstraints.EAST;
 		gbc_lblInicio.insets = new Insets(0, 0, 5, 5);
 		gbc_lblInicio.gridx = 8;
-		gbc_lblInicio.gridy = 9;
+		gbc_lblInicio.gridy = 11;
 		add(lblInicio, gbc_lblInicio);
 
 		tfHoraInicio = new JTextField();
@@ -178,7 +191,7 @@ public class pnlFormRutas extends JPanel {
 		gbc_tfHoraInicio.insets = new Insets(0, 0, 5, 5);
 		gbc_tfHoraInicio.fill = GridBagConstraints.HORIZONTAL;
 		gbc_tfHoraInicio.gridx = 9;
-		gbc_tfHoraInicio.gridy = 9;
+		gbc_tfHoraInicio.gridy = 11;
 		add(tfHoraInicio, gbc_tfHoraInicio);
 		tfHoraInicio.setColumns(10);
 
@@ -186,7 +199,7 @@ public class pnlFormRutas extends JPanel {
 		GridBagConstraints gbc_lblFin = new GridBagConstraints();
 		gbc_lblFin.insets = new Insets(0, 0, 5, 5);
 		gbc_lblFin.gridx = 12;
-		gbc_lblFin.gridy = 9;
+		gbc_lblFin.gridy = 11;
 		add(lblFin, gbc_lblFin);
 
 		tfHoraFin = new JTextField();
@@ -196,7 +209,7 @@ public class pnlFormRutas extends JPanel {
 		gbc_tfHoraFin.fill = GridBagConstraints.HORIZONTAL;
 		gbc_tfHoraFin.insets = new Insets(0, 0, 5, 5);
 		gbc_tfHoraFin.gridx = 13;
-		gbc_tfHoraFin.gridy = 9;
+		gbc_tfHoraFin.gridy = 11;
 		add(tfHoraFin, gbc_tfHoraFin);
 		tfHoraFin.setColumns(10);
 
@@ -205,7 +218,7 @@ public class pnlFormRutas extends JPanel {
 		gbc_lblEquipamiento.anchor = GridBagConstraints.EAST;
 		gbc_lblEquipamiento.insets = new Insets(0, 0, 5, 5);
 		gbc_lblEquipamiento.gridx = 1;
-		gbc_lblEquipamiento.gridy = 11;
+		gbc_lblEquipamiento.gridy = 13;
 		add(lblEquipamiento, gbc_lblEquipamiento);
 
 		tfEquipamiento = new JTextPane();
@@ -216,15 +229,15 @@ public class pnlFormRutas extends JPanel {
 		gbc_tfEquipamiento.insets = new Insets(0, 0, 5, 5);
 		gbc_tfEquipamiento.fill = GridBagConstraints.BOTH;
 		gbc_tfEquipamiento.gridx = 2;
-		gbc_tfEquipamiento.gridy = 11;
+		gbc_tfEquipamiento.gridy = 13;
 		add(tfEquipamiento, gbc_tfEquipamiento);
 
-		lblDescripcin = new JLabel("Descripción:");
+		lblDescripcin = new JLabel("Descripciï¿½n:");
 		GridBagConstraints gbc_lblDescripcin = new GridBagConstraints();
 		gbc_lblDescripcin.anchor = GridBagConstraints.EAST;
 		gbc_lblDescripcin.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDescripcin.gridx = 1;
-		gbc_lblDescripcin.gridy = 15;
+		gbc_lblDescripcin.gridy = 17;
 		add(lblDescripcin, gbc_lblDescripcin);
 
 		tfDescripcion = new JTextPane();
@@ -235,7 +248,7 @@ public class pnlFormRutas extends JPanel {
 		gbc_tfDescripcion.insets = new Insets(0, 0, 5, 5);
 		gbc_tfDescripcion.fill = GridBagConstraints.BOTH;
 		gbc_tfDescripcion.gridx = 2;
-		gbc_tfDescripcion.gridy = 15;
+		gbc_tfDescripcion.gridy = 17;
 		add(tfDescripcion, gbc_tfDescripcion);
 
 		lblFotoDelItinerario = new JLabel("Foto del itinerario:");
@@ -244,16 +257,16 @@ public class pnlFormRutas extends JPanel {
 		gbc_lblFotoDelItinerario.anchor = GridBagConstraints.EAST;
 		gbc_lblFotoDelItinerario.insets = new Insets(0, 0, 5, 5);
 		gbc_lblFotoDelItinerario.gridx = 1;
-		gbc_lblFotoDelItinerario.gridy = 18;
+		gbc_lblFotoDelItinerario.gridy = 20;
 		add(lblFotoDelItinerario, gbc_lblFotoDelItinerario);
 
 		lblFoto = new JLabel("");
 		GridBagConstraints gbc_lblFoto = new GridBagConstraints();
 		gbc_lblFoto.gridheight = 4;
 		gbc_lblFoto.gridwidth = 19;
-		gbc_lblFoto.insets = new Insets(0, 0, 5, 5);
+		gbc_lblFoto.insets = new Insets(0, 0, 0, 5);
 		gbc_lblFoto.gridx = 2;
-		gbc_lblFoto.gridy = 18;
+		gbc_lblFoto.gridy = 20;
 		add(lblFoto, gbc_lblFoto);
 
 	}

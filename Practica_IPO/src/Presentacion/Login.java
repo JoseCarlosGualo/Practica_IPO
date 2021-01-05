@@ -474,6 +474,8 @@ public class Login {
 					pnlOcultar.setLayout(gbl_pnlOcultar);
 					{
 						btnOcultar = new JButton("");
+						btnOcultar.setToolTipText("Pulsar para ocultar o mostrar");
+						btnOcultar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 						btnOcultar.addActionListener(new BtnOcultarActionListener());
 						btnOcultar
 								.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/mostrar.png")));
@@ -514,12 +516,14 @@ public class Login {
 						}
 						{
 							btnAyuda = new JButton("Ayuda");
+							btnAyuda.setToolTipText("Pulsa para ver un vídeo explicativo");
 							btnAyuda.setIcon(
 									new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/informacion.png")));
 							menuBar.add(btnAyuda);
 						}
 						{
 							btnConfiguracin = new JButton("Configuraci\u00F3n");
+							btnConfiguracin.setToolTipText("Configuración de la aplicación");
 							btnConfiguracin.setIcon(new ImageIcon(
 									Login.class.getResource("/Presentacion/Imagenes/configuraciones.png")));
 							menuBar.add(btnConfiguracin);
@@ -530,11 +534,15 @@ public class Login {
 						pnlUserData.add(pnlBtnSalir, BorderLayout.SOUTH);
 						{
 							btnSalir = new JButton("Salir");
+							btnSalir.setToolTipText("Click para salir");
+							btnSalir.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 							btnSalir.addActionListener(new BtnSalirActionListener());
 							pnlBtnSalir.add(btnSalir);
 						}
 						{
 							btnCerrarSesin = new JButton("Cerrar sesion");
+							btnCerrarSesin.setToolTipText("Click para terminar sesión");
+							btnCerrarSesin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 							btnCerrarSesin.addActionListener(new BtnCerrarSesinActionListener());
 							btnCerrarSesin.setIcon(
 									new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/cerrar-sesion.png")));
@@ -545,6 +553,7 @@ public class Login {
 			}
 			{
 				pnlPestanas = new JPanel();
+				pnlPestanas.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 				pnlPestanas.setBorder(null);
 				pnlApp.add(pnlPestanas, BorderLayout.CENTER);
 				pnlPestanas.setLayout(new BorderLayout(0, 0));
@@ -600,6 +609,7 @@ public class Login {
 							pnlBotones.setLayout(gbl_pnlBotones);
 							{
 								btnAadir = new JButton("A\u00F1adir");
+								btnAadir.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 								GridBagConstraints gbc_btnAadir = new GridBagConstraints();
 								gbc_btnAadir.insets = new Insets(0, 0, 5, 5);
 								gbc_btnAadir.gridx = 1;
@@ -770,6 +780,7 @@ public class Login {
 								pnlBotonesEmpleados.add(pnlPrincipales, "pnlPrincipales");
 								{
 									btnAddEmpleado = new JButton("A\u00F1adir");
+									btnAddEmpleado.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									btnAddEmpleado.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/add-user-button.png")));
 									btnAddEmpleado.addActionListener(new BtnAadir_1ActionListener());
@@ -778,6 +789,7 @@ public class Login {
 								}
 								{
 									btnModificarEmpleado = new JButton("Modificar");
+									btnModificarEmpleado.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									btnModificarEmpleado.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/pencil-edit-button.png")));
 									btnModificarEmpleado
@@ -787,6 +799,7 @@ public class Login {
 								}
 								{
 									btnEliminarEmpleado = new JButton("Eliminar");
+									btnEliminarEmpleado.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									btnEliminarEmpleado.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/deleteRed16x16.png")));
 									btnEliminarEmpleado.addActionListener(new BtnEliminar1ActionListener());
@@ -799,6 +812,7 @@ public class Login {
 								pnlBotonesEmpleados.add(pnlEditar, "pnlEditar");
 								{
 									btnGuardar = new JButton("Guardar");
+									btnGuardar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									btnGuardar.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/save16x16.png")));
 									btnGuardar.addActionListener(new BtnGuardarActionListener());
@@ -807,6 +821,7 @@ public class Login {
 								}
 								{
 									btnCancelar = new JButton("Cancelar");
+									btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									btnCancelar.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/cancel16x16.png")));
 									btnCancelar.addActionListener(new BtnCancelarActionListener());
@@ -894,9 +909,12 @@ public class Login {
 							pnlBotonesActividades.setLayout(new CardLayout(0, 0));
 							{
 								pnlPrincipalesAct = new JPanel();
+								pnlPrincipalesAct.setBorder(null);
 								pnlBotonesActividades.add(pnlPrincipalesAct, "pnlPrincipalesAct");
 								{
 									btnAddActividad = new JButton("Añadir");
+									btnAddActividad.setToolTipText("Añadir una nueva actividad");
+									btnAddActividad.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									btnAddActividad.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/add-button16x16.png")));
 									btnAddActividad.addActionListener(new btnAddActividadActionListener());
@@ -904,6 +922,8 @@ public class Login {
 								}
 								{
 									ModificarActividad = new JButton("Modificar");
+									ModificarActividad.setToolTipText("Modificar una actividad");
+									ModificarActividad.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									ModificarActividad.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/pencil-edit-button.png")));
 									ModificarActividad.addActionListener(new ModificarActividadActionListener());
@@ -911,6 +931,8 @@ public class Login {
 								}
 								{
 									btnEliminarActividad = new JButton("Eliminar");
+									btnEliminarActividad.setToolTipText("Eliminar una actividad");
+									btnEliminarActividad.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									btnEliminarActividad.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/deleteRed16x16.png")));
 									btnEliminarActividad.addActionListener(new BtnEliminarActividadActionListener());
@@ -922,6 +944,7 @@ public class Login {
 								pnlBotonesActividades.add(pnlEditarAct, "pnlEditarAct");
 								{
 									btnGuardarActividad = new JButton("Guardar");
+									btnGuardarActividad.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									btnGuardarActividad.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/save16x16.png")));
 									btnGuardarActividad.addActionListener(new BtnGuardarActividadActionListener());
@@ -929,6 +952,7 @@ public class Login {
 								}
 								{
 									btnCancelarActividad = new JButton("Cancelar");
+									btnCancelarActividad.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									btnCancelarActividad.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/cancel16x16.png")));
 									btnCancelarActividad.addActionListener(new BtnCancelarActividadActionListener());
@@ -1069,6 +1093,7 @@ public class Login {
 							pnlVistaRutas.setLayout(gbl_pnlVistaRutas);
 							{
 								lblBsquedaPorNombre_1 = new JLabel("B\u00FAsqueda por nombre: ");
+								lblBsquedaPorNombre_1.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/lupa.png")));
 								GridBagConstraints gbc_lblBsquedaPorNombre_1 = new GridBagConstraints();
 								gbc_lblBsquedaPorNombre_1.anchor = GridBagConstraints.EAST;
 								gbc_lblBsquedaPorNombre_1.insets = new Insets(0, 0, 5, 5);
@@ -1097,14 +1122,20 @@ public class Login {
 								pnlVistaRutas.add(pnlContenedorBotonesRuta, gbc_pnlContenedorBotonesRuta);
 								{
 									btnEditar = new JButton("Modificar");
+									btnEditar.setToolTipText("Modificar ruta");
+									btnEditar.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/pencil-edit-button.png")));
 									pnlContenedorBotonesRuta.add(btnEditar);
 								}
 								{
 									btnEliminarRuta = new JButton("Eliminar");
+									btnEliminarRuta.setToolTipText("Eliminar ruta");
+									btnEliminarRuta.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/deleteRed16x16.png")));
 									pnlContenedorBotonesRuta.add(btnEliminarRuta);
 								}
 								{
 									btnDisearRuta = new JButton("Dise\u00F1ar Ruta");
+									btnDisearRuta.setToolTipText("Dibujar una ruta nueva sobre el mapa");
+									btnDisearRuta.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/add-button16x16.png")));
 									btnDisearRuta.addActionListener(new BtnDisearRutaActionListener());
 									pnlContenedorBotonesRuta.add(btnDisearRuta);
 								}
@@ -1367,7 +1398,7 @@ public class Login {
 
 	private class BtnGuardarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			if (pnlDatosEmpleado.comprobarTextFields()) {
+			if (pnlDatosEmpleado.comprobarTextFields() && pnlDatosEmpleado.comprobarTextAreas()) {
 
 				Empleado e;
 				try {
@@ -1412,7 +1443,7 @@ public class Login {
 				}
 
 			} else {
-				JOptionPane.showMessageDialog(null, "Faltan campos por a�adir.", "Aviso",
+				JOptionPane.showMessageDialog(null, "Faltan campos por añadir.", "Aviso",
 						JOptionPane.WARNING_MESSAGE);
 				((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlPrincipales");
 				editar_guardar_empleado = 0;
@@ -1434,7 +1465,7 @@ public class Login {
 		public void actionPerformed(ActionEvent e) {
 			pnlDatosActividad.clean();
 			pnlDatosActividad.setComponentsEditables(true);
-			((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesEmpleados, "pnlEditar");
+			((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades, "pnlEditarAct");
 			editar_guardar_actividad = 1; // modo crear
 		}
 	}
@@ -1497,18 +1528,16 @@ public class Login {
 
 	private class BtnGuardarActividadActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			if (pnlDatosActividad.comprobarTextFields()) {
-
+			if (pnlDatosActividad.comprobarTextFields() && pnlDatosActividad.comprobarTextAreas()) {
 				Actividad a;
 				try {
-					a = pnlDatosActividad.getDatosActividad();
-					if (editar_guardar_actividad == 1) { // Modo crear nuevo usuario
+					a = pnlDatosActividad.getDatosActividadFromUser();
+					if (editar_guardar_actividad == 1) { // Modo crear
 						if (a.insert()) {
-
 							JOptionPane.showMessageDialog(null, a.getNombre() + "Actividad a�adido con �xito");
-							pnlDatosActividad.setComponentsEditables(true);
+							pnlDatosActividad.setComponentsEditables(false);
 							((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades,
-									"pnlPrincipalesAc");
+									"pnlPrincipalesAct");
 							editar_guardar_empleado = 0;
 							pnlContenedorActividades.loadPanels();
 							tfBusquedaNombre.setText("");
@@ -1517,7 +1546,7 @@ public class Login {
 							JOptionPane.showMessageDialog(null, "Error al a�adir actividad.", "Error",
 									JOptionPane.ERROR_MESSAGE);
 							((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades,
-									"pnlPrincipalesAc");
+									"pnlPrincipalesAct");
 							editar_guardar_empleado = 0;
 						}
 					} else if (editar_guardar_actividad == 2) { // Modo editar usuario
@@ -1527,7 +1556,7 @@ public class Login {
 							pnlDatosActividad.setComponentsEditables(false);
 							editar_guardar_actividad = 0;
 							((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades,
-									"pnlPrincipalesAc");
+									"pnlPrincipalesAct");
 							pnlContenedorActividades.clean();
 							pnlContenedorActividades.loadPanels();
 							tfBusquedaNombre.setText("");
@@ -1535,7 +1564,7 @@ public class Login {
 							JOptionPane.showMessageDialog(null, "Error al editar la actividad", "Error",
 									JOptionPane.ERROR_MESSAGE);
 							((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades,
-									"pnlPrincipalesAc");
+									"pnlPrincipalesAct");
 							editar_guardar_actividad = 0;
 						}
 					}
@@ -1547,7 +1576,7 @@ public class Login {
 			} else {
 				JOptionPane.showMessageDialog(null, "Faltan campos por a�adir.", "Aviso",
 						JOptionPane.WARNING_MESSAGE);
-				((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades, "pnlPrincipalesAc");
+				((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades, "pnlPrincipalesAct");
 				editar_guardar_actividad = 0;
 			}
 			pnlContenedorActividades.loadPanels();

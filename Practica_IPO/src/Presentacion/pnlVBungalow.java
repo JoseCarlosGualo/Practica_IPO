@@ -24,6 +24,7 @@ import javax.swing.JTextArea;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.UIManager;
 
 public class pnlVBungalow extends JPanel {
 	private JLabel lblNombrebungalow;
@@ -56,6 +57,7 @@ public class pnlVBungalow extends JPanel {
 	 * Create the panel.
 	 */
 	public pnlVBungalow(Bungalow bungalow, pnlContenedorBungalows pnlContenedor) {
+		setBorder(UIManager.getBorder("InternalFrame.border"));
 		this.bungalow = bungalow;
 		this.pnlContenedorBungalows = pnlContenedor;
 		addMouseListener(new ThisMouseListener());

@@ -85,6 +85,7 @@ public class pnlVActividad extends JPanel {
 		}
 		{
 			lblHorario = new JLabel("Horario: ");
+			lblHorario.setIcon(new ImageIcon(pnlVActividad.class.getResource("/Presentacion/Imagenes/calendar16x16.png")));
 			lblHorario.setFont(new Font("Tahoma", Font.BOLD, 14));
 			GridBagConstraints gbc_lblHorario = new GridBagConstraints();
 			gbc_lblHorario.insets = new Insets(0, 0, 5, 5);

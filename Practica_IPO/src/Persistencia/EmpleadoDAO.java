@@ -116,7 +116,7 @@ public class EmpleadoDAO {
 		try {
 			resultado = Agente.getAgente().leer(
 					"SELECT dni, nombre, apellido, imagen, telefono, email, idiomas, formacion FROM Empleado WHERE nombre='"
-							+ empleado.getDni() + "';");
+							+ empleado.getNombre() + "';");
 			while (resultado.next()) {
 				empleado.setDni(resultado.getString(1));
 				empleado.setNombre(resultado.getString(2));

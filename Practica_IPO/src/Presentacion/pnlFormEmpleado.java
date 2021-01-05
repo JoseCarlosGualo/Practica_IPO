@@ -42,6 +42,11 @@ import java.awt.image.ImageProducer;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
+import java.awt.Font;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.UIManager;
 
 public class pnlFormEmpleado extends JPanel {
 	private JLabel lblNombre;
@@ -68,17 +73,19 @@ public class pnlFormEmpleado extends JPanel {
 	private JFrame framePrincipal;
 	private JPanel pnlBtnsAyEFoto;
 	private JTextArea textFormacionEm;
+	private JLabel lblInformacinDelEmpleado;
 
 	/**
 	 * Create the panel.
 	 */
 	public pnlFormEmpleado(JFrame framePrincipal) {
+		setBorder(UIManager.getBorder("InternalFrame.border"));
 		this.framePrincipal = framePrincipal;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 10, 146, 318, 0, 10, 0 };
-		gridBagLayout.rowHeights = new int[] { 10, 0, 10, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 10, 0 };
+		gridBagLayout.rowHeights = new int[] { 10, 0, 10, 0, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 10, 0 };
 		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 				0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 		{
@@ -99,6 +106,7 @@ public class pnlFormEmpleado extends JPanel {
 			pnlFoto.setLayout(gbl_pnlFoto);
 			{
 				lblFoto = new JLabel("");
+				lblFoto.setToolTipText("Foto del empleado.");
 				lblFoto.setIcon(
 						new ImageIcon(pnlFormEmpleado.class.getResource("/Presentacion/Imagenes/foto_random.jpg")));
 				GridBagConstraints gbc_lblFoto = new GridBagConstraints();
@@ -121,6 +129,7 @@ public class pnlFormEmpleado extends JPanel {
 			add(pnlBtnsAyEFoto, gbc_pnlBtnsAyEFoto);
 			{
 				btnEliminarFoto = new JButton("");
+				btnEliminarFoto.setToolTipText("Eliminar la foto.");
 				btnEliminarFoto.setIcon(new ImageIcon(
 						pnlFormEmpleado.class.getResource("/Presentacion/Imagenes/camera-delete-icon.png")));
 				btnEliminarFoto.setVisible(false);
@@ -129,6 +138,7 @@ public class pnlFormEmpleado extends JPanel {
 			}
 			{
 				btnAadirFoto = new JButton("");
+				btnAadirFoto.setToolTipText("Añadir nueva foto.");
 				btnAadirFoto.setIcon(
 						new ImageIcon(pnlFormEmpleado.class.getResource("/Presentacion/Imagenes/camera-add-icon.png")));
 				btnAadirFoto.setVisible(false);
@@ -137,12 +147,23 @@ public class pnlFormEmpleado extends JPanel {
 			}
 		}
 		{
+			lblInformacinDelEmpleado = new JLabel("Información del empleado");
+			lblInformacinDelEmpleado.setBorder(null);
+			lblInformacinDelEmpleado.setIcon(new ImageIcon(pnlFormEmpleado.class.getResource("/Presentacion/Imagenes/hombre.png")));
+			lblInformacinDelEmpleado.setFont(new Font("Tahoma", Font.BOLD, 18));
+			GridBagConstraints gbc_lblInformacinDelEmpleado = new GridBagConstraints();
+			gbc_lblInformacinDelEmpleado.insets = new Insets(0, 0, 5, 5);
+			gbc_lblInformacinDelEmpleado.gridx = 1;
+			gbc_lblInformacinDelEmpleado.gridy = 4;
+			add(lblInformacinDelEmpleado, gbc_lblInformacinDelEmpleado);
+		}
+		{
 			lblNombre = new JLabel("Nombre: ");
 			GridBagConstraints gbc_lblNombre = new GridBagConstraints();
 			gbc_lblNombre.anchor = GridBagConstraints.EAST;
 			gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
 			gbc_lblNombre.gridx = 1;
-			gbc_lblNombre.gridy = 5;
+			gbc_lblNombre.gridy = 6;
 			add(lblNombre, gbc_lblNombre);
 		}
 		{
@@ -153,7 +174,7 @@ public class pnlFormEmpleado extends JPanel {
 			gbc_tfNombreEm.anchor = GridBagConstraints.NORTH;
 			gbc_tfNombreEm.insets = new Insets(0, 0, 5, 5);
 			gbc_tfNombreEm.gridx = 2;
-			gbc_tfNombreEm.gridy = 5;
+			gbc_tfNombreEm.gridy = 6;
 			add(tfNombreEm, gbc_tfNombreEm);
 			tfNombreEm.setColumns(10);
 		}
@@ -163,7 +184,7 @@ public class pnlFormEmpleado extends JPanel {
 			gbc_lblApellidos.anchor = GridBagConstraints.EAST;
 			gbc_lblApellidos.insets = new Insets(0, 0, 5, 5);
 			gbc_lblApellidos.gridx = 1;
-			gbc_lblApellidos.gridy = 7;
+			gbc_lblApellidos.gridy = 8;
 			add(lblApellidos, gbc_lblApellidos);
 		}
 		{
@@ -173,7 +194,7 @@ public class pnlFormEmpleado extends JPanel {
 			gbc_tfApellidosEm.fill = GridBagConstraints.HORIZONTAL;
 			gbc_tfApellidosEm.insets = new Insets(0, 0, 5, 5);
 			gbc_tfApellidosEm.gridx = 2;
-			gbc_tfApellidosEm.gridy = 7;
+			gbc_tfApellidosEm.gridy = 8;
 			add(tfApellidosEm, gbc_tfApellidosEm);
 			tfApellidosEm.setColumns(10);
 		}
@@ -183,7 +204,7 @@ public class pnlFormEmpleado extends JPanel {
 			gbc_lblDni.anchor = GridBagConstraints.EAST;
 			gbc_lblDni.insets = new Insets(0, 0, 5, 5);
 			gbc_lblDni.gridx = 1;
-			gbc_lblDni.gridy = 9;
+			gbc_lblDni.gridy = 10;
 			add(lblDni, gbc_lblDni);
 		}
 		{
@@ -193,7 +214,7 @@ public class pnlFormEmpleado extends JPanel {
 			gbc_tfDniEm.fill = GridBagConstraints.HORIZONTAL;
 			gbc_tfDniEm.insets = new Insets(0, 0, 5, 5);
 			gbc_tfDniEm.gridx = 2;
-			gbc_tfDniEm.gridy = 9;
+			gbc_tfDniEm.gridy = 10;
 			add(tfDniEm, gbc_tfDniEm);
 			tfDniEm.setColumns(10);
 		}
@@ -203,7 +224,7 @@ public class pnlFormEmpleado extends JPanel {
 			gbc_lblTelfono.anchor = GridBagConstraints.EAST;
 			gbc_lblTelfono.insets = new Insets(0, 0, 5, 5);
 			gbc_lblTelfono.gridx = 1;
-			gbc_lblTelfono.gridy = 11;
+			gbc_lblTelfono.gridy = 12;
 			add(lblTelfono, gbc_lblTelfono);
 		}
 		{
@@ -213,7 +234,7 @@ public class pnlFormEmpleado extends JPanel {
 			gbc_tfTelefonoEm.fill = GridBagConstraints.HORIZONTAL;
 			gbc_tfTelefonoEm.insets = new Insets(0, 0, 5, 5);
 			gbc_tfTelefonoEm.gridx = 2;
-			gbc_tfTelefonoEm.gridy = 11;
+			gbc_tfTelefonoEm.gridy = 12;
 			add(tfTelefonoEm, gbc_tfTelefonoEm);
 			tfTelefonoEm.setColumns(10);
 		}
@@ -223,7 +244,7 @@ public class pnlFormEmpleado extends JPanel {
 			gbc_lblCorreoElectrnico.anchor = GridBagConstraints.EAST;
 			gbc_lblCorreoElectrnico.insets = new Insets(0, 0, 5, 5);
 			gbc_lblCorreoElectrnico.gridx = 1;
-			gbc_lblCorreoElectrnico.gridy = 13;
+			gbc_lblCorreoElectrnico.gridy = 14;
 			add(lblCorreoElectrnico, gbc_lblCorreoElectrnico);
 		}
 		{
@@ -233,7 +254,7 @@ public class pnlFormEmpleado extends JPanel {
 			gbc_tfCorreoEm.fill = GridBagConstraints.HORIZONTAL;
 			gbc_tfCorreoEm.insets = new Insets(0, 0, 5, 5);
 			gbc_tfCorreoEm.gridx = 2;
-			gbc_tfCorreoEm.gridy = 13;
+			gbc_tfCorreoEm.gridy = 14;
 			add(tfCorreoEm, gbc_tfCorreoEm);
 			tfCorreoEm.setColumns(10);
 		}
@@ -243,7 +264,7 @@ public class pnlFormEmpleado extends JPanel {
 			gbc_lblIdiomas.anchor = GridBagConstraints.EAST;
 			gbc_lblIdiomas.insets = new Insets(0, 0, 5, 5);
 			gbc_lblIdiomas.gridx = 1;
-			gbc_lblIdiomas.gridy = 15;
+			gbc_lblIdiomas.gridy = 16;
 			add(lblIdiomas, gbc_lblIdiomas);
 		}
 		{
@@ -253,7 +274,7 @@ public class pnlFormEmpleado extends JPanel {
 			gbc_tfIdiomasEm.fill = GridBagConstraints.HORIZONTAL;
 			gbc_tfIdiomasEm.insets = new Insets(0, 0, 5, 5);
 			gbc_tfIdiomasEm.gridx = 2;
-			gbc_tfIdiomasEm.gridy = 15;
+			gbc_tfIdiomasEm.gridy = 16;
 			add(tfIdiomasEm, gbc_tfIdiomasEm);
 			tfIdiomasEm.setColumns(10);
 		}
@@ -263,7 +284,7 @@ public class pnlFormEmpleado extends JPanel {
 			gbc_lblFormacin.anchor = GridBagConstraints.NORTHEAST;
 			gbc_lblFormacin.insets = new Insets(0, 0, 5, 5);
 			gbc_lblFormacin.gridx = 1;
-			gbc_lblFormacin.gridy = 17;
+			gbc_lblFormacin.gridy = 18;
 			add(lblFormacin, gbc_lblFormacin);
 		}
 		{
@@ -278,7 +299,7 @@ public class pnlFormEmpleado extends JPanel {
 			gbc_textFormacionEm.insets = new Insets(0, 0, 5, 5);
 			gbc_textFormacionEm.fill = GridBagConstraints.BOTH;
 			gbc_textFormacionEm.gridx = 2;
-			gbc_textFormacionEm.gridy = 17;
+			gbc_textFormacionEm.gridy = 18;
 			add(textFormacionEm, gbc_textFormacionEm);
 		}
 
@@ -316,6 +337,34 @@ public class pnlFormEmpleado extends JPanel {
 					correcto = false;
 				} else {
 					((JTextField) textFields[i]).setBorder(bordeBien);
+				}
+			}
+		}
+
+		try {
+			e = this.getDatosEmpleado();
+		} catch (Exception e2) {
+			e2.printStackTrace();
+		}
+
+		if (e.getImagen().equals(null)) {
+			correcto = false;
+		}
+
+		return correcto;
+	}
+	
+	public boolean comprobarTextAreas() {
+		Component[] textFields = this.getComponents();
+		boolean correcto = true;
+		Empleado e = new Empleado();
+		for (int i = 0; i < textFields.length; i++) {
+			if (textFields[i] instanceof JTextArea) {
+				if (((JTextArea) textFields[i]).getText().equals("")) {
+					((JTextArea) textFields[i]).setBorder(bordeMal);
+					correcto = false;
+				} else {
+					((JTextArea) textFields[i]).setBorder(bordeBien);
 				}
 			}
 		}
