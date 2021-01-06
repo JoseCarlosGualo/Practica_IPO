@@ -48,10 +48,10 @@ public class pnlContenedorRutas extends JPanel {
 
 	}
 
-	public void filtraRuta(String dni) {
+	public void filtraRuta(String nombre) {
 		this.clean();
 		for (RutaSenderista ruta : rutas) {
-			if (ruta.getNombre().startsWith(dni)) {
+			if (ruta.getNombre().startsWith(nombre)) {
 				pnlVRuta pnlEmpleado = new pnlVRuta(ruta, pnlFormRutas);
 				add(pnlEmpleado);
 				repaint();

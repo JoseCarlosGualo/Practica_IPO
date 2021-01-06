@@ -192,7 +192,7 @@ public class pnlFormReserva extends JPanel {
 		{
 			dCFechaEntrada = new JDateChooser();
 			GridBagConstraints gbc_dCFechaEntrada = new GridBagConstraints();
-			gbc_dCFechaEntrada.anchor = GridBagConstraints.WEST;
+			gbc_dCFechaEntrada.fill = GridBagConstraints.HORIZONTAL;
 			gbc_dCFechaEntrada.insets = new Insets(0, 0, 5, 5);
 			gbc_dCFechaEntrada.gridx = 2;
 			gbc_dCFechaEntrada.gridy = 10;
@@ -230,7 +230,7 @@ public class pnlFormReserva extends JPanel {
 		{
 			dCFechaSalida = new JDateChooser();
 			GridBagConstraints gbc_dCFechaSalida = new GridBagConstraints();
-			gbc_dCFechaSalida.anchor = GridBagConstraints.WEST;
+			gbc_dCFechaSalida.fill = GridBagConstraints.HORIZONTAL;
 			gbc_dCFechaSalida.insets = new Insets(0, 0, 5, 5);
 			gbc_dCFechaSalida.gridx = 2;
 			gbc_dCFechaSalida.gridy = 12;

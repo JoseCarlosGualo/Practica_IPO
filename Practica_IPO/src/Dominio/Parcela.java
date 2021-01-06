@@ -11,7 +11,7 @@ public class Parcela extends Estancia {
 	private double precio_tAlta;
 	private String ubicacion;
 	private String servicios;
-	int imagen;
+	private String imagen;
 
 	private ParcelaDAO parcelaDAO;
 
@@ -31,7 +31,7 @@ public class Parcela extends Estancia {
 
 	public Parcela(int id, String tipo, double precio_noche, double tamano, Disponibilidad disponibilidad,
 			double precio_tBaja, double precio_tMedia, double precio_tAlta, String ubicacion, String servicios,
-			int imagen) {
+			String imagen) {
 		super(id, tipo, precio_noche, tamano, disponibilidad);
 		this.precio_tBaja = precio_tBaja;
 		this.precio_tMedia = precio_tMedia;
@@ -82,11 +82,11 @@ public class Parcela extends Estancia {
 		this.servicios = servicios;
 	}
 
-	public int getImagen() {
+	public String getImagen() {
 		return imagen;
 	}
 
-	public void setImagen(int imagen) {
+	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
 

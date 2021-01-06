@@ -5,6 +5,8 @@ import javax.swing.JPanel;
 import Dominio.Parcela;
 
 import java.awt.GridBagLayout;
+import java.awt.Image;
+
 import javax.swing.JLabel;
 
 import java.awt.Color;
@@ -59,9 +61,9 @@ public class pnlVParcela extends JPanel {
 		addMouseListener(new ThisMouseListener());
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 10, 0, 20, 0, 0, 20, 0, 0 };
-		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0 };
+		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 8, 0 };
 		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 		{
 			lblNombreParcela = new JLabel(this.parcela.getTipo());
@@ -177,8 +179,8 @@ public class pnlVParcela extends JPanel {
 		{
 			lblImagen = new JLabel("");
 			lblImagen.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-			lblImagen.setIcon(new ImageIcon(pnlVParcela.class
-					.getResource("/Presentacion/Imagenes/" + String.valueOf(parcela.getImagen()) + ".jpg")));
+			lblImagen.setIcon(
+					new ImageIcon(pnlVParcela.class.getResource("/Presentacion/Imagenes/" + parcela.getImagen())));
 			GridBagConstraints gbc_lblImagen = new GridBagConstraints();
 			gbc_lblImagen.insets = new Insets(0, 0, 5, 5);
 			gbc_lblImagen.gridx = 1;
@@ -190,7 +192,7 @@ public class pnlVParcela extends JPanel {
 			pnlPrecio.setOpaque(false);
 			GridBagConstraints gbc_pnlPrecio = new GridBagConstraints();
 			gbc_pnlPrecio.gridwidth = 2;
-			gbc_pnlPrecio.insets = new Insets(0, 0, 0, 5);
+			gbc_pnlPrecio.insets = new Insets(0, 0, 5, 5);
 			gbc_pnlPrecio.fill = GridBagConstraints.BOTH;
 			gbc_pnlPrecio.gridx = 3;
 			gbc_pnlPrecio.gridy = 5;
@@ -240,9 +242,28 @@ public class pnlVParcela extends JPanel {
 		lblNombreParcela.setText(parcela.getTipo());
 		lblTamanoPar.setText(Double.toString(parcela.getTamano()) + " metros cuadrados");
 		lblPrecioPar.setText(Double.toString(parcela.getPrecio_noche()) + " euros/noche");
-		lblImagen.setIcon(new ImageIcon(pnlVBungalow.class
-				.getResource("/Presentacion/Imagenes/" + String.valueOf(parcela.getImagen()) + ".jpg")));
-		lblDisponibilidadPar.setText(parcela.getDisponibilidad().toString());
+		ImageIcon miniatura = null;
+
+		try {
+			miniatura = new ImageIcon(
+					getClass().getClassLoader().getResource("Presentacion/Imagenes/" + parcela.getImagen()));
+			Image image = miniatura.getImage();
+			Image newimg = image.getScaledInstance(250, 250, java.awt.Image.SCALE_SMOOTH);
+			miniatura = new ImageIcon(newimg);
+			lblImagen.setIcon(miniatura);
+			lblImagen.setToolTipText(parcela.getImagen());
+
+		} catch (Exception e) {
+
+			miniatura = new ImageIcon(getClass().getClassLoader().getResource("Presentacion/Imagenes/madera.jpg"));
+			Image image = miniatura.getImage();
+			Image newimg = image.getScaledInstance(128, 128, java.awt.Image.SCALE_SMOOTH);
+			miniatura = new ImageIcon(newimg);
+			lblImagen.setIcon(miniatura);
+			lblImagen.setToolTipText("foto_random.jpg");
+			parcela.setImagen("foto_random.jpg");
+
+		}
 	}
 
 	public Parcela getParcela() {

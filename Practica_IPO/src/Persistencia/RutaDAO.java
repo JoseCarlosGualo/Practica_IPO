@@ -99,8 +99,8 @@ public class RutaDAO {
 				e.setDni((resultado.getString(2)));
 				e.read();
 				ruta.setMonitor(e);
-				ruta.setPersonas_min(resultado.getString(9));
-				ruta.setPersonas_max(resultado.getString(10));
+				ruta.setPersonas_min(resultado.getInt(9));
+				ruta.setPersonas_max(resultado.getInt(10));
 				ruta.setGrado_dificultad(resultado.getString(11));
 				ruta.setDia(resultado.getString(4));
 				ruta.setHora_inicio(resultado.getString(5));
@@ -134,11 +134,11 @@ public class RutaDAO {
 				ruta.setId((resultado.getInt(1)));
 				ruta.setNombre(resultado.getString(2));
 				Empleado e = new Empleado();
-				e.setDni((resultado.getString(2)));
+				e.setDni((resultado.getString(3)));
 				e.read();
 				ruta.setMonitor(e);
-				ruta.setPersonas_min(resultado.getString(9));
-				ruta.setPersonas_max(resultado.getString(10));
+				ruta.setPersonas_min(resultado.getInt(9));
+				ruta.setPersonas_max(resultado.getInt(10));
 				ruta.setGrado_dificultad(resultado.getString(11));
 				ruta.setDia(resultado.getString(4));
 				ruta.setHora_inicio(resultado.getString(5));

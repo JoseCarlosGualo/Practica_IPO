@@ -11,7 +11,7 @@ public class Bungalow extends Estancia {
 	private int estancia_minima;
 	private String equipamiento;
 	private String descripcion;
-	private int imagen;
+	private String imagen;
 
 	private BungalowDAO bungalowDAO;
 
@@ -30,7 +30,7 @@ public class Bungalow extends Estancia {
 	}
 
 	public Bungalow(int id, String tipo, double precio_noche, double tamano, Disponibilidad disponibilidad,
-			int capacidad_maxima, int estancia_minima, String equipamiento, String descripcion, int imagen) {
+			int capacidad_maxima, int estancia_minima, String equipamiento, String descripcion, String imagen) {
 		super(id, tipo, precio_noche, tamano, disponibilidad);
 		this.capacidad_maxima = capacidad_maxima;
 		this.estancia_minima = estancia_minima;
@@ -72,11 +72,11 @@ public class Bungalow extends Estancia {
 		this.descripcion = descripcion;
 	}
 
-	public int getImagen() {
+	public String getImagen() {
 		return imagen;
 	}
 
-	public void setImagen(int imagen) {
+	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
 

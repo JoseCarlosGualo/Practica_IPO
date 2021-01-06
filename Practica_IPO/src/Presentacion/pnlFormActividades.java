@@ -49,6 +49,7 @@ public class pnlFormActividades extends JPanel {
 
 	private Border bordeMal = BorderFactory.createLineBorder(Color.RED);
 	private Border bordeBien = BorderFactory.createLineBorder(Color.GREEN);
+	private Border bordeOriginal;
 	private JTextArea textAreaMaterialesNecesariosAc;
 	private JLabel lblDestinatarios;
 	private JTextField tfDestinatarioAc;
@@ -62,15 +63,17 @@ public class pnlFormActividades extends JPanel {
 	private JLabel lblFotoActividad;
 	private JLabel lblNombreYHorario;
 	private JLabel lblInformacinDeLa;
+	private JLabel lblId;
+	private JLabel lblIdAc;
 
 	public pnlFormActividades(JFrame framePrincipal) {
 		setBorder(UIManager.getBorder("InternalFrame.border"));
 		this.framePrincipal = framePrincipal;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 15, 0, 240, 15, 0 };
-		gridBagLayout.rowHeights = new int[] { 15, 0, 25, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 0, 0, 0, 0, 0,
-				0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.columnWidths = new int[] { 15, 0, 190, 100, 15, 0 };
+		gridBagLayout.rowHeights = new int[] { 15, 0, 25, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 15, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 				0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
@@ -87,15 +90,38 @@ public class pnlFormActividades extends JPanel {
 			add(lblNombreActividad, gbc_lblNombreActividad);
 		}
 		{
-			lblInformacinDeLa = new JLabel("Información de la actividad");
-			lblInformacinDeLa.setIcon(new ImageIcon(pnlFormActividades.class.getResource("/Presentacion/Imagenes/informacion.png")));
+			lblInformacinDeLa = new JLabel("Informacion de la actividad");
+			lblInformacinDeLa.setIcon(
+					new ImageIcon(pnlFormActividades.class.getResource("/Presentacion/Imagenes/informacion.png")));
 			lblInformacinDeLa.setFont(new Font("Tahoma", Font.BOLD, 19));
 			GridBagConstraints gbc_lblInformacinDeLa = new GridBagConstraints();
+			gbc_lblInformacinDeLa.gridwidth = 2;
 			gbc_lblInformacinDeLa.fill = GridBagConstraints.HORIZONTAL;
 			gbc_lblInformacinDeLa.insets = new Insets(0, 0, 5, 5);
 			gbc_lblInformacinDeLa.gridx = 1;
 			gbc_lblInformacinDeLa.gridy = 2;
 			add(lblInformacinDeLa, gbc_lblInformacinDeLa);
+		}
+		{
+			lblId = new JLabel("Id:");
+			lblId.setFont(new Font("Tahoma", Font.BOLD, 19));
+			GridBagConstraints gbc_lblId = new GridBagConstraints();
+			gbc_lblId.anchor = GridBagConstraints.EAST;
+			gbc_lblId.insets = new Insets(0, 0, 5, 5);
+			gbc_lblId.gridx = 3;
+			gbc_lblId.gridy = 2;
+			add(lblId, gbc_lblId);
+			lblId.setVisible(false);
+		}
+		{
+			lblIdAc = new JLabel("");
+			lblIdAc.setFont(new Font("Tahoma", Font.ITALIC, 19));
+			GridBagConstraints gbc_lblIdAc = new GridBagConstraints();
+			gbc_lblIdAc.insets = new Insets(0, 0, 5, 0);
+			gbc_lblIdAc.gridx = 4;
+			gbc_lblIdAc.gridy = 2;
+			add(lblIdAc, gbc_lblIdAc);
+			lblIdAc.setVisible(false);
 		}
 		{
 			lblMonitor = new JLabel("Monitor: ");
@@ -272,7 +298,8 @@ public class pnlFormActividades extends JPanel {
 						{
 							{
 								lblNombreYHorario = new JLabel("Nombre y horario");
-								lblNombreYHorario.setIcon(new ImageIcon(pnlFormActividades.class.getResource("/Presentacion/Imagenes/calendar16x16.png")));
+								lblNombreYHorario.setIcon(new ImageIcon(pnlFormActividades.class
+										.getResource("/Presentacion/Imagenes/calendar16x16.png")));
 								lblNombreYHorario.setVisible(false);
 								lblNombreYHorario.setFont(new Font("Tahoma", Font.BOLD, 19));
 								GridBagConstraints gbc_lblNombreYHorario = new GridBagConstraints();
@@ -355,6 +382,21 @@ public class pnlFormActividades extends JPanel {
 		textAreaDescripcion.setText(null);
 		txtNombreAct.setText(null);
 		txtHorario.setText(null);
+
+		Component[] jtexts = this.getComponents();
+		for (int i = 0; i < jtexts.length; i++) {
+
+			if (jtexts[i] instanceof JTextField) {
+				((JTextField) jtexts[i]).setBorder(bordeOriginal);
+
+			}
+
+			if (jtexts[i] instanceof JTextArea) {
+				((JTextArea) jtexts[i]).setBorder(bordeOriginal);
+
+			}
+
+		}
 	}
 
 	public boolean comprobarTextFields() {
@@ -373,7 +415,7 @@ public class pnlFormActividades extends JPanel {
 
 		return correcto;
 	}
-	
+
 	public boolean comprobarTextAreas() {
 		Component[] textFields = this.getComponents();
 		boolean correcto = true;
@@ -401,6 +443,7 @@ public class pnlFormActividades extends JPanel {
 
 	public void loadActividad(Actividad actividad) {
 		lblNombreActividad.setText(actividad.getNombre());
+		lblIdAc.setText(Integer.toString(actividad.getId()));
 		tfMonitorAc.setText(actividad.getEmpleado().getDni());
 		tfCupoMinimoAc.setText(String.valueOf(actividad.getCupo_minimo()));
 		tfCupoMaximoAc.setText(String.valueOf(actividad.getCupo_maximo()));
@@ -412,7 +455,7 @@ public class pnlFormActividades extends JPanel {
 		txtNombreAct.setText(actividad.getNombre());
 		txtHorario.setText(actividad.getHorario());
 		lblFotoActividad.setText("");
-		
+
 		ImageIcon miniatura = null;
 		try {
 			miniatura = new ImageIcon(
@@ -442,6 +485,7 @@ public class pnlFormActividades extends JPanel {
 		empleado.setDni(tfMonitorAc.getText().split(" ")[0].trim());
 		empleado.read();
 		actividad.setEmpleado(empleado);
+		actividad.setId(Integer.parseInt(lblIdAc.getText()));
 		actividad.setCupo_minimo(Integer.parseInt(tfCupoMinimoAc.getText()));
 		actividad.setCupo_maximo(Integer.parseInt(tfCupoMaximoAc.getText()));
 		actividad.setZona_camping(tfAreaCampingAc.getText());
@@ -452,7 +496,7 @@ public class pnlFormActividades extends JPanel {
 		actividad.setNombre(txtNombreAct.getText());
 		actividad.setHorario(txtHorario.getText());
 		actividad.setImagen(lblFotoActividad.getToolTipText().toString());
-		
+
 		return actividad;
 	}
 

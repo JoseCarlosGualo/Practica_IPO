@@ -5,6 +5,7 @@ import javax.swing.JScrollPane;
 
 import Dominio.Bungalow;
 import Dominio.Parcela;
+import Dominio.RutaSenderista;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -93,6 +94,18 @@ public class pnlContenedorBungalows extends JPanel {
 		Bungalow b = new Bungalow();
 		b.readAll();
 		loadPnlBungalows(b.getBungalowDAO().getListaBungalows());
+	}
+
+	public void filtraBungalow(String nombre) {
+		this.clean();
+		for (pnlVBungalow bungalow : listaPnlBungalow) {
+			if (bungalow.getBungalow().getTipo().startsWith(nombre)) {
+				pnlVBungalow b = new pnlVBungalow(bungalow.getBungalow(), this);
+				add(b);
+				repaint();
+				revalidate();
+			}
+		}
 	}
 
 }

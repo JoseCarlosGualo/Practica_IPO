@@ -139,7 +139,7 @@ public class ParcelaDAO {
 				parcela.setPrecio_tMedia(resultado.getInt(7));
 				parcela.setPrecio_tAlta(resultado.getInt(8));
 				parcela.setServicios(resultado.getString(9));
-				parcela.setImagen(Integer.parseInt(resultado.getString(10)));
+				parcela.setImagen(resultado.getString(10));
 				parcela.setUbicacion(resultado.getString(11));
 
 			}
@@ -192,7 +192,7 @@ public class ParcelaDAO {
 				parcela.setPrecio_tMedia(resultado.getInt(7));
 				parcela.setPrecio_tAlta(resultado.getInt(8));
 				parcela.setServicios(resultado.getString(9));
-				parcela.setImagen(Integer.parseInt(resultado.getString(10)));
+				parcela.setImagen(resultado.getString(10));
 				parcela.setUbicacion(resultado.getString(11));
 
 				listaParcelas.add(parcela);

@@ -14,8 +14,8 @@ public class RutaSenderista {
 	private Empleado monitor;
 	private String equipamiento;
 	private String pto_encuentro;
-	private String personas_min;
-	private String personas_max;
+	private int personas_min;
+	private int personas_max;
 	private String grado_dificultad;
 	private String descripcion;
 	private String nombre;
@@ -23,7 +23,7 @@ public class RutaSenderista {
 	private String foto;
 
 	public RutaSenderista(int id, String dia, String hora_inicio, String hora_fin, Empleado monitor,
-			String pto_encuentro, String personas_min, String personas_max, String grado_dificultad, String descripcion,
+			String pto_encuentro, int personas_min, int personas_max, String grado_dificultad, String descripcion,
 			String equipamiento) {
 		this.id = id;
 		this.dia = dia;
@@ -100,19 +100,19 @@ public class RutaSenderista {
 		this.pto_encuentro = pto_encuentro;
 	}
 
-	public String getPersonas_min() {
+	public int getPersonas_min() {
 		return personas_min;
 	}
 
-	public void setPersonas_min(String string) {
+	public void setPersonas_min(int string) {
 		this.personas_min = string;
 	}
 
-	public String getPersonas_max() {
+	public int getPersonas_max() {
 		return personas_max;
 	}
 
-	public void setPersonas_max(String string) {
+	public void setPersonas_max(int string) {
 		this.personas_max = string;
 	}
 

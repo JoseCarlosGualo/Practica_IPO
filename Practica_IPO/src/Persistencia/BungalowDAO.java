@@ -145,7 +145,7 @@ public class BungalowDAO {
 				bungalow.setCapacidad_maxima(Integer.parseInt(resultado.getString(6)));
 				bungalow.setEstancia_minima(Integer.parseInt(resultado.getString(7)));
 				bungalow.setEquipamiento(resultado.getString(8));
-				bungalow.setImagen(Integer.parseInt(resultado.getString(9)));
+				bungalow.setImagen(resultado.getString(9));
 				bungalow.setDescripcion(resultado.getString(10));
 
 			}
@@ -197,7 +197,7 @@ public class BungalowDAO {
 				bungalow.setCapacidad_maxima(Integer.parseInt(resultado.getString(6)));
 				bungalow.setEstancia_minima(Integer.parseInt(resultado.getString(7)));
 				bungalow.setEquipamiento(resultado.getString(8));
-				bungalow.setImagen(Integer.parseInt(resultado.getString(9)));
+				bungalow.setImagen(resultado.getString(9));
 				bungalow.setDescripcion(resultado.getString(10));
 
 				listaBungalows.add(bungalow);
