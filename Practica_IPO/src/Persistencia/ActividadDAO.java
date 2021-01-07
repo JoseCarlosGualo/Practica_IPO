@@ -129,8 +129,8 @@ public class ActividadDAO {
 		ResultSet resultado;
 		try {
 			resultado = Agente.getAgente().leer(
-					"SELECT id, nombre, empleado, horario, cupo_minimo, cupo_maximo, destinatario, precio_hora, zona_camping, descripcion, equipamiento, imagen FROM Actividad WHERE nombre="
-							+ actividad.getNombre() + ";");
+					"SELECT id, nombre, empleado, horario, cupo_minimo, cupo_maximo, destinatario, precio_hora, zona_camping, descripcion, equipamiento, imagen FROM Actividad WHERE nombre='"
+							+ actividad.getNombre() + "';");
 			while (resultado.next()) {
 				actividad.setId(resultado.getInt(1));
 				actividad.setNombre(resultado.getString(2));

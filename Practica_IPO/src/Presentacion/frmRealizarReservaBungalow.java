@@ -64,7 +64,7 @@ public class frmRealizarReservaBungalow extends JFrame {
 	private int id;
 
 	private final static int ALTO = 700;
-	private final static int ANCHO = 700;
+	private final static int ANCHO = 550;
 	private JLabel lblDatosPersonales;
 	private JLabel lblNombre;
 	private Border bordeMal = BorderFactory.createLineBorder(Color.RED);

@@ -519,4 +519,8 @@ public class pnlFormEmpleado extends JPanel {
 			lblFoto.setIcon(null);
 		}
 	}
+
+	public String getDNI() {
+		return tfDniEm.getText();
+	}
 }

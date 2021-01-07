@@ -67,7 +67,8 @@ public class pnlFormRutas extends JPanel {
 		gridBagLayout.columnWidths = new int[] { 17, 173, 0, 0, 0, 0, 0, 0, 30, -17, 0, 33, 40, 0 };
 		gridBagLayout.rowHeights = new int[] { 0, 0, 20, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 				0, 0, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0,
+				Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 				0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
@@ -264,7 +265,8 @@ public class pnlFormRutas extends JPanel {
 		add(tfDescripcion, gbc_tfDescripcion);
 
 		lblFotoDelItinerario = new JLabel("Foto del itinerario:");
-		lblFotoDelItinerario.setIcon(new ImageIcon(pnlFormRutas.class.getResource("/Presentacion/Imagenes/icono_foto.jpg")));
+		lblFotoDelItinerario
+				.setIcon(new ImageIcon(pnlFormRutas.class.getResource("/Presentacion/Imagenes/icono_foto.jpg")));
 		lblFotoDelItinerario.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 19));
 		GridBagConstraints gbc_lblFotoDelItinerario = new GridBagConstraints();
 		gbc_lblFotoDelItinerario.gridwidth = 2;
@@ -363,5 +365,4 @@ public class pnlFormRutas extends JPanel {
 
 		}
 	}
-
 }

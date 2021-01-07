@@ -64,13 +64,13 @@ public class pnlVReserva extends JPanel {
 				if (reserva.getTipo().equalsIgnoreCase("Bungalow")) {
 					Bungalow bungalow = new Bungalow(reserva.getEstancia().getId());
 					bungalow.read();
-					miniatura = new ImageIcon(getClass().getClassLoader()
-							.getResource("Presentacion/Imagenes/" + bungalow.getImagen() + ".jpg"));
+					miniatura = new ImageIcon(
+							getClass().getClassLoader().getResource("Presentacion/Imagenes/" + bungalow.getImagen()));
 				} else {
 					Parcela parcela = new Parcela(reserva.getEstancia().getId());
 					parcela.read();
-					miniatura = new ImageIcon(getClass().getClassLoader()
-							.getResource("Presentacion/Imagenes/" + parcela.getImagen() + ".jpg"));
+					miniatura = new ImageIcon(
+							getClass().getClassLoader().getResource("Presentacion/Imagenes/" + parcela.getImagen()));
 				}
 
 			} catch (Exception e) {

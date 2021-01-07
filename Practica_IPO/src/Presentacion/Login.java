@@ -193,7 +193,7 @@ public class Login {
 	private JButton btnVolver;
 	private pnlDibujarRuta pnlDibujo;
 	private JButton btnDisearRuta;
-	private JMenu mnIdioma_1;
+	private JMenu mnIdioma;
 	private JRadioButtonMenuItem rdbtnEspaniol;
 	private JRadioButtonMenuItem rdbtnIngles;
 
@@ -229,7 +229,7 @@ public class Login {
 		frmLogin.setIconImage(
 				Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/Presentacion/Imagenes/camping.jpg")));
 		frmLogin.addKeyListener(new PnlLoginKeyListener());
-		frmLogin.setTitle("Inicio de sesi\u00F3n Camping");
+		frmLogin.setTitle(MessagesLogin.getString("Login.frmLogin.title")); //$NON-NLS-1$
 		frmLogin.getContentPane().addComponentListener(new FrameContentPaneComponentListener());
 		frmLogin.setBounds(100, 20, 1605, 796);
 		frmLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -254,11 +254,11 @@ public class Login {
 				gbl_panelIniciarSesion.columnWidths = new int[] { 50, 43, 160, 35, 14, 0 };
 				gbl_panelIniciarSesion.rowHeights = new int[] { 81, 20, 26, 41, 21, 41, 20, 34, 20, 24, 0, 0 };
 				gbl_panelIniciarSesion.columnWeights = new double[] { 1.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
-				gbl_panelIniciarSesion.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-						Double.MIN_VALUE };
+				gbl_panelIniciarSesion.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+						0.0, Double.MIN_VALUE };
 				pnlIniciarSesion.setLayout(gbl_panelIniciarSesion);
 				{
-					lblIniciarSesin = new JLabel("Inicio de sesi\u00F3n");
+					lblIniciarSesin = new JLabel(MessagesLogin.getString("Login.lblIniciarSesin.text")); //$NON-NLS-1$
 					lblIniciarSesin.setBorder(new EmptyBorder(0, 10, 0, 0));
 					lblIniciarSesin.setForeground(SystemColor.text);
 					lblIniciarSesin.setBackground(SystemColor.textInactiveText);
@@ -273,7 +273,7 @@ public class Login {
 					pnlIniciarSesion.add(lblIniciarSesin, gbc_lblInicioSesion);
 				}
 				{
-					lblErrorLaContrasea = new JLabel("Error, el usuario o la contrase\u00F1a no son correctos.");
+					lblErrorLaContrasea = new JLabel(MessagesLogin.getString("Login.lblErrorLaContrasea.text")); //$NON-NLS-1$
 					lblErrorLaContrasea.setBorder(new LineBorder(new Color(178, 34, 34), 1, true));
 					lblErrorLaContrasea.setHorizontalAlignment(SwingConstants.CENTER);
 					lblErrorLaContrasea.setOpaque(true);
@@ -291,7 +291,7 @@ public class Login {
 				}
 				{
 					pnlUser = new JPanel();
-					pnlUser.setToolTipText("Principal.panelUser.toolTipText");
+					pnlUser.setToolTipText(MessagesLogin.getString("Login.pnlUser.toolTipText")); //$NON-NLS-1$
 					pnlUser.setBorder(null);
 					GridBagConstraints gbc_panelUser = new GridBagConstraints();
 					gbc_panelUser.fill = GridBagConstraints.BOTH;
@@ -307,7 +307,7 @@ public class Login {
 					gbl_panelUser.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 					pnlUser.setLayout(gbl_panelUser);
 					{
-						lblIconUser = new JLabel("");
+						lblIconUser = new JLabel(); // $NON-NLS-1$
 						lblIconUser.setIcon(
 								new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/userLogin.png")));
 						GridBagConstraints gbc_lblIconUser = new GridBagConstraints();
@@ -356,7 +356,7 @@ public class Login {
 					gbl_panelPass.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 					pnlPass.setLayout(gbl_panelPass);
 					{
-						lblIconPass = new JLabel("");
+						lblIconPass = new JLabel(); // $NON-NLS-1$
 						lblIconPass.setIcon(
 								new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/locked-padlock.png")));
 						lblIconPass.setHorizontalTextPosition(SwingConstants.LEADING);
@@ -373,7 +373,7 @@ public class Login {
 						pwdContrasena.addFocusListener(new PwdContraseaFocusListener());
 						pwdContrasena.addKeyListener(new PwdContraseaKeyListener());
 						pwdContrasena.setFont(new Font("Tahoma", Font.BOLD, 12));
-						pwdContrasena.setText("ContraseÒa");
+						pwdContrasena.setText(MessagesLogin.getString("Login.pwdContrasena.text")); //$NON-NLS-1$
 						pwdContrasena.setBackground(UIManager.getColor("CheckBox.background"));
 						GridBagConstraints gbc_pwdContrasea = new GridBagConstraints();
 						gbc_pwdContrasea.fill = GridBagConstraints.BOTH;
@@ -385,9 +385,9 @@ public class Login {
 						pwdContrasena.setBorder(null);
 					}
 					{
-						btnVerPass = new JButton("");
+						btnVerPass = new JButton(); // $NON-NLS-1$
 						verPass = false;
-						btnVerPass.setToolTipText("Principal.btnVerPass.toolTipText");
+						btnVerPass.setToolTipText(MessagesLogin.getString("")); //$NON-NLS-1$
 						btnVerPass.addActionListener(new BtnVerpassActionListener());
 						btnVerPass.setOpaque(true);
 						btnVerPass.setContentAreaFilled(false);
@@ -403,12 +403,13 @@ public class Login {
 					}
 				}
 				{
-					btnEntrar = new JButton("Entrar");
+					btnEntrar = new JButton(MessagesLogin.getString("Login.btnEntrar.text")); //$NON-NLS-1$
 					btnEntrar.setMnemonic(KeyEvent.VK_ENTER);
 					btnEntrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 					btnEntrar.addActionListener(new BtnEntrarActionListener());
 					{
-						chckbxRecordarContrasea = new JCheckBox("Recordar contraseÒa");
+						chckbxRecordarContrasea = new JCheckBox(
+								MessagesLogin.getString("Login.chckbxRecordarContrasea.text")); //$NON-NLS-1$
 						chckbxRecordarContrasea.setBackground(SystemColor.text);
 						GridBagConstraints gbc_chckbxRecordarPass = new GridBagConstraints();
 						gbc_chckbxRecordarPass.fill = GridBagConstraints.BOTH;
@@ -425,7 +426,7 @@ public class Login {
 					pnlIniciarSesion.add(btnEntrar, gbc_btnEntrar);
 				}
 				{
-					lblteHasOlvidado = new JLabel("\u00BFNo recuerdas la contrase\u00F1a?");
+					lblteHasOlvidado = new JLabel(MessagesLogin.getString("Login.lblteHasOlvidado.text")); //$NON-NLS-1$
 					lblteHasOlvidado.setHorizontalAlignment(SwingConstants.CENTER);
 					lblteHasOlvidado.setHorizontalTextPosition(SwingConstants.CENTER);
 					lblteHasOlvidado.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -455,7 +456,7 @@ public class Login {
 					pnlOcultar = new JPanel();
 					pnlOcultar.setBorder(new EmptyBorder(3, 3, 3, 3));
 					pnlOcultar.setAlignmentX(Component.LEFT_ALIGNMENT);
-					pnlOcultar.setToolTipText("Ocultar datos del Usuario\r\n");
+					pnlOcultar.setToolTipText(MessagesLogin.getString("Login.pnlOcultar.toolTipText")); //$NON-NLS-1$
 					pnlInformacion.add(pnlOcultar, BorderLayout.EAST);
 					GridBagLayout gbl_pnlOcultar = new GridBagLayout();
 					gbl_pnlOcultar.columnWidths = new int[] { 33, 0 };
@@ -464,8 +465,8 @@ public class Login {
 					gbl_pnlOcultar.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 					pnlOcultar.setLayout(gbl_pnlOcultar);
 					{
-						btnOcultar = new JButton("");
-						btnOcultar.setToolTipText("Pulsar para ocultar o mostrar");
+						btnOcultar = new JButton();
+						btnOcultar.setToolTipText(MessagesLogin.getString("Login.btnOcultar.toolTipText")); //$NON-NLS-1$
 						btnOcultar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 						btnOcultar.addActionListener(new BtnOcultarActionListener());
 						btnOcultar
@@ -494,35 +495,42 @@ public class Login {
 						menuBar = new JMenuBar();
 						pnlUserData.add(menuBar, BorderLayout.NORTH);
 						{
-							btnAyuda = new JButton("Ayuda");
-							btnAyuda.setToolTipText("Pulsa para ver un v√≠deo explicativo");
+							btnAyuda = new JButton(MessagesLogin.getString("Login.btnAyuda.text")); //$NON-NLS-1$
+							btnAyuda.setToolTipText(MessagesLogin.getString("Login.btnAyuda.toolTipText")); //$NON-NLS-1$
 							btnAyuda.setIcon(
 									new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/informacion.png")));
 							menuBar.add(btnAyuda);
 						}
 						{
-							btnConfiguracin = new JButton("Configuraci\u00F3n");
+							btnConfiguracin = new JButton(MessagesLogin.getString("Login.btnConfiguracin.text")); //$NON-NLS-1$
 							btnConfiguracin.addActionListener(new BtnConfiguracinActionListener());
-							btnConfiguracin.setToolTipText("Configuraci√≥n de la aplicaci√≥n");
+							btnConfiguracin
+									.setToolTipText(MessagesLogin.getString("Login.btnConfiguracin.toolTipText")); //$NON-NLS-1$
 							btnConfiguracin.setIcon(new ImageIcon(
 									Login.class.getResource("/Presentacion/Imagenes/configuraciones.png")));
 							menuBar.add(btnConfiguracin);
 						}
 						{
-							mnIdioma_1 = new JMenu();
-							mnIdioma_1.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/mundial.png")));
-							mnIdioma_1.setText("Idioma");
-							mnIdioma_1.setToolTipText("Idioma");
-							menuBar.add(mnIdioma_1);
+							mnIdioma = new JMenu();
+							mnIdioma.setIcon(
+									new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/mundial.png")));
+							mnIdioma.setText(MessagesLogin.getString("Login.mnIdioma_1.text")); //$NON-NLS-1$
+							mnIdioma.setToolTipText(MessagesLogin.getString("Login.mnIdioma_1.toolTipText")); //$NON-NLS-1$
+							menuBar.add(mnIdioma);
 							{
-								rdbtnEspaniol = new JRadioButtonMenuItem("Spanish");
-								rdbtnEspaniol.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/spain16x16.png")));
-								mnIdioma_1.add(rdbtnEspaniol);
+								rdbtnEspaniol = new JRadioButtonMenuItem(
+										MessagesLogin.getString("Login.rdbtnEspaniol.text")); //$NON-NLS-1$
+								rdbtnEspaniol.addActionListener(new RdbtnEspaniolActionListener());
+								rdbtnEspaniol.setIcon(new ImageIcon(
+										Login.class.getResource("/Presentacion/Imagenes/spain16x16.png")));
+								mnIdioma.add(rdbtnEspaniol);
 							}
 							{
-								rdbtnIngles = new JRadioButtonMenuItem("English");
-								rdbtnIngles.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/united-kingdom16x16.png")));
-								mnIdioma_1.add(rdbtnIngles);
+								rdbtnIngles = new JRadioButtonMenuItem(
+										MessagesLogin.getString("Login.rdbtnIngles.text")); //$NON-NLS-1$
+								rdbtnIngles.setIcon(new ImageIcon(
+										Login.class.getResource("/Presentacion/Imagenes/united-kingdom16x16.png")));
+								mnIdioma.add(rdbtnIngles);
 							}
 						}
 					}
@@ -530,15 +538,15 @@ public class Login {
 						pnlBtnSalir = new JPanel();
 						pnlUserData.add(pnlBtnSalir, BorderLayout.SOUTH);
 						{
-							btnSalir = new JButton("Salir");
-							btnSalir.setToolTipText("Click para salir");
+							btnSalir = new JButton(MessagesLogin.getString("Login.btnSalir.text")); //$NON-NLS-1$
+							btnSalir.setToolTipText(MessagesLogin.getString("Login.btnSalir.toolTipText")); //$NON-NLS-1$
 							btnSalir.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 							btnSalir.addActionListener(new BtnSalirActionListener());
 							pnlBtnSalir.add(btnSalir);
 						}
 						{
-							btnCerrarSesin = new JButton("Cerrar sesion");
-							btnCerrarSesin.setToolTipText("Click para terminar sesi√≥n");
+							btnCerrarSesin = new JButton(MessagesLogin.getString("Login.btnCerrarSesin.text")); //$NON-NLS-1$
+							btnCerrarSesin.setToolTipText(MessagesLogin.getString("Login.btnCerrarSesin.toolTipText")); //$NON-NLS-1$
 							btnCerrarSesin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 							btnCerrarSesin.addActionListener(new BtnCerrarSesinActionListener());
 							btnCerrarSesin.setIcon(
@@ -572,7 +580,8 @@ public class Login {
 							gbl_pnlBusqueda.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 							pnlBusqueda.setLayout(gbl_pnlBusqueda);
 							{
-								lblBusquedaPorNombre = new JLabel("Busqueda por nombre: ");
+								lblBusquedaPorNombre = new JLabel(
+										MessagesLogin.getString("Login.lblBusquedaPorNombre.text")); //$NON-NLS-1$
 								lblBusquedaPorNombre.setIcon(
 										new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/lupa.png")));
 								GridBagConstraints gbc_lblBusquedaPorNombre = new GridBagConstraints();
@@ -606,9 +615,9 @@ public class Login {
 							gbl_pnlBotones.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 							pnlBotones.setLayout(gbl_pnlBotones);
 							{
-								btnAadir = new JButton("A\u00F1adir");
+								btnAadir = new JButton(MessagesLogin.getString("Login.btnAadir.text")); //$NON-NLS-1$
 								btnAadir.addActionListener(new BtnAadirActionListener());
-								btnAadir.setToolTipText("Bot\u00F3n para a\u00F1adir nuevo bungalow");
+								btnAadir.setToolTipText(MessagesLogin.getString("Login.btnAadir.toolTipText")); //$NON-NLS-1$
 								btnAadir.setIcon(new ImageIcon(
 										Login.class.getResource("/Presentacion/Imagenes/add-button16x16.png")));
 								btnAadir.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -619,10 +628,10 @@ public class Login {
 								pnlBotones.add(btnAadir, gbc_btnAadir);
 							}
 							{
-								btnEliminar = new JButton("Eliminar");
+								btnEliminar = new JButton(MessagesLogin.getString("Login.btnEliminar.text")); //$NON-NLS-1$
 								btnEliminar.setIcon(new ImageIcon(
 										Login.class.getResource("/Presentacion/Imagenes/deleteRed16x16.png")));
-								btnEliminar.setToolTipText("Bot\u00F3n para eliminar el bungalow seleccionado");
+								btnEliminar.setToolTipText(MessagesLogin.getString("Login.btnEliminar.toolTipText")); //$NON-NLS-1$
 								btnEliminar.addActionListener(new BtnEliminarActionListener());
 								GridBagConstraints gbc_btnEliminar = new GridBagConstraints();
 								gbc_btnEliminar.insets = new Insets(0, 0, 5, 5);
@@ -631,11 +640,11 @@ public class Login {
 								pnlBotones.add(btnEliminar, gbc_btnEliminar);
 							}
 							{
-								btnModificar = new JButton("Modificar");
+								btnModificar = new JButton(MessagesLogin.getString("Login.btnModificar.text")); //$NON-NLS-1$
 								btnModificar.addActionListener(new BtnModificarActionListener());
 								btnModificar.setIcon(new ImageIcon(
 										Login.class.getResource("/Presentacion/Imagenes/pencil-edit-button.png")));
-								btnModificar.setToolTipText("Bot\u00F3n para modificar el bungalow seleccioando");
+								btnModificar.setToolTipText(MessagesLogin.getString("Login.btnModificar.toolTipText")); //$NON-NLS-1$
 								GridBagConstraints gbc_btnModificar = new GridBagConstraints();
 								gbc_btnModificar.insets = new Insets(0, 0, 5, 5);
 								gbc_btnModificar.gridx = 5;
@@ -674,7 +683,8 @@ public class Login {
 							gbl_pnlBusquedaPar.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 							pnlBusquedaPar.setLayout(gbl_pnlBusquedaPar);
 							{
-								lblBusquedaPorNombre_P = new JLabel("Busqueda por nombre: ");
+								lblBusquedaPorNombre_P = new JLabel(
+										MessagesLogin.getString("Login.lblBusquedaPorNombre_P.text")); //$NON-NLS-1$
 								lblBusquedaPorNombre_P.setIcon(
 										new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/lupa.png")));
 								GridBagConstraints gbc_lblBusquedaPorNombre_P = new GridBagConstraints();
@@ -707,9 +717,9 @@ public class Login {
 							gbl_pnlBotonesPar.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 							pnlBotonesPar.setLayout(gbl_pnlBotonesPar);
 							{
-								btnAadirPar = new JButton("A\u00F1adir");
+								btnAadirPar = new JButton(MessagesLogin.getString("Login.btnAadirPar.text")); //$NON-NLS-1$
 								btnAadirPar.addActionListener(new BtnAadirParActionListener());
-								btnAadirPar.setToolTipText("Bot\u00F3n para a\u00F1adir nueva parcela");
+								btnAadirPar.setToolTipText(MessagesLogin.getString("Login.btnAadirPar.toolTipText")); //$NON-NLS-1$
 								btnAadirPar.setIcon(new ImageIcon(
 										Login.class.getResource("/Presentacion/Imagenes/add-button16x16.png")));
 								GridBagConstraints gbc_btnAadirPar = new GridBagConstraints();
@@ -719,8 +729,9 @@ public class Login {
 								pnlBotonesPar.add(btnAadirPar, gbc_btnAadirPar);
 							}
 							{
-								btnEliminarPar = new JButton("Eliminar");
-								btnEliminarPar.setToolTipText("Bot\u00F3n para eliminar la parcela seleccionada");
+								btnEliminarPar = new JButton(MessagesLogin.getString("Login.btnEliminarPar.text")); //$NON-NLS-1$
+								btnEliminarPar
+										.setToolTipText(MessagesLogin.getString("Login.btnEliminarPar.toolTipText")); //$NON-NLS-1$
 								btnEliminarPar.setIcon(new ImageIcon(
 										Login.class.getResource("/Presentacion/Imagenes/deleteRed16x16.png")));
 								btnEliminarPar.addActionListener(new BtnEliminarParActionListener());
@@ -731,9 +742,10 @@ public class Login {
 								pnlBotonesPar.add(btnEliminarPar, gbc_btnEliminarPar);
 							}
 							{
-								btnModificar_1 = new JButton("Modificar");
+								btnModificar_1 = new JButton(MessagesLogin.getString("Login.btnModificar_1.text")); //$NON-NLS-1$
 								btnModificar_1.addActionListener(new BtnModificar_1ActionListener());
-								btnModificar_1.setToolTipText("Bot\u00F3n para modificar la parcela seleccionada");
+								btnModificar_1
+										.setToolTipText(MessagesLogin.getString("Login.btnModificar_1.toolTipText")); //$NON-NLS-1$
 								btnModificar_1.setIcon(new ImageIcon(
 										Login.class.getResource("/Presentacion/Imagenes/pencil-edit-button.png")));
 								GridBagConstraints gbc_btnModificar_1 = new GridBagConstraints();
@@ -764,7 +776,7 @@ public class Login {
 						gbl_pnlEmpleados.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
 						pnlEmpleados.setLayout(gbl_pnlEmpleados);
 						{
-							lblBusquedaPorDni = new JLabel("Busqueda por DNI: ");
+							lblBusquedaPorDni = new JLabel(MessagesLogin.getString("Login.lblBusquedaPorDni.text")); //$NON-NLS-1$
 							lblBusquedaPorDni
 									.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/lupa.png")));
 							GridBagConstraints gbc_lblBusquedaPorDni = new GridBagConstraints();
@@ -799,31 +811,35 @@ public class Login {
 								pnlPrincipales = new JPanel();
 								pnlBotonesEmpleados.add(pnlPrincipales, "pnlPrincipales");
 								{
-									btnAddEmpleado = new JButton("A\u00F1adir");
+									btnAddEmpleado = new JButton(MessagesLogin.getString("Login.btnAddEmpleado.text")); //$NON-NLS-1$
 									btnAddEmpleado.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									btnAddEmpleado.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/add-user-button.png")));
 									btnAddEmpleado.addActionListener(new BtnAadir_1ActionListener());
-									btnAddEmpleado.setToolTipText("A\u00F1adir nuevo empleado");
+									btnAddEmpleado.setToolTipText(
+											MessagesLogin.getString("Login.btnAddEmpleado.toolTipText")); //$NON-NLS-1$
 									pnlPrincipales.add(btnAddEmpleado);
 								}
 								{
-									btnModificarEmpleado = new JButton("Modificar");
+									btnModificarEmpleado = new JButton(
+											MessagesLogin.getString("Login.btnModificarEmpleado.text")); //$NON-NLS-1$
 									btnModificarEmpleado.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									btnModificarEmpleado.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/pencil-edit-button.png")));
-									btnModificarEmpleado
-											.setToolTipText("Modificar los datos del empleado seleccionado");
+									btnModificarEmpleado.setToolTipText(
+											MessagesLogin.getString("Login.btnModificarEmpleado.toolTipText")); //$NON-NLS-1$
 									btnModificarEmpleado.addActionListener(new BtnNewButton_1ActionListener());
 									pnlPrincipales.add(btnModificarEmpleado);
 								}
 								{
-									btnEliminarEmpleado = new JButton("Eliminar");
+									btnEliminarEmpleado = new JButton(
+											MessagesLogin.getString("Login.btnEliminarEmpleado.text")); //$NON-NLS-1$
 									btnEliminarEmpleado.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									btnEliminarEmpleado.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/deleteRed16x16.png")));
 									btnEliminarEmpleado.addActionListener(new BtnEliminar1ActionListener());
-									btnEliminarEmpleado.setToolTipText("Eliminar el empleado seleccionado");
+									btnEliminarEmpleado.setToolTipText(
+											MessagesLogin.getString("Login.btnEliminarEmpleado.toolTipText")); //$NON-NLS-1$
 									pnlPrincipales.add(btnEliminarEmpleado);
 								}
 							}
@@ -831,21 +847,22 @@ public class Login {
 								pnlEditar = new JPanel();
 								pnlBotonesEmpleados.add(pnlEditar, "pnlEditar");
 								{
-									btnGuardar = new JButton("Guardar");
+									btnGuardar = new JButton(MessagesLogin.getString("Login.btnGuardar.text")); //$NON-NLS-1$
 									btnGuardar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									btnGuardar.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/save16x16.png")));
 									btnGuardar.addActionListener(new BtnGuardarActionListener());
-									btnGuardar.setToolTipText("Guardar el nuevo empleado");
+									btnGuardar.setToolTipText(MessagesLogin.getString("Login.btnGuardar.toolTipText")); //$NON-NLS-1$
 									pnlEditar.add(btnGuardar);
 								}
 								{
-									btnCancelar = new JButton("Cancelar");
+									btnCancelar = new JButton(MessagesLogin.getString("Login.btnCancelar.text")); //$NON-NLS-1$
 									btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									btnCancelar.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/cancel16x16.png")));
 									btnCancelar.addActionListener(new BtnCancelarActionListener());
-									btnCancelar.setToolTipText("Cancelar el modo editar");
+									btnCancelar
+											.setToolTipText(MessagesLogin.getString("Login.btnCancelar.toolTipText")); //$NON-NLS-1$
 									pnlEditar.add(btnCancelar);
 								}
 							}
@@ -897,7 +914,7 @@ public class Login {
 						gbl_pnlActividades.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
 						pnlActividades.setLayout(gbl_pnlActividades);
 						{
-							lblBsquedaPorNombre = new JLabel("B\u00FAsqueda por nombre: ");
+							lblBsquedaPorNombre = new JLabel(MessagesLogin.getString("Login.lblBsquedaPorNombre.text")); //$NON-NLS-1$
 							lblBsquedaPorNombre
 									.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/lupa.png")));
 							GridBagConstraints gbc_lblBsquedaPorNombre = new GridBagConstraints();
@@ -933,8 +950,10 @@ public class Login {
 								pnlPrincipalesAct.setBorder(null);
 								pnlBotonesActividades.add(pnlPrincipalesAct, "pnlPrincipalesAct");
 								{
-									btnAddActividad = new JButton("A\u00F1adir");
-									btnAddActividad.setToolTipText("A\u00F1adir una nueva actividad");
+									btnAddActividad = new JButton(
+											MessagesLogin.getString("Login.btnAddActividad.text")); //$NON-NLS-1$
+									btnAddActividad.setToolTipText(
+											MessagesLogin.getString("Login.btnAddActividad.toolTipText")); //$NON-NLS-1$
 									btnAddActividad.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									btnAddActividad.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/add-button16x16.png")));
@@ -942,8 +961,10 @@ public class Login {
 									pnlPrincipalesAct.add(btnAddActividad);
 								}
 								{
-									ModificarActividad = new JButton("Modificar");
-									ModificarActividad.setToolTipText("Modificar una actividad");
+									ModificarActividad = new JButton(
+											MessagesLogin.getString("Login.ModificarActividad.text")); //$NON-NLS-1$
+									ModificarActividad.setToolTipText(
+											MessagesLogin.getString("Login.ModificarActividad.toolTipText")); //$NON-NLS-1$
 									ModificarActividad.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									ModificarActividad.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/pencil-edit-button.png")));
@@ -951,8 +972,10 @@ public class Login {
 									pnlPrincipalesAct.add(ModificarActividad);
 								}
 								{
-									btnEliminarActividad = new JButton("Eliminar");
-									btnEliminarActividad.setToolTipText("Eliminar una actividad");
+									btnEliminarActividad = new JButton(
+											MessagesLogin.getString("Login.btnEliminarActividad.text")); //$NON-NLS-1$
+									btnEliminarActividad.setToolTipText(
+											MessagesLogin.getString("Login.btnEliminarActividad.toolTipText")); //$NON-NLS-1$
 									btnEliminarActividad.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									btnEliminarActividad.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/deleteRed16x16.png")));
@@ -964,7 +987,8 @@ public class Login {
 								pnlEditarAct = new JPanel();
 								pnlBotonesActividades.add(pnlEditarAct, "pnlEditarAct");
 								{
-									btnGuardarActividad = new JButton("Guardar");
+									btnGuardarActividad = new JButton(
+											MessagesLogin.getString("Login.btnGuardarActividad.text")); //$NON-NLS-1$
 									btnGuardarActividad.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									btnGuardarActividad.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/save16x16.png")));
@@ -972,7 +996,8 @@ public class Login {
 									pnlEditarAct.add(btnGuardarActividad);
 								}
 								{
-									btnCancelarActividad = new JButton("Cancelar");
+									btnCancelarActividad = new JButton(
+											MessagesLogin.getString("Login.btnCancelarActividad.text")); //$NON-NLS-1$
 									btnCancelarActividad.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 									btnCancelarActividad.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/cancel16x16.png")));
@@ -1025,7 +1050,7 @@ public class Login {
 						gbl_pnlReservas.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
 						pnlReservas.setLayout(gbl_pnlReservas);
 						{
-							lblBsquedaPorDni = new JLabel("B\u00FAsqueda por DNI del cliente: ");
+							lblBsquedaPorDni = new JLabel(MessagesLogin.getString("Login.lblBsquedaPorDni.text")); //$NON-NLS-1$
 							GridBagConstraints gbc_lblBsquedaPorDni = new GridBagConstraints();
 							gbc_lblBsquedaPorDni.fill = GridBagConstraints.HORIZONTAL;
 							gbc_lblBsquedaPorDni.insets = new Insets(0, 0, 5, 5);
@@ -1054,23 +1079,27 @@ public class Login {
 							gbc_pnlBotonesReserva.gridy = 0;
 							pnlReservas.add(pnlBotonesReserva, gbc_pnlBotonesReserva);
 							{
-								btnModificarReserva = new JButton("Modificar");
+								btnModificarReserva = new JButton(
+										MessagesLogin.getString("Login.btnModificarReserva.text")); //$NON-NLS-1$
 								btnModificarReserva.addActionListener(new BtnModificarReservaActionListener());
 								btnModificarReserva.setIcon(new ImageIcon(
 										Login.class.getResource("/Presentacion/Imagenes/pencil-edit-button.png")));
-								btnModificarReserva.setToolTipText("Bot\u00F3n para modificar la reserva");
+								btnModificarReserva.setToolTipText(
+										MessagesLogin.getString("Login.btnModificarReserva.toolTipText")); //$NON-NLS-1$
 								pnlBotonesReserva.add(btnModificarReserva);
 							}
 							{
-								btnEliminarReserva = new JButton("Eliminar");
+								btnEliminarReserva = new JButton(
+										MessagesLogin.getString("Login.btnEliminarReserva.text")); //$NON-NLS-1$
 								btnEliminarReserva.addActionListener(new BtnEliminarReservaActionListener());
-								btnEliminarReserva.setToolTipText("Bot\u00F3n para eliminar una reserva");
+								btnEliminarReserva.setToolTipText(
+										MessagesLogin.getString("Login.btnEliminarReserva.toolTipText")); //$NON-NLS-1$
 								btnEliminarReserva.setIcon(new ImageIcon(
 										Login.class.getResource("/Presentacion/Imagenes/deleteRed16x16.png")));
 								pnlBotonesReserva.add(btnEliminarReserva);
 							}
 							{
-								btnRefrescar = new JButton("Refrescar");
+								btnRefrescar = new JButton(MessagesLogin.getString("Login.btnRefrescar.text")); //$NON-NLS-1$
 								btnRefrescar.addActionListener(new BtnRefrescarActionListener());
 								pnlBotonesReserva.add(btnRefrescar);
 							}
@@ -1122,7 +1151,8 @@ public class Login {
 							gbl_pnlVistaRutas.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
 							pnlVistaRutas.setLayout(gbl_pnlVistaRutas);
 							{
-								lblBsquedaPorNombre_1 = new JLabel("B\u00FAsqueda por nombre: ");
+								lblBsquedaPorNombre_1 = new JLabel(
+										MessagesLogin.getString("Login.lblBsquedaPorNombre_1.text")); //$NON-NLS-1$
 								lblBsquedaPorNombre_1.setIcon(
 										new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/lupa.png")));
 								GridBagConstraints gbc_lblBsquedaPorNombre_1 = new GridBagConstraints();
@@ -1153,25 +1183,28 @@ public class Login {
 								gbc_pnlContenedorBotonesRuta.gridy = 0;
 								pnlVistaRutas.add(pnlContenedorBotonesRuta, gbc_pnlContenedorBotonesRuta);
 								{
-									btnEditar = new JButton("Modificar");
+									btnEditar = new JButton(MessagesLogin.getString("Login.btnEditar.text")); //$NON-NLS-1$
 									btnEditar.addActionListener(new BtnEditarActionListener());
-									btnEditar.setToolTipText("Modificar ruta");
+									btnEditar.setToolTipText(MessagesLogin.getString("Login.btnEditar.toolTipText")); //$NON-NLS-1$
 									btnEditar.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/pencil-edit-button.png")));
 									pnlContenedorBotonesRuta.add(btnEditar);
 								}
 								{
-									btnEliminarRuta = new JButton("Eliminar");
+									btnEliminarRuta = new JButton(
+											MessagesLogin.getString("Login.btnEliminarRuta.text")); //$NON-NLS-1$
 									btnEliminarRuta.addActionListener(new BtnEliminarRutaActionListener());
-									btnEliminarRuta.setToolTipText("Eliminar ruta");
+									btnEliminarRuta.setToolTipText(
+											MessagesLogin.getString("Login.btnEliminarRuta.toolTipText")); //$NON-NLS-1$
 									btnEliminarRuta.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/deleteRed16x16.png")));
 									pnlContenedorBotonesRuta.add(btnEliminarRuta);
 								}
 								{
-									btnDisearRuta = new JButton("DISE\u00D1AR RUTAS");
+									btnDisearRuta = new JButton(MessagesLogin.getString("Login.btnDisearRuta.text")); //$NON-NLS-1$
 									btnDisearRuta.setFont(new Font("Tahoma", Font.BOLD, 12));
-									btnDisearRuta.setToolTipText("Dibujar una ruta nueva sobre el mapa");
+									btnDisearRuta
+											.setToolTipText(MessagesLogin.getString("Login.btnDisearRuta.toolTipText")); //$NON-NLS-1$
 									btnDisearRuta.setIcon(new ImageIcon(
 											Login.class.getResource("/Presentacion/Imagenes/add-button16x16.png")));
 									btnDisearRuta.addActionListener(new BtnDisearRutaActionListener());
@@ -1218,7 +1251,7 @@ public class Login {
 								pnlBotonBack = new JPanel();
 								pnlDiseno.add(pnlBotonBack, BorderLayout.SOUTH);
 								{
-									btnVolver = new JButton("Volver");
+									btnVolver = new JButton(MessagesLogin.getString("Login.btnVolver.text")); //$NON-NLS-1$
 									btnVolver.addActionListener(new BtnVolverActionListener());
 									pnlBotonBack.add(btnVolver);
 								}
@@ -1413,13 +1446,21 @@ public class Login {
 			int resp = JOptionPane.showConfirmDialog(null, "øEst·s seguro de que quieres eliminar este empleado?",
 					"Eliminar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if (resp == 0) {
-				Empleado e;
-				try {
-					e = pnlDatosEmpleado.getDatosEmpleado();
-					e.delete();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+
+				if (!isMonitorAct(pnlDatosEmpleado.getDNI())) {
+					try {
+						Empleado e;
+						e = pnlDatosEmpleado.getDatosEmpleado();
+						e.delete();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+
+				} else {
+					JOptionPane.showMessageDialog(null,
+							"Este empleado pertenece a una actividad, primero hay que borrar la actividad", "Error",
+							JOptionPane.ERROR_MESSAGE);
 				}
 
 				pnlContenedorEmpleados.loadPanels();
@@ -1521,9 +1562,9 @@ public class Login {
 					e1.printStackTrace();
 				}
 
-				pnlContenedorEmpleados.loadPanels();
-				lblBusquedaPorDni.setText("");
-				pnlDatosEmpleado.clean();
+				pnlContenedorActividades.loadPanels();
+				lblBusquedaPorNombre.setText("");
+				pnlDatosActividad.clean();
 			}
 		}
 	}
@@ -1637,6 +1678,10 @@ public class Login {
 		}
 	}
 
+	public JFrame getFrame() {
+		return frmLogin;
+	}
+
 	private class BtnVolverActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			((CardLayout) pnlRutasSenderistas.getLayout()).show(pnlRutasSenderistas, "pnlVistaRutas");
@@ -1734,6 +1779,24 @@ public class Login {
 		}
 	}
 
+	private class RdbtnEspaniolActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (rdbtnIngles.isSelected()) {
+				MessagesLogin.setIdioma("ingl√©s");
+			}
+
+			if (rdbtnEspaniol.isSelected()) {
+				MessagesLogin.setIdioma("Espa√±ol");
+			}
+
+			Login ventana = new Login();
+			ventana.getFrame().setVisible(true);
+
+			frmLogin.dispose();
+
+		}
+	}
+
 	private void entrar() {
 
 		String password = pwdContrasena.getText();
@@ -1818,10 +1881,22 @@ public class Login {
 		}
 	}
 
-	private boolean isMonitor(Empleado empleado) {
+	private boolean isMonitorAct(String dni) {
 		boolean isMonitor = false;
 		for (Actividad a : this.cargarActividades()) {
-			if (a.getEmpleado().getDni().equalsIgnoreCase(empleado.getDni())) {
+			if (a.getEmpleado().getDni().equalsIgnoreCase(dni)) {
+				isMonitor = true;
+				return isMonitor;
+			}
+		}
+
+		return isMonitor;
+	}
+
+	private boolean isMonitorRuta(String dni) {
+		boolean isMonitor = false;
+		for (RutaSenderista a : this.cargarRutas()) {
+			if (a.getMonitor().getDni().equalsIgnoreCase(dni)) {
 				isMonitor = true;
 				return isMonitor;
 			}
