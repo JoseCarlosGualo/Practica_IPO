@@ -9,17 +9,36 @@ import Dominio.Disponibilidad;
 import Dominio.Empleado;
 import Dominio.Parcela;
 
+/**
+ * The Class ActividadDAO.
+ */
 public class ActividadDAO {
+	
+	/** The lista actividades. */
 	private ArrayList<Actividad> listaActividades;
 
+	/**
+	 * Instantiates a new actividad DAO.
+	 */
 	public ActividadDAO() {
 		this.listaActividades = new ArrayList<Actividad>();
 	}
 
+	/**
+	 * Gets the lista actividades.
+	 *
+	 * @return the lista actividades
+	 */
 	public ArrayList<Actividad> getListaActividades() {
 		return listaActividades;
 	}
 
+	/**
+	 * Insert.
+	 *
+	 * @param actividad the actividad
+	 * @return true, if successful
+	 */
 	public boolean insert(Actividad actividad) {
 
 		boolean correcto = false;
@@ -45,6 +64,12 @@ public class ActividadDAO {
 
 	}
 
+	/**
+	 * Update.
+	 *
+	 * @param actividad the actividad
+	 * @return true, if successful
+	 */
 	public boolean update(Actividad actividad) {
 
 		boolean correcto = false;
@@ -70,6 +95,12 @@ public class ActividadDAO {
 
 	}
 
+	/**
+	 * Delete.
+	 *
+	 * @param actividad the actividad
+	 * @return true, if successful
+	 */
 	public boolean delete(Actividad actividad) {
 
 		boolean correcto = false;
@@ -87,6 +118,12 @@ public class ActividadDAO {
 
 	}
 
+	/**
+	 * Read.
+	 *
+	 * @param actividad the actividad
+	 * @return true, if successful
+	 */
 	public boolean read(Actividad actividad) {
 
 		boolean correcto = false;
@@ -123,6 +160,12 @@ public class ActividadDAO {
 
 	}
 
+	/**
+	 * Read from name.
+	 *
+	 * @param actividad the actividad
+	 * @return true, if successful
+	 */
 	public boolean readFromName(Actividad actividad) {
 
 		boolean correcto = false;
@@ -159,6 +202,11 @@ public class ActividadDAO {
 
 	}
 
+	/**
+	 * Read all.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean readAll() {
 
 		boolean correcto = false;

@@ -8,18 +8,36 @@ import Dominio.RutaSenderista;
 import Dominio.Actividad;
 import Dominio.Empleado;
 
+/**
+ * The Class RutaDAO.
+ */
 public class RutaDAO {
 
+	/** The lista rutas. */
 	private ArrayList<RutaSenderista> listaRutas;
 
+	/**
+	 * Instantiates a new ruta DAO.
+	 */
 	public RutaDAO() {
 		this.listaRutas = new ArrayList<RutaSenderista>();
 	}
 
+	/**
+	 * Gets the lista rutas.
+	 *
+	 * @return the lista rutas
+	 */
 	public ArrayList<RutaSenderista> getListaRutas() {
 		return this.listaRutas;
 	}
 
+	/**
+	 * Insert.
+	 *
+	 * @param ruta the ruta
+	 * @return true, if successful
+	 */
 	public boolean insert(RutaSenderista ruta) {
 
 		boolean correcto = false;
@@ -44,6 +62,12 @@ public class RutaDAO {
 
 	}
 
+	/**
+	 * Update.
+	 *
+	 * @param ruta the ruta
+	 * @return true, if successful
+	 */
 	public boolean update(RutaSenderista ruta) {
 		boolean correcto = false;
 		try {
@@ -66,6 +90,12 @@ public class RutaDAO {
 		return correcto;
 	}
 
+	/**
+	 * Delete.
+	 *
+	 * @param ruta the ruta
+	 * @return true, if successful
+	 */
 	public boolean delete(RutaSenderista ruta) {
 
 		boolean correcto = false;
@@ -85,6 +115,12 @@ public class RutaDAO {
 
 	}
 
+	/**
+	 * Read.
+	 *
+	 * @param ruta the ruta
+	 * @return true, if successful
+	 */
 	public boolean read(RutaSenderista ruta) {
 		boolean correcto = false;
 		ResultSet resultado;
@@ -122,6 +158,11 @@ public class RutaDAO {
 		return correcto;
 	}
 
+	/**
+	 * Read all.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean readAll() {
 		boolean correcto = false;
 		ResultSet resultado;

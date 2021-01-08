@@ -7,17 +7,36 @@ import Dominio.Disponibilidad;
 import Dominio.Empleado;
 import Dominio.Parcela;
 
+/**
+ * The Class EmpleadoDAO.
+ */
 public class EmpleadoDAO {
+	
+	/** The lista empleados. */
 	private ArrayList<Empleado> listaEmpleados;
 
+	/**
+	 * Instantiates a new empleado DAO.
+	 */
 	public EmpleadoDAO() {
 		this.listaEmpleados = new ArrayList<Empleado>();
 	}
 
+	/**
+	 * Gets the lista empleados.
+	 *
+	 * @return the lista empleados
+	 */
 	public ArrayList<Empleado> getListaEmpleados() {
 		return listaEmpleados;
 	}
 
+	/**
+	 * Insert.
+	 *
+	 * @param empleado the empleado
+	 * @return true, if successful
+	 */
 	public boolean insert(Empleado empleado) {
 
 		boolean correcto = false;
@@ -40,6 +59,12 @@ public class EmpleadoDAO {
 
 	}
 
+	/**
+	 * Update.
+	 *
+	 * @param empleado the empleado
+	 * @return true, if successful
+	 */
 	public boolean update(Empleado empleado) {
 
 		boolean correcto = false;
@@ -63,6 +88,12 @@ public class EmpleadoDAO {
 
 	}
 
+	/**
+	 * Delete.
+	 *
+	 * @param empleado the empleado
+	 * @return true, if successful
+	 */
 	public boolean delete(Empleado empleado) {
 
 		boolean correcto = false;
@@ -80,6 +111,12 @@ public class EmpleadoDAO {
 
 	}
 
+	/**
+	 * Read.
+	 *
+	 * @param empleado the empleado
+	 * @return true, if successful
+	 */
 	public boolean read(Empleado empleado) {
 
 		boolean correcto = false;
@@ -109,6 +146,12 @@ public class EmpleadoDAO {
 
 	}
 
+	/**
+	 * Read from name.
+	 *
+	 * @param empleado the empleado
+	 * @return true, if successful
+	 */
 	public boolean readFromName(Empleado empleado) {
 
 		boolean correcto = false;
@@ -138,6 +181,11 @@ public class EmpleadoDAO {
 
 	}
 
+	/**
+	 * Read all.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean readAll() {
 
 		boolean correcto = false;

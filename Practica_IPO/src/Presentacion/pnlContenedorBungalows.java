@@ -12,10 +12,18 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.ScrollPaneConstants;
 
+/**
+ * The Class pnlContenedorBungalows.
+ */
 public class pnlContenedorBungalows extends JPanel {
+	
+	/** The scroll pane. */
 	private JScrollPane scrollPane;
+	
+	/** The pnl contenedor. */
 	private JPanel pnlContenedor;
 
+	/** The lista pnl bungalow. */
 	private ArrayList<pnlVBungalow> listaPnlBungalow;
 
 	/**
@@ -35,12 +43,20 @@ public class pnlContenedorBungalows extends JPanel {
 
 	}
 
+	/**
+	 * Clean.
+	 */
 	public void clean() {
 		pnlContenedor.removeAll();
 		pnlContenedor.repaint();
 		pnlContenedor.revalidate();
 	}
 
+	/**
+	 * Load pnl bungalows.
+	 *
+	 * @param bungalows the bungalows
+	 */
 	public void loadPnlBungalows(ArrayList<Bungalow> bungalows) {
 		clean();
 		listaPnlBungalow = new ArrayList<pnlVBungalow>();
@@ -54,12 +70,18 @@ public class pnlContenedorBungalows extends JPanel {
 		}
 	}
 
+	/**
+	 * Reload.
+	 */
 	public void reload() {
 		Bungalow bungalow = new Bungalow();
 		bungalow.readAll();
 		loadPnlBungalows(bungalow.getBungalowDAO().getListaBungalows());
 	}
 
+	/**
+	 * Quitar todas selecciones.
+	 */
 	public void quitarTodasSelecciones() {
 		if (isMoreThanOneSelectioned()) {
 			for (pnlVBungalow bungalow : this.listaPnlBungalow) {
@@ -70,6 +92,11 @@ public class pnlContenedorBungalows extends JPanel {
 		}
 	}
 
+	/**
+	 * Checks if is more than one selectioned.
+	 *
+	 * @return true, if is more than one selectioned
+	 */
 	public boolean isMoreThanOneSelectioned() {
 		int seleccionadas = 0;
 		for (pnlVBungalow bungalow : this.listaPnlBungalow) {
@@ -85,6 +112,9 @@ public class pnlContenedorBungalows extends JPanel {
 		}
 	}
 
+	/**
+	 * Borrar seleccionada.
+	 */
 	public void borrarSeleccionada() {
 		for (pnlVBungalow pnlBungalow : this.listaPnlBungalow) {
 			if (pnlBungalow.isSeleccionado()) {
@@ -96,6 +126,11 @@ public class pnlContenedorBungalows extends JPanel {
 		loadPnlBungalows(b.getBungalowDAO().getListaBungalows());
 	}
 
+	/**
+	 * Filtra bungalow.
+	 *
+	 * @param nombre the nombre
+	 */
 	public void filtraBungalow(String nombre) {
 		this.clean();
 		for (pnlVBungalow bungalow : listaPnlBungalow) {

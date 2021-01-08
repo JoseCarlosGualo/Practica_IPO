@@ -6,19 +6,37 @@ import java.util.ArrayList;
 
 import Dominio.Usuario;
 
+/**
+ * The Class UsuarioDAO.
+ */
 public class UsuarioDAO {
 
+	/** The lista usuarios. */
 	private ArrayList<Usuario> listaUsuarios;
 	
+	/**
+	 * Instantiates a new usuario DAO.
+	 */
 	public UsuarioDAO() {
 		this.listaUsuarios=new ArrayList<Usuario>();
 	}
 	
+	/**
+	 * Gets the lista usuarios.
+	 *
+	 * @return the lista usuarios
+	 */
 	public ArrayList<Usuario> getListaUsuarios(){
 		return this.listaUsuarios;
 	}
 	
 	
+	/**
+	 * Insert.
+	 *
+	 * @param usuario the usuario
+	 * @return true, if successful
+	 */
 	public boolean insert(Usuario usuario) {
 		boolean correcto=false;
 		
@@ -40,6 +58,12 @@ public class UsuarioDAO {
 		return correcto;
 	}
 	
+	/**
+	 * Update.
+	 *
+	 * @param usuario the usuario
+	 * @return true, if successful
+	 */
 	public boolean update(Usuario usuario) {
 		boolean correcto = false;
 		try {
@@ -59,6 +83,12 @@ public class UsuarioDAO {
 		return correcto;
 	}
 	
+	/**
+	 * Delete.
+	 *
+	 * @param usuario the usuario
+	 * @return true, if successful
+	 */
 	public boolean delete(Usuario usuario) {
 		
 		boolean correcto = false;
@@ -78,6 +108,12 @@ public class UsuarioDAO {
 		
 	}
 	
+	/**
+	 * Login.
+	 *
+	 * @param usuario the usuario
+	 * @return true, if successful
+	 */
 	public boolean login(Usuario usuario) {
 		ResultSet resultado;
 		boolean correcto = false;
@@ -115,6 +151,12 @@ public class UsuarioDAO {
 		return correcto;
 	}
 	
+	/**
+	 * Read.
+	 *
+	 * @param usuario the usuario
+	 * @return true, if successful
+	 */
 	public boolean read(Usuario usuario) {
 		boolean correcto=false;
 		ResultSet resultado;
@@ -143,6 +185,11 @@ public class UsuarioDAO {
 		return correcto;
 	}
 	
+	/**
+	 * Read all.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean readAll() {
 		boolean correcto=false;
 		ResultSet resultado;

@@ -21,23 +21,52 @@ import java.awt.event.MouseEvent;
 import javax.swing.border.LineBorder;
 import java.awt.Font;
 
+/**
+ * The Class pnlVReserva.
+ */
 public class pnlVReserva extends JPanel {
+	
+	/** The lbl foto. */
 	private JLabel lblFoto;
+	
+	/** The lbl dni cli res. */
 	private JLabel lblDniCliRes;
+	
+	/** The lbl nombre res. */
 	private JLabel lblNombreRes;
 
+	/** The no seleccionado. */
 	private Color noSeleccionado = this.getBackground();
+	
+	/** The seleccionado. */
 	private Color seleccionado = new Color(250, 250, 200);
+	
+	/** The original. */
 	private Color original = this.getBackground();
+	
+	/** The reserva. */
 	private Reserva reserva;
+	
+	/** The is seleccionado. */
 	private boolean isSeleccionado = false;
+	
+	/** The pnl reserva. */
 	private pnlFormReserva pnlReserva;
+	
+	/** The lbl entrada res. */
 	private JLabel lblEntradaRes;
+	
+	/** The lbl dni. */
 	private JLabel lblDni;
+	
+	/** The lbl fecha de entrada. */
 	private JLabel lblFechaDeEntrada;
 
 	/**
 	 * Create the panel.
+	 *
+	 * @param reserva the reserva
+	 * @param pnlReserva the pnl reserva
 	 */
 	public pnlVReserva(Reserva reserva, pnlFormReserva pnlReserva) {
 		setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -136,7 +165,22 @@ public class pnlVReserva extends JPanel {
 
 	}
 
+	/**
+	 * The listener interface for receiving thisMouse events.
+	 * The class that is interested in processing a thisMouse
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addThisMouseListener<code> method. When
+	 * the thisMouse event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see ThisMouseEvent
+	 */
 	private class ThisMouseListener extends MouseAdapter {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.MouseAdapter#mouseClicked(java.awt.event.MouseEvent)
+		 */
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			if (!isSeleccionado) {
@@ -150,11 +194,17 @@ public class pnlVReserva extends JPanel {
 			}
 		}
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.MouseAdapter#mouseEntered(java.awt.event.MouseEvent)
+		 */
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			setBackground(seleccionado);
 		}
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.MouseAdapter#mouseExited(java.awt.event.MouseEvent)
+		 */
 		@Override
 		public void mouseExited(MouseEvent e) {
 			if (!isSeleccionado) {
@@ -163,10 +213,20 @@ public class pnlVReserva extends JPanel {
 		}
 	}
 
+	/**
+	 * Gets the reserva.
+	 *
+	 * @return the reserva
+	 */
 	public Reserva getReserva() {
 		return this.reserva;
 	}
 
+	/**
+	 * Checks if is seleccionado.
+	 *
+	 * @return true, if is seleccionado
+	 */
 	public boolean isSeleccionado() {
 		return this.isSeleccionado;
 	}

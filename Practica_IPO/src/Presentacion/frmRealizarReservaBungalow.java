@@ -51,48 +51,120 @@ import Dominio.Reserva;
 import javax.swing.JTextArea;
 import javax.swing.SpinnerNumberModel;
 
+/**
+ * The Class frmRealizarReservaBungalow.
+ */
 public class frmRealizarReservaBungalow extends JFrame {
 
+	/** The content pane. */
 	private JPanel contentPane;
+	
+	/** The panel botones. */
 	private JPanel panelBotones;
+	
+	/** The btn guardar. */
 	private JButton btnGuardar;
+	
+	/** The btn cancelar. */
 	private JButton btnCancelar;
+	
+	/** The estado. */
 	private int estado;
+	
+	/** The panel datos reserva. */
 	private JPanel panelDatosReserva;
 
+	/** The pnl contenedor bungalows. */
 	private pnlContenedorBungalows pnlContenedorBungalows;
+	
+	/** The id. */
 	private int id;
 
+	/** The Constant ALTO. */
 	private final static int ALTO = 700;
+	
+	/** The Constant ANCHO. */
 	private final static int ANCHO = 550;
+	
+	/** The lbl datos personales. */
 	private JLabel lblDatosPersonales;
+	
+	/** The lbl nombre. */
 	private JLabel lblNombre;
+	
+	/** The borde mal. */
 	private Border bordeMal = BorderFactory.createLineBorder(Color.RED);
+	
+	/** The borde bien. */
 	private Border bordeBien = BorderFactory.createLineBorder(Color.GREEN);
+	
+	/** The lbl dni. */
 	private JLabel lblDni;
+	
+	/** The lbl telfono. */
 	private JLabel lblTelfono;
+	
+	/** The lbl email. */
 	private JLabel lblEmail;
+	
+	/** The tf nombre res. */
 	private JTextField tfNombreRes;
+	
+	/** The tf dni res. */
 	private JTextField tfDniRes;
+	
+	/** The tf tlfn res. */
 	private JTextField tfTlfnRes;
+	
+	/** The tf email res. */
 	private JTextField tfEmailRes;
+	
+	/** The lbl datos reserva. */
 	private JLabel lblDatosReserva;
+	
+	/** The lbl fecha de entrada. */
 	private JLabel lblFechaDeEntrada;
+	
+	/** The lbl hora de entrada. */
 	private JLabel lblHoraDeEntrada;
+	
+	/** The lbl fecha de salida. */
 	private JLabel lblFechaDeSalida;
+	
+	/** The lbl hora de salida. */
 	private JLabel lblHoraDeSalida;
+	
+	/** The lbl nmero de ocupantes. */
 	private JLabel lblNmeroDeOcupantes;
+	
+	/** The spinner ocupantes. */
 	private JSpinner spinnerOcupantes;
+	
+	/** The d C fecha entrada. */
 	private JDateChooser dCFechaEntrada;
+	
+	/** The d C fecha salida. */
 	private JDateChooser dCFechaSalida;
+	
+	/** The tf hora entrada res. */
 	private JTextField tfHoraEntradaRes;
+	
+	/** The tf hora salida. */
 	private JTextField tfHoraSalida;
+	
+	/** The bungalow. */
 	private Bungalow bungalow;
+	
+	/** The lbl peticiones especiales. */
 	private JLabel lblPeticionesEspeciales;
+	
+	/** The txa peticiones especiales. */
 	private JTextArea txaPeticionesEspeciales;
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -109,6 +181,11 @@ public class frmRealizarReservaBungalow extends JFrame {
 
 	/**
 	 * Create the frame.
+	 *
+	 * @param limites the limites
+	 * @param panel the panel
+	 * @param estado the estado
+	 * @param bungalow the bungalow
 	 */
 	public frmRealizarReservaBungalow(Rectangle limites, pnlContenedorBungalows panel, int estado, Bungalow bungalow) {
 		this.estado = estado;
@@ -380,6 +457,11 @@ public class frmRealizarReservaBungalow extends JFrame {
 		}
 	}
 
+	/**
+	 * Comprobar text fields.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean comprobarTextFields() {
 		Component[] textFields = this.getComponents();
 		boolean correcto = true;
@@ -401,6 +483,11 @@ public class frmRealizarReservaBungalow extends JFrame {
 		return correcto;
 	}
 
+	/**
+	 * Comprobar fechas.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean comprobarFechas() {
 		boolean correcto = true;
 		Date fecha_entrada = dCFechaEntrada.getDate();
@@ -445,9 +532,24 @@ public class frmRealizarReservaBungalow extends JFrame {
 
 	}
 
+	/**
+	 * The listener interface for receiving btnCancelarAction events.
+	 * The class that is interested in processing a btnCancelarAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnCancelarActionListener<code> method. When
+	 * the btnCancelarAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnCancelarActionEvent
+	 */
 	private class BtnCancelarActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
-			if (JOptionPane.showConfirmDialog(null, "¿Seguro que quieres cancelar la reserva?", "Aviso",
+			if (JOptionPane.showConfirmDialog(null, "ï¿½Seguro que quieres cancelar la reserva?", "Aviso",
 					JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 				dispose();
 			} else {
@@ -456,9 +558,24 @@ public class frmRealizarReservaBungalow extends JFrame {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnGuardarAction events.
+	 * The class that is interested in processing a btnGuardarAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnGuardarActionListener<code> method. When
+	 * the btnGuardarAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnGuardarActionEvent
+	 */
 	private class BtnGuardarActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
-			if (JOptionPane.showConfirmDialog(null, "¿Desea añadir una Reserva con los campos introducidos?", "Aviso",
+			if (JOptionPane.showConfirmDialog(null, "ï¿½Desea aï¿½adir una Reserva con los campos introducidos?", "Aviso",
 					JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 				if (comprobarTextFields()) {
 					if (comprobarFechas()) {

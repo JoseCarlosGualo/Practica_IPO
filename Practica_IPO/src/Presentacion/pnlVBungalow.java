@@ -28,35 +28,85 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 
+/**
+ * The Class pnlVBungalow.
+ */
 public class pnlVBungalow extends JPanel {
+	
+	/** The lbl nombrebungalow. */
 	private JLabel lblNombrebungalow;
+	
+	/** The lbl imagen. */
 	private JLabel lblImagen;
+	
+	/** The pnl caracteristicas. */
 	private JPanel pnlCaracteristicas;
+	
+	/** The lbl caractersticas. */
 	private JLabel lblCaractersticas;
+	
+	/** The lbl tamao. */
 	private JLabel lblTamao;
+	
+	/** The lbl capacidad maxima. */
 	private JLabel lblCapacidadMaxima;
+	
+	/** The lbl estancia mnima. */
 	private JLabel lblEstanciaMnima;
+	
+	/** The lbl equipamiento. */
 	private JLabel lblEquipamiento;
+	
+	/** The lbl descripcin. */
 	private JLabel lblDescripcin;
+	
+	/** The lbl tamano bun. */
 	private JLabel lblTamanoBun;
+	
+	/** The lbl capacidad maxima bun. */
 	private JLabel lblCapacidadMaximaBun;
+	
+	/** The lbl estancia minima bun. */
 	private JLabel lblEstanciaMinimaBun;
+	
+	/** The lbl equipamientobun. */
 	private JLabel lblEquipamientobun;
 
+	/** The no seleccionado. */
 	private Color noSeleccionado;
+	
+	/** The seleccionado. */
 	private Color seleccionado = new Color(250, 250, 200);
+	
+	/** The is seleccionado. */
 	private boolean isSeleccionado = false;
 
+	/** The bungalow. */
 	private Bungalow bungalow;
+	
+	/** The pnl contenedor bungalows. */
 	private pnlContenedorBungalows pnlContenedorBungalows;
+	
+	/** The pnl precio. */
 	private JPanel pnlPrecio;
+	
+	/** The lbl precio bun. */
 	private JLabel lblPrecioBun;
+	
+	/** The btn reservar. */
 	private JButton btnReservar;
+	
+	/** The text area descripcion. */
 	private JTextArea textAreaDescripcion;
+	
+	/** The lbl disponibilidad bun. */
 	private JLabel lblDisponibilidadBun;
 
 	/**
 	 * Create the panel.
+	 *
+	 * @param bungalow the bungalow
+	 * @param pnlContenedor the pnl contenedor
 	 */
 	public pnlVBungalow(Bungalow bungalow, pnlContenedorBungalows pnlContenedor) {
 		setBorder(UIManager.getBorder("InternalFrame.border"));
@@ -259,6 +309,11 @@ public class pnlVBungalow extends JPanel {
 
 	}
 
+	/**
+	 * Load data.
+	 *
+	 * @param bungalow the bungalow
+	 */
 	public void loadData(Bungalow bungalow) {
 		lblCapacidadMaximaBun.setText(Integer.toString(bungalow.getCapacidad_maxima()));
 		lblEquipamientobun.setText(bungalow.getEquipamiento());
@@ -293,24 +348,55 @@ public class pnlVBungalow extends JPanel {
 		lblDisponibilidadBun.setText(bungalow.getDisponibilidad().toString());
 	}
 
+	/**
+	 * Gets the bungalow.
+	 *
+	 * @return the bungalow
+	 */
 	public Bungalow getBungalow() {
 		return bungalow;
 	}
 
+	/**
+	 * Checks if is seleccionado.
+	 *
+	 * @return true, if is seleccionado
+	 */
 	public boolean isSeleccionado() {
 		return isSeleccionado;
 	}
 
+	/**
+	 * Deseleccionar.
+	 */
 	public void deseleccionar() {
 		isSeleccionado = false;
 		setBackground(noSeleccionado);
 	}
 
+	/**
+	 * Delete.
+	 */
 	public void delete() {
 		bungalow.delete();
 	}
 
+	/**
+	 * The listener interface for receiving thisMouse events.
+	 * The class that is interested in processing a thisMouse
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addThisMouseListener<code> method. When
+	 * the thisMouse event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see ThisMouseEvent
+	 */
 	private class ThisMouseListener extends MouseAdapter {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.MouseAdapter#mouseClicked(java.awt.event.MouseEvent)
+		 */
 		@Override
 		public void mouseClicked(MouseEvent e) {
 
@@ -332,6 +418,9 @@ public class pnlVBungalow extends JPanel {
 
 		}
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.MouseAdapter#mouseEntered(java.awt.event.MouseEvent)
+		 */
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			if (!isSeleccionado) {
@@ -341,6 +430,9 @@ public class pnlVBungalow extends JPanel {
 			}
 		}
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.MouseAdapter#mouseExited(java.awt.event.MouseEvent)
+		 */
 		@Override
 		public void mouseExited(MouseEvent e) {
 			if (!isSeleccionado) {
@@ -351,7 +443,22 @@ public class pnlVBungalow extends JPanel {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnReservarAction events.
+	 * The class that is interested in processing a btnReservarAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnReservarActionListener<code> method. When
+	 * the btnReservarAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnReservarActionEvent
+	 */
 	private class BtnReservarActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			frmRealizarReservaBungalow anadir = new frmRealizarReservaBungalow(pnlContenedorBungalows.getBounds(),
 					pnlContenedorBungalows, 1, getBungalow());

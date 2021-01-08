@@ -6,17 +6,36 @@ import java.util.ArrayList;
 import Dominio.Disponibilidad;
 import Dominio.Parcela;
 
+/**
+ * The Class ParcelaDAO.
+ */
 public class ParcelaDAO {
+	
+	/** The lista parcelas. */
 	private ArrayList<Parcela> listaParcelas;
 
+	/**
+	 * Instantiates a new parcela DAO.
+	 */
 	public ParcelaDAO() {
 		this.listaParcelas = new ArrayList<Parcela>();
 	}
 
+	/**
+	 * Gets the lista parcelas.
+	 *
+	 * @return the lista parcelas
+	 */
 	public ArrayList<Parcela> getListaParcelas() {
 		return listaParcelas;
 	}
 
+	/**
+	 * Insert.
+	 *
+	 * @param parcela the parcela
+	 * @return true, if successful
+	 */
 	public boolean insert(Parcela parcela) {
 
 		boolean correcto = false;
@@ -42,6 +61,12 @@ public class ParcelaDAO {
 
 	}
 
+	/**
+	 * Last ID.
+	 *
+	 * @param parcela the parcela
+	 * @return true, if successful
+	 */
 	public boolean lastID(Parcela parcela) {
 		ResultSet resultado;
 		boolean correcto = false;
@@ -63,6 +88,12 @@ public class ParcelaDAO {
 		return correcto;
 	}
 
+	/**
+	 * Update.
+	 *
+	 * @param parcela the parcela
+	 * @return true, if successful
+	 */
 	public boolean update(Parcela parcela) {
 
 		boolean correcto = false;
@@ -87,6 +118,12 @@ public class ParcelaDAO {
 
 	}
 
+	/**
+	 * Delete.
+	 *
+	 * @param parcela the parcela
+	 * @return true, if successful
+	 */
 	public boolean delete(Parcela parcela) {
 
 		boolean correcto = false;
@@ -104,6 +141,12 @@ public class ParcelaDAO {
 
 	}
 
+	/**
+	 * Read.
+	 *
+	 * @param parcela the parcela
+	 * @return true, if successful
+	 */
 	public boolean read(Parcela parcela) {
 
 		boolean correcto = false;
@@ -154,6 +197,11 @@ public class ParcelaDAO {
 
 	}
 
+	/**
+	 * Read all.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean readAll() {
 
 		boolean correcto = false;

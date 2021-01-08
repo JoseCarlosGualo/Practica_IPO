@@ -10,14 +10,25 @@ import Dominio.Reserva;
 import java.awt.Color;
 import java.awt.GridLayout;
 
+/**
+ * The Class pnlContenedorReservas.
+ */
 public class pnlContenedorReservas extends JPanel {
 
+	/** The reservas. */
 	private ArrayList<Reserva> reservas;
+	
+	/** The lista reservas. */
 	private ArrayList<pnlVReserva> listaReservas;
+	
+	/** The pnl form reserva. */
 	private pnlFormReserva pnlFormReserva;
 
 	/**
 	 * Create the panel.
+	 *
+	 * @param reserva the reserva
+	 * @param pnlFormReserva the pnl form reserva
 	 */
 	public pnlContenedorReservas(ArrayList<Reserva> reserva, pnlFormReserva pnlFormReserva) {
 		this.reservas = reserva;
@@ -27,12 +38,18 @@ public class pnlContenedorReservas extends JPanel {
 		this.loadPanels();
 	}
 
+	/**
+	 * Clean.
+	 */
 	public void clean() {
 		removeAll();
 		repaint();
 		revalidate();
 	}
 
+	/**
+	 * Load panels.
+	 */
 	public void loadPanels() {
 		Reserva reserva = new Reserva();
 		reserva.readAll();
@@ -49,6 +66,11 @@ public class pnlContenedorReservas extends JPanel {
 
 	}
 
+	/**
+	 * Filtra reserva.
+	 *
+	 * @param nombreEstancia the nombre estancia
+	 */
 	public void filtraReserva(String nombreEstancia) {
 		this.clean();
 		for (Reserva reserva : reservas) {
@@ -61,10 +83,20 @@ public class pnlContenedorReservas extends JPanel {
 		}
 	}
 
+	/**
+	 * Sets the pnl form resrva.
+	 *
+	 * @param pnlFormReserva the new pnl form resrva
+	 */
 	public void setPnlFormResrva(pnlFormReserva pnlFormReserva) {
 		this.pnlFormReserva = pnlFormReserva;
 	}
 
+	/**
+	 * Gets the reserva seleccionada.
+	 *
+	 * @return the reserva seleccionada
+	 */
 	public Reserva getReservaSeleccionada() {
 		Reserva reserva = null;
 		for (pnlVReserva pnl : listaReservas) {
@@ -75,6 +107,9 @@ public class pnlContenedorReservas extends JPanel {
 		return reserva;
 	}
 
+	/**
+	 * Reload.
+	 */
 	public void reload() {
 		loadPanels();
 	}

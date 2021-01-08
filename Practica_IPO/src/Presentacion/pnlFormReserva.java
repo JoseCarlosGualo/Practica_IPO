@@ -33,37 +33,93 @@ import com.toedter.components.JSpinField;
 import javax.swing.ImageIcon;
 import javax.swing.SpinnerNumberModel;
 
+/**
+ * The Class pnlFormReserva.
+ */
 public class pnlFormReserva extends JPanel {
 
+	/** The borde mal. */
 	private Border bordeMal = BorderFactory.createLineBorder(Color.RED);
+	
+	/** The borde bien. */
 	private Border bordeBien = BorderFactory.createLineBorder(Color.GREEN);
+	
+	/** The frame principal. */
 	private JFrame framePrincipal;
+	
+	/** The lbl datos personales. */
 	private JLabel lblDatosPersonales;
+	
+	/** The lbl nombre. */
 	private JLabel lblNombre;
+	
+	/** The lbl dni. */
 	private JLabel lblDni;
+	
+	/** The lbl telfono. */
 	private JLabel lblTelfono;
+	
+	/** The lbl email. */
 	private JLabel lblEmail;
+	
+	/** The lbl hora de entrada. */
 	private JLabel lblHoraDeEntrada;
+	
+	/** The lbl fecha de salida. */
 	private JLabel lblFechaDeSalida;
+	
+	/** The lbl hora de salida. */
 	private JLabel lblHoraDeSalida;
+	
+	/** The lbl nmero de ocupantes. */
 	private JLabel lblNmeroDeOcupantes;
+	
+	/** The lbl peticiones especiales. */
 	private JLabel lblPeticionesEspeciales;
+	
+	/** The text peticiones especiales. */
 	private JTextArea textPeticionesEspeciales;
+	
+	/** The d C fecha salida. */
 	private JDateChooser dCFechaSalida;
+	
+	/** The d C fecha entrada. */
 	private JDateChooser dCFechaEntrada;
+	
+	/** The spinner ocupantes. */
 	private JSpinner spinnerOcupantes;
+	
+	/** The lbl fecha de entrada. */
 	private JLabel lblFechaDeEntrada;
+	
+	/** The spin field. */
 	private JSpinField spinField;
+	
+	/** The tf nombre res. */
 	private JTextField tfNombreRes;
+	
+	/** The tf dni res. */
 	private JTextField tfDniRes;
+	
+	/** The tf tlf res. */
 	private JTextField tfTlfRes;
+	
+	/** The tf email res. */
 	private JTextField tfEmailRes;
+	
+	/** The tf hora entrada. */
 	private JTextField tfHoraEntrada;
+	
+	/** The tf hora salida. */
 	private JTextField tfHoraSalida;
+	
+	/** The lbl datos reserva. */
 	private JLabel lblDatosReserva;
 
 	/**
 	 * Create the panel.
+	 *
+	 * @param framePrincipal the frame principal
 	 */
 	public pnlFormReserva(JFrame framePrincipal) {
 		this.framePrincipal = framePrincipal;
@@ -310,6 +366,11 @@ public class pnlFormReserva extends JPanel {
 
 	}
 
+	/**
+	 * Load reserva.
+	 *
+	 * @param reserva the reserva
+	 */
 	public void loadReserva(Reserva reserva) {
 		tfDniRes.setText(reserva.getDni());
 		tfEmailRes.setText(reserva.getEmail());
@@ -339,6 +400,11 @@ public class pnlFormReserva extends JPanel {
 		textPeticionesEspeciales.setText(reserva.getSolicitudes_especiales());
 	}
 
+	/**
+	 * Comprobar text fields.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean comprobarTextFields() {
 		Component[] textFields = this.getComponents();
 		boolean correcto = true;
@@ -355,6 +421,9 @@ public class pnlFormReserva extends JPanel {
 		return correcto;
 	}
 
+	/**
+	 * Clean.
+	 */
 	public void clean() {
 		tfDniRes.setText(null);
 		tfEmailRes.setText(null);

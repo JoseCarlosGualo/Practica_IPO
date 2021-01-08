@@ -9,14 +9,25 @@ import Dominio.RutaSenderista;
 import java.awt.Color;
 import java.awt.GridLayout;
 
+/**
+ * The Class pnlContenedorRutas.
+ */
 public class pnlContenedorRutas extends JPanel {
 
+	/** The rutas. */
 	private ArrayList<RutaSenderista> rutas;
+	
+	/** The lista rutas. */
 	private ArrayList<pnlVRuta> listaRutas;
+	
+	/** The pnl form rutas. */
 	private pnlFormRutas pnlFormRutas;
 
 	/**
 	 * Create the panel.
+	 *
+	 * @param rutas the rutas
+	 * @param pnlFormRutas the pnl form rutas
 	 */
 	public pnlContenedorRutas(ArrayList<RutaSenderista> rutas, pnlFormRutas pnlFormRutas) {
 		this.rutas = rutas;
@@ -26,12 +37,18 @@ public class pnlContenedorRutas extends JPanel {
 		this.loadPanels();
 	}
 
+	/**
+	 * Clean.
+	 */
 	public void clean() {
 		removeAll();
 		repaint();
 		revalidate();
 	}
 
+	/**
+	 * Load panels.
+	 */
 	public void loadPanels() {
 		RutaSenderista ruta = new RutaSenderista();
 		ruta.readAll();
@@ -48,6 +65,11 @@ public class pnlContenedorRutas extends JPanel {
 
 	}
 
+	/**
+	 * Filtra ruta.
+	 *
+	 * @param nombre the nombre
+	 */
 	public void filtraRuta(String nombre) {
 		this.clean();
 		for (RutaSenderista ruta : rutas) {
@@ -60,10 +82,20 @@ public class pnlContenedorRutas extends JPanel {
 		}
 	}
 
+	/**
+	 * Sets the pnl form empleado.
+	 *
+	 * @param pnlFormRuta the new pnl form empleado
+	 */
 	public void setPnlFormEmpleado(pnlFormRutas pnlFormRuta) {
 		this.pnlFormRutas = pnlFormRuta;
 	}
 
+	/**
+	 * Gets the empleado seleccionado.
+	 *
+	 * @return the empleado seleccionado
+	 */
 	public RutaSenderista getEmpleadoSeleccionado() {
 		RutaSenderista ruta = null;
 		for (pnlVRuta pnl : listaRutas) {

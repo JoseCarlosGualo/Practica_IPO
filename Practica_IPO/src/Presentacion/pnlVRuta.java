@@ -21,21 +21,46 @@ import java.text.ParseException;
 import javax.swing.border.LineBorder;
 import java.awt.Font;
 
+/**
+ * The Class pnlVRuta.
+ */
 public class pnlVRuta extends JPanel {
+	
+	/** The lbl foto. */
 	private JLabel lblFoto;
+	
+	/** The lbl ruta. */
 	private JLabel lblRuta;
+	
+	/** The lbl nombre ruta. */
 	private JLabel lblNombreRuta;
 
+	/** The no seleccionado. */
 	private Color noSeleccionado = this.getBackground();
+	
+	/** The seleccionado. */
 	private Color seleccionado = new Color(250, 250, 200);
+	
+	/** The original. */
 	private Color original = this.getBackground();
+	
+	/** The ruta. */
 	private RutaSenderista ruta;
+	
+	/** The is seleccionado. */
 	private boolean isSeleccionado = false;
+	
+	/** The pnl rutas. */
 	private pnlFormRutas pnlRutas;
+	
+	/** The lbl inicio. */
 	private JLabel lblInicio;
 
 	/**
 	 * Create the panel.
+	 *
+	 * @param ruta the ruta
+	 * @param pnlRutas the pnl rutas
 	 */
 	public pnlVRuta(RutaSenderista ruta, pnlFormRutas pnlRutas) {
 		setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -105,7 +130,22 @@ public class pnlVRuta extends JPanel {
 
 	}
 
+	/**
+	 * The listener interface for receiving thisMouse events.
+	 * The class that is interested in processing a thisMouse
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addThisMouseListener<code> method. When
+	 * the thisMouse event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see ThisMouseEvent
+	 */
 	private class ThisMouseListener extends MouseAdapter {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.MouseAdapter#mouseClicked(java.awt.event.MouseEvent)
+		 */
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			if (!isSeleccionado) {
@@ -124,11 +164,17 @@ public class pnlVRuta extends JPanel {
 			}
 		}
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.MouseAdapter#mouseEntered(java.awt.event.MouseEvent)
+		 */
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			setBackground(seleccionado);
 		}
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.MouseAdapter#mouseExited(java.awt.event.MouseEvent)
+		 */
 		@Override
 		public void mouseExited(MouseEvent e) {
 			if (!isSeleccionado) {
@@ -137,10 +183,20 @@ public class pnlVRuta extends JPanel {
 		}
 	}
 
+	/**
+	 * Gets the ruta.
+	 *
+	 * @return the ruta
+	 */
 	public RutaSenderista getRuta() {
 		return this.ruta;
 	}
 
+	/**
+	 * Checks if is seleccionado.
+	 *
+	 * @return true, if is seleccionado
+	 */
 	public boolean isSeleccionado() {
 		return this.isSeleccionado;
 	}

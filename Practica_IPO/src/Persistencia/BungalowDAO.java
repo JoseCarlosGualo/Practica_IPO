@@ -7,17 +7,36 @@ import java.util.ArrayList;
 import Dominio.Bungalow;
 import Dominio.Disponibilidad;
 
+/**
+ * The Class BungalowDAO.
+ */
 public class BungalowDAO {
+	
+	/** The lista bungalows. */
 	private ArrayList<Bungalow> listaBungalows;
 
+	/**
+	 * Instantiates a new bungalow DAO.
+	 */
 	public BungalowDAO() {
 		this.listaBungalows = new ArrayList<Bungalow>();
 	}
 
+	/**
+	 * Gets the lista bungalows.
+	 *
+	 * @return the lista bungalows
+	 */
 	public ArrayList<Bungalow> getListaBungalows() {
 		return listaBungalows;
 	}
 
+	/**
+	 * Insert.
+	 *
+	 * @param bungalow the bungalow
+	 * @return true, if successful
+	 */
 	public boolean insert(Bungalow bungalow) {
 
 		boolean correcto = false;
@@ -44,6 +63,12 @@ public class BungalowDAO {
 
 	}
 
+	/**
+	 * Last ID.
+	 *
+	 * @param bungalow the bungalow
+	 * @return true, if successful
+	 */
 	public boolean lastID(Bungalow bungalow) {
 		ResultSet resultado;
 		boolean correcto = false;
@@ -68,6 +93,12 @@ public class BungalowDAO {
 		return correcto;
 	}
 
+	/**
+	 * Update.
+	 *
+	 * @param bungalow the bungalow
+	 * @return true, if successful
+	 */
 	public boolean update(Bungalow bungalow) {
 
 		boolean correcto = false;
@@ -94,6 +125,12 @@ public class BungalowDAO {
 
 	}
 
+	/**
+	 * Delete.
+	 *
+	 * @param bungalow the bungalow
+	 * @return true, if successful
+	 */
 	public boolean delete(Bungalow bungalow) {
 
 		boolean correcto = false;
@@ -111,6 +148,12 @@ public class BungalowDAO {
 
 	}
 
+	/**
+	 * Read.
+	 *
+	 * @param bungalow the bungalow
+	 * @return true, if successful
+	 */
 	public boolean read(Bungalow bungalow) {
 
 		boolean correcto = false;
@@ -160,6 +203,11 @@ public class BungalowDAO {
 
 	}
 
+	/**
+	 * Read all.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean readAll() {
 
 		boolean correcto = false;

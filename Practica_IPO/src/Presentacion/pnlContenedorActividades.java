@@ -10,14 +10,25 @@ import Dominio.Empleado;
 import java.awt.Color;
 import java.awt.GridLayout;
 
+/**
+ * The Class pnlContenedorActividades.
+ */
 public class pnlContenedorActividades extends JPanel {
 
+	/** The actividades. */
 	private ArrayList<Actividad> actividades;
+	
+	/** The lista actividades. */
 	private ArrayList<pnlVActividad> listaActividades;
+	
+	/** The pnl form actividades. */
 	private pnlFormActividades pnlFormActividades;
 
 	/**
 	 * Create the panel.
+	 *
+	 * @param actividades the actividades
+	 * @param pnlFormActividades the pnl form actividades
 	 */
 	public pnlContenedorActividades(ArrayList<Actividad> actividades, pnlFormActividades pnlFormActividades) {
 		this.actividades = actividades;
@@ -27,12 +38,18 @@ public class pnlContenedorActividades extends JPanel {
 		this.loadPanels();
 	}
 
+	/**
+	 * Clean.
+	 */
 	public void clean() {
 		removeAll();
 		repaint();
 		revalidate();
 	}
 
+	/**
+	 * Load panels.
+	 */
 	public void loadPanels() {
 		Actividad actividad = new Actividad();
 		actividad.readAll();
@@ -49,6 +66,11 @@ public class pnlContenedorActividades extends JPanel {
 
 	}
 
+	/**
+	 * Filtra actividad.
+	 *
+	 * @param nombre the nombre
+	 */
 	public void filtraActividad(String nombre) {
 		this.clean();
 		for (Actividad actividad : actividades) {
@@ -61,10 +83,20 @@ public class pnlContenedorActividades extends JPanel {
 		}
 	}
 
+	/**
+	 * Sets the pnl form actividades.
+	 *
+	 * @param pnlFormActividades the new pnl form actividades
+	 */
 	public void setPnlFormActividades(pnlFormActividades pnlFormActividades) {
 		this.pnlFormActividades = pnlFormActividades;
 	}
 
+	/**
+	 * Gets the actividad seleccionada.
+	 *
+	 * @return the actividad seleccionada
+	 */
 	public Actividad getActividadSeleccionada() {
 		Actividad actividad = null;
 		for (pnlVActividad pnl : listaActividades) {

@@ -9,14 +9,25 @@ import Dominio.Empleado;
 import java.awt.Color;
 import java.awt.GridLayout;
 
+/**
+ * The Class pnlContenedorEmpleados.
+ */
 public class pnlContenedorEmpleados extends JPanel {
 
+	/** The empleados. */
 	private ArrayList<Empleado> empleados;
+	
+	/** The lista empleados. */
 	private ArrayList<pnlVEmpleado> listaEmpleados;
+	
+	/** The pnl form empleado. */
 	private pnlFormEmpleado pnlFormEmpleado;
 
 	/**
 	 * Create the panel.
+	 *
+	 * @param empleados the empleados
+	 * @param pnlFormEmpleado the pnl form empleado
 	 */
 	public pnlContenedorEmpleados(ArrayList<Empleado> empleados, pnlFormEmpleado pnlFormEmpleado) {
 		this.empleados = empleados;
@@ -26,12 +37,18 @@ public class pnlContenedorEmpleados extends JPanel {
 		this.loadPanels();
 	}
 
+	/**
+	 * Clean.
+	 */
 	public void clean() {
 		removeAll();
 		repaint();
 		revalidate();
 	}
 
+	/**
+	 * Load panels.
+	 */
 	public void loadPanels() {
 		Empleado empleado = new Empleado();
 		empleado.readAll();
@@ -48,6 +65,11 @@ public class pnlContenedorEmpleados extends JPanel {
 
 	}
 
+	/**
+	 * Filtra empleado.
+	 *
+	 * @param dni the dni
+	 */
 	public void filtraEmpleado(String dni) {
 		this.clean();
 		for (Empleado empleado : empleados) {
@@ -60,10 +82,20 @@ public class pnlContenedorEmpleados extends JPanel {
 		}
 	}
 
+	/**
+	 * Sets the pnl form empleado.
+	 *
+	 * @param pnlFormEmpleado the new pnl form empleado
+	 */
 	public void setPnlFormEmpleado(pnlFormEmpleado pnlFormEmpleado) {
 		this.pnlFormEmpleado = pnlFormEmpleado;
 	}
 	
+	/**
+	 * Gets the empleado seleccionado.
+	 *
+	 * @return the empleado seleccionado
+	 */
 	public Empleado getEmpleadoSeleccionado() {
 		Empleado empleado = null;
 		for (pnlVEmpleado pnl : listaEmpleados) {

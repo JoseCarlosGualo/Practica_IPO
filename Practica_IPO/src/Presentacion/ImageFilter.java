@@ -3,7 +3,14 @@ package Presentacion;
 import java.io.File;
 import javax.swing.filechooser.FileFilter;
 
+/**
+ * The Class ImageFilter.
+ */
 public class ImageFilter extends FileFilter {
+	
+	/* (non-Javadoc)
+	 * @see javax.swing.filechooser.FileFilter#accept(java.io.File)
+	 */
 	public boolean accept(File f) {
 		boolean aceptar = f.isDirectory();
 		if (!aceptar) {
@@ -14,10 +21,19 @@ public class ImageFilter extends FileFilter {
 		return aceptar;
 	}
 
+	/* (non-Javadoc)
+	 * @see javax.swing.filechooser.FileFilter#getDescription()
+	 */
 	public String getDescription() {
 		return "Fichero de imagen (*.jpg | *.gif | *.png)";
 	}
 
+	/**
+	 * Gets the extension.
+	 *
+	 * @param f the f
+	 * @return the extension
+	 */
 	private String getExtension(File f) {
 		String s = f.getPath();
 		String extension = null;

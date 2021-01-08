@@ -48,35 +48,87 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
 
+/**
+ * The Class pnlFormEmpleado.
+ */
 public class pnlFormEmpleado extends JPanel {
+	
+	/** The lbl nombre. */
 	private JLabel lblNombre;
+	
+	/** The lbl apellidos. */
 	private JLabel lblApellidos;
+	
+	/** The lbl dni. */
 	private JLabel lblDni;
+	
+	/** The lbl telfono. */
 	private JLabel lblTelfono;
+	
+	/** The lbl correo electrnico. */
 	private JLabel lblCorreoElectrnico;
+	
+	/** The lbl idiomas. */
 	private JLabel lblIdiomas;
+	
+	/** The lbl formacin. */
 	private JLabel lblFormacin;
+	
+	/** The tf nombre em. */
 	private JTextField tfNombreEm;
+	
+	/** The tf apellidos em. */
 	private JTextField tfApellidosEm;
+	
+	/** The tf dni em. */
 	private JTextField tfDniEm;
+	
+	/** The tf telefono em. */
 	private JTextField tfTelefonoEm;
+	
+	/** The tf correo em. */
 	private JTextField tfCorreoEm;
+	
+	/** The tf idiomas em. */
 	private JTextField tfIdiomasEm;
+	
+	/** The borde mal. */
 	private Border bordeMal = BorderFactory.createLineBorder(Color.RED);
+	
+	/** The borde bien. */
 	private Border bordeBien = BorderFactory.createLineBorder(Color.GREEN);
+	
+	/** The borde original. */
 	private Border bordeOriginal;
+	
+	/** The pnl foto. */
 	private JPanel pnlFoto;
+	
+	/** The lbl foto. */
 	private JLabel lblFoto;
+	
+	/** The btn aadir foto. */
 	private JButton btnAadirFoto;
+	
+	/** The btn eliminar foto. */
 	private JButton btnEliminarFoto;
 
+	/** The frame principal. */
 	private JFrame framePrincipal;
+	
+	/** The pnl btns ay E foto. */
 	private JPanel pnlBtnsAyEFoto;
+	
+	/** The text formacion em. */
 	private JTextArea textFormacionEm;
+	
+	/** The lbl informacin del empleado. */
 	private JLabel lblInformacinDelEmpleado;
 
 	/**
 	 * Create the panel.
+	 *
+	 * @param framePrincipal the frame principal
 	 */
 	public pnlFormEmpleado(JFrame framePrincipal) {
 		setBorder(UIManager.getBorder("InternalFrame.border"));
@@ -308,6 +360,9 @@ public class pnlFormEmpleado extends JPanel {
 
 	}
 
+	/**
+	 * Clean.
+	 */
 	public void clean() {
 		tfNombreEm.setText("");
 		tfApellidosEm.setText("");
@@ -334,6 +389,11 @@ public class pnlFormEmpleado extends JPanel {
 		}
 	}
 
+	/**
+	 * Comprobar text fields.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean comprobarTextFields() {
 		Component[] textFields = this.getComponents();
 		boolean correcto = true;
@@ -362,6 +422,11 @@ public class pnlFormEmpleado extends JPanel {
 		return correcto;
 	}
 
+	/**
+	 * Comprobar text areas.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean comprobarTextAreas() {
 		Component[] textFields = this.getComponents();
 		boolean correcto = true;
@@ -390,6 +455,12 @@ public class pnlFormEmpleado extends JPanel {
 		return correcto;
 	}
 
+	/**
+	 * Sets the components editables.
+	 *
+	 * @param cambiarDni the cambiar dni
+	 * @param editable the editable
+	 */
 	public void setComponentsEditables(boolean cambiarDni, boolean editable) {
 		if (cambiarDni) {
 			tfDniEm.setEditable(editable);
@@ -413,6 +484,12 @@ public class pnlFormEmpleado extends JPanel {
 
 	}
 
+	/**
+	 * Gets the datos empleado.
+	 *
+	 * @return the datos empleado
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public Empleado getDatosEmpleado() throws IOException {
 		Empleado empleado = new Empleado();
 		empleado.setDni(tfDniEm.getText());
@@ -421,6 +498,12 @@ public class pnlFormEmpleado extends JPanel {
 		return empleado;
 	}
 
+	/**
+	 * Gets the datos empleado from user.
+	 *
+	 * @return the datos empleado from user
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public Empleado getDatosEmpleadoFromUser() throws IOException {
 		Empleado empleado = new Empleado();
 
@@ -437,6 +520,11 @@ public class pnlFormEmpleado extends JPanel {
 
 	}
 
+	/**
+	 * Load empleado.
+	 *
+	 * @param empleado the empleado
+	 */
 	public void loadEmpleado(Empleado empleado) {
 		tfNombreEm.setText(empleado.getNombre());
 		tfApellidosEm.setText(empleado.getApellidos());
@@ -470,7 +558,22 @@ public class pnlFormEmpleado extends JPanel {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnAadirFotoAction events.
+	 * The class that is interested in processing a btnAadirFotoAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnAadirFotoActionListener<code> method. When
+	 * the btnAadirFotoAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnAadirFotoActionEvent
+	 */
 	private class BtnAadirFotoActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent arg0) {
 			JFileChooser fcAbrir = new JFileChooser();
 			fcAbrir.setFileFilter(new ImageFilter());
@@ -515,12 +618,32 @@ public class pnlFormEmpleado extends JPanel {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnEliminarFotoAction events.
+	 * The class that is interested in processing a btnEliminarFotoAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnEliminarFotoActionListener<code> method. When
+	 * the btnEliminarFotoAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnEliminarFotoActionEvent
+	 */
 	private class BtnEliminarFotoActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			lblFoto.setIcon(null);
 		}
 	}
 
+	/**
+	 * Gets the dni.
+	 *
+	 * @return the dni
+	 */
 	public String getDNI() {
 		return tfDniEm.getText();
 	}

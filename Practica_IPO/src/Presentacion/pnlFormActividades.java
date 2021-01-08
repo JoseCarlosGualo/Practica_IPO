@@ -30,42 +30,112 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 
+/**
+ * The Class pnlFormActividades.
+ */
 public class pnlFormActividades extends JPanel {
+	
+	/** The frame principal. */
 	private JFrame framePrincipal;
+	
+	/** The lbl nombre actividad. */
 	private JLabel lblNombreActividad;
+	
+	/** The lbl monitor. */
 	private JLabel lblMonitor;
+	
+	/** The tf monitor ac. */
 	private JTextField tfMonitorAc;
+	
+	/** The lbl cupo mnimo. */
 	private JLabel lblCupoMnimo;
+	
+	/** The tf cupo minimo ac. */
 	private JTextField tfCupoMinimoAc;
+	
+	/** The lbl cupo mximo. */
 	private JLabel lblCupoMximo;
+	
+	/** The tf cupo maximo ac. */
 	private JTextField tfCupoMaximoAc;
+	
+	/** The lbl precio por hora. */
 	private JLabel lblPrecioPorHora;
+	
+	/** The tf precio hora ac. */
 	private JTextField tfPrecioHoraAc;
+	
+	/** The lblrea del camping. */
 	private JLabel lblreaDelCamping;
+	
+	/** The tf area camping ac. */
 	private JTextField tfAreaCampingAc;
+	
+	/** The lbl materiales necesarios. */
 	private JLabel lblMaterialesNecesarios;
+	
+	/** The lbl descripcin. */
 	private JLabel lblDescripcin;
+	
+	/** The text area descripcion. */
 	private JTextArea textAreaDescripcion;
 
+	/** The borde mal. */
 	private Border bordeMal = BorderFactory.createLineBorder(Color.RED);
+	
+	/** The borde bien. */
 	private Border bordeBien = BorderFactory.createLineBorder(Color.GREEN);
+	
+	/** The borde original. */
 	private Border bordeOriginal;
+	
+	/** The text area materiales necesarios ac. */
 	private JTextArea textAreaMaterialesNecesariosAc;
+	
+	/** The lbl destinatarios. */
 	private JLabel lblDestinatarios;
+	
+	/** The tf destinatario ac. */
 	private JTextField tfDestinatarioAc;
+	
+	/** The txt nombre act. */
 	private JTextField txtNombreAct;
+	
+	/** The txt horario. */
 	private JTextField txtHorario;
+	
+	/** The lbl nombre act. */
 	private JLabel lblNombreAct;
+	
+	/** The lbl horario act. */
 	private JLabel lblHorarioAct;
 
+	/** The color menu. */
 	private Color color_menu = new Color(240, 240, 240);
+	
+	/** The bnt add foto. */
 	private JButton bntAddFoto;
+	
+	/** The lbl foto actividad. */
 	private JLabel lblFotoActividad;
+	
+	/** The lbl nombre Y horario. */
 	private JLabel lblNombreYHorario;
+	
+	/** The lbl informacin de la. */
 	private JLabel lblInformacinDeLa;
+	
+	/** The lbl id. */
 	private JLabel lblId;
+	
+	/** The lbl id ac. */
 	private JLabel lblIdAc;
 
+	/**
+	 * Instantiates a new pnl form actividades.
+	 *
+	 * @param framePrincipal the frame principal
+	 */
 	public pnlFormActividades(JFrame framePrincipal) {
 		setBorder(UIManager.getBorder("InternalFrame.border"));
 		this.framePrincipal = framePrincipal;
@@ -371,6 +441,9 @@ public class pnlFormActividades extends JPanel {
 		}
 	}
 
+	/**
+	 * Clean.
+	 */
 	public void clean() {
 		lblNombreActividad.setText(null);
 		tfMonitorAc.setText(null);
@@ -399,6 +472,11 @@ public class pnlFormActividades extends JPanel {
 		}
 	}
 
+	/**
+	 * Comprobar text fields.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean comprobarTextFields() {
 		Component[] textFields = this.getComponents();
 		boolean correcto = true;
@@ -416,6 +494,11 @@ public class pnlFormActividades extends JPanel {
 		return correcto;
 	}
 
+	/**
+	 * Comprobar text areas.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean comprobarTextAreas() {
 		Component[] textFields = this.getComponents();
 		boolean correcto = true;
@@ -433,6 +516,12 @@ public class pnlFormActividades extends JPanel {
 		return correcto;
 	}
 
+	/**
+	 * Gets the datos actividad.
+	 *
+	 * @return the datos actividad
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public Actividad getDatosActividad() throws IOException {
 		Actividad actividad = new Actividad();
 		actividad.setNombre(lblNombreActividad.getText());
@@ -441,6 +530,11 @@ public class pnlFormActividades extends JPanel {
 		return actividad;
 	}
 
+	/**
+	 * Load actividad.
+	 *
+	 * @param actividad the actividad
+	 */
 	public void loadActividad(Actividad actividad) {
 		lblNombreActividad.setText(actividad.getNombre());
 		lblIdAc.setText(Integer.toString(actividad.getId()));
@@ -479,6 +573,12 @@ public class pnlFormActividades extends JPanel {
 		}
 	}
 
+	/**
+	 * Gets the datos actividad from user.
+	 *
+	 * @return the datos actividad from user
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public Actividad getDatosActividadFromUser() throws IOException {
 		Empleado empleado = new Empleado();
 		Actividad actividad = new Actividad();
@@ -500,6 +600,11 @@ public class pnlFormActividades extends JPanel {
 		return actividad;
 	}
 
+	/**
+	 * Sets the components editables.
+	 *
+	 * @param editable the new components editables
+	 */
 	public void setComponentsEditables(boolean editable) {
 		tfMonitorAc.setEditable(editable);
 		tfCupoMinimoAc.setEditable(editable);
@@ -530,7 +635,22 @@ public class pnlFormActividades extends JPanel {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving bntAddFotoAction events.
+	 * The class that is interested in processing a bntAddFotoAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBntAddFotoActionListener<code> method. When
+	 * the bntAddFotoAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BntAddFotoActionEvent
+	 */
 	private class BntAddFotoActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent arg0) {
 			JFileChooser fcAbrir = new JFileChooser();
 			fcAbrir.setFileFilter(new ImageFilter());

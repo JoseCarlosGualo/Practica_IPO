@@ -10,10 +10,18 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.ScrollPaneConstants;
 
+/**
+ * The Class pnlContenedorParcelas.
+ */
 public class pnlContenedorParcelas extends JPanel {
+	
+	/** The scroll pane. */
 	private JScrollPane scrollPane;
+	
+	/** The pnl contenedor P. */
 	private JPanel pnlContenedorP;
 
+	/** The lista pnl parcelas. */
 	private ArrayList<pnlVParcela> listaPnlParcelas;
 
 	/**
@@ -33,12 +41,20 @@ public class pnlContenedorParcelas extends JPanel {
 
 	}
 
+	/**
+	 * Clean.
+	 */
 	public void clean() {
 		pnlContenedorP.removeAll();
 		pnlContenedorP.repaint();
 		pnlContenedorP.revalidate();
 	}
 
+	/**
+	 * Load pnl parcelas.
+	 *
+	 * @param parcelas the parcelas
+	 */
 	public void loadPnlParcelas(ArrayList<Parcela> parcelas) {
 		clean();
 		listaPnlParcelas = new ArrayList<pnlVParcela>();
@@ -52,12 +68,18 @@ public class pnlContenedorParcelas extends JPanel {
 		}
 	}
 
+	/**
+	 * Reload.
+	 */
 	public void reload() {
 		Parcela parcela = new Parcela();
 		parcela.readAll();
 		loadPnlParcelas(parcela.getParcelaDAO().getListaParcelas());
 	}
 
+	/**
+	 * Quitar todas selecciones.
+	 */
 	public void quitarTodasSelecciones() {
 		if (isMoreThanOneSelectioned()) {
 			for (pnlVParcela parcela : this.listaPnlParcelas) {
@@ -68,6 +90,11 @@ public class pnlContenedorParcelas extends JPanel {
 		}
 	}
 
+	/**
+	 * Checks if is more than one selectioned.
+	 *
+	 * @return true, if is more than one selectioned
+	 */
 	public boolean isMoreThanOneSelectioned() {
 		int seleccionadas = 0;
 		for (pnlVParcela parcela : this.listaPnlParcelas) {
@@ -83,6 +110,9 @@ public class pnlContenedorParcelas extends JPanel {
 		}
 	}
 
+	/**
+	 * Borrar seleccionada.
+	 */
 	public void borrarSeleccionada() {
 		for (pnlVParcela pnlParcela : this.listaPnlParcelas) {
 			if (pnlParcela.isSeleccionado()) {

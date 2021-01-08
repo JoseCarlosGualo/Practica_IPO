@@ -15,22 +15,57 @@ import Dominio.Usuario;
 import java.awt.Color;
 import java.awt.Font;
 
+/**
+ * The Class pnlUsuario.
+ */
 public class pnlUsuario extends JPanel {
+	
+	/** The lbl nombre. */
 	private JLabel lblNombre;
+	
+	/** The lbl nombre usuario. */
 	private JLabel lblNombreUsuario;
+	
+	/** The lbl apellidos. */
 	private JLabel lblApellidos;
+	
+	/** The lbl apellidos usuario. */
 	private JLabel lblApellidosUsuario;
+	
+	/** The lbl fecha nacimiento. */
 	private JLabel lblFechaNacimiento;
+	
+	/** The lbl fecha nacimiento usuario. */
 	private JLabel lblFechaNacimientoUsuario;
+	
+	/** The lbl email. */
 	private JLabel lblEmail;
+	
+	/** The lbl email usuario. */
 	private JLabel lblEmailUsuario;
+	
+	/** The lbl telefono. */
 	private JLabel lblTelefono;
+	
+	/** The lbl telefono usuario. */
 	private JLabel lblTelefonoUsuario;
+	
+	/** The lbl ultimo acceso. */
 	private JLabel lblUltimoAcceso;
+	
+	/** The lbl ultimo acceso usuario. */
 	private JLabel lblUltimoAccesoUsuario;
+	
+	/** The pnl foto. */
 	private JPanel pnlFoto;
+	
+	/** The lbl imagen. */
 	private JLabel lblImagen;
+	
+	/** The lbl dni. */
 	private JLabel lblDni;
+	
+	/** The lbl dni usuario. */
 	private JLabel lblDniUsuario;
 
 	/**
@@ -204,6 +239,11 @@ public class pnlUsuario extends JPanel {
 
 	}
 
+	/**
+	 * Load user data.
+	 *
+	 * @param usuario the usuario
+	 */
 	public void loadUserData(Usuario usuario) {
 
 		lblNombreUsuario.setText(usuario.getNombre());

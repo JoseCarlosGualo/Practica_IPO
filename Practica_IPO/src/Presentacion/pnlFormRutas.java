@@ -31,31 +31,84 @@ import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 import javax.swing.UIManager;
 
+/**
+ * The Class pnlFormRutas.
+ */
 public class pnlFormRutas extends JPanel {
+	
+	/** The lbl nombre ruta. */
 	private JLabel lblNombreRuta;
+	
+	/** The lbl monitor. */
 	private JLabel lblMonitor;
+	
+	/** The lbl mnimo. */
 	private JLabel lblMnimo;
+	
+	/** The lbl mximo. */
 	private JLabel lblMximo;
+	
+	/** The lbl grado de dificultad. */
 	private JLabel lblGradoDeDificultad;
+	
+	/** The lbl da. */
 	private JLabel lblDa;
+	
+	/** The lbl inicio. */
 	private JLabel lblInicio;
+	
+	/** The lbl fin. */
 	private JLabel lblFin;
+	
+	/** The lbl equipamiento. */
 	private JLabel lblEquipamiento;
+	
+	/** The lbl descripcin. */
 	private JLabel lblDescripcin;
+	
+	/** The lbl foto del itinerario. */
 	private JLabel lblFotoDelItinerario;
+	
+	/** The tf monitor. */
 	private JTextField tfMonitor;
+	
+	/** The tf dificultad. */
 	private JTextField tfDificultad;
+	
+	/** The ch dia. */
 	private JDateChooser chDia;
+	
+	/** The sp min. */
 	private JSpinner spMin;
+	
+	/** The sp max. */
 	private JSpinner spMax;
+	
+	/** The tf hora inicio. */
 	private JTextField tfHoraInicio;
+	
+	/** The tf hora fin. */
 	private JTextField tfHoraFin;
+	
+	/** The tf equipamiento. */
 	private JTextPane tfEquipamiento;
+	
+	/** The tf descripcion. */
 	private JTextPane tfDescripcion;
+	
+	/** The borde mal. */
 	private Border bordeMal = BorderFactory.createLineBorder(Color.RED);
+	
+	/** The borde bien. */
 	private Border bordeBien = BorderFactory.createLineBorder(Color.GREEN);
+	
+	/** The borde original. */
 	private Border bordeOriginal;
+	
+	/** The lbl foto. */
 	private JLabel lblFoto;
+	
+	/** The lbl informacin de la. */
 	private JLabel lblInformacinDeLa;
 
 	/**
@@ -287,6 +340,9 @@ public class pnlFormRutas extends JPanel {
 
 	}
 
+	/**
+	 * Clean.
+	 */
 	public void clean() {
 		tfDescripcion.setText("");
 		tfDificultad.setText("");
@@ -308,6 +364,11 @@ public class pnlFormRutas extends JPanel {
 		}
 	}
 
+	/**
+	 * Sets the components editables.
+	 *
+	 * @param editable the new components editables
+	 */
 	public void setComponentsEditables(boolean editable) {
 
 		tfDescripcion.setEditable(editable);
@@ -319,6 +380,12 @@ public class pnlFormRutas extends JPanel {
 
 	}
 
+	/**
+	 * Gets the datos ruta.
+	 *
+	 * @return the datos ruta
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public RutaSenderista getDatosRuta() throws IOException {
 		RutaSenderista ruta = new RutaSenderista();
 		ruta.setNombre(lblNombreRuta.getText());
@@ -327,6 +394,12 @@ public class pnlFormRutas extends JPanel {
 		return ruta;
 	}
 
+	/**
+	 * Load ruta.
+	 *
+	 * @param ruta the ruta
+	 * @throws ParseException the parse exception
+	 */
 	public void loadRuta(RutaSenderista ruta) throws ParseException {
 		lblNombreRuta.setText(ruta.getNombre());
 		tfDescripcion.setText(ruta.getDescripcion());

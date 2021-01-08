@@ -23,6 +23,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.CopyOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -76,129 +77,369 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
 
+/**
+ * The Class Login.
+ */
 public class Login {
 
+	/** The frm login. */
 	private JFrame frmLogin;
+	
+	/** The pnl login. */
 	private JPanel pnlLogin;
+	
+	/** The lbl icon pass. */
 	private JLabel lblIconPass;
+	
+	/** The pnl iniciar sesion. */
 	private JPanel pnlIniciarSesion;
+	
+	/** The lbl iniciar sesin. */
 	private JLabel lblIniciarSesin;
+	
+	/** The chckbx recordar contrasea. */
 	private JCheckBox chckbxRecordarContrasea;
+	
+	/** The btn entrar. */
 	private JButton btnEntrar;
+	
+	/** The lbl icon user. */
 	private JLabel lblIconUser;
+	
+	/** The lblte has olvidado. */
 	private JLabel lblteHasOlvidado;
+	
+	/** The pnl pass. */
 	private JPanel pnlPass;
+	
+	/** The mostrar contrasea. */
 	private boolean mostrarContrasea;
+	
+	/** The lbl contrasea. */
 	private JLabel lblContrasea;
+	
+	/** The formato DNI. */
 	private MaskFormatter formatoDNI;
+	
+	/** The pwd contrasena. */
 	private JPasswordField pwdContrasena;
+	
+	/** The lbl error la contrasea. */
 	private JLabel lblErrorLaContrasea;
+	
+	/** The pnl user. */
 	private JPanel pnlUser;
+	
+	/** The lbl usuario. */
 	private JLabel lblUsuario;
+	
+	/** The panel vista bungalows. */
 	private pnlVBungalow panelVistaBungalows;
+	
+	/** The usuario. */
 	private Usuario usuario;
+	
+	/** The txt usuario. */
 	private JTextField txtUsuario;
+	
+	/** The pnl app. */
 	private JPanel pnlApp;
+	
+	/** The pnl user data. */
 	private JPanel pnlUserData;
+	
+	/** The pnl ocultar. */
 	private JPanel pnlOcultar;
+	
+	/** The pnl informacion. */
 	private JPanel pnlInformacion;
+	
+	/** The pnl usuario. */
 	private pnlUsuario pnlUsuario;
+	
+	/** The btn ocultar. */
 	private JButton btnOcultar;
+	
+	/** The pnl pestanas. */
 	private JPanel pnlPestanas;
+	
+	/** The pnl contenedor pestanas. */
 	private JTabbedPane pnlContenedorPestanas;
+	
+	/** The pnl bungalows. */
 	private JPanel pnlBungalows;
+	
+	/** The pnl parcelas. */
 	private JPanel pnlParcelas;
+	
+	/** The pnl empleados. */
 	private JPanel pnlEmpleados;
+	
+	/** The pnl actividades. */
 	private JPanel pnlActividades;
+	
+	/** The menu bar. */
 	private JMenuBar menuBar;
+	
+	/** The btn ayuda. */
 	private JButton btnAyuda;
+	
+	/** The btn configuracin. */
 	private JButton btnConfiguracin;
+	
+	/** The pnl btn salir. */
 	private JPanel pnlBtnSalir;
+	
+	/** The btn salir. */
 	private JButton btnSalir;
+	
+	/** The btn cerrar sesin. */
 	private JButton btnCerrarSesin;
+	
+	/** The pnl busqueda. */
 	private JPanel pnlBusqueda;
+	
+	/** The tf busqueda bungalow. */
 	private JTextField tfBusquedaBungalow;
+	
+	/** The pnl botones. */
 	private JPanel pnlBotones;
+	
+	/** The btn aadir. */
 	private JButton btnAadir;
+	
+	/** The btn eliminar. */
 	private JButton btnEliminar;
+	
+	/** The btn modificar. */
 	private JButton btnModificar;
+	
+	/** The pnl contenedor. */
 	private JPanel pnlContenedor;
+	
+	/** The pnl busqueda par. */
 	private JPanel pnlBusquedaPar;
+	
+	/** The text field busqueda par. */
 	private JTextField textFieldBusquedaPar;
+	
+	/** The pnl botones par. */
 	private JPanel pnlBotonesPar;
+	
+	/** The btn aadir par. */
 	private JButton btnAadirPar;
+	
+	/** The pnl contenedor bungalows. */
 	private pnlContenedorBungalows pnlContenedorBungalows;
+	
+	/** The btn eliminar par. */
 	private JButton btnEliminarPar;
+	
+	/** The btn modificar 1. */
 	private JButton btnModificar_1;
+	
+	/** The pnl contenedor par. */
 	private JPanel pnlContenedorPar;
+	
+	/** The pnl contenedor parcelas. */
 	private pnlContenedorParcelas pnlContenedorParcelas;
+	
+	/** The lbl busqueda por dni. */
 	private JLabel lblBusquedaPorDni;
+	
+	/** The tf busqueda dni. */
 	private JTextField tfBusquedaDni;
+	
+	/** The pnl botones empleados. */
 	private JPanel pnlBotonesEmpleados;
+	
+	/** The pnl listado empleados. */
 	private JPanel pnlListadoEmpleados;
+	
+	/** The scroll pane. */
 	private JScrollPane scrollPane;
+	
+	/** The pnl contenedor empleados. */
 	private pnlContenedorEmpleados pnlContenedorEmpleados;
+	
+	/** The pnl datos empleado. */
 	private pnlFormEmpleado pnlDatosEmpleado;
+	
+	/** The lbl bsqueda por nombre. */
 	private JLabel lblBsquedaPorNombre;
+	
+	/** The tf busqueda nombre actividad. */
 	private JTextField tfBusquedaNombreActividad;
+	
+	/** The pnl botones actividades. */
 	private JPanel pnlBotonesActividades;
+	
+	/** The pnl listado actividades. */
 	private JPanel pnlListadoActividades;
+	
+	/** The scroll pane actividades. */
 	private JScrollPane scrollPaneActividades;
+	
+	/** The pnl datos actividad. */
 	private pnlFormActividades pnlDatosActividad;
+	
+	/** The pnl contenedor actividades. */
 	private pnlContenedorActividades pnlContenedorActividades;
+	
+	/** The editar guardar empleado. */
 	private int editar_guardar_empleado;
+	
+	/** The editar guardar actividad. */
 	private int editar_guardar_actividad;
+	
+	/** The pnl principales. */
 	private JPanel pnlPrincipales;
+	
+	/** The pnl editar. */
 	private JPanel pnlEditar;
+	
+	/** The btn eliminar empleado. */
 	private JButton btnEliminarEmpleado;
+	
+	/** The btn modificar empleado. */
 	private JButton btnModificarEmpleado;
+	
+	/** The btn add empleado. */
 	private JButton btnAddEmpleado;
+	
+	/** The btn guardar. */
 	private JButton btnGuardar;
+	
+	/** The btn cancelar. */
 	private JButton btnCancelar;
+	
+	/** The pnl principales act. */
 	private JPanel pnlPrincipalesAct;
+	
+	/** The pnl editar act. */
 	private JPanel pnlEditarAct;
+	
+	/** The btn add actividad. */
 	private JButton btnAddActividad;
+	
+	/** The Modificar actividad. */
 	private JButton ModificarActividad;
+	
+	/** The btn eliminar actividad. */
 	private JButton btnEliminarActividad;
+	
+	/** The btn guardar actividad. */
 	private JButton btnGuardarActividad;
+	
+	/** The btn cancelar actividad. */
 	private JButton btnCancelarActividad;
+	
+	/** The lbl busqueda por nombre. */
 	private JLabel lblBusquedaPorNombre;
+	
+	/** The lbl busqueda por nombre P. */
 	private JLabel lblBusquedaPorNombre_P;
+	
+	/** The btn ver pass. */
 	private JButton btnVerPass;
+	
+	/** The ver pass. */
 	private boolean verPass;
+	
+	/** The pnl reservas. */
 	private JPanel pnlReservas;
+	
+	/** The lbl bsqueda por nombre reserva. */
 	private JLabel lblBsquedaPorNombreReserva;
+	
+	/** The tf busqueda reserva. */
 	private JTextField tfBusquedaReserva;
+	
+	/** The pnl botones reserva. */
 	private JPanel pnlBotonesReserva;
+	
+	/** The pnl datos reserva. */
 	private pnlFormReserva pnlDatosReserva;
+	
+	/** The pnl listado reservas. */
 	private JPanel pnlListadoReservas;
+	
+	/** The scroll pane reservas. */
 	private JScrollPane scrollPaneReservas;
+	
+	/** The pnl contenedor reserva. */
 	private pnlContenedorReservas pnlContenedorReserva;
+	
+	/** The btn modificar reserva. */
 	private JButton btnModificarReserva;
+	
+	/** The btn eliminar reserva. */
 	private JButton btnEliminarReserva;
+	
+	/** The btn refrescar. */
 	private JButton btnRefrescar;
+	
+	/** The pnl rutas senderistas. */
 	private JPanel pnlRutasSenderistas;
+	
+	/** The pnl vista rutas. */
 	private JPanel pnlVistaRutas;
+	
+	/** The lbl bsqueda por nombre 1. */
 	private JLabel lblBsquedaPorNombre_1;
+	
+	/** The tf busqueda nombre ruta. */
 	private JTextField tfBusquedaNombreRuta;
+	
+	/** The pnl contenedor botones ruta. */
 	private JPanel pnlContenedorBotonesRuta;
+	
+	/** The btn editar. */
 	private JButton btnEditar;
+	
+	/** The btn eliminar ruta. */
 	private JButton btnEliminarRuta;
+	
+	/** The pnl datos rutas senderistas. */
 	private pnlFormRutas pnlDatosRutasSenderistas;
+	
+	/** The pnl lista rutas. */
 	private JPanel pnlListaRutas;
+	
+	/** The scroll pane rutas. */
 	private JScrollPane scrollPaneRutas;
+	
+	/** The pnl contenedor rutas. */
 	private pnlContenedorRutas pnlContenedorRutas;
+	
+	/** The pnl diseno. */
 	private JPanel pnlDiseno;
+	
+	/** The pnl boton back. */
 	private JPanel pnlBotonBack;
+	
+	/** The btn volver. */
 	private JButton btnVolver;
+	
+	/** The pnl dibujo. */
 	private pnlDibujarRuta pnlDibujo;
+	
+	/** The btn disear ruta. */
 	private JButton btnDisearRuta;
+	
+	/** The mn idioma. */
 	private JMenu mnIdioma;
+	
+	/** The rdbtn espaniol. */
 	private JRadioButtonMenuItem rdbtnEspaniol;
+	
+	/** The rdbtn ingles. */
 	private JRadioButtonMenuItem rdbtnIngles;
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -496,6 +737,7 @@ public class Login {
 						pnlUserData.add(menuBar, BorderLayout.NORTH);
 						{
 							btnAyuda = new JButton(MessagesLogin.getString("Login.btnAyuda.text")); //$NON-NLS-1$
+							btnAyuda.addActionListener(new BtnAyudaActionListener());
 							btnAyuda.setToolTipText(MessagesLogin.getString("Login.btnAyuda.toolTipText")); //$NON-NLS-1$
 							btnAyuda.setIcon(
 									new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/informacion.png")));
@@ -1273,7 +1515,22 @@ public class Login {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving frameContentPaneComponent events.
+	 * The class that is interested in processing a frameContentPaneComponent
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addFrameContentPaneComponentListener<code> method. When
+	 * the frameContentPaneComponent event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see FrameContentPaneComponentEvent
+	 */
 	private class FrameContentPaneComponentListener extends ComponentAdapter {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ComponentAdapter#componentResized(java.awt.event.ComponentEvent)
+		 */
 		@Override
 		public void componentResized(ComponentEvent e) {
 			int centroX = (int) pnlLogin.getBounds().getCenterX();
@@ -1286,16 +1543,37 @@ public class Login {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving frmLoginKey events.
+	 * The class that is interested in processing a frmLoginKey
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addFrmLoginKeyListener<code> method. When
+	 * the frmLoginKey event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see FrmLoginKeyEvent
+	 */
 	private class FrmLoginKeyListener extends KeyAdapter {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.KeyAdapter#keyPressed(java.awt.event.KeyEvent)
+		 */
 		@Override
 		public void keyPressed(KeyEvent e) {
 			System.out.println(e.getKeyCode());
 		}
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.KeyAdapter#keyTyped(java.awt.event.KeyEvent)
+		 */
 		public void keyTyped(KeyEvent e) {
 			System.out.println(e.getKeyCode());
 		}
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.KeyAdapter#keyReleased(java.awt.event.KeyEvent)
+		 */
 		@Override
 		public void keyReleased(KeyEvent e) {
 			System.out.println(e.getKeyCode());
@@ -1303,47 +1581,107 @@ public class Login {
 
 	}
 
+	/**
+	 * The listener interface for receiving pnlLoginKey events.
+	 * The class that is interested in processing a pnlLoginKey
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addPnlLoginKeyListener<code> method. When
+	 * the pnlLoginKey event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see PnlLoginKeyEvent
+	 */
 	private class PnlLoginKeyListener extends KeyAdapter {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.KeyAdapter#keyTyped(java.awt.event.KeyEvent)
+		 */
 		@Override
 		public void keyTyped(KeyEvent e) {
 			System.out.println(e.getKeyCode());
 		}
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.KeyAdapter#keyReleased(java.awt.event.KeyEvent)
+		 */
 		@Override
 		public void keyReleased(KeyEvent e) {
 			System.out.println(e.getKeyCode());
 		}
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.KeyAdapter#keyPressed(java.awt.event.KeyEvent)
+		 */
 		@Override
 		public void keyPressed(KeyEvent e) {
 			System.out.println(e.getKeyCode());
 		}
 	}
 
+	/**
+	 * The listener interface for receiving pnlIniciarSesionKey events.
+	 * The class that is interested in processing a pnlIniciarSesionKey
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addPnlIniciarSesionKeyListener<code> method. When
+	 * the pnlIniciarSesionKey event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see PnlIniciarSesionKeyEvent
+	 */
 	private class PnlIniciarSesionKeyListener extends KeyAdapter {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.KeyAdapter#keyTyped(java.awt.event.KeyEvent)
+		 */
 		@Override
 		public void keyTyped(KeyEvent e) {
 			System.out.println(e.getKeyCode());
 		}
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.KeyAdapter#keyReleased(java.awt.event.KeyEvent)
+		 */
 		@Override
 		public void keyReleased(KeyEvent e) {
 			System.out.println(e.getKeyCode());
 		}
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.KeyAdapter#keyPressed(java.awt.event.KeyEvent)
+		 */
 		@Override
 		public void keyPressed(KeyEvent e) {
 			System.out.println(e.getKeyCode());
 		}
 	}
 
+	/**
+	 * The listener interface for receiving pwdContraseaFocus events.
+	 * The class that is interested in processing a pwdContraseaFocus
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addPwdContraseaFocusListener<code> method. When
+	 * the pwdContraseaFocus event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see PwdContraseaFocusEvent
+	 */
 	private class PwdContraseaFocusListener extends FocusAdapter {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.FocusAdapter#focusGained(java.awt.event.FocusEvent)
+		 */
 		@Override
 		public void focusGained(FocusEvent arg0) {
 
 			pwdContrasena.setText("");
 		}
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.FocusAdapter#focusLost(java.awt.event.FocusEvent)
+		 */
 		@Override
 		public void focusLost(FocusEvent e) {
 
@@ -1353,8 +1691,22 @@ public class Login {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving pwdContraseaKey events.
+	 * The class that is interested in processing a pwdContraseaKey
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addPwdContraseaKeyListener<code> method. When
+	 * the pwdContraseaKey event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see PwdContraseaKeyEvent
+	 */
 	private class PwdContraseaKeyListener extends KeyAdapter {
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.KeyAdapter#keyPressed(java.awt.event.KeyEvent)
+		 */
 		@Override
 		public void keyPressed(KeyEvent e) {
 			if (e.getKeyCode() == 10) {
@@ -1363,7 +1715,22 @@ public class Login {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnEntrarAction events.
+	 * The class that is interested in processing a btnEntrarAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnEntrarActionListener<code> method. When
+	 * the btnEntrarAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnEntrarActionEvent
+	 */
 	private class BtnEntrarActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 
 			entrar();
@@ -1371,7 +1738,22 @@ public class Login {
 
 	}
 
+	/**
+	 * The listener interface for receiving btnOcultarAction events.
+	 * The class that is interested in processing a btnOcultarAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnOcultarActionListener<code> method. When
+	 * the btnOcultarAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnOcultarActionEvent
+	 */
 	private class BtnOcultarActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			if (pnlUserData.isVisible()) {
 				pnlUserData.setVisible(false);
@@ -1383,7 +1765,22 @@ public class Login {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnSalirAction events.
+	 * The class that is interested in processing a btnSalirAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnSalirActionListener<code> method. When
+	 * the btnSalirAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnSalirActionEvent
+	 */
 	private class BtnSalirActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			Date date = new Date();
 			DateFormat ultimoAcceso = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss ");
@@ -1392,15 +1789,45 @@ public class Login {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnCerrarSesinAction events.
+	 * The class that is interested in processing a btnCerrarSesinAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnCerrarSesinActionListener<code> method. When
+	 * the btnCerrarSesinAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnCerrarSesinActionEvent
+	 */
 	private class BtnCerrarSesinActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			((CardLayout) frmLogin.getContentPane().getLayout()).show(frmLogin.getContentPane(), "panelLogin");
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnEliminarAction events.
+	 * The class that is interested in processing a btnEliminarAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnEliminarActionListener<code> method. When
+	 * the btnEliminarAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnEliminarActionEvent
+	 */
 	private class BtnEliminarActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
-			int resp = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres eliminar este bungalow?",
+			int resp = JOptionPane.showConfirmDialog(null, "ï¿½Estï¿½s seguro de que quieres eliminar este bungalow?",
 					"Eliminar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if (resp == 0) {
 				pnlContenedorBungalows.borrarSeleccionada();
@@ -1409,9 +1836,24 @@ public class Login {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnEliminarParAction events.
+	 * The class that is interested in processing a btnEliminarParAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnEliminarParActionListener<code> method. When
+	 * the btnEliminarParAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnEliminarParActionEvent
+	 */
 	private class BtnEliminarParActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
-			int resp = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres eliminar esta parcela?",
+			int resp = JOptionPane.showConfirmDialog(null, "ï¿½Estï¿½s seguro de que quieres eliminar esta parcela?",
 					"Eliminar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if (resp == 0) {
 				pnlContenedorParcelas.borrarSeleccionada();
@@ -1419,14 +1861,44 @@ public class Login {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving tfBusquedaDniKey events.
+	 * The class that is interested in processing a tfBusquedaDniKey
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addTfBusquedaDniKeyListener<code> method. When
+	 * the tfBusquedaDniKey event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see TfBusquedaDniKeyEvent
+	 */
 	private class TfBusquedaDniKeyListener extends KeyAdapter {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.KeyAdapter#keyReleased(java.awt.event.KeyEvent)
+		 */
 		@Override
 		public void keyReleased(KeyEvent e) {
 			pnlContenedorEmpleados.filtraEmpleado(tfBusquedaDni.getText());
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnNewButton_1Action events.
+	 * The class that is interested in processing a btnNewButton_1Action
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnNewButton_1ActionListener<code> method. When
+	 * the btnNewButton_1Action event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnNewButton_1ActionEvent
+	 */
 	private class BtnNewButton_1ActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			pnlDatosEmpleado.setComponentsEditables(true, true);
 			((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlEditar");
@@ -1434,7 +1906,22 @@ public class Login {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnAadir_1Action events.
+	 * The class that is interested in processing a btnAadir_1Action
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnAadir_1ActionListener<code> method. When
+	 * the btnAadir_1Action event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnAadir_1ActionEvent
+	 */
 	private class BtnAadir_1ActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			pnlDatosEmpleado.clean();
 			pnlDatosEmpleado.setComponentsEditables(true, true);
@@ -1443,9 +1930,24 @@ public class Login {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnEliminar1Action events.
+	 * The class that is interested in processing a btnEliminar1Action
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnEliminar1ActionListener<code> method. When
+	 * the btnEliminar1Action event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnEliminar1ActionEvent
+	 */
 	private class BtnEliminar1ActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent arg0) {
-			int resp = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres eliminar este empleado?",
+			int resp = JOptionPane.showConfirmDialog(null, "ï¿½Estï¿½s seguro de que quieres eliminar este empleado?",
 					"Eliminar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if (resp == 0) {
 
@@ -1472,7 +1974,22 @@ public class Login {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnGuardarAction events.
+	 * The class that is interested in processing a btnGuardarAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnGuardarActionListener<code> method. When
+	 * the btnGuardarAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnGuardarActionEvent
+	 */
 	private class BtnGuardarActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent arg0) {
 			if (pnlDatosEmpleado.comprobarTextFields() && pnlDatosEmpleado.comprobarTextAreas()) {
 
@@ -1482,7 +1999,7 @@ public class Login {
 					if (editar_guardar_empleado == 1) { // Modo crear nuevo usuario
 						if (e.insert()) {
 
-							JOptionPane.showMessageDialog(null, e.getDni() + "Empleado añadido con éxito");
+							JOptionPane.showMessageDialog(null, e.getDni() + "Empleado aï¿½adido con ï¿½xito");
 							pnlDatosEmpleado.setComponentsEditables(false, true);
 							((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlPrincipales");
 							editar_guardar_empleado = 0;
@@ -1490,7 +2007,7 @@ public class Login {
 							lblBusquedaPorDni.setText("");
 
 						} else {
-							JOptionPane.showMessageDialog(null, "Error al añadir empleado.", "Error",
+							JOptionPane.showMessageDialog(null, "Error al aï¿½adir empleado.", "Error",
 									JOptionPane.ERROR_MESSAGE);
 							((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlPrincipales");
 							editar_guardar_empleado = 0;
@@ -1522,7 +2039,7 @@ public class Login {
 				}
 
 			} else {
-				JOptionPane.showMessageDialog(null, "Faltan campos por añadir.", "Aviso", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Faltan campos por aï¿½adir.", "Aviso", JOptionPane.WARNING_MESSAGE);
 				((CardLayout) pnlBotonesEmpleados.getLayout()).show(pnlBotonesEmpleados, "pnlPrincipales");
 				editar_guardar_empleado = 0;
 				pnlDatosEmpleado.setComponentsEditables(false, false);
@@ -1533,7 +2050,22 @@ public class Login {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnCancelarAction events.
+	 * The class that is interested in processing a btnCancelarAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnCancelarActionListener<code> method. When
+	 * the btnCancelarAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnCancelarActionEvent
+	 */
 	private class BtnCancelarActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			pnlDatosEmpleado.setComponentsEditables(false, false);
 			pnlDatosEmpleado.clean();
@@ -1541,7 +2073,22 @@ public class Login {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnAddActividadAction events.
+	 * The class that is interested in processing a btnAddActividadAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addbtnAddActividadActionListener<code> method. When
+	 * the btnAddActividadAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see btnAddActividadActionEvent
+	 */
 	private class btnAddActividadActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			pnlDatosActividad.clean();
 			pnlDatosActividad.setComponentsEditables(true);
@@ -1550,9 +2097,24 @@ public class Login {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnEliminarActividadAction events.
+	 * The class that is interested in processing a btnEliminarActividadAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnEliminarActividadActionListener<code> method. When
+	 * the btnEliminarActividadAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnEliminarActividadActionEvent
+	 */
 	private class BtnEliminarActividadActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
-			int resp = JOptionPane.showConfirmDialog(null, "¿Estás serguro de que quieres eliminar esta actividad?",
+			int resp = JOptionPane.showConfirmDialog(null, "ï¿½Estï¿½s serguro de que quieres eliminar esta actividad?",
 					"Eliminar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if (resp == 0) {
 				Actividad a;
@@ -1571,7 +2133,22 @@ public class Login {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving modificarActividadAction events.
+	 * The class that is interested in processing a modificarActividadAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addModificarActividadActionListener<code> method. When
+	 * the modificarActividadAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see ModificarActividadActionEvent
+	 */
 	private class ModificarActividadActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			pnlDatosActividad.setComponentsEditables(true);
 			((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades, "pnlEditarAct");
@@ -1579,7 +2156,22 @@ public class Login {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnCancelarActividadAction events.
+	 * The class that is interested in processing a btnCancelarActividadAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnCancelarActividadActionListener<code> method. When
+	 * the btnCancelarActividadAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnCancelarActividadActionEvent
+	 */
 	private class BtnCancelarActividadActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			pnlDatosActividad.setComponentsEditables(false);
 			pnlDatosActividad.clean();
@@ -1587,26 +2179,56 @@ public class Login {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnVerpassAction events.
+	 * The class that is interested in processing a btnVerpassAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnVerpassActionListener<code> method. When
+	 * the btnVerpassAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnVerpassActionEvent
+	 */
 	private class BtnVerpassActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			if (verPass) {
 				// Ocultar la contraseÃ±a
 				pwdContrasena.setEchoChar('\u2022');
 				btnVerPass.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/eye.png")));
-				btnVerPass.setToolTipText("Mostrar Constraseña");
+				btnVerPass.setToolTipText("Mostrar Constraseï¿½a");
 				verPass = false;
 			} else {
 				// Mostrar la contraseÃ±a
 				pwdContrasena.setEchoChar((char) 0);
 				btnVerPass
 						.setIcon(new ImageIcon(Login.class.getResource("/Presentacion/Imagenes/eye_slashed24x24.png")));
-				btnVerPass.setToolTipText("Ocultar Constraseña");
+				btnVerPass.setToolTipText("Ocultar Constraseï¿½a");
 				verPass = true;
 			}
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnGuardarActividadAction events.
+	 * The class that is interested in processing a btnGuardarActividadAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnGuardarActividadActionListener<code> method. When
+	 * the btnGuardarActividadAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnGuardarActividadActionEvent
+	 */
 	private class BtnGuardarActividadActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent arg0) {
 			if (pnlDatosActividad.comprobarTextFields() && pnlDatosActividad.comprobarTextAreas()) {
 				Actividad a;
@@ -1614,7 +2236,7 @@ public class Login {
 					a = pnlDatosActividad.getDatosActividadFromUser();
 					if (editar_guardar_actividad == 1) { // Modo crear
 						if (a.insert()) {
-							JOptionPane.showMessageDialog(null, a.getNombre() + "Actividad añadido con éxito");
+							JOptionPane.showMessageDialog(null, a.getNombre() + "Actividad aï¿½adido con ï¿½xito");
 							pnlDatosActividad.setComponentsEditables(false);
 							((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades,
 									"pnlPrincipalesAct");
@@ -1623,7 +2245,7 @@ public class Login {
 							tfBusquedaNombreActividad.setText("");
 
 						} else {
-							JOptionPane.showMessageDialog(null, "Error al añadir actividad.", "Error",
+							JOptionPane.showMessageDialog(null, "Error al aï¿½adir actividad.", "Error",
 									JOptionPane.ERROR_MESSAGE);
 							((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades,
 									"pnlPrincipalesAct");
@@ -1657,7 +2279,7 @@ public class Login {
 				}
 
 			} else {
-				JOptionPane.showMessageDialog(null, "Faltan campos por añadir.", "Aviso", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Faltan campos por aï¿½adir.", "Aviso", JOptionPane.WARNING_MESSAGE);
 				((CardLayout) pnlBotonesActividades.getLayout()).show(pnlBotonesActividades, "pnlPrincipalesAct");
 				editar_guardar_actividad = 0;
 				pnlDatosActividad.setComponentsEditables(false);
@@ -1668,120 +2290,380 @@ public class Login {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnRefrescarAction events.
+	 * The class that is interested in processing a btnRefrescarAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnRefrescarActionListener<code> method. When
+	 * the btnRefrescarAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnRefrescarActionEvent
+	 */
 	private class BtnRefrescarActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			pnlContenedorReserva.reload();
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnDisearRutaAction events.
+	 * The class that is interested in processing a btnDisearRutaAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnDisearRutaActionListener<code> method. When
+	 * the btnDisearRutaAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnDisearRutaActionEvent
+	 */
 	private class BtnDisearRutaActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			((CardLayout) pnlRutasSenderistas.getLayout()).show(pnlRutasSenderistas, "pnlDiseno");
 		}
 	}
 
+	/**
+	 * Gets the frame.
+	 *
+	 * @return the frame
+	 */
 	public JFrame getFrame() {
 		return frmLogin;
 	}
 
+	/**
+	 * The listener interface for receiving btnVolverAction events.
+	 * The class that is interested in processing a btnVolverAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnVolverActionListener<code> method. When
+	 * the btnVolverAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnVolverActionEvent
+	 */
 	private class BtnVolverActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			((CardLayout) pnlRutasSenderistas.getLayout()).show(pnlRutasSenderistas, "pnlVistaRutas");
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnAadirAction events.
+	 * The class that is interested in processing a btnAadirAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnAadirActionListener<code> method. When
+	 * the btnAadirAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnAadirActionEvent
+	 */
 	private class BtnAadirActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			JOptionPane.showMessageDialog(null, "Esta funcionalidad no esta implementada", "Aviso",
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnModificarAction events.
+	 * The class that is interested in processing a btnModificarAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnModificarActionListener<code> method. When
+	 * the btnModificarAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnModificarActionEvent
+	 */
 	private class BtnModificarActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			JOptionPane.showMessageDialog(null, "Esta funcionalidad no esta implementada", "Aviso",
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnAadirParAction events.
+	 * The class that is interested in processing a btnAadirParAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnAadirParActionListener<code> method. When
+	 * the btnAadirParAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnAadirParActionEvent
+	 */
 	private class BtnAadirParActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			JOptionPane.showMessageDialog(null, "Esta funcionalidad no esta implementada", "Aviso",
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnModificar_1Action events.
+	 * The class that is interested in processing a btnModificar_1Action
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnModificar_1ActionListener<code> method. When
+	 * the btnModificar_1Action event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnModificar_1ActionEvent
+	 */
 	private class BtnModificar_1ActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			JOptionPane.showMessageDialog(null, "Esta funcionalidad no esta implementada", "Aviso",
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnConfiguracinAction events.
+	 * The class that is interested in processing a btnConfiguracinAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnConfiguracinActionListener<code> method. When
+	 * the btnConfiguracinAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnConfiguracinActionEvent
+	 */
 	private class BtnConfiguracinActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			JOptionPane.showMessageDialog(null, "Esta funcionalidad no esta implementada", "Aviso",
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnEliminarReservaAction events.
+	 * The class that is interested in processing a btnEliminarReservaAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnEliminarReservaActionListener<code> method. When
+	 * the btnEliminarReservaAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnEliminarReservaActionEvent
+	 */
 	private class BtnEliminarReservaActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			JOptionPane.showMessageDialog(null, "Esta funcionalidad no esta implementada", "Aviso",
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnModificarReservaAction events.
+	 * The class that is interested in processing a btnModificarReservaAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnModificarReservaActionListener<code> method. When
+	 * the btnModificarReservaAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnModificarReservaActionEvent
+	 */
 	private class BtnModificarReservaActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			JOptionPane.showMessageDialog(null, "Esta funcionalidad no esta implementada", "Aviso",
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnEliminarRutaAction events.
+	 * The class that is interested in processing a btnEliminarRutaAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnEliminarRutaActionListener<code> method. When
+	 * the btnEliminarRutaAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnEliminarRutaActionEvent
+	 */
 	private class BtnEliminarRutaActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			JOptionPane.showMessageDialog(null, "Esta funcionalidad no esta implementada", "Aviso",
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
 
+	/**
+	 * The listener interface for receiving btnEditarAction events.
+	 * The class that is interested in processing a btnEditarAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnEditarActionListener<code> method. When
+	 * the btnEditarAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnEditarActionEvent
+	 */
 	private class BtnEditarActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			JOptionPane.showMessageDialog(null, "Esta funcionalidad no esta implementada", "Aviso",
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
 
+	/**
+	 * The listener interface for receiving tfBusquedaNombreRutaKey events.
+	 * The class that is interested in processing a tfBusquedaNombreRutaKey
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addTfBusquedaNombreRutaKeyListener<code> method. When
+	 * the tfBusquedaNombreRutaKey event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see TfBusquedaNombreRutaKeyEvent
+	 */
 	private class TfBusquedaNombreRutaKeyListener extends KeyAdapter {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.KeyAdapter#keyReleased(java.awt.event.KeyEvent)
+		 */
 		@Override
 		public void keyReleased(KeyEvent e) {
 			pnlContenedorRutas.filtraRuta(tfBusquedaNombreRuta.getText());
 		}
 	}
 
+	/**
+	 * The listener interface for receiving tfBusquedaReservaKey events.
+	 * The class that is interested in processing a tfBusquedaReservaKey
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addTfBusquedaReservaKeyListener<code> method. When
+	 * the tfBusquedaReservaKey event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see TfBusquedaReservaKeyEvent
+	 */
 	private class TfBusquedaReservaKeyListener extends KeyAdapter {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.KeyAdapter#keyReleased(java.awt.event.KeyEvent)
+		 */
 		@Override
 		public void keyReleased(KeyEvent e) {
 			pnlContenedorReserva.filtraReserva(tfBusquedaReserva.getText());
 		}
 	}
 
+	/**
+	 * The listener interface for receiving tfBusquedaNombreActividadKey events.
+	 * The class that is interested in processing a tfBusquedaNombreActividadKey
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addTfBusquedaNombreActividadKeyListener<code> method. When
+	 * the tfBusquedaNombreActividadKey event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see TfBusquedaNombreActividadKeyEvent
+	 */
 	private class TfBusquedaNombreActividadKeyListener extends KeyAdapter {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.KeyAdapter#keyReleased(java.awt.event.KeyEvent)
+		 */
 		@Override
 		public void keyReleased(KeyEvent e) {
 			pnlContenedorActividades.filtraActividad(tfBusquedaNombreActividad.getText());
 		}
 	}
 
+	/**
+	 * The listener interface for receiving tfBusquedaBungalowKey events.
+	 * The class that is interested in processing a tfBusquedaBungalowKey
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addTfBusquedaBungalowKeyListener<code> method. When
+	 * the tfBusquedaBungalowKey event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see TfBusquedaBungalowKeyEvent
+	 */
 	private class TfBusquedaBungalowKeyListener extends KeyAdapter {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.KeyAdapter#keyReleased(java.awt.event.KeyEvent)
+		 */
 		@Override
 		public void keyReleased(KeyEvent e) {
 			pnlContenedorBungalows.filtraBungalow(tfBusquedaBungalow.getText());
 		}
 	}
 
+	/**
+	 * The listener interface for receiving rdbtnCambiarIdiomaAction events.
+	 * The class that is interested in processing a rdbtnCambiarIdiomaAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addRdbtnCambiarIdiomaActionListener<code> method. When
+	 * the rdbtnCambiarIdiomaAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see RdbtnCambiarIdiomaActionEvent
+	 */
 	private class RdbtnCambiarIdiomaActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent e) {
 			if (rdbtnIngles.isSelected()) {
 				MessagesLogin.setIdioma("inglÃ©s");
@@ -1798,7 +2680,42 @@ public class Login {
 
 		}
 	}
+	
+	/**
+	 * The listener interface for receiving btnAyudaAction events.
+	 * The class that is interested in processing a btnAyudaAction
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addBtnAyudaActionListener<code> method. When
+	 * the btnAyudaAction event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @see BtnAyudaActionEvent
+	 */
+	private class BtnAyudaActionListener implements ActionListener {
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
+		public void actionPerformed(ActionEvent e) {
+			if(java.awt.Desktop.isDesktopSupported()) {
+				java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
+				if(desktop.isSupported(java.awt.Desktop.Action.BROWSE)) {
+					try {
+						java.net.URI urlAyuda = new java.net.URI("https://youtu.be/gMvP6zX8lbU");
+						desktop.browse(urlAyuda);
+					} catch (IOException | URISyntaxException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+		}
+	}
 
+	/**
+	 * Entrar.
+	 */
 	private void entrar() {
 
 		String password = pwdContrasena.getText();
@@ -1827,6 +2744,11 @@ public class Login {
 
 	}
 
+	/**
+	 * Cargar parcela.
+	 *
+	 * @return the array list
+	 */
 	private ArrayList<Parcela> cargarParcela() {
 
 		Parcela parcela = new Parcela();
@@ -1841,6 +2763,11 @@ public class Login {
 		}
 	}
 
+	/**
+	 * Cargar bungalow.
+	 *
+	 * @return the array list
+	 */
 	private ArrayList<Bungalow> cargarBungalow() {
 
 		Bungalow bungalow = new Bungalow();
@@ -1855,6 +2782,11 @@ public class Login {
 		}
 	}
 
+	/**
+	 * Cargar empleados.
+	 *
+	 * @return the array list
+	 */
 	private ArrayList<Empleado> cargarEmpleados() {
 
 		Empleado empleado = new Empleado();
@@ -1869,6 +2801,11 @@ public class Login {
 		}
 	}
 
+	/**
+	 * Cargar actividades.
+	 *
+	 * @return the array list
+	 */
 	private ArrayList<Actividad> cargarActividades() {
 
 		Actividad actividad = new Actividad();
@@ -1883,6 +2820,12 @@ public class Login {
 		}
 	}
 
+	/**
+	 * Checks if is monitor act.
+	 *
+	 * @param dni the dni
+	 * @return true, if is monitor act
+	 */
 	private boolean isMonitorAct(String dni) {
 		boolean isMonitor = false;
 		for (Actividad a : this.cargarActividades()) {
@@ -1895,6 +2838,12 @@ public class Login {
 		return isMonitor;
 	}
 
+	/**
+	 * Checks if is monitor ruta.
+	 *
+	 * @param dni the dni
+	 * @return true, if is monitor ruta
+	 */
 	private boolean isMonitorRuta(String dni) {
 		boolean isMonitor = false;
 		for (RutaSenderista a : this.cargarRutas()) {
@@ -1907,6 +2856,11 @@ public class Login {
 		return isMonitor;
 	}
 
+	/**
+	 * Cargar reservas.
+	 *
+	 * @return the array list
+	 */
 	private ArrayList<Reserva> cargarReservas() {
 
 		Reserva reserva = new Reserva();
@@ -1921,6 +2875,11 @@ public class Login {
 		}
 	}
 
+	/**
+	 * Cargar rutas.
+	 *
+	 * @return the array list
+	 */
 	private ArrayList<RutaSenderista> cargarRutas() {
 		RutaSenderista ruta = new RutaSenderista();
 		boolean correcto = false;

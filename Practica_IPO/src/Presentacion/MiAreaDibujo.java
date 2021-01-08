@@ -8,27 +8,53 @@ import java.math.*;
 
 import javax.swing.JLabel;
 
+/**
+ * The Class MiAreaDibujo.
+ */
 public class MiAreaDibujo extends JLabel {
 
+	/** The objeto dibujo. */
 	private ArrayList<ObjetoDibujo> objetoDibujo = new ArrayList<ObjetoDibujo>();
 
+	/**
+	 * Instantiates a new mi area dibujo.
+	 */
 	public MiAreaDibujo() {
 
 	}
 
+	/**
+	 * Adds the objeto grafico.
+	 *
+	 * @param objg the objg
+	 */
 	void addObjetoGrafico(ObjetoDibujo objg) {
 		objetoDibujo.add(objg);
 	}
 
+	/**
+	 * Gets the ultimo objeto dibujo.
+	 *
+	 * @return the ultimo objeto dibujo
+	 */
 	public ObjetoDibujo getUltimoObjetoDibujo() {
 		return objetoDibujo.get(objetoDibujo.size() - 1);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.Container#removeAll()
+	 */
 	public void removeAll() {
 		this.objetoDibujo = new ArrayList<ObjetoDibujo>();
 
 	}
 
+	/**
+	 * Removes the objeto grafico.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 */
 	public void removeObjetoGrafico(int x, int y) {
 		for (int i = objetoDibujo.size() - 1; i >= 0; i--) {
 			ObjetoDibujo objg = objetoDibujo.get(i);
@@ -50,6 +76,9 @@ public class MiAreaDibujo extends JLabel {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paint(java.awt.Graphics)
+	 */
 	public void paint(Graphics g) {
 		super.paint(g);
 		for (int i = 0; i < objetoDibujo.size(); i++) {

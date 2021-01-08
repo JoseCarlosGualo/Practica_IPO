@@ -10,17 +10,36 @@ import Dominio.Empleado;
 import Dominio.Parcela;
 import Dominio.Reserva;
 
+/**
+ * The Class ReservaDAO.
+ */
 public class ReservaDAO {
+	
+	/** The lista reservas. */
 	private ArrayList<Reserva> listaReservas;
 
+	/**
+	 * Instantiates a new reserva DAO.
+	 */
 	public ReservaDAO() {
 		this.listaReservas = new ArrayList<Reserva>();
 	}
 
+	/**
+	 * Gets the lista reservas.
+	 *
+	 * @return the lista reservas
+	 */
 	public ArrayList<Reserva> getListaReservas() {
 		return listaReservas;
 	}
 
+	/**
+	 * Insert.
+	 *
+	 * @param reserva the reserva
+	 * @return true, if successful
+	 */
 	public boolean insert(Reserva reserva) {
 
 		boolean correcto = false;
@@ -61,6 +80,12 @@ public class ReservaDAO {
 
 	}
 
+	/**
+	 * Update.
+	 *
+	 * @param reserva the reserva
+	 * @return true, if successful
+	 */
 	public boolean update(Reserva reserva) {
 
 		boolean correcto = false;
@@ -88,6 +113,12 @@ public class ReservaDAO {
 
 	}
 
+	/**
+	 * Delete.
+	 *
+	 * @param reserva the reserva
+	 * @return true, if successful
+	 */
 	public boolean delete(Reserva reserva) {
 
 		boolean correcto = false;
@@ -106,6 +137,12 @@ public class ReservaDAO {
 
 	}
 
+	/**
+	 * Read.
+	 *
+	 * @param reserva the reserva
+	 * @return true, if successful
+	 */
 	public boolean read(Reserva reserva) {
 
 		boolean correcto = false;
@@ -152,6 +189,11 @@ public class ReservaDAO {
 
 	}
 
+	/**
+	 * Read all.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean readAll() {
 
 		boolean correcto = false;
