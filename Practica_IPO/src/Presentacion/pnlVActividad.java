@@ -84,7 +84,7 @@ public class pnlVActividad extends JPanel {
 			add(lblNombreAc, gbc_lblNombreAc);
 		}
 		{
-			lblHorario = new JLabel("Horario: ");
+			lblHorario = new JLabel(MessagesLogin.getString("pnlVActividad.lblHorario.text")); //$NON-NLS-1$
 			lblHorario.setIcon(new ImageIcon(pnlVActividad.class.getResource("/Presentacion/Imagenes/calendar16x16.png")));
 			lblHorario.setFont(new Font("Tahoma", Font.BOLD, 14));
 			GridBagConstraints gbc_lblHorario = new GridBagConstraints();

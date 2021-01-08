@@ -167,7 +167,7 @@ public class Login {
 	private JButton btnVerPass;
 	private boolean verPass;
 	private JPanel pnlReservas;
-	private JLabel lblBsquedaPorDni;
+	private JLabel lblBsquedaPorNombreReserva;
 	private JTextField tfBusquedaReserva;
 	private JPanel pnlBotonesReserva;
 	private pnlFormReserva pnlDatosReserva;
@@ -520,7 +520,7 @@ public class Login {
 							{
 								rdbtnEspaniol = new JRadioButtonMenuItem(
 										MessagesLogin.getString("Login.rdbtnEspaniol.text")); //$NON-NLS-1$
-								rdbtnEspaniol.addActionListener(new RdbtnEspaniolActionListener());
+								rdbtnEspaniol.addActionListener(new RdbtnCambiarIdiomaActionListener());
 								rdbtnEspaniol.setIcon(new ImageIcon(
 										Login.class.getResource("/Presentacion/Imagenes/spain16x16.png")));
 								mnIdioma.add(rdbtnEspaniol);
@@ -528,6 +528,7 @@ public class Login {
 							{
 								rdbtnIngles = new JRadioButtonMenuItem(
 										MessagesLogin.getString("Login.rdbtnIngles.text")); //$NON-NLS-1$
+								rdbtnIngles.addActionListener(new RdbtnCambiarIdiomaActionListener());
 								rdbtnIngles.setIcon(new ImageIcon(
 										Login.class.getResource("/Presentacion/Imagenes/united-kingdom16x16.png")));
 								mnIdioma.add(rdbtnIngles);
@@ -1050,13 +1051,14 @@ public class Login {
 						gbl_pnlReservas.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
 						pnlReservas.setLayout(gbl_pnlReservas);
 						{
-							lblBsquedaPorDni = new JLabel(MessagesLogin.getString("Login.lblBsquedaPorDni.text")); //$NON-NLS-1$
-							GridBagConstraints gbc_lblBsquedaPorDni = new GridBagConstraints();
-							gbc_lblBsquedaPorDni.fill = GridBagConstraints.HORIZONTAL;
-							gbc_lblBsquedaPorDni.insets = new Insets(0, 0, 5, 5);
-							gbc_lblBsquedaPorDni.gridx = 1;
-							gbc_lblBsquedaPorDni.gridy = 0;
-							pnlReservas.add(lblBsquedaPorDni, gbc_lblBsquedaPorDni);
+							lblBsquedaPorNombreReserva = new JLabel(
+									MessagesLogin.getString("Login.lblBsquedaPorDni.text")); //$NON-NLS-1$
+							GridBagConstraints gbc_lblBsquedaPorNombreReserva = new GridBagConstraints();
+							gbc_lblBsquedaPorNombreReserva.fill = GridBagConstraints.HORIZONTAL;
+							gbc_lblBsquedaPorNombreReserva.insets = new Insets(0, 0, 5, 5);
+							gbc_lblBsquedaPorNombreReserva.gridx = 1;
+							gbc_lblBsquedaPorNombreReserva.gridy = 0;
+							pnlReservas.add(lblBsquedaPorNombreReserva, gbc_lblBsquedaPorNombreReserva);
 						}
 						{
 							tfBusquedaReserva = new JTextField();
@@ -1779,7 +1781,7 @@ public class Login {
 		}
 	}
 
-	private class RdbtnEspaniolActionListener implements ActionListener {
+	private class RdbtnCambiarIdiomaActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (rdbtnIngles.isSelected()) {
 				MessagesLogin.setIdioma("inglés");

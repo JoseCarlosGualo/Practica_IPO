@@ -85,7 +85,7 @@ public class pnlVRuta extends JPanel {
 			add(lblNombreRuta, gbc_lblNombreRuta);
 		}
 		{
-			lblInicio = new JLabel("Inicio: ");
+			lblInicio = new JLabel(MessagesLogin.getString("pnlVRuta.lblInicio.text")); //$NON-NLS-1$
 			lblInicio.setFont(new Font("Tahoma", Font.BOLD, 14));
 			GridBagConstraints gbc_lblInicio = new GridBagConstraints();
 			gbc_lblInicio.insets = new Insets(0, 0, 5, 5);

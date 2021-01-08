@@ -76,7 +76,7 @@ public class pnlFormReserva extends JPanel {
 				0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 		{
-			lblDatosPersonales = new JLabel("Datos Personales");
+			lblDatosPersonales = new JLabel(MessagesLogin.getString("pnlFormReserva.lblDatosPersonales.text")); //$NON-NLS-1$
 			lblDatosPersonales
 					.setIcon(new ImageIcon(pnlFormReserva.class.getResource("/Presentacion/Imagenes/hombre.png")));
 			lblDatosPersonales.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -89,7 +89,7 @@ public class pnlFormReserva extends JPanel {
 			add(lblDatosPersonales, gbc_lblDatosPersonales);
 		}
 		{
-			lblNombre = new JLabel("Nombre: ");
+			lblNombre = new JLabel(MessagesLogin.getString("pnlFormReserva.lblNombre.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblNombre = new GridBagConstraints();
 			gbc_lblNombre.anchor = GridBagConstraints.EAST;
 			gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
@@ -109,7 +109,7 @@ public class pnlFormReserva extends JPanel {
 			add(tfNombreRes, gbc_tfNombreRes);
 		}
 		{
-			lblDni = new JLabel("DNI:");
+			lblDni = new JLabel(MessagesLogin.getString("pnlFormReserva.lblDni.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblDni = new GridBagConstraints();
 			gbc_lblDni.insets = new Insets(0, 0, 5, 5);
 			gbc_lblDni.anchor = GridBagConstraints.EAST;
@@ -129,7 +129,7 @@ public class pnlFormReserva extends JPanel {
 			add(tfDniRes, gbc_tfDniRes);
 		}
 		{
-			lblTelfono = new JLabel("Tel\u00E9fono: ");
+			lblTelfono = new JLabel(MessagesLogin.getString("pnlFormReserva.lblTelfono.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblTelfono = new GridBagConstraints();
 			gbc_lblTelfono.insets = new Insets(0, 0, 5, 5);
 			gbc_lblTelfono.anchor = GridBagConstraints.EAST;
@@ -149,7 +149,7 @@ public class pnlFormReserva extends JPanel {
 			add(tfTlfRes, gbc_tfTlfRes);
 		}
 		{
-			lblEmail = new JLabel("E-mail: ");
+			lblEmail = new JLabel(MessagesLogin.getString("pnlFormReserva.lblEmail.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblEmail = new GridBagConstraints();
 			gbc_lblEmail.insets = new Insets(0, 0, 5, 5);
 			gbc_lblEmail.anchor = GridBagConstraints.EAST;
@@ -169,8 +169,9 @@ public class pnlFormReserva extends JPanel {
 			add(tfEmailRes, gbc_tfEmailRes);
 		}
 		{
-			lblDatosReserva = new JLabel("Datos de la Reserva");
-			lblDatosReserva.setIcon(new ImageIcon(pnlFormReserva.class.getResource("/Presentacion/Imagenes/calendar16x16.png")));
+			lblDatosReserva = new JLabel(MessagesLogin.getString("pnlFormReserva.lblDatosReserva.text")); //$NON-NLS-1$
+			lblDatosReserva.setIcon(
+					new ImageIcon(pnlFormReserva.class.getResource("/Presentacion/Imagenes/calendar16x16.png")));
 			lblDatosReserva.setFont(new Font("Tahoma", Font.BOLD, 18));
 			GridBagConstraints gbc_lblDatosReserva = new GridBagConstraints();
 			gbc_lblDatosReserva.anchor = GridBagConstraints.WEST;
@@ -181,7 +182,7 @@ public class pnlFormReserva extends JPanel {
 			add(lblDatosReserva, gbc_lblDatosReserva);
 		}
 		{
-			lblFechaDeEntrada = new JLabel("Fecha de entrada:");
+			lblFechaDeEntrada = new JLabel(MessagesLogin.getString("pnlFormReserva.lblFechaDeEntrada.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblFechaDeEntrada = new GridBagConstraints();
 			gbc_lblFechaDeEntrada.anchor = GridBagConstraints.EAST;
 			gbc_lblFechaDeEntrada.insets = new Insets(0, 0, 5, 5);
@@ -199,7 +200,7 @@ public class pnlFormReserva extends JPanel {
 			add(dCFechaEntrada, gbc_dCFechaEntrada);
 		}
 		{
-			lblHoraDeEntrada = new JLabel("Hora de Entrada: ");
+			lblHoraDeEntrada = new JLabel(MessagesLogin.getString("pnlFormReserva.lblHoraDeEntrada.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblHoraDeEntrada = new GridBagConstraints();
 			gbc_lblHoraDeEntrada.anchor = GridBagConstraints.EAST;
 			gbc_lblHoraDeEntrada.insets = new Insets(0, 0, 5, 5);
@@ -219,7 +220,7 @@ public class pnlFormReserva extends JPanel {
 			add(tfHoraEntrada, gbc_tfHoraEntrada);
 		}
 		{
-			lblFechaDeSalida = new JLabel("Fecha de Salida: ");
+			lblFechaDeSalida = new JLabel(MessagesLogin.getString("pnlFormReserva.lblFechaDeSalida.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblFechaDeSalida = new GridBagConstraints();
 			gbc_lblFechaDeSalida.anchor = GridBagConstraints.EAST;
 			gbc_lblFechaDeSalida.insets = new Insets(0, 0, 5, 5);
@@ -237,7 +238,7 @@ public class pnlFormReserva extends JPanel {
 			add(dCFechaSalida, gbc_dCFechaSalida);
 		}
 		{
-			lblHoraDeSalida = new JLabel("Hora de Salida: ");
+			lblHoraDeSalida = new JLabel(MessagesLogin.getString("pnlFormReserva.lblHoraDeSalida.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblHoraDeSalida = new GridBagConstraints();
 			gbc_lblHoraDeSalida.anchor = GridBagConstraints.EAST;
 			gbc_lblHoraDeSalida.insets = new Insets(0, 0, 5, 5);
@@ -257,7 +258,7 @@ public class pnlFormReserva extends JPanel {
 			add(tfHoraSalida, gbc_tfHoraSalida);
 		}
 		{
-			lblNmeroDeOcupantes = new JLabel("N\u00FAmero de Ocupantes: ");
+			lblNmeroDeOcupantes = new JLabel(MessagesLogin.getString("pnlFormReserva.lblNmeroDeOcupantes.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblNmeroDeOcupantes = new GridBagConstraints();
 			gbc_lblNmeroDeOcupantes.anchor = GridBagConstraints.EAST;
 			gbc_lblNmeroDeOcupantes.insets = new Insets(0, 0, 5, 5);
@@ -277,7 +278,8 @@ public class pnlFormReserva extends JPanel {
 			add(spinnerOcupantes, gbc_spinnerOcupantes);
 		}
 		{
-			lblPeticionesEspeciales = new JLabel("Peticiones Especiales");
+			lblPeticionesEspeciales = new JLabel(
+					MessagesLogin.getString("pnlFormReserva.lblPeticionesEspeciales.text")); //$NON-NLS-1$
 			lblPeticionesEspeciales
 					.setIcon(new ImageIcon(pnlFormReserva.class.getResource("/Presentacion/Imagenes/pagar.png")));
 			lblPeticionesEspeciales.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -318,7 +320,7 @@ public class pnlFormReserva extends JPanel {
 		Calendar calSalida = Calendar.getInstance();
 		SimpleDateFormat sdfSalida = new SimpleDateFormat("dd/MM/yyyy");
 		SimpleDateFormat sdfEntrada = new SimpleDateFormat("dd/MM/yyyy");
-		
+
 		try {
 			calSalida.setTime(sdfSalida.parse(reserva.getFecha_salida()));
 			calEntrada.setTime(sdfEntrada.parse(reserva.getFecha_entrada()));
@@ -330,7 +332,7 @@ public class pnlFormReserva extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		spinnerOcupantes.setValue(reserva.getN_ocupantes());
 		tfNombreRes.setText(reserva.getNombre());
 		tfTlfRes.setText(reserva.getTelefono());

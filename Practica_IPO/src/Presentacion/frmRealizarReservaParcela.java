@@ -116,7 +116,7 @@ public class frmRealizarReservaParcela extends JFrame {
 		this.parcela = parcela;
 		setResizable(false);
 		this.pnlContenedorParcelas = panel;
-		setTitle("Formulario Añadir Reserva");
+		setTitle(MessagesLogin.getString("frmRealizarReservaParcela.this.title")); //$NON-NLS-1$
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		if (limites.equals(null)) {
 			setBounds(100, 100, ANCHO, ALTO);
@@ -133,14 +133,14 @@ public class frmRealizarReservaParcela extends JFrame {
 			panelBotones = new JPanel();
 			contentPane.add(panelBotones, BorderLayout.SOUTH);
 			{
-				btnGuardar = new JButton("Guardar");
-				btnGuardar.setToolTipText("Guardar Reserva");
+				btnGuardar = new JButton(MessagesLogin.getString("frmRealizarReservaParcela.btnGuardar.text")); //$NON-NLS-1$
+				btnGuardar.setToolTipText(MessagesLogin.getString("frmRealizarReservaParcela.btnGuardar.toolTipText")); //$NON-NLS-1$
 				btnGuardar.addActionListener(new BtnGuardarActionListener());
 				panelBotones.add(btnGuardar);
 			}
 			{
-				btnCancelar = new JButton("Cancelar");
-				btnCancelar.setToolTipText("Cancelar Reserva");
+				btnCancelar = new JButton(MessagesLogin.getString("frmRealizarReservaParcela.btnCancelar.text")); //$NON-NLS-1$
+				btnCancelar.setToolTipText(MessagesLogin.getString("frmRealizarReservaParcela.btnCancelar.toolTipText")); //$NON-NLS-1$
 				btnCancelar.addActionListener(new BtnCancelarActionListener());
 				panelBotones.add(btnCancelar);
 			}
@@ -148,7 +148,7 @@ public class frmRealizarReservaParcela extends JFrame {
 		{
 			panelDatosReserva = new JPanel();
 			panelDatosReserva.setBorder(
-					new TitledBorder(null, "Datos de la Reserva", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+					new TitledBorder(null, MessagesLogin.getString("frmRealizarReservaParcela.panelDatosReserva.borderTitle"), TitledBorder.LEADING, TitledBorder.TOP, null, null)); //$NON-NLS-1$
 			contentPane.add(panelDatosReserva, BorderLayout.CENTER);
 			GridBagLayout gbl_panelDatosReserva = new GridBagLayout();
 			gbl_panelDatosReserva.columnWidths = new int[] { 15, 0, 0, 100, 0, 0 };
@@ -158,7 +158,7 @@ public class frmRealizarReservaParcela extends JFrame {
 					0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
 			panelDatosReserva.setLayout(gbl_panelDatosReserva);
 			{
-				lblDatosPersonales = new JLabel("Datos Personales");
+				lblDatosPersonales = new JLabel(MessagesLogin.getString("frmRealizarReservaParcela.lblDatosPersonales.text")); //$NON-NLS-1$
 				lblDatosPersonales.setFont(new Font("Tahoma", Font.BOLD, 18));
 				GridBagConstraints gbc_lblDatosPersonales = new GridBagConstraints();
 				gbc_lblDatosPersonales.anchor = GridBagConstraints.WEST;
@@ -169,7 +169,7 @@ public class frmRealizarReservaParcela extends JFrame {
 				panelDatosReserva.add(lblDatosPersonales, gbc_lblDatosPersonales);
 			}
 			{
-				lblNombre = new JLabel("Nombre: ");
+				lblNombre = new JLabel(MessagesLogin.getString("frmRealizarReservaParcela.lblNombre.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_lblNombre = new GridBagConstraints();
 				gbc_lblNombre.anchor = GridBagConstraints.EAST;
 				gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
@@ -188,7 +188,7 @@ public class frmRealizarReservaParcela extends JFrame {
 				tfNombreRes.setColumns(10);
 			}
 			{
-				lblDni = new JLabel("DNI: ");
+				lblDni = new JLabel(MessagesLogin.getString("frmRealizarReservaParcela.lblDni.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_lblDni = new GridBagConstraints();
 				gbc_lblDni.anchor = GridBagConstraints.EAST;
 				gbc_lblDni.insets = new Insets(0, 0, 5, 5);
@@ -207,7 +207,7 @@ public class frmRealizarReservaParcela extends JFrame {
 				tfDniRes.setColumns(10);
 			}
 			{
-				lblTelfono = new JLabel("Tel\u00E9fono: ");
+				lblTelfono = new JLabel(MessagesLogin.getString("frmRealizarReservaParcela.lblTelfono.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_lblTelfono = new GridBagConstraints();
 				gbc_lblTelfono.anchor = GridBagConstraints.EAST;
 				gbc_lblTelfono.insets = new Insets(0, 0, 5, 5);
@@ -227,7 +227,7 @@ public class frmRealizarReservaParcela extends JFrame {
 				tfTlfnRes.setColumns(10);
 			}
 			{
-				lblEmail = new JLabel("E-mail: ");
+				lblEmail = new JLabel(MessagesLogin.getString("frmRealizarReservaParcela.lblEmail.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_lblEmail = new GridBagConstraints();
 				gbc_lblEmail.anchor = GridBagConstraints.EAST;
 				gbc_lblEmail.insets = new Insets(0, 0, 5, 5);
@@ -246,7 +246,7 @@ public class frmRealizarReservaParcela extends JFrame {
 				tfEmailRes.setColumns(10);
 			}
 			{
-				lblDatosReserva = new JLabel("Datos de la Reserva");
+				lblDatosReserva = new JLabel(MessagesLogin.getString("frmRealizarReservaParcela.lblDatosReserva.text")); //$NON-NLS-1$
 				lblDatosReserva.setFont(new Font("Tahoma", Font.BOLD, 18));
 				GridBagConstraints gbc_lblDatosReserva = new GridBagConstraints();
 				gbc_lblDatosReserva.anchor = GridBagConstraints.WEST;
@@ -257,7 +257,7 @@ public class frmRealizarReservaParcela extends JFrame {
 				panelDatosReserva.add(lblDatosReserva, gbc_lblDatosReserva);
 			}
 			{
-				lblFechaDeEntrada = new JLabel("Fecha de entrada:");
+				lblFechaDeEntrada = new JLabel(MessagesLogin.getString("frmRealizarReservaParcela.lblFechaDeEntrada.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_lblFechaDeEntrada = new GridBagConstraints();
 				gbc_lblFechaDeEntrada.anchor = GridBagConstraints.EAST;
 				gbc_lblFechaDeEntrada.insets = new Insets(0, 0, 5, 5);
@@ -275,7 +275,7 @@ public class frmRealizarReservaParcela extends JFrame {
 				panelDatosReserva.add(dCFechaEntrada, gbc_dCFechaEntrada);
 			}
 			{
-				lblHoraDeEntrada = new JLabel("Hora de Entrada: ");
+				lblHoraDeEntrada = new JLabel(MessagesLogin.getString("frmRealizarReservaParcela.lblHoraDeEntrada.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_lblHoraDeEntrada = new GridBagConstraints();
 				gbc_lblHoraDeEntrada.anchor = GridBagConstraints.EAST;
 				gbc_lblHoraDeEntrada.insets = new Insets(0, 0, 5, 5);
@@ -285,8 +285,8 @@ public class frmRealizarReservaParcela extends JFrame {
 			}
 			{
 				tfHoraEntradaRes = new JTextField();
-				tfHoraEntradaRes.setToolTipText("hh:mm:ss");
-				tfHoraEntradaRes.setText("hh:mm:ss");
+				tfHoraEntradaRes.setToolTipText(MessagesLogin.getString("frmRealizarReservaParcela.tfHoraEntradaRes.toolTipText")); //$NON-NLS-1$
+				tfHoraEntradaRes.setText(MessagesLogin.getString("frmRealizarReservaParcela.tfHoraEntradaRes.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_tfHoraEntradaRes = new GridBagConstraints();
 				gbc_tfHoraEntradaRes.insets = new Insets(0, 0, 5, 5);
 				gbc_tfHoraEntradaRes.fill = GridBagConstraints.HORIZONTAL;
@@ -296,7 +296,7 @@ public class frmRealizarReservaParcela extends JFrame {
 				tfHoraEntradaRes.setColumns(10);
 			}
 			{
-				lblFechaDeSalida = new JLabel("Fecha de Salida: ");
+				lblFechaDeSalida = new JLabel(MessagesLogin.getString("frmRealizarReservaParcela.lblFechaDeSalida.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_lblFechaDeSalida = new GridBagConstraints();
 				gbc_lblFechaDeSalida.anchor = GridBagConstraints.EAST;
 				gbc_lblFechaDeSalida.insets = new Insets(0, 0, 5, 5);
@@ -314,7 +314,7 @@ public class frmRealizarReservaParcela extends JFrame {
 				panelDatosReserva.add(dCFechaSalida, gbc_dCFechaSalida);
 			}
 			{
-				lblHoraDeSalida = new JLabel("Hora de Salida: ");
+				lblHoraDeSalida = new JLabel(MessagesLogin.getString("frmRealizarReservaParcela.lblHoraDeSalida.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_lblHoraDeSalida = new GridBagConstraints();
 				gbc_lblHoraDeSalida.anchor = GridBagConstraints.EAST;
 				gbc_lblHoraDeSalida.insets = new Insets(0, 0, 5, 5);
@@ -324,8 +324,8 @@ public class frmRealizarReservaParcela extends JFrame {
 			}
 			{
 				tfHoraSalida = new JTextField();
-				tfHoraSalida.setToolTipText("hh:mm:ss");
-				tfHoraSalida.setText("hh:mm:ss");
+				tfHoraSalida.setToolTipText(MessagesLogin.getString("frmRealizarReservaParcela.tfHoraSalida.toolTipText")); //$NON-NLS-1$
+				tfHoraSalida.setText(MessagesLogin.getString("frmRealizarReservaParcela.tfHoraSalida.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_tfHoraSalida = new GridBagConstraints();
 				gbc_tfHoraSalida.insets = new Insets(0, 0, 5, 5);
 				gbc_tfHoraSalida.fill = GridBagConstraints.BOTH;
@@ -335,7 +335,7 @@ public class frmRealizarReservaParcela extends JFrame {
 				tfHoraSalida.setColumns(10);
 			}
 			{
-				lblNmeroDeOcupantes = new JLabel("N\u00FAmero de Ocupantes: ");
+				lblNmeroDeOcupantes = new JLabel(MessagesLogin.getString("frmRealizarReservaParcela.lblNmeroDeOcupantes.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_lblNmeroDeOcupantes = new GridBagConstraints();
 				gbc_lblNmeroDeOcupantes.insets = new Insets(0, 0, 5, 5);
 				gbc_lblNmeroDeOcupantes.gridx = 2;
@@ -353,7 +353,7 @@ public class frmRealizarReservaParcela extends JFrame {
 				panelDatosReserva.add(spinnerOcupantes, gbc_spinnerOcupantes);
 			}
 			{
-				lblPeticionesEspeciales = new JLabel("Peticiones Especiales");
+				lblPeticionesEspeciales = new JLabel(MessagesLogin.getString("frmRealizarReservaParcela.lblPeticionesEspeciales.text")); //$NON-NLS-1$
 				lblPeticionesEspeciales.setFont(new Font("Tahoma", Font.BOLD, 18));
 				GridBagConstraints gbc_lblPeticionesEspeciales = new GridBagConstraints();
 				gbc_lblPeticionesEspeciales.anchor = GridBagConstraints.WEST;

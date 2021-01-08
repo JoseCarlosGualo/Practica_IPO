@@ -98,7 +98,7 @@ public class pnlVReserva extends JPanel {
 			add(lblNombreRes, gbc_lblNombreRes);
 		}
 		{
-			lblDni = new JLabel("DNI: ");
+			lblDni = new JLabel(MessagesLogin.getString("pnlVReserva.lblDni.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblDni = new GridBagConstraints();
 			gbc_lblDni.anchor = GridBagConstraints.EAST;
 			gbc_lblDni.insets = new Insets(0, 0, 5, 5);
@@ -116,7 +116,7 @@ public class pnlVReserva extends JPanel {
 			add(lblDniCliRes, gbc_lblDniCliRes);
 		}
 		{
-			lblFechaDeEntrada = new JLabel("Fecha de entrada: ");
+			lblFechaDeEntrada = new JLabel(MessagesLogin.getString("pnlVReserva.lblFechaDeEntrada.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblFechaDeEntrada = new GridBagConstraints();
 			gbc_lblFechaDeEntrada.anchor = GridBagConstraints.EAST;
 			gbc_lblFechaDeEntrada.insets = new Insets(0, 0, 5, 5);

@@ -38,10 +38,11 @@ public class pnlUsuario extends JPanel {
 	 */
 	public pnlUsuario() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-				0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+				0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
 		gridBagLayout.columnWidths = new int[] { 25, 149, 0, 0 };
-		gridBagLayout.rowHeights = new int[] { 0, 163, 16, 0, 0, 20, 0, 0, 20, 0, 0, 20, 0, 0, 20, 0, 0, 20, 0, 0, 20, 0, 0, 20 };
+		gridBagLayout.rowHeights = new int[] { 0, 163, 16, 0, 0, 20, 0, 0, 20, 0, 0, 20, 0, 0, 20, 0, 0, 20, 0, 0, 20,
+				0, 0, 20 };
 		setLayout(gridBagLayout);
 		{
 			pnlFoto = new JPanel();
@@ -53,13 +54,14 @@ public class pnlUsuario extends JPanel {
 			add(pnlFoto, gbc_pnlFoto);
 			pnlFoto.setLayout(new BorderLayout(0, 0));
 			{
-				lblImagen = new JLabel("");
-				lblImagen.setIcon(new ImageIcon(pnlUsuario.class.getResource("/Presentacion/Imagenes/foto_random.jpg")));
+				lblImagen = new JLabel(); // $NON-NLS-1$
+				lblImagen
+						.setIcon(new ImageIcon(pnlUsuario.class.getResource("/Presentacion/Imagenes/foto_random.jpg")));
 				pnlFoto.add(lblImagen, BorderLayout.CENTER);
 			}
 		}
 		{
-			lblNombre = new JLabel("Nombre:");
+			lblNombre = new JLabel(MessagesLogin.getString("pnlUsuario.lblNombre.text")); //$NON-NLS-1$
 			lblNombre.setForeground(new Color(128, 128, 128));
 			GridBagConstraints gbc_lblNombre = new GridBagConstraints();
 			gbc_lblNombre.anchor = GridBagConstraints.WEST;
@@ -69,7 +71,7 @@ public class pnlUsuario extends JPanel {
 			add(lblNombre, gbc_lblNombre);
 		}
 		{
-			lblNombreUsuario = new JLabel("Juan");
+			lblNombreUsuario = new JLabel(MessagesLogin.getString("pnlUsuario.lblNombreUsuario.text")); //$NON-NLS-1$
 			lblNombreUsuario.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 			GridBagConstraints gbc_lblNombreUsuario = new GridBagConstraints();
 			gbc_lblNombreUsuario.anchor = GridBagConstraints.WEST;
@@ -79,7 +81,7 @@ public class pnlUsuario extends JPanel {
 			add(lblNombreUsuario, gbc_lblNombreUsuario);
 		}
 		{
-			lblApellidos = new JLabel("Apellidos:");
+			lblApellidos = new JLabel(MessagesLogin.getString("pnlUsuario.lblApellidos.text")); //$NON-NLS-1$
 			lblApellidos.setForeground(new Color(128, 128, 128));
 			GridBagConstraints gbc_lblApellidos = new GridBagConstraints();
 			gbc_lblApellidos.anchor = GridBagConstraints.WEST;
@@ -89,7 +91,7 @@ public class pnlUsuario extends JPanel {
 			add(lblApellidos, gbc_lblApellidos);
 		}
 		{
-			lblApellidosUsuario = new JLabel("Fern\u00E1ndez Garc\u00EDa");
+			lblApellidosUsuario = new JLabel(MessagesLogin.getString("pnlUsuario.lblApellidosUsuario.text")); //$NON-NLS-1$
 			lblApellidosUsuario.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 			GridBagConstraints gbc_lblApellidosUsuario = new GridBagConstraints();
 			gbc_lblApellidosUsuario.anchor = GridBagConstraints.WEST;
@@ -99,7 +101,7 @@ public class pnlUsuario extends JPanel {
 			add(lblApellidosUsuario, gbc_lblApellidosUsuario);
 		}
 		{
-			lblDni = new JLabel("DNI:");
+			lblDni = new JLabel(MessagesLogin.getString("pnlUsuario.lblDni.text")); //$NON-NLS-1$
 			lblDni.setForeground(Color.GRAY);
 			GridBagConstraints gbc_lblDni = new GridBagConstraints();
 			gbc_lblDni.anchor = GridBagConstraints.WEST;
@@ -109,7 +111,7 @@ public class pnlUsuario extends JPanel {
 			add(lblDni, gbc_lblDni);
 		}
 		{
-			lblDniUsuario = new JLabel("71361332Z");
+			lblDniUsuario = new JLabel(MessagesLogin.getString("pnlUsuario.lblDniUsuario.text")); //$NON-NLS-1$
 			lblDniUsuario.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 			GridBagConstraints gbc_lblDniUsuario = new GridBagConstraints();
 			gbc_lblDniUsuario.anchor = GridBagConstraints.WEST;
@@ -119,7 +121,7 @@ public class pnlUsuario extends JPanel {
 			add(lblDniUsuario, gbc_lblDniUsuario);
 		}
 		{
-			lblFechaNacimiento = new JLabel("Fecha de nacimiento:");
+			lblFechaNacimiento = new JLabel(MessagesLogin.getString("pnlUsuario.lblFechaNacimiento.text")); //$NON-NLS-1$
 			lblFechaNacimiento.setForeground(new Color(128, 128, 128));
 			GridBagConstraints gbc_lblFechaNacimiento = new GridBagConstraints();
 			gbc_lblFechaNacimiento.anchor = GridBagConstraints.WEST;
@@ -129,7 +131,8 @@ public class pnlUsuario extends JPanel {
 			add(lblFechaNacimiento, gbc_lblFechaNacimiento);
 		}
 		{
-			lblFechaNacimientoUsuario = new JLabel("11/03/1992");
+			lblFechaNacimientoUsuario = new JLabel(
+					MessagesLogin.getString("pnlUsuario.lblFechaNacimientoUsuario.text")); //$NON-NLS-1$
 			lblFechaNacimientoUsuario.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 			GridBagConstraints gbc_lblFechaNacimientoUsuario = new GridBagConstraints();
 			gbc_lblFechaNacimientoUsuario.anchor = GridBagConstraints.WEST;
@@ -139,7 +142,7 @@ public class pnlUsuario extends JPanel {
 			add(lblFechaNacimientoUsuario, gbc_lblFechaNacimientoUsuario);
 		}
 		{
-			lblEmail = new JLabel("E-mail:");
+			lblEmail = new JLabel(MessagesLogin.getString("pnlUsuario.lblEmail.text")); //$NON-NLS-1$
 			lblEmail.setForeground(new Color(128, 128, 128));
 			GridBagConstraints gbc_lblEmail = new GridBagConstraints();
 			gbc_lblEmail.anchor = GridBagConstraints.WEST;
@@ -149,7 +152,7 @@ public class pnlUsuario extends JPanel {
 			add(lblEmail, gbc_lblEmail);
 		}
 		{
-			lblEmailUsuario = new JLabel("juanfernandez@gmail.com");
+			lblEmailUsuario = new JLabel(MessagesLogin.getString("pnlUsuario.lblEmailUsuario.text")); //$NON-NLS-1$
 			lblEmailUsuario.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 			GridBagConstraints gbc_lblEmailUsuario = new GridBagConstraints();
 			gbc_lblEmailUsuario.anchor = GridBagConstraints.WEST;
@@ -159,7 +162,7 @@ public class pnlUsuario extends JPanel {
 			add(lblEmailUsuario, gbc_lblEmailUsuario);
 		}
 		{
-			lblTelefono = new JLabel("Tel\u00E9fono:");
+			lblTelefono = new JLabel(MessagesLogin.getString("pnlUsuario.lblTelefono.text")); //$NON-NLS-1$
 			lblTelefono.setForeground(new Color(128, 128, 128));
 			GridBagConstraints gbc_lblTelefono = new GridBagConstraints();
 			gbc_lblTelefono.anchor = GridBagConstraints.WEST;
@@ -169,7 +172,7 @@ public class pnlUsuario extends JPanel {
 			add(lblTelefono, gbc_lblTelefono);
 		}
 		{
-			lblTelefonoUsuario = new JLabel("926133212");
+			lblTelefonoUsuario = new JLabel(MessagesLogin.getString("pnlUsuario.lblTelefonoUsuario.text")); //$NON-NLS-1$
 			lblTelefonoUsuario.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 			GridBagConstraints gbc_lblTelefonoUsuario = new GridBagConstraints();
 			gbc_lblTelefonoUsuario.anchor = GridBagConstraints.WEST;
@@ -179,7 +182,7 @@ public class pnlUsuario extends JPanel {
 			add(lblTelefonoUsuario, gbc_lblTelefonoUsuario);
 		}
 		{
-			lblUltimoAcceso = new JLabel("\u00DAltimo acceso:");
+			lblUltimoAcceso = new JLabel(MessagesLogin.getString("pnlUsuario.lblUltimoAcceso.text")); //$NON-NLS-1$
 			lblUltimoAcceso.setForeground(new Color(128, 128, 128));
 			GridBagConstraints gbc_lblUltimoAcceso = new GridBagConstraints();
 			gbc_lblUltimoAcceso.anchor = GridBagConstraints.WEST;
@@ -189,7 +192,7 @@ public class pnlUsuario extends JPanel {
 			add(lblUltimoAcceso, gbc_lblUltimoAcceso);
 		}
 		{
-			lblUltimoAccesoUsuario = new JLabel("07/12/2020   12:50");
+			lblUltimoAccesoUsuario = new JLabel(MessagesLogin.getString("pnlUsuario.lblUltimoAccesoUsuario.text")); //$NON-NLS-1$
 			lblUltimoAccesoUsuario.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 			GridBagConstraints gbc_lblUltimoAccesoUsuario = new GridBagConstraints();
 			gbc_lblUltimoAccesoUsuario.anchor = GridBagConstraints.WEST;
@@ -200,9 +203,9 @@ public class pnlUsuario extends JPanel {
 		}
 
 	}
-	
+
 	public void loadUserData(Usuario usuario) {
-		
+
 		lblNombreUsuario.setText(usuario.getNombre());
 		lblApellidosUsuario.setText(usuario.getApellidos());
 		lblFechaNacimientoUsuario.setText(usuario.getFechaNacimiento());
@@ -212,10 +215,11 @@ public class pnlUsuario extends JPanel {
 		lblUltimoAccesoUsuario.setText(usuario.getUltimoAcceso());
 		ImageIcon icono = null;
 		try {
-			icono = new ImageIcon(getClass().getClassLoader().getResource("Presentacion/Imagenes/" + usuario.getFoto()));
+			icono = new ImageIcon(
+					getClass().getClassLoader().getResource("Presentacion/Imagenes/" + usuario.getFoto()));
 
 		} catch (Exception e) {
-			
+
 			icono = new ImageIcon(getClass().getClassLoader().getResource("Presentacion/Imagenes/foto_random.jpg"));
 
 		} finally {
@@ -224,7 +228,7 @@ public class pnlUsuario extends JPanel {
 			icono = new ImageIcon(newimg);
 			lblImagen.setIcon(icono);
 		}
-		//System.out.println(lblNombre.getColorModel().toString());
+		// System.out.println(lblNombre.getColorModel().toString());
 	}
 
 }

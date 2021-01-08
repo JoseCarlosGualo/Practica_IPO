@@ -97,7 +97,7 @@ public class pnlVBungalow extends JPanel {
 					Double.MIN_VALUE };
 			pnlCaracteristicas.setLayout(gbl_pnlCaracteristicas);
 			{
-				lblCaractersticas = new JLabel("Caracter\u00EDsticas");
+				lblCaractersticas = new JLabel(MessagesLogin.getString("pnlVBungalow.lblCaractersticas.text")); //$NON-NLS-1$
 				lblCaractersticas.setFont(new Font("Tahoma", Font.BOLD, 18));
 				GridBagConstraints gbc_lblCaractersticas = new GridBagConstraints();
 				gbc_lblCaractersticas.insets = new Insets(0, 0, 5, 5);
@@ -106,7 +106,7 @@ public class pnlVBungalow extends JPanel {
 				pnlCaracteristicas.add(lblCaractersticas, gbc_lblCaractersticas);
 			}
 			{
-				lblTamao = new JLabel("Tama\u00F1o: ");
+				lblTamao = new JLabel(MessagesLogin.getString("pnlVBungalow.lblTamao.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_lblTamao = new GridBagConstraints();
 				gbc_lblTamao.anchor = GridBagConstraints.WEST;
 				gbc_lblTamao.insets = new Insets(0, 0, 5, 5);
@@ -124,7 +124,7 @@ public class pnlVBungalow extends JPanel {
 				pnlCaracteristicas.add(lblTamanoBun, gbc_lblTamanoBun);
 			}
 			{
-				lblCapacidadMaxima = new JLabel("Capacidad M\u00E1xima: ");
+				lblCapacidadMaxima = new JLabel(MessagesLogin.getString("pnlVBungalow.lblCapacidadMaxima.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_lblCapacidadMaxima = new GridBagConstraints();
 				gbc_lblCapacidadMaxima.anchor = GridBagConstraints.WEST;
 				gbc_lblCapacidadMaxima.insets = new Insets(0, 0, 5, 5);
@@ -142,7 +142,7 @@ public class pnlVBungalow extends JPanel {
 				pnlCaracteristicas.add(lblCapacidadMaximaBun, gbc_lblCapacidadMaximaBun);
 			}
 			{
-				lblEstanciaMnima = new JLabel("Estancia M\u00EDnima: ");
+				lblEstanciaMnima = new JLabel(MessagesLogin.getString("pnlVBungalow.lblEstanciaMnima.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_lblEstanciaMnima = new GridBagConstraints();
 				gbc_lblEstanciaMnima.anchor = GridBagConstraints.WEST;
 				gbc_lblEstanciaMnima.insets = new Insets(0, 0, 5, 5);
@@ -160,7 +160,7 @@ public class pnlVBungalow extends JPanel {
 				pnlCaracteristicas.add(lblEstanciaMinimaBun, gbc_lblEstanciaMinimaBun);
 			}
 			{
-				lblEquipamiento = new JLabel("Equipamiento:");
+				lblEquipamiento = new JLabel(MessagesLogin.getString("pnlVBungalow.lblEquipamiento.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_lblEquipamiento = new GridBagConstraints();
 				gbc_lblEquipamiento.anchor = GridBagConstraints.WEST;
 				gbc_lblEquipamiento.insets = new Insets(0, 0, 5, 5);
@@ -178,7 +178,7 @@ public class pnlVBungalow extends JPanel {
 				pnlCaracteristicas.add(lblEquipamientobun, gbc_lblEquipamientobun);
 			}
 			{
-				lblDescripcin = new JLabel("Descripci\u00F3n: ");
+				lblDescripcin = new JLabel(MessagesLogin.getString("pnlVBungalow.lblDescripcin.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_lblDescripcin = new GridBagConstraints();
 				gbc_lblDescripcin.anchor = GridBagConstraints.NORTHWEST;
 				gbc_lblDescripcin.insets = new Insets(0, 0, 0, 5);
@@ -203,7 +203,7 @@ public class pnlVBungalow extends JPanel {
 			}
 		}
 		{
-			lblImagen = new JLabel("");
+			lblImagen = new JLabel(); // $NON-NLS-1$
 			lblImagen.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 			lblImagen.setIcon(new ImageIcon(
 					pnlVBungalow.class.getResource("/Presentacion/Imagenes/" + this.bungalow.getImagen())));
@@ -238,7 +238,7 @@ public class pnlVBungalow extends JPanel {
 				pnlPrecio.add(lblPrecioBun, gbc_lblPrecioBun);
 			}
 			{
-				btnReservar = new JButton("RERSERVAR");
+				btnReservar = new JButton(MessagesLogin.getString("pnlVBungalow.btnReservar.text")); //$NON-NLS-1$
 				btnReservar.addActionListener(new BtnReservarActionListener());
 				btnReservar.setFont(new Font("Tahoma", Font.BOLD, 18));
 				GridBagConstraints gbc_btnReservar = new GridBagConstraints();

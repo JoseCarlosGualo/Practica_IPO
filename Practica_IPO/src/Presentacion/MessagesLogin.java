@@ -22,7 +22,7 @@ public class MessagesLogin {
 	////////////////////////////////////////////////////////////////////////////
 	private static final String BUNDLE_NAME = "Presentacion.messagesLogin"; //$NON-NLS-1$
 	private static ResourceBundle RESOURCE_BUNDLE = loadBundle();
-	private static String idioma = "Español";
+	private static String idioma = "EspaÃ±ol";
 
 	private static ResourceBundle loadBundle() {
 		return ResourceBundle.getBundle(BUNDLE_NAME);
@@ -44,7 +44,7 @@ public class MessagesLogin {
 
 	private static Locale getLocale(String appIdioma) {
 		Locale locale = new Locale("es");
-		if (appIdioma.equals("inglés"))
+		if (appIdioma.equals("inglÃ©s"))
 			locale = new Locale("en");
 		return locale;
 	}

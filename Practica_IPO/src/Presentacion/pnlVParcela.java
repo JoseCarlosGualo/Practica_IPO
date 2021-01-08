@@ -93,7 +93,7 @@ public class pnlVParcela extends JPanel {
 					Double.MIN_VALUE };
 			pnlCaracteristicas.setLayout(gbl_pnlCaracteristicas);
 			{
-				lblCaractersticas = new JLabel("Caracter\u00EDsticas");
+				lblCaractersticas = new JLabel(MessagesLogin.getString("pnlVParcela.lblCaractersticas.text")); //$NON-NLS-1$
 				lblCaractersticas.setFont(new Font("Tahoma", Font.BOLD, 18));
 				GridBagConstraints gbc_lblCaractersticas = new GridBagConstraints();
 				gbc_lblCaractersticas.insets = new Insets(0, 0, 5, 5);
@@ -102,7 +102,7 @@ public class pnlVParcela extends JPanel {
 				pnlCaracteristicas.add(lblCaractersticas, gbc_lblCaractersticas);
 			}
 			{
-				lblTamao = new JLabel("Tama\u00F1o: ");
+				lblTamao = new JLabel(MessagesLogin.getString("pnlVParcela.lblTamao.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_lblTamao = new GridBagConstraints();
 				gbc_lblTamao.anchor = GridBagConstraints.WEST;
 				gbc_lblTamao.insets = new Insets(0, 0, 5, 5);
@@ -120,7 +120,7 @@ public class pnlVParcela extends JPanel {
 				pnlCaracteristicas.add(lblTamanoPar, gbc_lblTamanoPar);
 			}
 			{
-				lblUbicacion = new JLabel("Ubicaci\u00F3n: ");
+				lblUbicacion = new JLabel(MessagesLogin.getString("pnlVParcela.lblUbicacion.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_lblUbicacion = new GridBagConstraints();
 				gbc_lblUbicacion.anchor = GridBagConstraints.WEST;
 				gbc_lblUbicacion.insets = new Insets(0, 0, 5, 5);
@@ -138,7 +138,7 @@ public class pnlVParcela extends JPanel {
 				pnlCaracteristicas.add(lblUbicacionPar, gbc_lblUbicacionPar);
 			}
 			{
-				lblEquipamiento = new JLabel("Equipamiento:");
+				lblEquipamiento = new JLabel(MessagesLogin.getString("pnlVParcela.lblEquipamiento.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_lblEquipamiento = new GridBagConstraints();
 				gbc_lblEquipamiento.anchor = GridBagConstraints.WEST;
 				gbc_lblEquipamiento.insets = new Insets(0, 0, 5, 5);
@@ -156,7 +156,7 @@ public class pnlVParcela extends JPanel {
 				pnlCaracteristicas.add(lblEquipamientopar, gbc_lblEquipamientopar);
 			}
 			{
-				lblTemporada = new JLabel("Temporada");
+				lblTemporada = new JLabel(MessagesLogin.getString("pnlVParcela.lblTemporada.text")); //$NON-NLS-1$
 				GridBagConstraints gbc_lblTemporada = new GridBagConstraints();
 				gbc_lblTemporada.anchor = GridBagConstraints.WEST;
 				gbc_lblTemporada.insets = new Insets(0, 0, 5, 5);
@@ -177,7 +177,7 @@ public class pnlVParcela extends JPanel {
 			}
 		}
 		{
-			lblImagen = new JLabel("");
+			lblImagen = new JLabel(); // $NON-NLS-1$
 			lblImagen.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 			lblImagen.setIcon(
 					new ImageIcon(pnlVParcela.class.getResource("/Presentacion/Imagenes/" + parcela.getImagen())));
@@ -213,7 +213,7 @@ public class pnlVParcela extends JPanel {
 				pnlPrecio.add(lblPrecioPar, gbc_lblPrecioPar);
 			}
 			{
-				btnReservar = new JButton("RERSERVAR");
+				btnReservar = new JButton(MessagesLogin.getString("pnlVParcela.btnReservar.text")); //$NON-NLS-1$
 				btnReservar.addActionListener(new BtnReservarActionListener());
 				GridBagConstraints gbc_btnReservar = new GridBagConstraints();
 				gbc_btnReservar.insets = new Insets(0, 0, 0, 5);

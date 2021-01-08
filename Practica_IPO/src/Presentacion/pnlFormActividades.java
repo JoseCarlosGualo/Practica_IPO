@@ -78,7 +78,7 @@ public class pnlFormActividades extends JPanel {
 				0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 		{
-			lblNombreActividad = new JLabel("Nombre Actividad");
+			lblNombreActividad = new JLabel(MessagesLogin.getString("pnlFormActividades.lblNombreActividad.text")); //$NON-NLS-1$
 			lblNombreActividad.setForeground(Color.BLUE);
 			lblNombreActividad.setFont(new Font("Century Gothic", Font.BOLD | Font.ITALIC, 22));
 			GridBagConstraints gbc_lblNombreActividad = new GridBagConstraints();
@@ -90,7 +90,7 @@ public class pnlFormActividades extends JPanel {
 			add(lblNombreActividad, gbc_lblNombreActividad);
 		}
 		{
-			lblInformacinDeLa = new JLabel("Informacion de la actividad");
+			lblInformacinDeLa = new JLabel(MessagesLogin.getString("pnlFormActividades.lblInformacinDeLa.text")); //$NON-NLS-1$
 			lblInformacinDeLa.setIcon(
 					new ImageIcon(pnlFormActividades.class.getResource("/Presentacion/Imagenes/informacion.png")));
 			lblInformacinDeLa.setFont(new Font("Tahoma", Font.BOLD, 19));
@@ -103,7 +103,7 @@ public class pnlFormActividades extends JPanel {
 			add(lblInformacinDeLa, gbc_lblInformacinDeLa);
 		}
 		{
-			lblId = new JLabel("Id:");
+			lblId = new JLabel(MessagesLogin.getString("pnlFormActividades.lblId.text")); //$NON-NLS-1$
 			lblId.setFont(new Font("Tahoma", Font.BOLD, 19));
 			GridBagConstraints gbc_lblId = new GridBagConstraints();
 			gbc_lblId.anchor = GridBagConstraints.EAST;
@@ -114,7 +114,7 @@ public class pnlFormActividades extends JPanel {
 			lblId.setVisible(false);
 		}
 		{
-			lblIdAc = new JLabel("");
+			lblIdAc = new JLabel(MessagesLogin.getString("pnlFormActividades.lblIdAc.text")); //$NON-NLS-1$
 			lblIdAc.setFont(new Font("Tahoma", Font.ITALIC, 19));
 			GridBagConstraints gbc_lblIdAc = new GridBagConstraints();
 			gbc_lblIdAc.insets = new Insets(0, 0, 5, 0);
@@ -124,7 +124,7 @@ public class pnlFormActividades extends JPanel {
 			lblIdAc.setVisible(false);
 		}
 		{
-			lblMonitor = new JLabel("Monitor: ");
+			lblMonitor = new JLabel(MessagesLogin.getString("pnlFormActividades.lblMonitor.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblMonitor = new GridBagConstraints();
 			gbc_lblMonitor.anchor = GridBagConstraints.EAST;
 			gbc_lblMonitor.insets = new Insets(0, 0, 5, 5);
@@ -144,7 +144,7 @@ public class pnlFormActividades extends JPanel {
 			tfMonitorAc.setColumns(10);
 		}
 		{
-			lblCupoMnimo = new JLabel("Cupo m\u00EDnimo: ");
+			lblCupoMnimo = new JLabel(MessagesLogin.getString("pnlFormActividades.lblCupoMnimo.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblCupoMnimo = new GridBagConstraints();
 			gbc_lblCupoMnimo.anchor = GridBagConstraints.EAST;
 			gbc_lblCupoMnimo.insets = new Insets(0, 0, 5, 5);
@@ -164,7 +164,7 @@ public class pnlFormActividades extends JPanel {
 			tfCupoMinimoAc.setColumns(10);
 		}
 		{
-			lblCupoMximo = new JLabel("Cupo m\u00E1ximo: ");
+			lblCupoMximo = new JLabel(MessagesLogin.getString("pnlFormActividades.lblCupoMximo.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblCupoMximo = new GridBagConstraints();
 			gbc_lblCupoMximo.anchor = GridBagConstraints.EAST;
 			gbc_lblCupoMximo.insets = new Insets(0, 0, 5, 5);
@@ -184,7 +184,7 @@ public class pnlFormActividades extends JPanel {
 			tfCupoMaximoAc.setColumns(10);
 		}
 		{
-			lblPrecioPorHora = new JLabel("Precio por hora: ");
+			lblPrecioPorHora = new JLabel(MessagesLogin.getString("pnlFormActividades.lblPrecioPorHora.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblPrecioPorHora = new GridBagConstraints();
 			gbc_lblPrecioPorHora.anchor = GridBagConstraints.EAST;
 			gbc_lblPrecioPorHora.insets = new Insets(0, 0, 5, 5);
@@ -204,7 +204,7 @@ public class pnlFormActividades extends JPanel {
 			tfPrecioHoraAc.setColumns(10);
 		}
 		{
-			lblDestinatarios = new JLabel("Destinatarios: ");
+			lblDestinatarios = new JLabel(MessagesLogin.getString("pnlFormActividades.lblDestinatarios.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblDestinatarios = new GridBagConstraints();
 			gbc_lblDestinatarios.anchor = GridBagConstraints.EAST;
 			gbc_lblDestinatarios.insets = new Insets(0, 0, 5, 5);
@@ -224,7 +224,7 @@ public class pnlFormActividades extends JPanel {
 			add(tfDestinatarioAc, gbc_tfDestinatarioAc);
 		}
 		{
-			lblreaDelCamping = new JLabel("\u00C1rea del Camping: ");
+			lblreaDelCamping = new JLabel(MessagesLogin.getString("pnlFormActividades.lblreaDelCamping.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblreaDelCamping = new GridBagConstraints();
 			gbc_lblreaDelCamping.anchor = GridBagConstraints.EAST;
 			gbc_lblreaDelCamping.insets = new Insets(0, 0, 5, 5);
@@ -245,7 +245,7 @@ public class pnlFormActividades extends JPanel {
 			tfAreaCampingAc.setColumns(10);
 		}
 		{
-			lblMaterialesNecesarios = new JLabel("Materiales necesarios: ");
+			lblMaterialesNecesarios = new JLabel(MessagesLogin.getString("pnlFormActividades.lblMaterialesNecesarios.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblMaterialesNecesarios = new GridBagConstraints();
 			gbc_lblMaterialesNecesarios.anchor = GridBagConstraints.NORTHEAST;
 			gbc_lblMaterialesNecesarios.insets = new Insets(0, 0, 5, 5);
@@ -268,7 +268,7 @@ public class pnlFormActividades extends JPanel {
 			add(textAreaMaterialesNecesariosAc, gbc_textAreaMaterialesNecesariosAc);
 		}
 		{
-			lblDescripcin = new JLabel("Descripci\u00F3n: ");
+			lblDescripcin = new JLabel(MessagesLogin.getString("pnlFormActividades.lblDescripcin.text")); //$NON-NLS-1$
 			GridBagConstraints gbc_lblDescripcin = new GridBagConstraints();
 			gbc_lblDescripcin.anchor = GridBagConstraints.NORTHEAST;
 			gbc_lblDescripcin.insets = new Insets(0, 0, 5, 5);
@@ -290,14 +290,14 @@ public class pnlFormActividades extends JPanel {
 			add(textAreaDescripcion, gbc_textAreaDescripcion);
 		}
 		{
-			lblFotoActividad = new JLabel("");
+			lblFotoActividad = new JLabel(MessagesLogin.getString("pnlFormActividades.lblFotoActividad.text")); //$NON-NLS-1$
 			lblFotoActividad.setVisible(false);
 			{
 				{
 					{
 						{
 							{
-								lblNombreYHorario = new JLabel("Nombre y horario");
+								lblNombreYHorario = new JLabel(MessagesLogin.getString("pnlFormActividades.lblNombreYHorario.text")); //$NON-NLS-1$
 								lblNombreYHorario.setIcon(new ImageIcon(pnlFormActividades.class
 										.getResource("/Presentacion/Imagenes/calendar16x16.png")));
 								lblNombreYHorario.setVisible(false);
@@ -309,7 +309,7 @@ public class pnlFormActividades extends JPanel {
 								add(lblNombreYHorario, gbc_lblNombreYHorario);
 							}
 						}
-						lblNombreAct = new JLabel("Nombre de la Actividad");
+						lblNombreAct = new JLabel(MessagesLogin.getString("pnlFormActividades.lblNombreAct.text")); //$NON-NLS-1$
 						lblNombreAct.setVisible(false);
 						lblNombreAct.setFont(new Font("Tahoma", Font.BOLD, 13));
 						GridBagConstraints gbc_lblNombreAct = new GridBagConstraints();
@@ -330,7 +330,7 @@ public class pnlFormActividades extends JPanel {
 					add(txtNombreAct, gbc_txtNombreAct);
 					txtNombreAct.setColumns(10);
 				}
-				lblHorarioAct = new JLabel("Horario");
+				lblHorarioAct = new JLabel(MessagesLogin.getString("pnlFormActividades.lblHorarioAct.text")); //$NON-NLS-1$
 				lblHorarioAct.setVisible(false);
 				lblHorarioAct.setFont(new Font("Tahoma", Font.BOLD, 13));
 				GridBagConstraints gbc_lblHorarioAct = new GridBagConstraints();
@@ -358,7 +358,7 @@ public class pnlFormActividades extends JPanel {
 			add(lblFotoActividad, gbc_lblFotoActividad);
 		}
 		{
-			bntAddFoto = new JButton("");
+			bntAddFoto = new JButton(MessagesLogin.getString("pnlFormActividades.bntAddFoto.text")); //$NON-NLS-1$
 			bntAddFoto.setVisible(false);
 			bntAddFoto.addActionListener(new BntAddFotoActionListener());
 			bntAddFoto.setIcon(
